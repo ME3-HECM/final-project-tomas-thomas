@@ -1,4 +1,4 @@
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.c"
+# 1 "color.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.c" 2
+# 1 "color.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24086,96 +24086,96 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.c" 2
+# 1 "color.c" 2
 
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.h" 1
-
-
-
-
-
-
-
-
-unsigned int on_period, off_period;
-
-void Interrupts_init(void);
-void __attribute__((picinterrupt(("high_priority")))) HighISR();
-
-void Timer0_init(void);
-void write16bitTMR0val(unsigned int);
-
-void angle2PWM(int angle);
-# 2 "../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.c" 2
+# 1 "./color.h" 1
+# 12 "./color.h"
+void color_click_init(void);
 
 
 
 
 
 
-void Interrupts_init(void)
+void color_writetoaddr(char address, char value);
+
+
+
+
+
+unsigned int color_read_Red(void);
+# 2 "color.c" 2
+
+# 1 "./i2c.h" 1
+# 13 "./i2c.h"
+void I2C_2_Master_Init(void);
+
+
+
+
+void I2C_2_Master_Idle(void);
+
+
+
+
+void I2C_2_Master_Start(void);
+
+
+
+
+void I2C_2_Master_RepStart(void);
+
+
+
+
+void I2C_2_Master_Stop(void);
+
+
+
+
+void I2C_2_Master_Write(unsigned char data_byte);
+
+
+
+
+unsigned char I2C_2_Master_Read(unsigned char ack);
+# 3 "color.c" 2
+
+
+void color_click_init(void)
 {
 
-    PIE0bits.TMR0IE=1;
-    INTCONbits.PEIE=1;
-    INTCONbits.IPEN=0;
-    INTCONbits.GIE=1;
+    I2C_2_Master_Init();
 
-    TRISFbits.TRISF7=1;
+
+  color_writetoaddr(0x00, 0x01);
+    _delay((unsigned long)((3)*(64000000/4000.0)));
+
+
+ color_writetoaddr(0x00, 0x03);
+
+
+ color_writetoaddr(0x01, 0xD5);
 }
 
+void color_writetoaddr(char address, char value){
+    I2C_2_Master_Start();
+    I2C_2_Master_Write(0x52 | 0x00);
+    I2C_2_Master_Write(0x80 | address);
+    I2C_2_Master_Write(value);
+    I2C_2_Master_Stop();
+}
 
-
-
-
-void __attribute__((picinterrupt(("high_priority")))) HighISR()
+unsigned int color_read_Red(void)
 {
-
-    if (PIR0bits.TMR0IF)
-    {
-        if(LATFbits.LATF7 == 1){
-            write16bitTMR0val(65535-off_period);
-            LATFbits.LATF7 = 0;
-        } else {
-            write16bitTMR0val(65535-on_period);
-            LATFbits.LATF7 = 0;
-        }
-    }
-    PIR0bits.TMR0IF=0;
-}
-
-
-
-
-void Timer0_init(void)
-{
-    T0CON1bits.T0CS=0b010;
-    T0CON1bits.T0ASYNC=1;
-    T0CON1bits.T0CKPS=1000;
-    T0CON0bits.T016BIT=1;
-
-
-    TMR0H=(65535-100)>>8;
-    TMR0L=(unsigned char)(65535-100);
-    T0CON0bits.T0EN=1;
-}
-
-
-
-
-
-void write16bitTMR0val(unsigned int tmp)
-{
-    TMR0H=tmp>>8;
-    TMR0L=tmp;
-}
-
-
-
-
-
-
-void angle2PWM(int angle){
-    on_period = ???;
-    off_period = ???;
+ unsigned int tmp;
+ I2C_2_Master_Start();
+ I2C_2_Master_Write(0x52 | 0x00);
+ I2C_2_Master_Write(0xA0 | 0x16);
+ I2C_2_Master_RepStart();
+ I2C_2_Master_Write(0x52 | 0x01);
+ tmp=I2C_2_Master_Read(1);
+ tmp=tmp | (I2C_2_Master_Read(0)<<8);
+ I2C_2_Master_Stop();
+ return tmp;
 }

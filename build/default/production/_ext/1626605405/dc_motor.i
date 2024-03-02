@@ -24105,19 +24105,35 @@ typedef struct DC_motor {
     unsigned char *negDutyHighByte;
 } DC_motor;
 
+struct DC_motor motorL, motorR;
 
-void initDCmotorsPWM(int PWMperiod);
+char temp = 7;
+
+void initDCmotorsPWM(unsigned int PWMperiod);
 void setMotorPWM(DC_motor *m);
 void stop(DC_motor *mL, DC_motor *mR);
-void turnLeft(DC_motor *mL, DC_motor *mR);
-void turnRight(DC_motor *mL, DC_motor *mR);
+void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
+
+
+void forward(char direction, char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void delay_ms_function(unsigned int milliseconds);
 # 2 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c" 2
 
 
 
 void initDCmotorsPWM(unsigned int PWMperiod){
 
+    TRISEbits.TRISE2 = 0;
+    TRISEbits.TRISE4 = 0;
+    TRISCbits.TRISC7 = 0;
+    TRISGbits.TRISG6 = 0;
+
+    LATEbits.LATE2 = 0;
+    LATEbits.LATE4 = 0;
+    LATCbits.LATC7 = 0;
+    LATGbits.LATG6 = 0;
 
 
     RE2PPS=0x05;
@@ -24126,13 +24142,13 @@ void initDCmotorsPWM(unsigned int PWMperiod){
     RG6PPS=0x08;
 
 
-    T2CONbits.CKPS=???;
+    T2CONbits.CKPS=100;
     T2HLTbits.MODE=0b00000;
     T2CLKCONbits.CS=0b0001;
 
 
 
-    T2PR=??;
+    T2PR=PWMperiod;
     T2CONbits.ON=1;
 
 
@@ -24164,6 +24180,16 @@ void initDCmotorsPWM(unsigned int PWMperiod){
     CCP4CONbits.FMT=1;
     CCP4CONbits.CCP4MODE=0b1100;
     CCP4CONbits.EN=1;
+
+
+    TRISHbits.TRISH3 = 0;
+    LATHbits.LATH3 = 0;
+}
+void delay_ms_function(unsigned int milliseconds) {
+    while (milliseconds > 0) {
+        _delay((unsigned long)((1)*(64000000/4000.0)));
+        milliseconds--;
+    }
 }
 
 
@@ -24190,25 +24216,168 @@ void setMotorPWM(DC_motor *m)
 }
 
 
-void stop(DC_motor *mL, DC_motor *mR)
-{
 
+void stop(DC_motor *mL, DC_motor *mR){
+
+    mL->brakemode = 1;
+    mR->brakemode = 1;
+
+
+    while(mL->power || mR->power > 0){
+        if(mL->power > 0 ){
+            mL->power--;
+            setMotorPWM(mL);
+
+        }
+        if(mR->power > 0 ){
+            mR->power--;
+            setMotorPWM(mR);
+        }
+    _delay((unsigned long)((800)*(64000000/4000000.0)));
+    }
 }
 
 
-void turnLeft(DC_motor *mL, DC_motor *mR)
-{
+void forward(char direction, char Distance_Calibration, DC_motor *mL, DC_motor *mR){
 
+
+
+
+    if(direction){
+            mL->direction = 1;
+            mR->direction = 1;
+        }
+        else{
+            mL->direction = 0;
+            mR->direction = 0;
+        }
+
+
+    int max_power = 100;
+    int acceleration_time = 100;
+    int delay_time = acceleration_time/max_power;
+
+
+    for(int i=0; i< max_power; i++){
+        mL->power = mL->power + 1;
+        mR->power = mR->power + 1 ;
+        setMotorPWM(mR);
+        setMotorPWM(mL);
+        delay_ms_function(delay_time);
+    }
+
+
+
+
+    for(int j=0; j<Distance_Calibration; j++){
+        _delay((unsigned long)((10)*(64000000/4000.0)));
+    }
+
+
+    while(mL->power || mR->power > 0){
+        if(mR->power> 0 ){
+            mR->power--;
+        }
+        if(mL->power> 0 ){
+            mL->power--;
+        }
+        setMotorPWM(mR);
+        setMotorPWM(mL);
+        delay_ms_function(delay_time);
+    }
 }
 
 
-void turnRight(DC_motor *mL, DC_motor *mR)
-{
 
+
+void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
+    mL->direction = 0;
+    mR->direction = 1;
+
+    int max_power = 70;
+    int acceleration_time = 100;
+    int delay_time = acceleration_time/max_power;
+
+
+    for(int i=0; i< max_power; i++){
+        mL->power = mL->power + 1;
+        mR->power = mR->power + 1 ;
+        setMotorPWM(mR);
+        setMotorPWM(mL);
+        delay_ms_function(delay_time);
+    }
+
+
+    for(int j=0; j<rotation_calibration; j++){
+        _delay((unsigned long)((10)*(64000000/4000.0)));
+    }
+
+
+    while(mL->power || mR->power > 0){
+        if(mR->power> 0 ){
+            mR->power--;
+        }
+        if(mL->power> 0 ){
+            mL->power--;
+        }
+        setMotorPWM(mR);
+        setMotorPWM(mL);
+        delay_ms_function(delay_time);
+    }
+}
+
+void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
+    mL->direction = 1;
+    mR->direction = 0;
+
+    int max_power = 70;
+    int acceleration_time = 100;
+    int delay_time = acceleration_time/max_power;
+
+
+    for(int i=0; i< max_power; i++){
+        mL->power = mL->power + 1;
+        mR->power = mR->power + 1 ;
+        setMotorPWM(mR);
+        setMotorPWM(mL);
+        delay_ms_function(delay_time);
+    }
+
+
+    for(int j=0; j<rotation_calibration; j++){
+        _delay((unsigned long)((10)*(64000000/4000.0)));
+    }
+
+
+    while(mL->power || mR->power > 0){
+        if(mR->power> 0 ){
+            mR->power--;
+        }
+        if(mL->power> 0 ){
+            mL->power--;
+        }
+        setMotorPWM(mR);
+        setMotorPWM(mL);
+        delay_ms_function(delay_time);
+    }
 }
 
 
-void fullSpeedAhead(DC_motor *mL, DC_motor *mR)
-{
+
+void fullSpeedAhead(DC_motor *mL, DC_motor *mR){
+
+
+
+
+    mL->direction = 1;
+    mR->direction = 1;
+
+    for(unsigned int i=0; i < 50; i++){
+        mL->power++;
+        mR->power++;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((10)*(64000000/4000.0)));
+    }
 
 }
