@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c ../lab-6-motors-and-pwm-tomas-thomas.X/main.c ../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.c
+SOURCEFILES_QUOTED_IF_SPACED=../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c ../lab-6-motors-and-pwm-tomas-thomas.X/main.c color.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1626605405/dc_motor.p1 ${OBJECTDIR}/_ext/1626605405/main.p1 ${OBJECTDIR}/_ext/1626605405/rc_servo.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1626605405/dc_motor.p1.d ${OBJECTDIR}/_ext/1626605405/main.p1.d ${OBJECTDIR}/_ext/1626605405/rc_servo.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1626605405/dc_motor.p1 ${OBJECTDIR}/_ext/1626605405/main.p1 ${OBJECTDIR}/color.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1626605405/dc_motor.p1.d ${OBJECTDIR}/_ext/1626605405/main.p1.d ${OBJECTDIR}/color.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1626605405/dc_motor.p1 ${OBJECTDIR}/_ext/1626605405/main.p1 ${OBJECTDIR}/_ext/1626605405/rc_servo.p1
+OBJECTFILES=${OBJECTDIR}/_ext/1626605405/dc_motor.p1 ${OBJECTDIR}/_ext/1626605405/main.p1 ${OBJECTDIR}/color.p1
 
 # Source Files
-SOURCEFILES=../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c ../lab-6-motors-and-pwm-tomas-thomas.X/main.c ../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.c
+SOURCEFILES=../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c ../lab-6-motors-and-pwm-tomas-thomas.X/main.c color.c
 
 
 
@@ -92,7 +92,7 @@ ${OBJECTDIR}/_ext/1626605405/dc_motor.p1: ../lab-6-motors-and-pwm-tomas-thomas.X
 	@${MKDIR} "${OBJECTDIR}/_ext/1626605405" 
 	@${RM} ${OBJECTDIR}/_ext/1626605405/dc_motor.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1626605405/dc_motor.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1626605405/dc_motor.p1 ../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1626605405/dc_motor.p1 ../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c 
 	@-${MV} ${OBJECTDIR}/_ext/1626605405/dc_motor.d ${OBJECTDIR}/_ext/1626605405/dc_motor.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1626605405/dc_motor.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -100,24 +100,24 @@ ${OBJECTDIR}/_ext/1626605405/main.p1: ../lab-6-motors-and-pwm-tomas-thomas.X/mai
 	@${MKDIR} "${OBJECTDIR}/_ext/1626605405" 
 	@${RM} ${OBJECTDIR}/_ext/1626605405/main.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1626605405/main.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1626605405/main.p1 ../lab-6-motors-and-pwm-tomas-thomas.X/main.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1626605405/main.p1 ../lab-6-motors-and-pwm-tomas-thomas.X/main.c 
 	@-${MV} ${OBJECTDIR}/_ext/1626605405/main.d ${OBJECTDIR}/_ext/1626605405/main.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1626605405/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1626605405/rc_servo.p1: ../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1626605405" 
-	@${RM} ${OBJECTDIR}/_ext/1626605405/rc_servo.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1626605405/rc_servo.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1626605405/rc_servo.p1 ../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.c 
-	@-${MV} ${OBJECTDIR}/_ext/1626605405/rc_servo.d ${OBJECTDIR}/_ext/1626605405/rc_servo.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1626605405/rc_servo.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/color.p1: color.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/color.p1.d 
+	@${RM} ${OBJECTDIR}/color.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/color.p1 color.c 
+	@-${MV} ${OBJECTDIR}/color.d ${OBJECTDIR}/color.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/color.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/_ext/1626605405/dc_motor.p1: ../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}/_ext/1626605405" 
 	@${RM} ${OBJECTDIR}/_ext/1626605405/dc_motor.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1626605405/dc_motor.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1626605405/dc_motor.p1 ../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1626605405/dc_motor.p1 ../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c 
 	@-${MV} ${OBJECTDIR}/_ext/1626605405/dc_motor.d ${OBJECTDIR}/_ext/1626605405/dc_motor.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1626605405/dc_motor.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
@@ -125,17 +125,17 @@ ${OBJECTDIR}/_ext/1626605405/main.p1: ../lab-6-motors-and-pwm-tomas-thomas.X/mai
 	@${MKDIR} "${OBJECTDIR}/_ext/1626605405" 
 	@${RM} ${OBJECTDIR}/_ext/1626605405/main.p1.d 
 	@${RM} ${OBJECTDIR}/_ext/1626605405/main.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1626605405/main.p1 ../lab-6-motors-and-pwm-tomas-thomas.X/main.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1626605405/main.p1 ../lab-6-motors-and-pwm-tomas-thomas.X/main.c 
 	@-${MV} ${OBJECTDIR}/_ext/1626605405/main.d ${OBJECTDIR}/_ext/1626605405/main.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/_ext/1626605405/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1626605405/rc_servo.p1: ../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/1626605405" 
-	@${RM} ${OBJECTDIR}/_ext/1626605405/rc_servo.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1626605405/rc_servo.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/_ext/1626605405/rc_servo.p1 ../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.c 
-	@-${MV} ${OBJECTDIR}/_ext/1626605405/rc_servo.d ${OBJECTDIR}/_ext/1626605405/rc_servo.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1626605405/rc_servo.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/color.p1: color.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/color.p1.d 
+	@${RM} ${OBJECTDIR}/color.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/color.p1 color.c 
+	@-${MV} ${OBJECTDIR}/color.d ${OBJECTDIR}/color.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/color.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
@@ -156,13 +156,13 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 ${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.map  -D__DEBUG=1  -mdebugger=none  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto        $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.map  -D__DEBUG=1  -mdebugger=none  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto        $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	@${RM} ${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.hex 
 	
 else
 ${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/final-project-tomas-thomas.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	
 endif
 
