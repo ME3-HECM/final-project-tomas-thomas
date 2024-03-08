@@ -24369,63 +24369,72 @@ void main(void){
     ANSELFbits.ANSELF3=0;
 
 
-    char Turn_Calibration = 74;
+
+    char LEFT_forward_calibration = 0;
+    char RIGHT_forward_calibration = 0;
+
+    char LEFT_45deg_Calibration = 20;
+    char RIGHT_45deg_Calibration = 20;
+
+    char calibration_index = 0;
 
 while(1){
 
+    if(!PORTFbits.RF2){
+        _delay((unsigned long)((250)*(64000000/4000.0)));
+        calibration_index++;
+        LATDbits.LATD7 = 1;
+        _delay((unsigned long)((200)*(64000000/4000.0)));
+        LATDbits.LATD7 = 0;
+        if(calibration_index > 4){
+            calibration_index = 0;
+        }
+    }
 
-    while(1){
+    if(!PORTFbits.RF3){
+        _delay((unsigned long)((250)*(64000000/4000.0)));
+        for(int a=0; a<calibration_index; a++){
+                LATDbits.LATD7 = 1;
+                _delay((unsigned long)((300)*(64000000/4000.0)));
+                LATDbits.LATD7 = 0;
+                _delay((unsigned long)((300)*(64000000/4000.0)));
+        }
+        break;
+    }
+}
 
-
-
-
-
-
-
+while(1){
+    if(calibration_index == 1){
         if(!PORTFbits.RF2){
-            LATHbits.LATH3 = 1;
+            _delay((unsigned long)((250)*(64000000/4000.0)));
+            LEFT_forward_calibration++;
             LATDbits.LATD7 = 1;
-            _delay((unsigned long)((1000)*(64000000/4000.0)));
-            LATHbits.LATH3 = 0;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
             LATDbits.LATD7 = 0;
-            break;
         }
         if(!PORTFbits.RF3){
-            Turn_Calibration--;
+            _delay((unsigned long)((250)*(64000000/4000.0)));
+            LEFT_forward_calibration--;
             LATHbits.LATH3 = 1;
-            _delay((unsigned long)((300)*(64000000/4000.0)));
+            _delay((unsigned long)((200)*(64000000/4000.0)));
             LATHbits.LATH3 = 0;
         }
 
-
-
-
-
-
+    if(!PORTFbits.RF2 && !PORTFbits.RF3){
+        LATDbits.LATD7 = 1;
+        LATHbits.LATH3 = 1;
+        break;
+        }
     }
 
 
+    if(!PORTFbits.RF2 && !PORTFbits.RF3){
+        LATDbits.LATD7 = 1;
+        LATHbits.LATH3 = 1;
+        break;
+        }
 
 
-
-for(int i = 0; i<4; i++){
-forward(1, 100, &motorL, &motorR);
-_delay((unsigned long)((1000)*(64000000/4000.0)));
-turnLEFT(Turn_Calibration, &motorL, &motorR);
-_delay((unsigned long)((1000)*(64000000/4000.0)));
 }
 
-turnLEFT(Turn_Calibration, &motorL, &motorR);
-_delay((unsigned long)((1000)*(64000000/4000.0)));
-
-
-for(int j = 0; j<4; j++){
-forward(1, 100, &motorL, &motorR);
-_delay((unsigned long)((1000)*(64000000/4000.0)));
-turnRIGHT(85, &motorL, &motorR);
-_delay((unsigned long)((1000)*(64000000/4000.0)));
-}
-# 122 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
-}
-# 200 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
 }
