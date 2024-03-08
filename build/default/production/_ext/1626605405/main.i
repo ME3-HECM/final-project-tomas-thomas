@@ -24171,22 +24171,29 @@ void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 
-void forward(char direction, char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void delay_ms_function(unsigned int milliseconds);
 # 13 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
 
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.h" 1
-# 10 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.h"
-void calibration_general(unsigned int number);
+# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h" 1
 
 
-typedef struct calibration_variables {
-    unsigned int forward_left;
-    unsigned int forward_right;
-    unsigned int left_45;
-    unsigned int right_45;
-};
-struct calibration_variables calibration;
+
+
+
+
+
+typedef struct calibration_structure {
+    char left_45;
+    char right_45;
+    char forward_motorL;
+    char forward_motorR;
+
+} calibration_structure;
+
+struct calibration_structure calibration;
+
+void adjust_calibration(int *type);
 # 14 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
@@ -24367,10 +24374,10 @@ void main(void){
     motorR.PWMperiod=PWMperiod;
 
 
-    calibration.left_45 = 20;
+    calibration.left_45 = 10;
     calibration.right_45 = 20;
-    calibration.forward_left = 20;
-    calibration.forward_right = 20;
+    calibration.forward_motorL = 20;
+    calibration.forward_motorR = 20;
 
 
 
@@ -24391,8 +24398,22 @@ void main(void){
     TRISFbits.TRISF3=1;
     ANSELFbits.ANSELF3=0;
 # 73 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
-while(1){
+    while(1){
 
-    calibration_general(&calibration.left_45);
-}
+        if(!PORTFbits.RF2){
+            break;
+        }
+
+        adjust_calibration(&calibration.left_45);
+    }
+
+    while(1){
+        for(int i = 0; i< calibration.left_45; i++){
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 1;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 0;
+        }
+        break;
+    }
 }

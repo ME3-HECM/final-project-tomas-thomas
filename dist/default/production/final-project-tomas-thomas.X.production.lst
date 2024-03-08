@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Fri Mar 08 11:18:19 2024
+                                                                                               Fri Mar 08 16:31:08 2024
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	18F67K40
@@ -15,953 +15,903 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
      9                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
     10                           	psect	text0,global,reloc=2,class=CODE,delta=1
     11                           	psect	text1,global,reloc=2,class=CODE,delta=1
-    12                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
-    13                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
-    14                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
-    15                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
-    16   000000                     
-    17                           ; Generated 21/07/2023 GMT
-    18                           ; 
-    19                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
-    20                           ; All rights reserved.
-    21                           ; 
-    22                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+    12                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    13                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+    14                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    15                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    16                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    17   000000                     
+    18                           ; Generated 21/07/2023 GMT
+    19                           ; 
+    20                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    21                           ; All rights reserved.
+    22                           ; 
+    23                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
       +                          ip").
-    23                           ; 
-    24                           ; Redistribution and use in source and binary forms, with or without modification, are
-    25                           ; permitted provided that the following conditions are met:
-    26                           ; 
-    27                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+    24                           ; 
+    25                           ; Redistribution and use in source and binary forms, with or without modification, are
+    26                           ; permitted provided that the following conditions are met:
+    27                           ; 
+    28                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
       +                          t of
-    28                           ;        conditions and the following disclaimer.
-    29                           ; 
-    30                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+    29                           ;        conditions and the following disclaimer.
+    30                           ; 
+    31                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
       +                          list
-    31                           ;        of conditions and the following disclaimer in the documentation and/or other
-    32                           ;        materials provided with the distribution. Publication is not required when
-    33                           ;        this file is used in an embedded application.
-    34                           ; 
-    35                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+    32                           ;        of conditions and the following disclaimer in the documentation and/or other
+    33                           ;        materials provided with the distribution. Publication is not required when
+    34                           ;        this file is used in an embedded application.
+    35                           ; 
+    36                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
       +                          is
-    36                           ;        software without specific prior written permission.
-    37                           ; 
-    38                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
-    39                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+    37                           ;        software without specific prior written permission.
+    38                           ; 
+    39                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    40                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
       +                          OR
-    40                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+    41                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
       +                          T,
-    41                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
-    42                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
-    43                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+    42                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    43                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    44                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
       +                          RICT
-    44                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+    45                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
       +                          SE OF
-    45                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    46                           ; 
+    46                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     47                           ; 
-    48                           ; Code-generator required, PIC18F67K40 Definitions
-    49                           ; 
-    50                           ; SFR Addresses
-    51   000000                     
-    52                           	psect	idataCOMRAM
-    53   0010EA                     __pidataCOMRAM:
-    54                           	callstack 0
-    55                           
-    56                           ;initializer for _temp
-    57   0010EA  07                 	db	7
-    58   000000                     _TRISFbits	set	3974
-    59   000000                     _LATDbits	set	3964
-    60   000000                     _TRISDbits	set	3972
-    61   000000                     _TRISGbits	set	3975
-    62   000000                     _RC7PPS	set	3689
-    63   000000                     _RE2PPS	set	3700
-    64   000000                     _LATCbits	set	3963
-    65   000000                     _LATEbits	set	3965
-    66   000000                     _TRISCbits	set	3971
-    67   000000                     _TRISEbits	set	3973
-    68   000000                     _PORTFbits	set	3982
-    69   000000                     _TRISHbits	set	3976
-    70   000000                     _T2PR	set	4028
-    71   000000                     _T2CONbits	set	4029
-    72   000000                     _CCPR2H	set	4006
-    73   000000                     _CCPR1H	set	4010
-    74   000000                     _LATGbits	set	3967
-    75   000000                     _LATHbits	set	3968
-    76   000000                     _RE4PPS	set	3702
-    77   000000                     _RG6PPS	set	3720
-    78   000000                     _ANSELFbits	set	3764
-    79   000000                     _CCPR4H	set	3873
-    80   000000                     _CCPR3H	set	3877
-    81   000000                     _T2CLKCONbits	set	4031
-    82   000000                     _T2HLTbits	set	4030
-    83   000000                     _CCP1CONbits	set	4011
-    84   000000                     _CCPTMRS0bits	set	4013
-    85   000000                     _CCP2CONbits	set	4007
-    86   000000                     _CCP3CONbits	set	3878
-    87   000000                     _CCP4CONbits	set	3874
-    88                           
-    89                           ; #config settings
-    90                           
-    91                           	psect	cinit
-    92   0010C6                     __pcinit:
-    93                           	callstack 0
-    94   0010C6                     start_initialization:
-    95                           	callstack 0
-    96   0010C6                     __initialization:
-    97                           	callstack 0
-    98                           
-    99                           ; Initialize objects allocated to COMRAM (1 bytes)
-   100                           ; load TBLPTR registers with __pidataCOMRAM
-   101   0010C6  0EEA               	movlw	low __pidataCOMRAM
-   102   0010C8  6EF6               	movwf	tblptrl,c
-   103   0010CA  0E10               	movlw	high __pidataCOMRAM
-   104   0010CC  6EF7               	movwf	tblptrh,c
-   105   0010CE  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
-   106   0010D0  6EF8               	movwf	tblptru,c
-   107   0010D2  0009               	tblrd		*+	;fetch initializer
-   108   0010D4  CFF5 F020          	movff	tablat,__pdataCOMRAM
-   109                           
-   110                           ; Clear objects allocated to COMRAM (22 bytes)
-   111   0010D8  EE00  F001         	lfsr	0,__pbssCOMRAM
-   112   0010DC  0E16               	movlw	22
-   113   0010DE                     clear_0:
-   114   0010DE  6AEE               	clrf	postinc0,c
-   115   0010E0  06E8               	decf	wreg,f,c
-   116   0010E2  E1FD               	bnz	clear_0
-   117   0010E4                     end_of_initialization:
-   118                           	callstack 0
-   119   0010E4                     __end_of__initialization:
-   120                           	callstack 0
-   121   0010E4  0100               	movlb	0
-   122   0010E6  EF01  F007         	goto	_main	;jump to C main() function
-   123                           
-   124                           	psect	bssCOMRAM
-   125   000001                     __pbssCOMRAM:
-   126                           	callstack 0
-   127   000001                     _motorR:
-   128                           	callstack 0
-   129   000001                     	ds	9
-   130   00000A                     _motorL:
-   131                           	callstack 0
-   132   00000A                     	ds	9
-   133   000013                     _off_period:
-   134                           	callstack 0
-   135   000013                     	ds	2
-   136   000015                     _on_period:
-   137                           	callstack 0
-   138   000015                     	ds	2
-   139                           
-   140                           	psect	dataCOMRAM
-   141   000020                     __pdataCOMRAM:
-   142                           	callstack 0
-   143   000020                     _temp:
-   144                           	callstack 0
-   145   000020                     	ds	1
-   146                           
-   147                           	psect	cstackCOMRAM
-   148   000017                     __pcstackCOMRAM:
-   149                           	callstack 0
-   150   000017                     initDCmotorsPWM@PWMperiod:
-   151                           	callstack 0
-   152                           
-   153                           ; 2 bytes @ 0x0
-   154   000017                     	ds	2
-   155   000019                     ??_main:
-   156                           
-   157                           ; 1 bytes @ 0x2
-   158   000019                     	ds	3
-   159   00001C                     main@LEFT_forward_calibration:
-   160                           	callstack 0
-   161                           
-   162                           ; 1 bytes @ 0x5
-   163   00001C                     	ds	1
-   164   00001D                     main@a:
-   165                           	callstack 0
-   166                           
-   167                           ; 2 bytes @ 0x6
-   168   00001D                     	ds	2
-   169   00001F                     main@calibration_index:
-   170                           	callstack 0
-   171                           
-   172                           ; 1 bytes @ 0x8
-   173   00001F                     	ds	1
+    48                           ; 
+    49                           ; Code-generator required, PIC18F67K40 Definitions
+    50                           ; 
+    51                           ; SFR Addresses
+    52   000000                     
+    53                           	psect	idataCOMRAM
+    54   00108C                     __pidataCOMRAM:
+    55                           	callstack 0
+    56                           
+    57                           ;initializer for _temp
+    58   00108C  07                 	db	7
+    59   000000                     _TRISFbits	set	3974
+    60   000000                     _LATDbits	set	3964
+    61   000000                     _TRISDbits	set	3972
+    62   000000                     _TRISGbits	set	3975
+    63   000000                     _RC7PPS	set	3689
+    64   000000                     _RE2PPS	set	3700
+    65   000000                     _LATCbits	set	3963
+    66   000000                     _LATEbits	set	3965
+    67   000000                     _TRISCbits	set	3971
+    68   000000                     _TRISEbits	set	3973
+    69   000000                     _PORTFbits	set	3982
+    70   000000                     _TRISHbits	set	3976
+    71   000000                     _T2PR	set	4028
+    72   000000                     _T2CONbits	set	4029
+    73   000000                     _CCPR2H	set	4006
+    74   000000                     _CCPR1H	set	4010
+    75   000000                     _LATGbits	set	3967
+    76   000000                     _LATHbits	set	3968
+    77   000000                     _RE4PPS	set	3702
+    78   000000                     _RG6PPS	set	3720
+    79   000000                     _ANSELFbits	set	3764
+    80   000000                     _CCPR4H	set	3873
+    81   000000                     _CCPR3H	set	3877
+    82   000000                     _T2CLKCONbits	set	4031
+    83   000000                     _T2HLTbits	set	4030
+    84   000000                     _CCP1CONbits	set	4011
+    85   000000                     _CCPTMRS0bits	set	4013
+    86   000000                     _CCP2CONbits	set	4007
+    87   000000                     _CCP3CONbits	set	3878
+    88   000000                     _CCP4CONbits	set	3874
+    89                           
+    90                           ; #config settings
+    91                           
+    92                           	psect	cinit
+    93   001068                     __pcinit:
+    94                           	callstack 0
+    95   001068                     start_initialization:
+    96                           	callstack 0
+    97   001068                     __initialization:
+    98                           	callstack 0
+    99                           
+   100                           ; Initialize objects allocated to COMRAM (1 bytes)
+   101                           ; load TBLPTR registers with __pidataCOMRAM
+   102   001068  0E8C               	movlw	low __pidataCOMRAM
+   103   00106A  6EF6               	movwf	tblptrl,c
+   104   00106C  0E10               	movlw	high __pidataCOMRAM
+   105   00106E  6EF7               	movwf	tblptrh,c
+   106   001070  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   107   001072  6EF8               	movwf	tblptru,c
+   108   001074  0009               	tblrd		*+	;fetch initializer
+   109   001076  CFF5 F025          	movff	tablat,__pdataCOMRAM
+   110                           
+   111                           ; Clear objects allocated to COMRAM (26 bytes)
+   112   00107A  EE00  F001         	lfsr	0,__pbssCOMRAM
+   113   00107E  0E1A               	movlw	26
+   114   001080                     clear_0:
+   115   001080  6AEE               	clrf	postinc0,c
+   116   001082  06E8               	decf	wreg,f,c
+   117   001084  E1FD               	bnz	clear_0
+   118   001086                     end_of_initialization:
+   119                           	callstack 0
+   120   001086                     __end_of__initialization:
+   121                           	callstack 0
+   122   001086  0100               	movlb	0
+   123   001088  EF01  F007         	goto	_main	;jump to C main() function
+   124                           
+   125                           	psect	bssCOMRAM
+   126   000001                     __pbssCOMRAM:
+   127                           	callstack 0
+   128   000001                     _motorR:
+   129                           	callstack 0
+   130   000001                     	ds	9
+   131   00000A                     _motorL:
+   132                           	callstack 0
+   133   00000A                     	ds	9
+   134   000013                     _off_period:
+   135                           	callstack 0
+   136   000013                     	ds	2
+   137   000015                     _on_period:
+   138                           	callstack 0
+   139   000015                     	ds	2
+   140   000017                     _calibration:
+   141                           	callstack 0
+   142   000017                     	ds	4
+   143                           
+   144                           	psect	dataCOMRAM
+   145   000025                     __pdataCOMRAM:
+   146                           	callstack 0
+   147   000025                     _temp:
+   148                           	callstack 0
+   149   000025                     	ds	1
+   150                           
+   151                           	psect	cstackCOMRAM
+   152   00001B                     __pcstackCOMRAM:
+   153                           	callstack 0
+   154   00001B                     adjust_calibration@type:
+   155                           	callstack 0
+   156   00001B                     initDCmotorsPWM@PWMperiod:
+   157                           	callstack 0
+   158                           
+   159                           ; 2 bytes @ 0x0
+   160   00001B                     	ds	1
+   161   00001C                     ??_adjust_calibration:
+   162                           
+   163                           ; 1 bytes @ 0x1
+   164   00001C                     	ds	1
+   165   00001D                     
+   166                           ; 1 bytes @ 0x2
+   167   00001D                     	ds	3
+   168   000020                     ??_main:
+   169                           
+   170                           ; 1 bytes @ 0x5
+   171   000020                     	ds	3
+   172   000023                     main@i:
+   173                           	callstack 0
    174                           
-   175 ;;
-   176 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
-   177 ;;
-   178 ;; *************** function _main *****************
-   179 ;; Defined at:
-   180 ;;		line 18 in file "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
-   181 ;; Parameters:    Size  Location     Type
-   182 ;;		None
-   183 ;; Auto vars:     Size  Location     Type
-   184 ;;  a               2    6[COMRAM] int 
-   185 ;;  PWMperiod       2    0        unsigned int 
-   186 ;;  calibration_    1    8[COMRAM] unsigned char 
-   187 ;;  LEFT_forward    1    5[COMRAM] unsigned char 
-   188 ;;  RIGHT_45deg_    1    0        unsigned char 
-   189 ;;  LEFT_45deg_C    1    0        unsigned char 
-   190 ;;  RIGHT_forwar    1    0        unsigned char 
-   191 ;; Return value:  Size  Location     Type
-   192 ;;                  1    wreg      void 
-   193 ;; Registers used:
-   194 ;;		wreg, status,2, status,0, cstack
-   195 ;; Tracked objects:
-   196 ;;		On entry : 0/0
-   197 ;;		On exit  : 0/0
-   198 ;;		Unchanged: 0/0
-   199 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   175                           ; 2 bytes @ 0x8
+   176   000023                     	ds	2
+   177                           
+   178 ;;
+   179 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   180 ;;
+   181 ;; *************** function _main *****************
+   182 ;; Defined at:
+   183 ;;		line 19 in file "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
+   184 ;; Parameters:    Size  Location     Type
+   185 ;;		None
+   186 ;; Auto vars:     Size  Location     Type
+   187 ;;  i               2    8[COMRAM] int 
+   188 ;;  PWMperiod       2    0        unsigned int 
+   189 ;; Return value:  Size  Location     Type
+   190 ;;                  1    wreg      void 
+   191 ;; Registers used:
+   192 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   193 ;; Tracked objects:
+   194 ;;		On entry : 0/0
+   195 ;;		On exit  : 0/0
+   196 ;;		Unchanged: 0/0
+   197 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13
-   200 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+   198 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0
-   201 ;;      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       
+   199 ;;      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0
-   202 ;;      Temps:          3       0       0       0       0       0       0       0       0       0       0       0       
+   200 ;;      Temps:          3       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0
-   203 ;;      Totals:         7       0       0       0       0       0       0       0       0       0       0       0       
+   201 ;;      Totals:         5       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0
-   204 ;;Total ram usage:        7 bytes
-   205 ;; Hardware stack levels required when called: 1
-   206 ;; This function calls:
-   207 ;;		_initDCmotorsPWM
-   208 ;; This function is called by:
-   209 ;;		Startup code after reset
-   210 ;; This function uses a non-reentrant model
-   211 ;;
-   212                           
-   213                           	psect	text0
-   214   000E02                     __ptext0:
-   215                           	callstack 0
-   216   000E02                     _main:
-   217                           	callstack 30
-   218   000E02                     
-   219                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 20:     initDCmotorsPWM(PWMperiod);
-   220   000E02  0E00               	movlw	0
-   221   000E04  6E18               	movwf	(initDCmotorsPWM@PWMperiod+1)^0,c
-   222   000E06  0E63               	movlw	99
-   223   000E08  6E17               	movwf	initDCmotorsPWM@PWMperiod^0,c
-   224   000E0A  EC19  F008         	call	_initDCmotorsPWM	;wreg free
-   225   000E0E                     
-   226                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 24:     motorL.power=0;
-   227   000E0E  0E00               	movlw	0
-   228   000E10  6E0A               	movwf	_motorL^0,c
-   229   000E12                     
-   230                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 25:     motorL.direction=1;
-   231   000E12  0E01               	movlw	1
-   232   000E14  6E0B               	movwf	(_motorL+1)^0,c
-   233   000E16                     
-   234                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 26:     motorL.brakemode=1;
-   235   000E16  0E01               	movlw	1
-   236   000E18  6E0C               	movwf	(_motorL+2)^0,c
-   237   000E1A                     
-   238                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 27:     motorL.posDutyHighByte=(unsigned
+   202 ;;Total ram usage:        5 bytes
+   203 ;; Hardware stack levels required when called: 1
+   204 ;; This function calls:
+   205 ;;		_adjust_calibration
+   206 ;;		_initDCmotorsPWM
+   207 ;; This function is called by:
+   208 ;;		Startup code after reset
+   209 ;; This function uses a non-reentrant model
+   210 ;;
+   211                           
+   212                           	psect	text0
+   213   000E02                     __ptext0:
+   214                           	callstack 0
+   215   000E02                     _main:
+   216                           	callstack 30
+   217   000E02                     
+   218                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 21:     initDCmotorsPWM(PWMperiod);
+   219   000E02  0E00               	movlw	0
+   220   000E04  6E1C               	movwf	(initDCmotorsPWM@PWMperiod+1)^0,c
+   221   000E06  0E63               	movlw	99
+   222   000E08  6E1B               	movwf	initDCmotorsPWM@PWMperiod^0,c
+   223   000E0A  ECEA  F007         	call	_initDCmotorsPWM	;wreg free
+   224   000E0E                     
+   225                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 25:     motorL.power=0;
+   226   000E0E  0E00               	movlw	0
+   227   000E10  6E0A               	movwf	_motorL^0,c
+   228   000E12                     
+   229                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 26:     motorL.direction=1;
+   230   000E12  0E01               	movlw	1
+   231   000E14  6E0B               	movwf	(_motorL+1)^0,c
+   232   000E16                     
+   233                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 27:     motorL.brakemode=1;
+   234   000E16  0E01               	movlw	1
+   235   000E18  6E0C               	movwf	(_motorL+2)^0,c
+   236   000E1A                     
+   237                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 28:     motorL.posDutyHighByte=(unsigned
       +                           char *)(&CCPR1H);
-   239   000E1A  0EAA               	movlw	170
-   240   000E1C  6E0F               	movwf	(_motorL+5)^0,c
-   241   000E1E  0E0F               	movlw	15
-   242   000E20  6E10               	movwf	(_motorL+6)^0,c
-   243   000E22                     
-   244                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 28:     motorL.negDutyHighByte=(unsigned
+   238   000E1A  0EAA               	movlw	170
+   239   000E1C  6E0F               	movwf	(_motorL+5)^0,c
+   240   000E1E  0E0F               	movlw	15
+   241   000E20  6E10               	movwf	(_motorL+6)^0,c
+   242   000E22                     
+   243                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 29:     motorL.negDutyHighByte=(unsigned
       +                           char *)(&CCPR2H);
-   245   000E22  0EA6               	movlw	166
-   246   000E24  6E11               	movwf	(_motorL+7)^0,c
-   247   000E26  0E0F               	movlw	15
-   248   000E28  6E12               	movwf	(_motorL+8)^0,c
-   249   000E2A                     
-   250                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 29:     motorL.PWMperiod=PWMperiod;
-   251   000E2A  0E00               	movlw	0
-   252   000E2C  6E0E               	movwf	(_motorL+4)^0,c
-   253   000E2E  0E63               	movlw	99
-   254   000E30  6E0D               	movwf	(_motorL+3)^0,c
-   255   000E32                     
-   256                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 31:     motorR.power=0;
-   257   000E32  0E00               	movlw	0
-   258   000E34  6E01               	movwf	_motorR^0,c
-   259   000E36                     
-   260                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 32:     motorR.direction=1;
-   261   000E36  0E01               	movlw	1
-   262   000E38  6E02               	movwf	(_motorR+1)^0,c
-   263   000E3A                     
-   264                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 33:     motorR.brakemode=1;
-   265   000E3A  0E01               	movlw	1
-   266   000E3C  6E03               	movwf	(_motorR+2)^0,c
-   267   000E3E                     
-   268                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 34:     motorR.posDutyHighByte=(unsigned
+   244   000E22  0EA6               	movlw	166
+   245   000E24  6E11               	movwf	(_motorL+7)^0,c
+   246   000E26  0E0F               	movlw	15
+   247   000E28  6E12               	movwf	(_motorL+8)^0,c
+   248   000E2A                     
+   249                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 30:     motorL.PWMperiod=PWMperiod;
+   250   000E2A  0E00               	movlw	0
+   251   000E2C  6E0E               	movwf	(_motorL+4)^0,c
+   252   000E2E  0E63               	movlw	99
+   253   000E30  6E0D               	movwf	(_motorL+3)^0,c
+   254   000E32                     
+   255                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 32:     motorR.power=0;
+   256   000E32  0E00               	movlw	0
+   257   000E34  6E01               	movwf	_motorR^0,c
+   258   000E36                     
+   259                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 33:     motorR.direction=1;
+   260   000E36  0E01               	movlw	1
+   261   000E38  6E02               	movwf	(_motorR+1)^0,c
+   262   000E3A                     
+   263                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 34:     motorR.brakemode=1;
+   264   000E3A  0E01               	movlw	1
+   265   000E3C  6E03               	movwf	(_motorR+2)^0,c
+   266   000E3E                     
+   267                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 35:     motorR.posDutyHighByte=(unsigned
       +                           char *)(&CCPR3H);
-   269   000E3E  0E25               	movlw	37
-   270   000E40  6E06               	movwf	(_motorR+5)^0,c
-   271   000E42  0E0F               	movlw	15
-   272   000E44  6E07               	movwf	(_motorR+6)^0,c
-   273   000E46                     
-   274                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 35:     motorR.negDutyHighByte=(unsigned
+   268   000E3E  0E25               	movlw	37
+   269   000E40  6E06               	movwf	(_motorR+5)^0,c
+   270   000E42  0E0F               	movlw	15
+   271   000E44  6E07               	movwf	(_motorR+6)^0,c
+   272   000E46                     
+   273                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 36:     motorR.negDutyHighByte=(unsigned
       +                           char *)(&CCPR4H);
-   275   000E46  0E21               	movlw	33
-   276   000E48  6E08               	movwf	(_motorR+7)^0,c
-   277   000E4A  0E0F               	movlw	15
-   278   000E4C  6E09               	movwf	(_motorR+8)^0,c
-   279   000E4E                     
-   280                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 36:     motorR.PWMperiod=PWMperiod;
-   281   000E4E  0E00               	movlw	0
-   282   000E50  6E05               	movwf	(_motorR+4)^0,c
-   283   000E52  0E63               	movlw	99
-   284   000E54  6E04               	movwf	(_motorR+3)^0,c
-   285   000E56                     
-   286                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 41:     TRISDbits.TRISD7 = 0;
-   287   000E56  9E84               	bcf	132,7,c	;volatile
-   288   000E58                     
-   289                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 42:     LATDbits.LATD7 = 0;
-   290   000E58  9E7C               	bcf	124,7,c	;volatile
-   291   000E5A                     
-   292                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 44:     TRISHbits.TRISH3 = 0;
-   293   000E5A  9688               	bcf	136,3,c	;volatile
-   294   000E5C                     
-   295                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 45:     LATHbits.LATH3 = 0;
-   296   000E5C  9680               	bcf	128,3,c	;volatile
-   297   000E5E                     
-   298                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 48:     TRISFbits.TRISF2=1;
-   299   000E5E  8486               	bsf	134,2,c	;volatile
-   300   000E60                     
-   301                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 49:     ANSELFbits.ANSELF2=0;
-   302   000E60  010E               	movlb	14	; () banked
-   303   000E62  95B4               	bcf	180,2,b	;volatile
-   304   000E64                     
-   305                           ; BSR set to: 14
-   306                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 51:     TRISFbits.TRISF3=1;
-   307   000E64  8686               	bsf	134,3,c	;volatile
-   308   000E66                     
-   309                           ; BSR set to: 14
-   310                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 52:     ANSELFbits.ANSELF3=0;
-   311   000E66  97B4               	bcf	180,3,b	;volatile
-   312   000E68                     
-   313                           ; BSR set to: 14
-   314                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 56:     char LEFT_forward_calibration = 
-      +                          0;
-   315   000E68  0E00               	movlw	0
-   316   000E6A  6E1C               	movwf	main@LEFT_forward_calibration^0,c
-   317   000E6C                     
-   318                           ; BSR set to: 14
-   319                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 62:     char calibration_index = 0;
-   320   000E6C  0E00               	movlw	0
-   321   000E6E  6E1F               	movwf	main@calibration_index^0,c
-   322   000E70                     l1336:
-   323                           
-   324                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 66:     if(!PORTFbits.RF2){
-   325   000E70  B48E               	btfsc	142,2,c	;volatile
-   326   000E72  EF3D  F007         	goto	u391
-   327   000E76  EF3F  F007         	goto	u390
-   328   000E7A                     u391:
-   329   000E7A  EF64  F007         	goto	l1352
-   330   000E7E                     u390:
-   331   000E7E                     
-   332                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 67:         _delay((unsigned long)((250)
-      +                          *(64000000/4000.0)));
-   333   000E7E  0E15               	movlw	21
-   334   000E80  6E1A               	movwf	(??_main+1)^0,c
-   335   000E82  0E4B               	movlw	75
-   336   000E84  6E19               	movwf	??_main^0,c
-   337   000E86  0EBE               	movlw	190
-   338   000E88                     u507:
-   339   000E88  2EE8               	decfsz	wreg,f,c
-   340   000E8A  D7FE               	bra	u507
-   341   000E8C  2E19               	decfsz	??_main^0,f,c
-   342   000E8E  D7FC               	bra	u507
-   343   000E90  2E1A               	decfsz	(??_main+1)^0,f,c
-   344   000E92  D7FA               	bra	u507
-   345   000E94  D000               	nop2	
-   346   000E96                     
-   347                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 68:         calibration_index++;
-   348   000E96  2A1F               	incf	main@calibration_index^0,f,c
-   349   000E98                     
-   350                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 69:         LATDbits.LATD7 = 1;
-   351   000E98  8E7C               	bsf	124,7,c	;volatile
-   352   000E9A                     
-   353                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 70:         _delay((unsigned long)((200)
-      +                          *(64000000/4000.0)));
-   354   000E9A  0E11               	movlw	17
-   355   000E9C  6E1A               	movwf	(??_main+1)^0,c
-   356   000E9E  0E3C               	movlw	60
-   357   000EA0  6E19               	movwf	??_main^0,c
-   358   000EA2  0ECB               	movlw	203
-   359   000EA4                     u517:
-   360   000EA4  2EE8               	decfsz	wreg,f,c
-   361   000EA6  D7FE               	bra	u517
-   362   000EA8  2E19               	decfsz	??_main^0,f,c
-   363   000EAA  D7FC               	bra	u517
-   364   000EAC  2E1A               	decfsz	(??_main+1)^0,f,c
-   365   000EAE  D7FA               	bra	u517
-   366   000EB0  0000               	nop	
-   367   000EB2                     
-   368                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 71:         LATDbits.LATD7 = 0;
-   369   000EB2  9E7C               	bcf	124,7,c	;volatile
-   370   000EB4                     
-   371                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 72:         if(calibration_index > 4){
-   372   000EB4  0E04               	movlw	4
-   373   000EB6  641F               	cpfsgt	main@calibration_index^0,c
-   374   000EB8  EF60  F007         	goto	u401
-   375   000EBC  EF62  F007         	goto	u400
-   376   000EC0                     u401:
-   377   000EC0  EF64  F007         	goto	l1352
-   378   000EC4                     u400:
-   379   000EC4                     
-   380                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 73:             calibration_index = 0;
-   381   000EC4  0E00               	movlw	0
-   382   000EC6  6E1F               	movwf	main@calibration_index^0,c
-   383   000EC8                     l1352:
-   384                           
-   385                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 77:     if(!PORTFbits.RF3){
-   386   000EC8  B68E               	btfsc	142,3,c	;volatile
-   387   000ECA  EF69  F007         	goto	u411
-   388   000ECE  EF6B  F007         	goto	u410
-   389   000ED2                     u411:
-   390   000ED2  EF38  F007         	goto	l1336
-   391   000ED6                     u410:
-   392   000ED6                     
-   393                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 78:         _delay((unsigned long)((250)
-      +                          *(64000000/4000.0)));
-   394   000ED6  0E15               	movlw	21
-   395   000ED8  6E1A               	movwf	(??_main+1)^0,c
-   396   000EDA  0E4B               	movlw	75
-   397   000EDC  6E19               	movwf	??_main^0,c
-   398   000EDE  0EBE               	movlw	190
-   399   000EE0                     u527:
-   400   000EE0  2EE8               	decfsz	wreg,f,c
-   401   000EE2  D7FE               	bra	u527
-   402   000EE4  2E19               	decfsz	??_main^0,f,c
-   403   000EE6  D7FC               	bra	u527
-   404   000EE8  2E1A               	decfsz	(??_main+1)^0,f,c
-   405   000EEA  D7FA               	bra	u527
-   406   000EEC  D000               	nop2	
-   407   000EEE                     
-   408                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 79:         for(int a=0; a<calibration_i
-      +                          ndex; a++){
-   409   000EEE  0E00               	movlw	0
-   410   000EF0  6E1E               	movwf	(main@a+1)^0,c
-   411   000EF2  0E00               	movlw	0
-   412   000EF4  6E1D               	movwf	main@a^0,c
-   413   000EF6  EF97  F007         	goto	l176
-   414   000EFA                     l177:
-   415                           
-   416                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 80:                 LATDbits.LATD7 = 1;
-   417   000EFA  8E7C               	bsf	124,7,c	;volatile
-   418   000EFC                     
-   419                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 81:                 _delay((unsigned lon
-      +                          g)((300)*(64000000/4000.0)));
-   420   000EFC  0E19               	movlw	25
-   421   000EFE  6E1A               	movwf	(??_main+1)^0,c
-   422   000F00  0E5A               	movlw	90
-   423   000F02  6E19               	movwf	??_main^0,c
-   424   000F04  0EB2               	movlw	178
-   425   000F06                     u537:
-   426   000F06  2EE8               	decfsz	wreg,f,c
-   427   000F08  D7FE               	bra	u537
-   428   000F0A  2E19               	decfsz	??_main^0,f,c
-   429   000F0C  D7FC               	bra	u537
-   430   000F0E  2E1A               	decfsz	(??_main+1)^0,f,c
-   431   000F10  D7FA               	bra	u537
-   432   000F12                     
-   433                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 82:                 LATDbits.LATD7 = 0;
-   434   000F12  9E7C               	bcf	124,7,c	;volatile
-   435                           
-   436                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 83:                 _delay((unsigned lon
-      +                          g)((300)*(64000000/4000.0)));
-   437   000F14  0E19               	movlw	25
-   438   000F16  6E1A               	movwf	(??_main+1)^0,c
-   439   000F18  0E5A               	movlw	90
-   440   000F1A  6E19               	movwf	??_main^0,c
-   441   000F1C  0EB2               	movlw	178
-   442   000F1E                     u547:
-   443   000F1E  2EE8               	decfsz	wreg,f,c
-   444   000F20  D7FE               	bra	u547
-   445   000F22  2E19               	decfsz	??_main^0,f,c
-   446   000F24  D7FC               	bra	u547
-   447   000F26  2E1A               	decfsz	(??_main+1)^0,f,c
-   448   000F28  D7FA               	bra	u547
-   449   000F2A                     
-   450                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 84:         }
-   451   000F2A  4A1D               	infsnz	main@a^0,f,c
-   452   000F2C  2A1E               	incf	(main@a+1)^0,f,c
-   453   000F2E                     l176:
-   454   000F2E  501F               	movf	main@calibration_index^0,w,c
-   455   000F30  6E19               	movwf	??_main^0,c
-   456   000F32  6A1A               	clrf	(??_main+1)^0,c
-   457   000F34  5019               	movf	??_main^0,w,c
-   458   000F36  5C1D               	subwf	main@a^0,w,c
-   459   000F38  501E               	movf	(main@a+1)^0,w,c
-   460   000F3A  0A80               	xorlw	128
-   461   000F3C  6E1B               	movwf	(??_main+2)^0,c
-   462   000F3E  501A               	movf	(??_main+1)^0,w,c
-   463   000F40  0A80               	xorlw	128
-   464   000F42  581B               	subwfb	(??_main+2)^0,w,c
-   465   000F44  A0D8               	btfss	status,0,c
-   466   000F46  EFA7  F007         	goto	u421
-   467   000F4A  EFA9  F007         	goto	u420
-   468   000F4E                     u421:
-   469   000F4E  EF7D  F007         	goto	l177
-   470   000F52                     u420:
-   471   000F52                     l1364:
-   472                           
-   473                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 90:     if(calibration_index == 1){
-   474   000F52  041F               	decf	main@calibration_index^0,w,c
-   475   000F54  A4D8               	btfss	status,2,c
-   476   000F56  EFAF  F007         	goto	u431
-   477   000F5A  EFB1  F007         	goto	u430
-   478   000F5E                     u431:
-   479   000F5E  EF07  F008         	goto	l182
-   480   000F62                     u430:
-   481   000F62                     
-   482                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 91:         if(!PORTFbits.RF2){
-   483   000F62  B48E               	btfsc	142,2,c	;volatile
-   484   000F64  EFB6  F007         	goto	u441
-   485   000F68  EFB8  F007         	goto	u440
-   486   000F6C                     u441:
-   487   000F6C  EFD3  F007         	goto	l1378
-   488   000F70                     u440:
-   489   000F70                     
-   490                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 92:             _delay((unsigned long)((
-      +                          250)*(64000000/4000.0)));
-   491   000F70  0E15               	movlw	21
-   492   000F72  6E1A               	movwf	(??_main+1)^0,c
-   493   000F74  0E4B               	movlw	75
-   494   000F76  6E19               	movwf	??_main^0,c
-   495   000F78  0EBE               	movlw	190
-   496   000F7A                     u557:
-   497   000F7A  2EE8               	decfsz	wreg,f,c
-   498   000F7C  D7FE               	bra	u557
-   499   000F7E  2E19               	decfsz	??_main^0,f,c
-   500   000F80  D7FC               	bra	u557
-   501   000F82  2E1A               	decfsz	(??_main+1)^0,f,c
-   502   000F84  D7FA               	bra	u557
-   503   000F86  D000               	nop2	
-   504   000F88                     
-   505                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 93:             LEFT_forward_calibration
-      +                          ++;
-   506   000F88  2A1C               	incf	main@LEFT_forward_calibration^0,f,c
-   507   000F8A                     
-   508                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 94:             LATDbits.LATD7 = 1;
-   509   000F8A  8E7C               	bsf	124,7,c	;volatile
-   510   000F8C                     
-   511                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 95:             _delay((unsigned long)((
+   274   000E46  0E21               	movlw	33
+   275   000E48  6E08               	movwf	(_motorR+7)^0,c
+   276   000E4A  0E0F               	movlw	15
+   277   000E4C  6E09               	movwf	(_motorR+8)^0,c
+   278   000E4E                     
+   279                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 37:     motorR.PWMperiod=PWMperiod;
+   280   000E4E  0E00               	movlw	0
+   281   000E50  6E05               	movwf	(_motorR+4)^0,c
+   282   000E52  0E63               	movlw	99
+   283   000E54  6E04               	movwf	(_motorR+3)^0,c
+   284   000E56                     
+   285                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 40:     calibration.left_45 = 10;
+   286   000E56  0E0A               	movlw	10
+   287   000E58  6E17               	movwf	_calibration^0,c
+   288   000E5A                     
+   289                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 41:     calibration.right_45 = 20;
+   290   000E5A  0E14               	movlw	20
+   291   000E5C  6E18               	movwf	(_calibration+1)^0,c
+   292   000E5E                     
+   293                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 42:     calibration.forward_motorL = 20;
+   294   000E5E  0E14               	movlw	20
+   295   000E60  6E19               	movwf	(_calibration+2)^0,c
+   296   000E62                     
+   297                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 43:     calibration.forward_motorR = 20;
+   298   000E62  0E14               	movlw	20
+   299   000E64  6E1A               	movwf	(_calibration+3)^0,c
+   300   000E66                     
+   301                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 49:     TRISDbits.TRISD7 = 0;
+   302   000E66  9E84               	bcf	132,7,c	;volatile
+   303   000E68                     
+   304                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 50:     LATDbits.LATD7 = 0;
+   305   000E68  9E7C               	bcf	124,7,c	;volatile
+   306   000E6A                     
+   307                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 53:     TRISHbits.TRISH3 = 0;
+   308   000E6A  9688               	bcf	136,3,c	;volatile
+   309   000E6C                     
+   310                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 54:     LATHbits.LATH3 = 0;
+   311   000E6C  9680               	bcf	128,3,c	;volatile
+   312   000E6E                     
+   313                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 57:     TRISFbits.TRISF2=1;
+   314   000E6E  8486               	bsf	134,2,c	;volatile
+   315   000E70                     
+   316                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 58:     ANSELFbits.ANSELF2=0;
+   317   000E70  010E               	movlb	14	; () banked
+   318   000E72  95B4               	bcf	180,2,b	;volatile
+   319   000E74                     
+   320                           ; BSR set to: 14
+   321                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 61:     TRISFbits.TRISF3=1;
+   322   000E74  8686               	bsf	134,3,c	;volatile
+   323   000E76                     
+   324                           ; BSR set to: 14
+   325                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 62:     ANSELFbits.ANSELF3=0;
+   326   000E76  97B4               	bcf	180,3,b	;volatile
+   327   000E78                     l1334:
+   328                           
+   329                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 75:         if(!PORTFbits.RF2){
+   330   000E78  B48E               	btfsc	142,2,c	;volatile
+   331   000E7A  EF41  F007         	goto	u331
+   332   000E7E  EF43  F007         	goto	u330
+   333   000E82                     u331:
+   334   000E82  EF45  F007         	goto	l1338
+   335   000E86                     u330:
+   336   000E86  EF4B  F007         	goto	l1340
+   337   000E8A                     l1338:
+   338                           
+   339                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 79:         adjust_calibration(&calibrat
+      +                          ion.left_45);
+   340   000E8A  0E17               	movlw	low _calibration
+   341   000E8C  6E1B               	movwf	adjust_calibration@type^0,c
+   342   000E8E  EC81  F007         	call	_adjust_calibration	;wreg free
+   343   000E92  EF3C  F007         	goto	l1334
+   344   000E96                     l1340:
+   345                           
+   346                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 83:         for(int i = 0; i< calibratio
+      +                          n.left_45; i++){
+   347   000E96  0E00               	movlw	0
+   348   000E98  6E24               	movwf	(main@i+1)^0,c
+   349   000E9A  0E00               	movlw	0
+   350   000E9C  6E23               	movwf	main@i^0,c
+   351   000E9E  EF6D  F007         	goto	l179
+   352   000EA2                     l1342:
+   353                           
+   354                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 84:             _delay((unsigned long)((
       +                          200)*(64000000/4000.0)));
-   512   000F8C  0E11               	movlw	17
-   513   000F8E  6E1A               	movwf	(??_main+1)^0,c
-   514   000F90  0E3C               	movlw	60
-   515   000F92  6E19               	movwf	??_main^0,c
-   516   000F94  0ECB               	movlw	203
-   517   000F96                     u567:
-   518   000F96  2EE8               	decfsz	wreg,f,c
-   519   000F98  D7FE               	bra	u567
-   520   000F9A  2E19               	decfsz	??_main^0,f,c
-   521   000F9C  D7FC               	bra	u567
-   522   000F9E  2E1A               	decfsz	(??_main+1)^0,f,c
-   523   000FA0  D7FA               	bra	u567
-   524   000FA2  0000               	nop	
-   525   000FA4                     
-   526                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 96:             LATDbits.LATD7 = 0;
-   527   000FA4  9E7C               	bcf	124,7,c	;volatile
-   528   000FA6                     l1378:
-   529                           
-   530                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 98:         if(!PORTFbits.RF3){
-   531   000FA6  B68E               	btfsc	142,3,c	;volatile
-   532   000FA8  EFD8  F007         	goto	u451
-   533   000FAC  EFDA  F007         	goto	u450
-   534   000FB0                     u451:
-   535   000FB0  EFF5  F007         	goto	l1390
-   536   000FB4                     u450:
-   537   000FB4                     
-   538                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 99:             _delay((unsigned long)((
-      +                          250)*(64000000/4000.0)));
-   539   000FB4  0E15               	movlw	21
-   540   000FB6  6E1A               	movwf	(??_main+1)^0,c
-   541   000FB8  0E4B               	movlw	75
-   542   000FBA  6E19               	movwf	??_main^0,c
-   543   000FBC  0EBE               	movlw	190
-   544   000FBE                     u577:
-   545   000FBE  2EE8               	decfsz	wreg,f,c
-   546   000FC0  D7FE               	bra	u577
-   547   000FC2  2E19               	decfsz	??_main^0,f,c
-   548   000FC4  D7FC               	bra	u577
-   549   000FC6  2E1A               	decfsz	(??_main+1)^0,f,c
-   550   000FC8  D7FA               	bra	u577
-   551   000FCA  D000               	nop2	
-   552   000FCC                     
-   553                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 100:             LEFT_forward_calibratio
-      +                          n--;
-   554   000FCC  061C               	decf	main@LEFT_forward_calibration^0,f,c
-   555   000FCE                     
-   556                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 101:             LATHbits.LATH3 = 1;
-   557   000FCE  8680               	bsf	128,3,c	;volatile
-   558   000FD0                     
-   559                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 102:             _delay((unsigned long)(
-      +                          (200)*(64000000/4000.0)));
-   560   000FD0  0E11               	movlw	17
-   561   000FD2  6E1A               	movwf	(??_main+1)^0,c
-   562   000FD4  0E3C               	movlw	60
-   563   000FD6  6E19               	movwf	??_main^0,c
-   564   000FD8  0ECB               	movlw	203
-   565   000FDA                     u587:
-   566   000FDA  2EE8               	decfsz	wreg,f,c
-   567   000FDC  D7FE               	bra	u587
-   568   000FDE  2E19               	decfsz	??_main^0,f,c
-   569   000FE0  D7FC               	bra	u587
-   570   000FE2  2E1A               	decfsz	(??_main+1)^0,f,c
-   571   000FE4  D7FA               	bra	u587
-   572   000FE6  0000               	nop	
-   573   000FE8                     
-   574                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 103:             LATHbits.LATH3 = 0;
-   575   000FE8  9680               	bcf	128,3,c	;volatile
-   576   000FEA                     l1390:
-   577                           
-   578                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 106:     if(!PORTFbits.RF2 && !PORTFbits
-      +                          .RF3){
-   579   000FEA  B48E               	btfsc	142,2,c	;volatile
-   580   000FEC  EFFA  F007         	goto	u461
-   581   000FF0  EFFC  F007         	goto	u460
-   582   000FF4                     u461:
-   583   000FF4  EF07  F008         	goto	l182
-   584   000FF8                     u460:
-   585   000FF8  B68E               	btfsc	142,3,c	;volatile
-   586   000FFA  EF01  F008         	goto	u471
-   587   000FFE  EF03  F008         	goto	u470
-   588   001002                     u471:
-   589   001002  EF07  F008         	goto	l182
-   590   001006                     u470:
-   591   001006                     
-   592                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 107:         LATDbits.LATD7 = 1;
-   593   001006  8E7C               	bsf	124,7,c	;volatile
-   594                           
-   595                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 108:         LATHbits.LATH3 = 1;
-   596   001008  8680               	bsf	128,3,c	;volatile
-   597                           
-   598                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 109:         break;
-   599   00100A  EF17  F008         	goto	l189
-   600   00100E                     l182:
-   601                           
-   602                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 114:     if(!PORTFbits.RF2 && !PORTFbits
-      +                          .RF3){
-   603   00100E  B48E               	btfsc	142,2,c	;volatile
-   604   001010  EF0C  F008         	goto	u481
-   605   001014  EF0E  F008         	goto	u480
-   606   001018                     u481:
-   607   001018  EFA9  F007         	goto	l1364
-   608   00101C                     u480:
-   609   00101C  B68E               	btfsc	142,3,c	;volatile
-   610   00101E  EF13  F008         	goto	u491
-   611   001022  EF15  F008         	goto	u490
-   612   001026                     u491:
-   613   001026  EFA9  F007         	goto	l1364
-   614   00102A                     u490:
-   615   00102A                     
-   616                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 115:         LATDbits.LATD7 = 1;
-   617   00102A  8E7C               	bsf	124,7,c	;volatile
-   618                           
-   619                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 116:         LATHbits.LATH3 = 1;
-   620   00102C  8680               	bsf	128,3,c	;volatile
-   621   00102E                     l189:
-   622   00102E  EF00  F000         	goto	start
-   623   001032                     __end_of_main:
-   624                           	callstack 0
-   625                           
-   626 ;; *************** function _initDCmotorsPWM *****************
-   627 ;; Defined at:
-   628 ;;		line 5 in file "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c"
-   629 ;; Parameters:    Size  Location     Type
-   630 ;;  PWMperiod       2    0[COMRAM] unsigned int 
-   631 ;; Auto vars:     Size  Location     Type
-   632 ;;		None
-   633 ;; Return value:  Size  Location     Type
-   634 ;;                  1    wreg      void 
-   635 ;; Registers used:
-   636 ;;		wreg, status,2
-   637 ;; Tracked objects:
-   638 ;;		On entry : 0/0
-   639 ;;		On exit  : 0/0
-   640 ;;		Unchanged: 0/0
-   641 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+   355   000EA2  0E11               	movlw	17
+   356   000EA4  6E21               	movwf	(??_main+1)^0,c
+   357   000EA6  0E3C               	movlw	60
+   358   000EA8  6E20               	movwf	??_main^0,c
+   359   000EAA  0ECB               	movlw	203
+   360   000EAC                     u357:
+   361   000EAC  2EE8               	decfsz	wreg,f,c
+   362   000EAE  D7FE               	bra	u357
+   363   000EB0  2E20               	decfsz	??_main^0,f,c
+   364   000EB2  D7FC               	bra	u357
+   365   000EB4  2E21               	decfsz	(??_main+1)^0,f,c
+   366   000EB6  D7FA               	bra	u357
+   367   000EB8  0000               	nop	
+   368   000EBA                     
+   369                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 85:             LATHbits.LATH3 = 1;
+   370   000EBA  8680               	bsf	128,3,c	;volatile
+   371                           
+   372                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 86:             _delay((unsigned long)((
+      +                          200)*(64000000/4000.0)));
+   373   000EBC  0E11               	movlw	17
+   374   000EBE  6E21               	movwf	(??_main+1)^0,c
+   375   000EC0  0E3C               	movlw	60
+   376   000EC2  6E20               	movwf	??_main^0,c
+   377   000EC4  0ECB               	movlw	203
+   378   000EC6                     u367:
+   379   000EC6  2EE8               	decfsz	wreg,f,c
+   380   000EC8  D7FE               	bra	u367
+   381   000ECA  2E20               	decfsz	??_main^0,f,c
+   382   000ECC  D7FC               	bra	u367
+   383   000ECE  2E21               	decfsz	(??_main+1)^0,f,c
+   384   000ED0  D7FA               	bra	u367
+   385   000ED2  0000               	nop	
+   386   000ED4                     
+   387                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 87:             LATHbits.LATH3 = 0;
+   388   000ED4  9680               	bcf	128,3,c	;volatile
+   389   000ED6                     
+   390                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 88:         }
+   391   000ED6  4A23               	infsnz	main@i^0,f,c
+   392   000ED8  2A24               	incf	(main@i+1)^0,f,c
+   393   000EDA                     l179:
+   394   000EDA  5017               	movf	_calibration^0,w,c
+   395   000EDC  6E20               	movwf	??_main^0,c
+   396   000EDE  6A21               	clrf	(??_main+1)^0,c
+   397   000EE0  5020               	movf	??_main^0,w,c
+   398   000EE2  5C23               	subwf	main@i^0,w,c
+   399   000EE4  5024               	movf	(main@i+1)^0,w,c
+   400   000EE6  0A80               	xorlw	128
+   401   000EE8  6E22               	movwf	(??_main+2)^0,c
+   402   000EEA  5021               	movf	(??_main+1)^0,w,c
+   403   000EEC  0A80               	xorlw	128
+   404   000EEE  5822               	subwfb	(??_main+2)^0,w,c
+   405   000EF0  A0D8               	btfss	status,0,c
+   406   000EF2  EF7D  F007         	goto	u341
+   407   000EF6  EF7F  F007         	goto	u340
+   408   000EFA                     u341:
+   409   000EFA  EF51  F007         	goto	l1342
+   410   000EFE                     u340:
+   411   000EFE  EF00  F000         	goto	start
+   412   000F02                     __end_of_main:
+   413                           	callstack 0
+   414                           
+   415 ;; *************** function _initDCmotorsPWM *****************
+   416 ;; Defined at:
+   417 ;;		line 5 in file "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c"
+   418 ;; Parameters:    Size  Location     Type
+   419 ;;  PWMperiod       2    0[COMRAM] unsigned int 
+   420 ;; Auto vars:     Size  Location     Type
+   421 ;;		None
+   422 ;; Return value:  Size  Location     Type
+   423 ;;                  1    wreg      void 
+   424 ;; Registers used:
+   425 ;;		wreg, status,2
+   426 ;; Tracked objects:
+   427 ;;		On entry : 0/0
+   428 ;;		On exit  : 0/0
+   429 ;;		Unchanged: 0/0
+   430 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
       +1  BANK12  BANK13
-   642 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+   431 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0
-   643 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+   432 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0
-   644 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+   433 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0
-   645 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+   434 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
       +0       0       0
-   646 ;;Total ram usage:        2 bytes
-   647 ;; Hardware stack levels used: 1
-   648 ;; This function calls:
-   649 ;;		Nothing
-   650 ;; This function is called by:
-   651 ;;		_main
-   652 ;; This function uses a non-reentrant model
-   653 ;;
-   654                           
-   655                           	psect	text1
-   656   001032                     __ptext1:
-   657                           	callstack 0
-   658   001032                     _initDCmotorsPWM:
-   659                           	callstack 30
-   660   001032                     
-   661                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 7:     TRISEbits.TRISE2 = 0;
-   662   001032  9485               	bcf	133,2,c	;volatile
-   663                           
-   664                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 8:     TRISEbits.TRISE4 = 0;
-   665   001034  9885               	bcf	133,4,c	;volatile
-   666                           
-   667                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 9:     TRISCbits.TRISC7 = 0;
-   668   001036  9E83               	bcf	131,7,c	;volatile
-   669                           
-   670                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 10:     TRISGbits.TRISG6 = 0;
-   671   001038  9C87               	bcf	135,6,c	;volatile
-   672                           
-   673                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 12:     LATEbits.LATE2 = 0;
-   674   00103A  947D               	bcf	125,2,c	;volatile
-   675                           
-   676                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 13:     LATEbits.LATE4 = 0;
-   677   00103C  987D               	bcf	125,4,c	;volatile
-   678                           
-   679                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 14:     LATCbits.LATC7 = 0;
-   680   00103E  9E7B               	bcf	123,7,c	;volatile
-   681                           
-   682                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 15:     LATGbits.LATG6 = 0;
-   683   001040  9C7F               	bcf	127,6,c	;volatile
-   684   001042                     
-   685                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 18:     RE2PPS=0x05;
-   686   001042  0E05               	movlw	5
-   687   001044  010E               	movlb	14	; () banked
-   688   001046  6F74               	movwf	116,b	;volatile
-   689                           
-   690                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 19:     RE4PPS=0x06;
-   691   001048  0E06               	movlw	6
-   692   00104A  6F76               	movwf	118,b	;volatile
-   693                           
-   694                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 20:     RC7PPS=0x07;
-   695   00104C  0E07               	movlw	7
-   696   00104E  6F69               	movwf	105,b	;volatile
-   697                           
-   698                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 21:     RG6PPS=0x08;
-   699   001050  0E08               	movlw	8
-   700   001052  6F88               	movwf	136,b	;volatile
-   701                           
-   702                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 24:     T2CONbits.CKPS=100;
-   703   001054  50BD               	movf	189,w,c	;volatile
-   704   001056  0B8F               	andlw	-113
-   705   001058  0940               	iorlw	64
-   706   00105A  6EBD               	movwf	189,c	;volatile
-   707                           
-   708                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 25:     T2HLTbits.MODE=0b00000;
-   709   00105C  0EE0               	movlw	-32
-   710   00105E  16BE               	andwf	190,f,c	;volatile
-   711                           
-   712                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 26:     T2CLKCONbits.CS=0b0001;
-   713   001060  50BF               	movf	191,w,c	;volatile
-   714   001062  0BF0               	andlw	-16
-   715   001064  0901               	iorlw	1
-   716   001066  6EBF               	movwf	191,c	;volatile
-   717   001068                     
-   718                           ; BSR set to: 14
-   719                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 30:     T2PR=PWMperiod;
-   720   001068  C017  FFBC         	movff	initDCmotorsPWM@PWMperiod,4028	;volatile
-   721   00106C                     
-   722                           ; BSR set to: 14
-   723                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 31:     T2CONbits.ON=1;
-   724   00106C  8EBD               	bsf	189,7,c	;volatile
-   725                           
-   726                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 35:     CCPR1H=0;
-   727   00106E  0E00               	movlw	0
-   728   001070  6EAA               	movwf	170,c	;volatile
-   729                           
-   730                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 36:     CCPR2H=0;
-   731   001072  0E00               	movlw	0
-   732   001074  6EA6               	movwf	166,c	;volatile
-   733                           
-   734                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 37:     CCPR3H=0;
-   735   001076  0E00               	movlw	0
-   736   001078  010F               	movlb	15	; () banked
-   737   00107A  6F25               	movwf	37,b	;volatile
-   738                           
-   739                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 38:     CCPR4H=0;
-   740   00107C  0E00               	movlw	0
-   741   00107E  6F21               	movwf	33,b	;volatile
-   742                           
-   743                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 41:     CCPTMRS0bits.C1TSEL=0;
-   744   001080  0EFC               	movlw	-4
-   745   001082  16AD               	andwf	173,f,c	;volatile
-   746                           
-   747                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 42:     CCPTMRS0bits.C2TSEL=0;
-   748   001084  0EF3               	movlw	-13
-   749   001086  16AD               	andwf	173,f,c	;volatile
-   750                           
-   751                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 43:     CCPTMRS0bits.C3TSEL=0;
-   752   001088  0ECF               	movlw	-49
-   753   00108A  16AD               	andwf	173,f,c	;volatile
-   754                           
-   755                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 44:     CCPTMRS0bits.C4TSEL=0;
-   756   00108C  0E3F               	movlw	-193
-   757   00108E  16AD               	andwf	173,f,c	;volatile
-   758   001090                     
-   759                           ; BSR set to: 15
-   760                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 47:     CCP1CONbits.FMT=1;
-   761   001090  88AB               	bsf	171,4,c	;volatile
-   762                           
-   763                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 48:     CCP1CONbits.CCP1MODE=0b1100;
-   764   001092  50AB               	movf	171,w,c	;volatile
-   765   001094  0BF0               	andlw	-16
-   766   001096  090C               	iorlw	12
-   767   001098  6EAB               	movwf	171,c	;volatile
-   768   00109A                     
-   769                           ; BSR set to: 15
-   770                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 49:     CCP1CONbits.EN=1;
-   771   00109A  8EAB               	bsf	171,7,c	;volatile
-   772   00109C                     
-   773                           ; BSR set to: 15
-   774                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 51:     CCP2CONbits.FMT=1;
-   775   00109C  88A7               	bsf	167,4,c	;volatile
-   776                           
-   777                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 52:     CCP2CONbits.CCP2MODE=0b1100;
-   778   00109E  50A7               	movf	167,w,c	;volatile
-   779   0010A0  0BF0               	andlw	-16
-   780   0010A2  090C               	iorlw	12
-   781   0010A4  6EA7               	movwf	167,c	;volatile
-   782   0010A6                     
-   783                           ; BSR set to: 15
-   784                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 53:     CCP2CONbits.EN=1;
-   785   0010A6  8EA7               	bsf	167,7,c	;volatile
-   786   0010A8                     
-   787                           ; BSR set to: 15
-   788                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 55:     CCP3CONbits.FMT=1;
-   789   0010A8  8926               	bsf	38,4,b	;volatile
-   790                           
-   791                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 56:     CCP3CONbits.CCP3MODE=0b1100;
-   792   0010AA  5126               	movf	38,w,b	;volatile
-   793   0010AC  0BF0               	andlw	-16
-   794   0010AE  090C               	iorlw	12
-   795   0010B0  6F26               	movwf	38,b	;volatile
-   796   0010B2                     
-   797                           ; BSR set to: 15
-   798                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 57:     CCP3CONbits.EN=1;
-   799   0010B2  8F26               	bsf	38,7,b	;volatile
-   800   0010B4                     
-   801                           ; BSR set to: 15
-   802                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 59:     CCP4CONbits.FMT=1;
-   803   0010B4  8922               	bsf	34,4,b	;volatile
-   804                           
-   805                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 60:     CCP4CONbits.CCP4MODE=0b1100;
-   806   0010B6  5122               	movf	34,w,b	;volatile
-   807   0010B8  0BF0               	andlw	-16
-   808   0010BA  090C               	iorlw	12
-   809   0010BC  6F22               	movwf	34,b	;volatile
-   810   0010BE                     
-   811                           ; BSR set to: 15
-   812                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 61:     CCP4CONbits.EN=1;
-   813   0010BE  8F22               	bsf	34,7,b	;volatile
-   814   0010C0                     
-   815                           ; BSR set to: 15
-   816                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 64:     TRISHbits.TRISH3 = 0;
-   817   0010C0  9688               	bcf	136,3,c	;volatile
-   818   0010C2                     
-   819                           ; BSR set to: 15
-   820                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 65:     LATHbits.LATH3 = 0;
-   821   0010C2  9680               	bcf	128,3,c	;volatile
-   822   0010C4                     
-   823                           ; BSR set to: 15
-   824   0010C4  0012               	return		;funcret
-   825   0010C6                     __end_of_initDCmotorsPWM:
-   826                           	callstack 0
-   827                           
-   828                           	psect	smallconst
-   829   000E00                     __psmallconst:
-   830                           	callstack 0
-   831   000E00  00                 	db	0
-   832   000E01  00                 	db	0	; dummy byte at the end
-   833   000000                     
-   834                           	psect	rparam
-   835   000000                     
-   836                           	psect	config
-   837                           
-   838                           ;Config register CONFIG1L @ 0x300000
-   839                           ;	External Oscillator mode Selection bits
-   840                           ;	FEXTOSC = HS, HS (crystal oscillator) above 8 MHz; PFM set to high power
-   841                           ;	Power-up default value for COSC bits
-   842                           ;	RSTOSC = EXTOSC_4PLL, EXTOSC with 4x PLL, with EXTOSC operating per FEXTOSC bits
-   843   300000                     	org	3145728
-   844   300000  AA                 	db	170
-   845                           
-   846                           ;Config register CONFIG1H @ 0x300001
-   847                           ;	unspecified, using default values
-   848                           ;	Clock Out Enable bit
-   849                           ;	CLKOUTEN = 0x1, unprogrammed default
-   850                           ;	Clock Switch Enable bit
-   851                           ;	CSWEN = 0x1, unprogrammed default
-   852                           ;	Fail-Safe Clock Monitor Enable bit
-   853                           ;	FCMEN = 0x1, unprogrammed default
-   854   300001                     	org	3145729
-   855   300001  FF                 	db	255
-   856                           
-   857                           ;Config register CONFIG3L @ 0x300004
-   858                           ;	WDT Period Select bits
-   859                           ;	WDTCPS = WDTCPS_31, Divider ratio 1:65536; software control of WDTPS
-   860                           ;	WDT operating mode
-   861                           ;	WDTE = OFF, WDT Disabled
-   862   300004                     	org	3145732
-   863   300004  9F                 	db	159
-   864                           
-   865                           ;Config register CONFIG3H @ 0x300005
-   866                           ;	unspecified, using default values
-   867                           ;	WDT Window Select bits
-   868                           ;	WDTCWS = 0x7, unprogrammed default
-   869                           ;	WDT input clock selector
-   870                           ;	WDTCCS = 0x7, unprogrammed default
-   871   300005                     	org	3145733
-   872   300005  FF                 	db	255
-   873                           tosu	equ	0xFFF
-   874                           tosh	equ	0xFFE
-   875                           tosl	equ	0xFFD
-   876                           stkptr	equ	0xFFC
-   877                           pclatu	equ	0xFFB
-   878                           pclath	equ	0xFFA
-   879                           pcl	equ	0xFF9
-   880                           tblptru	equ	0xFF8
-   881                           tblptrh	equ	0xFF7
-   882                           tblptrl	equ	0xFF6
-   883                           tablat	equ	0xFF5
-   884                           prodh	equ	0xFF4
-   885                           prodl	equ	0xFF3
-   886                           indf0	equ	0xFEF
-   887                           postinc0	equ	0xFEE
-   888                           postdec0	equ	0xFED
-   889                           preinc0	equ	0xFEC
-   890                           plusw0	equ	0xFEB
-   891                           fsr0h	equ	0xFEA
-   892                           fsr0l	equ	0xFE9
-   893                           wreg	equ	0xFE8
-   894                           indf1	equ	0xFE7
-   895                           postinc1	equ	0xFE6
-   896                           postdec1	equ	0xFE5
-   897                           preinc1	equ	0xFE4
-   898                           plusw1	equ	0xFE3
-   899                           fsr1h	equ	0xFE2
-   900                           fsr1l	equ	0xFE1
-   901                           bsr	equ	0xFE0
-   902                           indf2	equ	0xFDF
-   903                           postinc2	equ	0xFDE
-   904                           postdec2	equ	0xFDD
-   905                           preinc2	equ	0xFDC
-   906                           plusw2	equ	0xFDB
-   907                           fsr2h	equ	0xFDA
-   908                           fsr2l	equ	0xFD9
-   909                           status	equ	0xFD8
+   435 ;;Total ram usage:        2 bytes
+   436 ;; Hardware stack levels used: 1
+   437 ;; This function calls:
+   438 ;;		Nothing
+   439 ;; This function is called by:
+   440 ;;		_main
+   441 ;; This function uses a non-reentrant model
+   442 ;;
+   443                           
+   444                           	psect	text1
+   445   000FD4                     __ptext1:
+   446                           	callstack 0
+   447   000FD4                     _initDCmotorsPWM:
+   448                           	callstack 30
+   449   000FD4                     
+   450                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 7:     TRISEbits.TRISE2 = 0;
+   451   000FD4  9485               	bcf	133,2,c	;volatile
+   452                           
+   453                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 8:     TRISEbits.TRISE4 = 0;
+   454   000FD6  9885               	bcf	133,4,c	;volatile
+   455                           
+   456                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 9:     TRISCbits.TRISC7 = 0;
+   457   000FD8  9E83               	bcf	131,7,c	;volatile
+   458                           
+   459                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 10:     TRISGbits.TRISG6 = 0;
+   460   000FDA  9C87               	bcf	135,6,c	;volatile
+   461                           
+   462                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 12:     LATEbits.LATE2 = 0;
+   463   000FDC  947D               	bcf	125,2,c	;volatile
+   464                           
+   465                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 13:     LATEbits.LATE4 = 0;
+   466   000FDE  987D               	bcf	125,4,c	;volatile
+   467                           
+   468                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 14:     LATCbits.LATC7 = 0;
+   469   000FE0  9E7B               	bcf	123,7,c	;volatile
+   470                           
+   471                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 15:     LATGbits.LATG6 = 0;
+   472   000FE2  9C7F               	bcf	127,6,c	;volatile
+   473   000FE4                     
+   474                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 18:     RE2PPS=0x05;
+   475   000FE4  0E05               	movlw	5
+   476   000FE6  010E               	movlb	14	; () banked
+   477   000FE8  6F74               	movwf	116,b	;volatile
+   478                           
+   479                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 19:     RE4PPS=0x06;
+   480   000FEA  0E06               	movlw	6
+   481   000FEC  6F76               	movwf	118,b	;volatile
+   482                           
+   483                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 20:     RC7PPS=0x07;
+   484   000FEE  0E07               	movlw	7
+   485   000FF0  6F69               	movwf	105,b	;volatile
+   486                           
+   487                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 21:     RG6PPS=0x08;
+   488   000FF2  0E08               	movlw	8
+   489   000FF4  6F88               	movwf	136,b	;volatile
+   490                           
+   491                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 24:     T2CONbits.CKPS=100;
+   492   000FF6  50BD               	movf	189,w,c	;volatile
+   493   000FF8  0B8F               	andlw	-113
+   494   000FFA  0940               	iorlw	64
+   495   000FFC  6EBD               	movwf	189,c	;volatile
+   496                           
+   497                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 25:     T2HLTbits.MODE=0b00000;
+   498   000FFE  0EE0               	movlw	-32
+   499   001000  16BE               	andwf	190,f,c	;volatile
+   500                           
+   501                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 26:     T2CLKCONbits.CS=0b0001;
+   502   001002  50BF               	movf	191,w,c	;volatile
+   503   001004  0BF0               	andlw	-16
+   504   001006  0901               	iorlw	1
+   505   001008  6EBF               	movwf	191,c	;volatile
+   506   00100A                     
+   507                           ; BSR set to: 14
+   508                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 30:     T2PR=PWMperiod;
+   509   00100A  C01B  FFBC         	movff	initDCmotorsPWM@PWMperiod,4028	;volatile
+   510   00100E                     
+   511                           ; BSR set to: 14
+   512                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 31:     T2CONbits.ON=1;
+   513   00100E  8EBD               	bsf	189,7,c	;volatile
+   514                           
+   515                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 35:     CCPR1H=0;
+   516   001010  0E00               	movlw	0
+   517   001012  6EAA               	movwf	170,c	;volatile
+   518                           
+   519                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 36:     CCPR2H=0;
+   520   001014  0E00               	movlw	0
+   521   001016  6EA6               	movwf	166,c	;volatile
+   522                           
+   523                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 37:     CCPR3H=0;
+   524   001018  0E00               	movlw	0
+   525   00101A  010F               	movlb	15	; () banked
+   526   00101C  6F25               	movwf	37,b	;volatile
+   527                           
+   528                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 38:     CCPR4H=0;
+   529   00101E  0E00               	movlw	0
+   530   001020  6F21               	movwf	33,b	;volatile
+   531                           
+   532                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 41:     CCPTMRS0bits.C1TSEL=0;
+   533   001022  0EFC               	movlw	-4
+   534   001024  16AD               	andwf	173,f,c	;volatile
+   535                           
+   536                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 42:     CCPTMRS0bits.C2TSEL=0;
+   537   001026  0EF3               	movlw	-13
+   538   001028  16AD               	andwf	173,f,c	;volatile
+   539                           
+   540                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 43:     CCPTMRS0bits.C3TSEL=0;
+   541   00102A  0ECF               	movlw	-49
+   542   00102C  16AD               	andwf	173,f,c	;volatile
+   543                           
+   544                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 44:     CCPTMRS0bits.C4TSEL=0;
+   545   00102E  0E3F               	movlw	-193
+   546   001030  16AD               	andwf	173,f,c	;volatile
+   547   001032                     
+   548                           ; BSR set to: 15
+   549                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 47:     CCP1CONbits.FMT=1;
+   550   001032  88AB               	bsf	171,4,c	;volatile
+   551                           
+   552                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 48:     CCP1CONbits.CCP1MODE=0b1100;
+   553   001034  50AB               	movf	171,w,c	;volatile
+   554   001036  0BF0               	andlw	-16
+   555   001038  090C               	iorlw	12
+   556   00103A  6EAB               	movwf	171,c	;volatile
+   557   00103C                     
+   558                           ; BSR set to: 15
+   559                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 49:     CCP1CONbits.EN=1;
+   560   00103C  8EAB               	bsf	171,7,c	;volatile
+   561   00103E                     
+   562                           ; BSR set to: 15
+   563                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 51:     CCP2CONbits.FMT=1;
+   564   00103E  88A7               	bsf	167,4,c	;volatile
+   565                           
+   566                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 52:     CCP2CONbits.CCP2MODE=0b1100;
+   567   001040  50A7               	movf	167,w,c	;volatile
+   568   001042  0BF0               	andlw	-16
+   569   001044  090C               	iorlw	12
+   570   001046  6EA7               	movwf	167,c	;volatile
+   571   001048                     
+   572                           ; BSR set to: 15
+   573                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 53:     CCP2CONbits.EN=1;
+   574   001048  8EA7               	bsf	167,7,c	;volatile
+   575   00104A                     
+   576                           ; BSR set to: 15
+   577                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 55:     CCP3CONbits.FMT=1;
+   578   00104A  8926               	bsf	38,4,b	;volatile
+   579                           
+   580                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 56:     CCP3CONbits.CCP3MODE=0b1100;
+   581   00104C  5126               	movf	38,w,b	;volatile
+   582   00104E  0BF0               	andlw	-16
+   583   001050  090C               	iorlw	12
+   584   001052  6F26               	movwf	38,b	;volatile
+   585   001054                     
+   586                           ; BSR set to: 15
+   587                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 57:     CCP3CONbits.EN=1;
+   588   001054  8F26               	bsf	38,7,b	;volatile
+   589   001056                     
+   590                           ; BSR set to: 15
+   591                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 59:     CCP4CONbits.FMT=1;
+   592   001056  8922               	bsf	34,4,b	;volatile
+   593                           
+   594                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 60:     CCP4CONbits.CCP4MODE=0b1100;
+   595   001058  5122               	movf	34,w,b	;volatile
+   596   00105A  0BF0               	andlw	-16
+   597   00105C  090C               	iorlw	12
+   598   00105E  6F22               	movwf	34,b	;volatile
+   599   001060                     
+   600                           ; BSR set to: 15
+   601                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 61:     CCP4CONbits.EN=1;
+   602   001060  8F22               	bsf	34,7,b	;volatile
+   603   001062                     
+   604                           ; BSR set to: 15
+   605                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 64:     TRISHbits.TRISH3 = 0;
+   606   001062  9688               	bcf	136,3,c	;volatile
+   607   001064                     
+   608                           ; BSR set to: 15
+   609                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 65:     LATHbits.LATH3 = 0;
+   610   001064  9680               	bcf	128,3,c	;volatile
+   611   001066                     
+   612                           ; BSR set to: 15
+   613   001066  0012               	return		;funcret
+   614   001068                     __end_of_initDCmotorsPWM:
+   615                           	callstack 0
+   616                           
+   617 ;; *************** function _adjust_calibration *****************
+   618 ;; Defined at:
+   619 ;;		line 5 in file "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c"
+   620 ;; Parameters:    Size  Location     Type
+   621 ;;  type            1    0[COMRAM] PTR int 
+   622 ;;		 -> calibration(4), 
+   623 ;; Auto vars:     Size  Location     Type
+   624 ;;		None
+   625 ;; Return value:  Size  Location     Type
+   626 ;;                  1    wreg      void 
+   627 ;; Registers used:
+   628 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   629 ;; Tracked objects:
+   630 ;;		On entry : 0/0
+   631 ;;		On exit  : 0/0
+   632 ;;		Unchanged: 0/0
+   633 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13
+   634 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0
+   635 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0
+   636 ;;      Temps:          4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0
+   637 ;;      Totals:         5       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0
+   638 ;;Total ram usage:        5 bytes
+   639 ;; Hardware stack levels used: 1
+   640 ;; This function calls:
+   641 ;;		Nothing
+   642 ;; This function is called by:
+   643 ;;		_main
+   644 ;; This function uses a non-reentrant model
+   645 ;;
+   646                           
+   647                           	psect	text2
+   648   000F02                     __ptext2:
+   649                           	callstack 0
+   650   000F02                     _adjust_calibration:
+   651                           	callstack 30
+   652   000F02                     
+   653                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 6:     if(!PORTFbits.RF2){
+   654   000F02  B48E               	btfsc	142,2,c	;volatile
+   655   000F04  EF86  F007         	goto	u311
+   656   000F08  EF88  F007         	goto	u310
+   657   000F0C                     u311:
+   658   000F0C  EFB4  F007         	goto	l1270
+   659   000F10                     u310:
+   660   000F10                     
+   661                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 7:         _delay((unsigned long)
+      +                          ((200)*(64000000/4000.0)));
+   662   000F10  0E11               	movlw	17
+   663   000F12  6E1D               	movwf	(??_adjust_calibration+1)^0,c
+   664   000F14  0E3C               	movlw	60
+   665   000F16  6E1C               	movwf	??_adjust_calibration^0,c
+   666   000F18  0ECB               	movlw	203
+   667   000F1A                     u377:
+   668   000F1A  2EE8               	decfsz	wreg,f,c
+   669   000F1C  D7FE               	bra	u377
+   670   000F1E  2E1C               	decfsz	??_adjust_calibration^0,f,c
+   671   000F20  D7FC               	bra	u377
+   672   000F22  2E1D               	decfsz	(??_adjust_calibration+1)^0,f,c
+   673   000F24  D7FA               	bra	u377
+   674   000F26  0000               	nop	
+   675   000F28                     
+   676                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 8:         *type = *type + 1;
+   677   000F28  501B               	movf	adjust_calibration@type^0,w,c
+   678   000F2A  6ED9               	movwf	fsr2l,c
+   679   000F2C  6ADA               	clrf	fsr2h,c
+   680   000F2E  CFDE F01C          	movff	postinc2,??_adjust_calibration
+   681   000F32  CFDD F01D          	movff	postdec2,??_adjust_calibration+1
+   682   000F36  0E01               	movlw	1
+   683   000F38  261C               	addwf	??_adjust_calibration^0,f,c
+   684   000F3A  0E00               	movlw	0
+   685   000F3C  221D               	addwfc	(??_adjust_calibration+1)^0,f,c
+   686   000F3E  501B               	movf	adjust_calibration@type^0,w,c
+   687   000F40  6ED9               	movwf	fsr2l,c
+   688   000F42  6ADA               	clrf	fsr2h,c
+   689   000F44  C01C  FFDE         	movff	??_adjust_calibration,postinc2
+   690   000F48  C01D  FFDD         	movff	??_adjust_calibration+1,postdec2
+   691   000F4C                     
+   692                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 9:         LATDbits.LATD7 = 1;
+   693   000F4C  8E7C               	bsf	124,7,c	;volatile
+   694   000F4E                     
+   695                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 10:         _delay((unsigned long
+      +                          )((200)*(64000000/4000.0)));
+   696   000F4E  0E11               	movlw	17
+   697   000F50  6E1D               	movwf	(??_adjust_calibration+1)^0,c
+   698   000F52  0E3C               	movlw	60
+   699   000F54  6E1C               	movwf	??_adjust_calibration^0,c
+   700   000F56  0ECB               	movlw	203
+   701   000F58                     u387:
+   702   000F58  2EE8               	decfsz	wreg,f,c
+   703   000F5A  D7FE               	bra	u387
+   704   000F5C  2E1C               	decfsz	??_adjust_calibration^0,f,c
+   705   000F5E  D7FC               	bra	u387
+   706   000F60  2E1D               	decfsz	(??_adjust_calibration+1)^0,f,c
+   707   000F62  D7FA               	bra	u387
+   708   000F64  0000               	nop	
+   709   000F66                     
+   710                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 11:         LATDbits.LATD7 = 0;
+   711   000F66  9E7C               	bcf	124,7,c	;volatile
+   712   000F68                     l1270:
+   713                           
+   714                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 14:     if(!PORTFbits.RF3){
+   715   000F68  B68E               	btfsc	142,3,c	;volatile
+   716   000F6A  EFB9  F007         	goto	u321
+   717   000F6E  EFBB  F007         	goto	u320
+   718   000F72                     u321:
+   719   000F72  EFE9  F007         	goto	l224
+   720   000F76                     u320:
+   721   000F76                     
+   722                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 15:         _delay((unsigned long
+      +                          )((200)*(64000000/4000.0)));
+   723   000F76  0E11               	movlw	17
+   724   000F78  6E1D               	movwf	(??_adjust_calibration+1)^0,c
+   725   000F7A  0E3C               	movlw	60
+   726   000F7C  6E1C               	movwf	??_adjust_calibration^0,c
+   727   000F7E  0ECB               	movlw	203
+   728   000F80                     u397:
+   729   000F80  2EE8               	decfsz	wreg,f,c
+   730   000F82  D7FE               	bra	u397
+   731   000F84  2E1C               	decfsz	??_adjust_calibration^0,f,c
+   732   000F86  D7FC               	bra	u397
+   733   000F88  2E1D               	decfsz	(??_adjust_calibration+1)^0,f,c
+   734   000F8A  D7FA               	bra	u397
+   735   000F8C  0000               	nop	
+   736   000F8E                     
+   737                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 16:         *type = *type - 1;
+   738   000F8E  501B               	movf	adjust_calibration@type^0,w,c
+   739   000F90  6ED9               	movwf	fsr2l,c
+   740   000F92  6ADA               	clrf	fsr2h,c
+   741   000F94  CFDE F01C          	movff	postinc2,??_adjust_calibration
+   742   000F98  CFDD F01D          	movff	postdec2,??_adjust_calibration+1
+   743   000F9C  0EFF               	movlw	255
+   744   000F9E  241C               	addwf	??_adjust_calibration^0,w,c
+   745   000FA0  6E1E               	movwf	(??_adjust_calibration+2)^0,c
+   746   000FA2  0EFF               	movlw	255
+   747   000FA4  201D               	addwfc	(??_adjust_calibration+1)^0,w,c
+   748   000FA6  6E1F               	movwf	(??_adjust_calibration+3)^0,c
+   749   000FA8  501B               	movf	adjust_calibration@type^0,w,c
+   750   000FAA  6ED9               	movwf	fsr2l,c
+   751   000FAC  6ADA               	clrf	fsr2h,c
+   752   000FAE  C01E  FFDE         	movff	??_adjust_calibration+2,postinc2
+   753   000FB2  C01F  FFDD         	movff	??_adjust_calibration+3,postdec2
+   754   000FB6                     
+   755                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 17:         LATHbits.LATH3 = 1;
+   756   000FB6  8680               	bsf	128,3,c	;volatile
+   757   000FB8                     
+   758                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 18:         _delay((unsigned long
+      +                          )((200)*(64000000/4000.0)));
+   759   000FB8  0E11               	movlw	17
+   760   000FBA  6E1D               	movwf	(??_adjust_calibration+1)^0,c
+   761   000FBC  0E3C               	movlw	60
+   762   000FBE  6E1C               	movwf	??_adjust_calibration^0,c
+   763   000FC0  0ECB               	movlw	203
+   764   000FC2                     u407:
+   765   000FC2  2EE8               	decfsz	wreg,f,c
+   766   000FC4  D7FE               	bra	u407
+   767   000FC6  2E1C               	decfsz	??_adjust_calibration^0,f,c
+   768   000FC8  D7FC               	bra	u407
+   769   000FCA  2E1D               	decfsz	(??_adjust_calibration+1)^0,f,c
+   770   000FCC  D7FA               	bra	u407
+   771   000FCE  0000               	nop	
+   772   000FD0                     
+   773                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 19:         LATHbits.LATH3 = 0;
+   774   000FD0  9680               	bcf	128,3,c	;volatile
+   775   000FD2                     l224:
+   776   000FD2  0012               	return		;funcret
+   777   000FD4                     __end_of_adjust_calibration:
+   778                           	callstack 0
+   779                           
+   780                           	psect	smallconst
+   781   000E00                     __psmallconst:
+   782                           	callstack 0
+   783   000E00  00                 	db	0
+   784   000E01  00                 	db	0	; dummy byte at the end
+   785   000000                     
+   786                           	psect	rparam
+   787   000000                     
+   788                           	psect	config
+   789                           
+   790                           ;Config register CONFIG1L @ 0x300000
+   791                           ;	External Oscillator mode Selection bits
+   792                           ;	FEXTOSC = HS, HS (crystal oscillator) above 8 MHz; PFM set to high power
+   793                           ;	Power-up default value for COSC bits
+   794                           ;	RSTOSC = EXTOSC_4PLL, EXTOSC with 4x PLL, with EXTOSC operating per FEXTOSC bits
+   795   300000                     	org	3145728
+   796   300000  AA                 	db	170
+   797                           
+   798                           ;Config register CONFIG1H @ 0x300001
+   799                           ;	unspecified, using default values
+   800                           ;	Clock Out Enable bit
+   801                           ;	CLKOUTEN = 0x1, unprogrammed default
+   802                           ;	Clock Switch Enable bit
+   803                           ;	CSWEN = 0x1, unprogrammed default
+   804                           ;	Fail-Safe Clock Monitor Enable bit
+   805                           ;	FCMEN = 0x1, unprogrammed default
+   806   300001                     	org	3145729
+   807   300001  FF                 	db	255
+   808                           
+   809                           ;Config register CONFIG3L @ 0x300004
+   810                           ;	WDT Period Select bits
+   811                           ;	WDTCPS = WDTCPS_31, Divider ratio 1:65536; software control of WDTPS
+   812                           ;	WDT operating mode
+   813                           ;	WDTE = OFF, WDT Disabled
+   814   300004                     	org	3145732
+   815   300004  9F                 	db	159
+   816                           
+   817                           ;Config register CONFIG3H @ 0x300005
+   818                           ;	unspecified, using default values
+   819                           ;	WDT Window Select bits
+   820                           ;	WDTCWS = 0x7, unprogrammed default
+   821                           ;	WDT input clock selector
+   822                           ;	WDTCCS = 0x7, unprogrammed default
+   823   300005                     	org	3145733
+   824   300005  FF                 	db	255
+   825                           tosu	equ	0xFFF
+   826                           tosh	equ	0xFFE
+   827                           tosl	equ	0xFFD
+   828                           stkptr	equ	0xFFC
+   829                           pclatu	equ	0xFFB
+   830                           pclath	equ	0xFFA
+   831                           pcl	equ	0xFF9
+   832                           tblptru	equ	0xFF8
+   833                           tblptrh	equ	0xFF7
+   834                           tblptrl	equ	0xFF6
+   835                           tablat	equ	0xFF5
+   836                           prodh	equ	0xFF4
+   837                           prodl	equ	0xFF3
+   838                           indf0	equ	0xFEF
+   839                           postinc0	equ	0xFEE
+   840                           postdec0	equ	0xFED
+   841                           preinc0	equ	0xFEC
+   842                           plusw0	equ	0xFEB
+   843                           fsr0h	equ	0xFEA
+   844                           fsr0l	equ	0xFE9
+   845                           wreg	equ	0xFE8
+   846                           indf1	equ	0xFE7
+   847                           postinc1	equ	0xFE6
+   848                           postdec1	equ	0xFE5
+   849                           preinc1	equ	0xFE4
+   850                           plusw1	equ	0xFE3
+   851                           fsr1h	equ	0xFE2
+   852                           fsr1l	equ	0xFE1
+   853                           bsr	equ	0xFE0
+   854                           indf2	equ	0xFDF
+   855                           postinc2	equ	0xFDE
+   856                           postdec2	equ	0xFDD
+   857                           preinc2	equ	0xFDC
+   858                           plusw2	equ	0xFDB
+   859                           fsr2h	equ	0xFDA
+   860                           fsr2l	equ	0xFD9
+   861                           status	equ	0xFD8
 
 Data Sizes:
     Strings     0
     Constant    0
     Data        1
-    BSS         22
+    BSS         26
     Persistent  0
     Stack       0
 
 Auto Spaces:
     Space          Size  Autos    Used
-    COMRAM           95      9      32
+    COMRAM           95     10      37
     BANK0           160      0       0
     BANK1           256      0       0
     BANK2           256      0       0
@@ -978,6 +928,9 @@ Auto Spaces:
     BANK13          234      0       0
 
 Pointer List with Targets:
+
+    adjust_calibration@type	PTR int  size(1) Largest target is 4
+		 -> calibration(COMRAM[4]), 
 
     forward@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
 		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
@@ -1066,7 +1019,7 @@ Pointer List with Targets:
 
 Critical Paths under _main in COMRAM
 
-    _main->_initDCmotorsPWM
+    _main->_adjust_calibration
 
 Critical Paths under _main in BANK0
 
@@ -1129,12 +1082,16 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                12    12      0     264
-                                              2 COMRAM     7     7      0
+ (0) _main                                                 7     7      0     353
+                                              5 COMRAM     5     5      0
+                 _adjust_calibration
                     _initDCmotorsPWM
  ---------------------------------------------------------------------------------
  (1) _initDCmotorsPWM                                      2     0      2      98
                                               0 COMRAM     2     0      2
+ ---------------------------------------------------------------------------------
+ (1) _adjust_calibration                                   5     4      1     164
+                                              0 COMRAM     5     4      1
  ---------------------------------------------------------------------------------
  Estimated maximum stack depth 1
  ---------------------------------------------------------------------------------
@@ -1142,6 +1099,7 @@ Call Graph Tables:
  Call Graph Graphs:
 
  _main (ROOT)
+   _adjust_calibration
    _initDCmotorsPWM
 
  Address spaces:
@@ -1179,7 +1137,7 @@ BANK0               A0      0       0       5        0.0%
 BITBIGSFRllllll     7A      0       0      47        0.0%
 BITBIGSFRllllhh     6C      0       0      42        0.0%
 BITCOMRAM           5F      0       0       0        0.0%
-COMRAM              5F      9      20       1       33.7%
+COMRAM              5F      A      25       1       38.9%
 BITBIGSFRllllhh     54      0       0      40        0.0%
 BITBIGSFRhhh        40      0       0      32        0.0%
 BITBIGSFRllllhh     2B      0       0      43        0.0%
@@ -1205,75 +1163,67 @@ BITSFR               0      0       0     200        0.0%
 SFR                  0      0       0     200        0.0%
 STACK                0      0       0       2        0.0%
 NULL                 0      0       0       0        0.0%
-ABS                  0      0      20      48        0.0%
-DATA                 0      0      20       3        0.0%
+ABS                  0      0      25      48        0.0%
+DATA                 0      0      25       3        0.0%
 CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Fri Mar 08 11:18:19 2024
+Symbol Table                                                                                   Fri Mar 08 16:31:08 2024
 
-                          l61 10C4                           l182 100E                           l176 0F2E  
-                         l177 0EFA                           l189 102E                           u400 0EC4  
-                         u401 0EC0                           u410 0ED6                           u411 0ED2  
-                         u420 0F52                           u421 0F4E                           u430 0F62  
-                         u431 0F5E                           u440 0F70                           u441 0F6C  
-                         u450 0FB4                           u451 0FB0                           u507 0E88  
-                         u460 0FF8                           u461 0FF4                           u517 0EA4  
-                         u470 1006                           u390 0E7E                           u471 1002  
-                         u527 0EE0                           u391 0E7A                           u480 101C  
-                         u481 1018                           u537 0F06                           u490 102A  
-                         u491 1026                           u547 0F1E                           u557 0F7A  
-                         u567 0F96                           u577 0FBE                           u587 0FDA  
-                         wreg 0FE8                          l1300 0E36                          l1310 0E56  
-                        l1302 0E3A                          l1320 0E60                          l1312 0E58  
-                        l1304 0E3E                          l1330 0E6C                          l1322 0E64  
-                        l1314 0E5A                          l1306 0E46                          l1260 106C  
-                        l1340 0E96                          l1332 0E6C                          l1324 0E66  
-                        l1316 0E5C                          l1308 0E4E                          l1270 10A8  
-                        l1262 1090                          l1254 1032                          l1350 0EC4  
-                        l1342 0E98                          l1334 0E6C                          l1326 0E68  
-                        l1318 0E5E                          l1280 10C2                          l1272 10B2  
-                        l1264 109A                          l1256 1042                          l1360 0F12  
-                        l1344 0E9A                          l1352 0EC8                          l1336 0E70  
-                        l1328 0E6C                          l1274 10B4                          l1266 109C  
-                        l1258 1068                          l1370 0F88                          l1362 0F2A  
-                        l1354 0ED6                          l1346 0EB2                          l1338 0E7E  
-                        l1290 0E16                          l1282 0E02                          l1276 10BE  
-                        l1268 10A6                          l1380 0FB4                          l1372 0F8A  
-                        l1364 0F52                          l1356 0EEE                          l1348 0EB4  
-                        l1292 0E1A                          l1284 0E02                          l1278 10C0  
-                        l1382 0FCC                          l1390 0FEA                          l1374 0F8C  
-                        l1366 0F62                          l1358 0EFC                          l1294 0E22  
-                        l1286 0E0E                          l1392 0FF8                          l1384 0FCE  
-                        l1376 0FA4                          l1368 0F70                          l1296 0E2A  
-                        l1288 0E12                          l1394 1006                          l1386 0FD0  
-                        l1378 0FA6                          l1298 0E32                          l1396 101C  
-                        l1388 0FE8                          l1398 102A                          _T2PR 0FBC  
-                        _main 0E02                          _temp 0020                          start 0000  
-                ___param_bank 0000                         ?_main 0017                         main@a 001D  
-                       tablat 0FF5                         status 0FD8               __initialization 10C6  
-                __end_of_main 1032                        ??_main 0019                 __activetblptr 0000  
-                      _CCPR1H 0FAA                        _CCPR2H 0FA6                        _CCPR3H 0F25  
-                      _CCPR4H 0F21                        _RE2PPS 0E74                        _RC7PPS 0E69  
-                      _RE4PPS 0E76                        _RG6PPS 0E88                  _CCPTMRS0bits 0FAD  
-                      clear_0 10DE                        _motorL 000A                        _motorR 0001  
-                      isa$std 0001                  __pdataCOMRAM 0020                  __mediumconst 0000  
-                      tblptrh 0FF7                        tblptrl 0FF6                        tblptru 0FF8  
-           ??_initDCmotorsPWM 0019                    __accesstop 0060       __end_of__initialization 10E4  
-               ___rparam_used 0001                __pcstackCOMRAM 0017                  _T2CLKCONbits 0FBF  
-                     __Hparam 0000                       __Lparam 0000                    _off_period 0013  
-                __psmallconst 0E00                       __pcinit 10C6                       __ramtop 0E00  
-                     __ptext0 0E02                       __ptext1 1032                     _T2CONbits 0FBD  
-                   _T2HLTbits 0FBE          end_of_initialization 10E4                       postinc0 0FEE  
-             _initDCmotorsPWM 1032                     _PORTFbits 0F8E                     _TRISCbits 0F83  
-                   _TRISDbits 0F84                     _TRISEbits 0F85                     _TRISFbits 0F86  
-                   _TRISGbits 0F87                     _TRISHbits 0F88                   _CCP1CONbits 0FAB  
-                 _CCP2CONbits 0FA7                   _CCP3CONbits 0F26                   _CCP4CONbits 0F22  
-               __pidataCOMRAM 10EA           start_initialization 10C6       __end_of_initDCmotorsPWM 10C6  
-                 __pbssCOMRAM 0001                   __smallconst 0E00      initDCmotorsPWM@PWMperiod 0017  
-                    _LATCbits 0F7B                      _LATDbits 0F7C                      _LATEbits 0F7D  
-                   _on_period 0015                      _LATGbits 0F7F                      _LATHbits 0F80  
-main@LEFT_forward_calibration 001C              ?_initDCmotorsPWM 0017                      __Hrparam 0000  
-                    __Lrparam 0000                    _ANSELFbits 0EB4         main@calibration_index 001F  
-                    isa$xinst 0000  
+                        l61 1066                         l224 0FD2                         l184 0EFE  
+                       l179 0EDA                         u310 0F10                         u311 0F0C  
+                       u320 0F76                         u321 0F72                         u330 0E86  
+                       u331 0E82                         u340 0EFE                         u341 0EFA  
+                       u407 0FC2                         u357 0EAC                         u367 0EC6  
+                       u377 0F1A                         u387 0F58                         u397 0F80  
+                       wreg 0FE8  __end_of_adjust_calibration 0FD4                        l1300 0E36  
+                      l1230 0FD4                        l1310 0E56                        l1302 0E3A  
+                      l1240 103C                        l1232 0FE4                        l1320 0E68  
+                      l1312 0E5A                        l1304 0E3E                        l1250 1056  
+                      l1242 103E                        l1234 100A                        l1330 0E74  
+                      l1322 0E6A                        l1314 0E5E                        l1306 0E46  
+                      l1260 0F10                        l1252 1060                        l1244 1048  
+                      l1236 100E                        l1340 0E96                        l1332 0E76  
+                      l1324 0E6C                        l1316 0E62                        l1308 0E4E  
+                      l1262 0F28                        l1270 0F68                        l1254 1062  
+                      l1246 104A                        l1238 1032                        l1342 0EA2  
+                      l1334 0E78                        l1326 0E6E                        l1318 0E66  
+                      l1280 0FD0                        l1272 0F76                        l1264 0F4C  
+                      l1256 1064                        l1248 1054                        l1344 0EBA  
+                      l1328 0E70                        l1274 0F8E                        l1266 0F4E  
+                      l1258 0F02                        l1346 0ED4                        l1338 0E8A  
+                      l1290 0E16                        l1282 0E02                        l1276 0FB6  
+                      l1268 0F66                        l1348 0ED6                        l1292 0E1A  
+                      l1284 0E02                        l1278 0FB8                        l1294 0E22  
+                      l1286 0E0E                        l1296 0E2A                        l1288 0E12  
+                      l1298 0E32                        _T2PR 0FBC                        _main 0E02  
+                      _temp 0025                        fsr2h 0FDA                        fsr2l 0FD9  
+                      start 0000                ___param_bank 0000                       ?_main 001B  
+                     main@i 0023                       tablat 0FF5                       status 0FD8  
+           __initialization 1068                __end_of_main 0F02                      ??_main 0020  
+             __activetblptr 0000                      _CCPR1H 0FAA                      _CCPR2H 0FA6  
+                    _CCPR3H 0F25                      _CCPR4H 0F21                      _RE2PPS 0E74  
+                    _RC7PPS 0E69                      _RE4PPS 0E76                      _RG6PPS 0E88  
+              _CCPTMRS0bits 0FAD                      clear_0 1080                      _motorL 000A  
+                    _motorR 0001                      isa$std 0001                __pdataCOMRAM 0025  
+              __mediumconst 0000                      tblptrh 0FF7                      tblptrl 0FF6  
+                    tblptru 0FF8           ??_initDCmotorsPWM 001D                  __accesstop 0060  
+   __end_of__initialization 1086               ___rparam_used 0001              __pcstackCOMRAM 001B  
+              _T2CLKCONbits 0FBF          _adjust_calibration 0F02         ?_adjust_calibration 001B  
+      ??_adjust_calibration 001C                     __Hparam 0000                     __Lparam 0000  
+                _off_period 0013                __psmallconst 0E00                     __pcinit 1068  
+                   __ramtop 0E00                     __ptext0 0E02                     __ptext1 0FD4  
+                   __ptext2 0F02                   _T2CONbits 0FBD                   _T2HLTbits 0FBE  
+      end_of_initialization 1086                     postdec2 0FDD                     postinc0 0FEE  
+                   postinc2 0FDE             _initDCmotorsPWM 0FD4                   _PORTFbits 0F8E  
+                 _TRISCbits 0F83                   _TRISDbits 0F84                   _TRISEbits 0F85  
+                 _TRISFbits 0F86                   _TRISGbits 0F87                   _TRISHbits 0F88  
+               _CCP1CONbits 0FAB                 _CCP2CONbits 0FA7                 _CCP3CONbits 0F26  
+               _CCP4CONbits 0F22               __pidataCOMRAM 108C         start_initialization 1068  
+   __end_of_initDCmotorsPWM 1068                 _calibration 0017                 __pbssCOMRAM 0001  
+               __smallconst 0E00    initDCmotorsPWM@PWMperiod 001B                    _LATCbits 0F7B  
+                  _LATDbits 0F7C                    _LATEbits 0F7D                   _on_period 0015  
+                  _LATGbits 0F7F                    _LATHbits 0F80            ?_initDCmotorsPWM 001B  
+                  __Hrparam 0000                    __Lrparam 0000                  _ANSELFbits 0EB4  
+                  isa$xinst 0000      adjust_calibration@type 001B  
