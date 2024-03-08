@@ -17,6 +17,8 @@
       <itemPath>../lab-6-motors-and-pwm-tomas-thomas.X/main.c</itemPath>
       <itemPath>color.c</itemPath>
       <itemPath>color.h</itemPath>
+      <itemPath>../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.c</itemPath>
+      <itemPath>../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

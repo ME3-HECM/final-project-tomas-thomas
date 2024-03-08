@@ -24238,19 +24238,10 @@ void stop(DC_motor *mL, DC_motor *mR){
 }
 
 
-void forward(char direction, char Distance_Calibration, DC_motor *mL, DC_motor *mR){
+void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
 
 
 
-
-    if(direction){
-            mL->direction = 1;
-            mR->direction = 1;
-        }
-        else{
-            mL->direction = 0;
-            mR->direction = 0;
-        }
 
 
     int max_power = 20;
