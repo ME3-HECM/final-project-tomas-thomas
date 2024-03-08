@@ -2652,9 +2652,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 2034 ]
 "135
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 135:     int max_power = 100;
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 135:     int max_power = 20;
 [v _max_power `i ~T0 @X0 1 a ]
-[e = _max_power -> 100 `i ]
+[e = _max_power -> 20 `i ]
 "136
 [; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 136:     int acceleration_time = 100;
 [v _acceleration_time `i ~T0 @X0 1 a ]
@@ -2777,9 +2777,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 174:     mR->direction = 1;
 [e = . *U _mR 1 -> -> 1 `i `uc ]
 "176
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 176:     int max_power = 70;
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 176:     int max_power = 20;
 [v _max_power `i ~T0 @X0 1 a ]
-[e = _max_power -> 70 `i ]
+[e = _max_power -> 20 `i ]
 "177
 [; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 177:     int acceleration_time = 100;
 [v _acceleration_time `i ~T0 @X0 1 a ]
@@ -2902,9 +2902,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 210:     mR->direction = 0;
 [e = . *U _mR 1 -> -> 0 `i `uc ]
 "212
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 212:     int max_power = 70;
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 212:    int max_power = 20;
 [v _max_power `i ~T0 @X0 1 a ]
-[e = _max_power -> 70 `i ]
+[e = _max_power -> 20 `i ]
 "213
 [; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 213:     int acceleration_time = 100;
 [v _acceleration_time `i ~T0 @X0 1 a ]

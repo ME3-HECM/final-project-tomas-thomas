@@ -9,8 +9,12 @@
 [v _delay_ms_function delay_ms_function `(v  1 e 1 0 ]
 "75
 [v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
+"120
+[v _forward forward `(v  1 e 1 0 ]
 "172
 [v _turnLEFT turnLEFT `(v  1 e 1 0 ]
+"208
+[v _turnRIGHT turnRIGHT `(v  1 e 1 0 ]
 "18 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/main.c
 [v _main main `(v  1 e 1 0 ]
 "7 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awdiv.c
@@ -286,6 +290,22 @@
 "29748
 [u S601 . 1 `S596 1 . 1 0 ]
 [v _TRISHbits TRISHbits `VES601  1 e 1 @3976 ]
+[s S1054 . 1 `uc 1 RF0 1 0 :1:0 
+`uc 1 RF1 1 0 :1:1 
+`uc 1 RF2 1 0 :1:2 
+`uc 1 RF3 1 0 :1:3 
+`uc 1 RF4 1 0 :1:4 
+`uc 1 RF5 1 0 :1:5 
+`uc 1 RF6 1 0 :1:6 
+`uc 1 RF7 1 0 :1:7 
+]
+"30278
+[s S1063 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 C2OUTF 1 0 :1:1 
+`uc 1 C1OUTF 1 0 :1:2 
+]
+[u S1067 . 1 `S1054 1 . 1 0 `S1063 1 . 1 0 ]
+[v _PORTFbits PORTFbits `VES1067  1 e 1 @3982 ]
 "33876
 [v _CCPR2H CCPR2H `VEuc  1 e 1 @4006 ]
 [s S389 . 1 `uc 1 MODE 1 0 :4:0 
@@ -448,9 +468,35 @@
 "18 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"203
+"105
+[v main@j j `i  1 a 2 37 ]
+"94
+[v main@i i `i  1 a 2 35 ]
+"55
+[v main@Turn_Calibration Turn_Calibration `uc  1 a 1 39 ]
+"200
 } 0
-"172 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c
+"208 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c
+[v _turnRIGHT turnRIGHT `(v  1 e 1 0 ]
+{
+[v turnRIGHT@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
+"226
+[v turnRIGHT@j j `i  1 a 2 26 ]
+"217
+[v turnRIGHT@i i `i  1 a 2 24 ]
+"214
+[v turnRIGHT@delay_time delay_time `i  1 a 2 30 ]
+"212
+[v turnRIGHT@max_power max_power `i  1 a 2 28 ]
+"208
+[v turnRIGHT@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
+[s S24 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+[v turnRIGHT@mL mL `*.30S24  1 p 1 18 ]
+[v turnRIGHT@mR mR `*.30S24  1 p 1 19 ]
+[v turnRIGHT@rotation_calibration rotation_calibration `uc  1 a 1 23 ]
+"242
+} 0
+"172
 [v _turnLEFT turnLEFT `(v  1 e 1 0 ]
 {
 [v turnLEFT@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
@@ -469,6 +515,34 @@
 [v turnLEFT@mR mR `*.30S24  1 p 1 19 ]
 [v turnLEFT@rotation_calibration rotation_calibration `uc  1 a 1 23 ]
 "206
+} 0
+"5
+[v _initDCmotorsPWM initDCmotorsPWM `(v  1 e 1 0 ]
+{
+[v initDCmotorsPWM@PWMperiod PWMperiod `ui  1 p 2 0 ]
+"66
+} 0
+"120
+[v _forward forward `(v  1 e 1 0 ]
+{
+[v forward@direction direction `uc  1 a 1 wreg ]
+"151
+[v forward@j j `i  1 a 2 27 ]
+"140
+[v forward@i i `i  1 a 2 25 ]
+"137
+[v forward@delay_time delay_time `i  1 a 2 31 ]
+"135
+[v forward@max_power max_power `i  1 a 2 29 ]
+"120
+[v forward@direction direction `uc  1 a 1 wreg ]
+[v forward@Distance_Calibration Distance_Calibration `uc  1 p 1 18 ]
+[s S24 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
+[v forward@mL mL `*.30S24  1 p 1 19 ]
+[v forward@mR mR `*.30S24  1 p 1 20 ]
+"125
+[v forward@direction direction `uc  1 a 1 24 ]
+"167
 } 0
 "75
 [v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
@@ -521,10 +595,4 @@
 [v ___awdiv@dividend dividend `i  1 p 2 0 ]
 [v ___awdiv@divisor divisor `i  1 p 2 2 ]
 "41
-} 0
-"5 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c
-[v _initDCmotorsPWM initDCmotorsPWM `(v  1 e 1 0 ]
-{
-[v initDCmotorsPWM@PWMperiod PWMperiod `ui  1 p 2 0 ]
-"66
 } 0

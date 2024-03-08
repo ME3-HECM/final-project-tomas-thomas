@@ -24253,7 +24253,7 @@ void forward(char direction, char Distance_Calibration, DC_motor *mL, DC_motor *
         }
 
 
-    int max_power = 100;
+    int max_power = 20;
     int acceleration_time = 100;
     int delay_time = acceleration_time/max_power;
 
@@ -24294,7 +24294,7 @@ void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 0;
     mR->direction = 1;
 
-    int max_power = 70;
+    int max_power = 20;
     int acceleration_time = 100;
     int delay_time = acceleration_time/max_power;
 
@@ -24330,7 +24330,7 @@ void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 1;
     mR->direction = 0;
 
-    int max_power = 70;
+   int max_power = 20;
     int acceleration_time = 100;
     int delay_time = acceleration_time/max_power;
 
