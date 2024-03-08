@@ -24097,11 +24097,11 @@ unsigned char __t3rd16on(void);
 
 
 typedef struct calibration_structure {
+    char index;
     char left_45;
     char right_45;
     char forward_motorL;
     char forward_motorR;
-
 } calibration_structure;
 
 struct calibration_structure calibration;

@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "8 ../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h
 [; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h: 8: typedef struct calibration_structure {
-[s S2015 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2015 calibration_structure left_45 right_45 forward_motorL forward_motorR ]
+[s S2015 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S2015 calibration_structure index left_45 right_45 forward_motorL forward_motorR ]
 "30262 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 30262:     struct {
 [s S1412 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]

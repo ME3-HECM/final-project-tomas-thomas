@@ -11,7 +11,7 @@
 [v _delay_ms_function delay_ms_function `(v  1 e 1 0 ]
 "75
 [v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
-"19 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/main.c
+"20 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/main.c
 [v _main main `(v  1 e 1 0 ]
 "7 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -45,9 +45,9 @@
 [v ___omul __omul `(uo  1 e 8 0 ]
 "21 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\color.c
 [v _color_writetoaddr color_writetoaddr `(v  1 e 1 0 ]
-[s S907 calibration_structure 4 `uc 1 left_45 1 0 `uc 1 right_45 1 1 `uc 1 forward_motorL 1 2 `uc 1 forward_motorR 1 3 ]
+[s S907 calibration_structure 5 `uc 1 index 1 0 `uc 1 left_45 1 1 `uc 1 right_45 1 2 `uc 1 forward_motorL 1 3 `uc 1 forward_motorR 1 4 ]
 "16 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/calibration.h
-[v _calibration calibration `S907  1 e 4 0 ]
+[v _calibration calibration `S907  1 e 5 0 ]
 [s S24 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 "17 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.h
 [v _motorL motorL `S24  1 e 9 0 ]
@@ -60,7 +60,7 @@
 [v _RE4PPS RE4PPS `VEuc  1 e 1 @3702 ]
 "9708
 [v _RG6PPS RG6PPS `VEuc  1 e 1 @3720 ]
-[s S1037 . 1 `uc 1 ANSELF0 1 0 :1:0 
+[s S1044 . 1 `uc 1 ANSELF0 1 0 :1:0 
 `uc 1 ANSELF1 1 0 :1:1 
 `uc 1 ANSELF2 1 0 :1:2 
 `uc 1 ANSELF3 1 0 :1:3 
@@ -70,8 +70,8 @@
 `uc 1 ANSELF7 1 0 :1:7 
 ]
 "12319
-[u S1046 . 1 `S1037 1 . 1 0 ]
-[v _ANSELFbits ANSELFbits `VES1046  1 e 1 @3764 ]
+[u S1053 . 1 `S1044 1 . 1 0 ]
+[v _ANSELFbits ANSELFbits `VES1053  1 e 1 @3764 ]
 "20738
 [v _CCPR4H CCPR4H `VEuc  1 e 1 @3873 ]
 [s S496 . 1 `uc 1 MODE 1 0 :4:0 
@@ -136,7 +136,7 @@
 ]
 [u S152 . 1 `S134 1 . 1 0 `S143 1 . 1 0 ]
 [v _LATCbits LATCbits `VES152  1 e 1 @3963 ]
-[s S938 . 1 `uc 1 LATD0 1 0 :1:0 
+[s S945 . 1 `uc 1 LATD0 1 0 :1:0 
 `uc 1 LATD1 1 0 :1:1 
 `uc 1 LATD2 1 0 :1:2 
 `uc 1 LATD3 1 0 :1:3 
@@ -146,7 +146,7 @@
 `uc 1 LATD7 1 0 :1:7 
 ]
 "28508
-[s S947 . 1 `uc 1 LD0 1 0 :1:0 
+[s S954 . 1 `uc 1 LD0 1 0 :1:0 
 `uc 1 LD1 1 0 :1:1 
 `uc 1 LD2 1 0 :1:2 
 `uc 1 LD3 1 0 :1:3 
@@ -155,8 +155,8 @@
 `uc 1 LD6 1 0 :1:6 
 `uc 1 LD7 1 0 :1:7 
 ]
-[u S956 . 1 `S938 1 . 1 0 `S947 1 . 1 0 ]
-[v _LATDbits LATDbits `VES956  1 e 1 @3964 ]
+[u S963 . 1 `S945 1 . 1 0 `S954 1 . 1 0 ]
+[v _LATDbits LATDbits `VES963  1 e 1 @3964 ]
 [s S94 . 1 `uc 1 LATE0 1 0 :1:0 
 `uc 1 LATE1 1 0 :1:1 
 `uc 1 LATE2 1 0 :1:2 
@@ -233,7 +233,7 @@
 "29272
 [u S61 . 1 `S52 1 . 1 0 ]
 [v _TRISCbits TRISCbits `VES61  1 e 1 @3971 ]
-[s S917 . 1 `uc 1 TRISD0 1 0 :1:0 
+[s S924 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -243,8 +243,8 @@
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "29394
-[u S926 . 1 `S917 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES926  1 e 1 @3972 ]
+[u S933 . 1 `S924 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES933  1 e 1 @3972 ]
 [s S31 . 1 `uc 1 TRISE0 1 0 :1:0 
 `uc 1 TRISE1 1 0 :1:1 
 `uc 1 TRISE2 1 0 :1:2 
@@ -257,7 +257,7 @@
 "29516
 [u S40 . 1 `S31 1 . 1 0 ]
 [v _TRISEbits TRISEbits `VES40  1 e 1 @3973 ]
-[s S1016 . 1 `uc 1 TRISF0 1 0 :1:0 
+[s S1023 . 1 `uc 1 TRISF0 1 0 :1:0 
 `uc 1 TRISF1 1 0 :1:1 
 `uc 1 TRISF2 1 0 :1:2 
 `uc 1 TRISF3 1 0 :1:3 
@@ -267,8 +267,8 @@
 `uc 1 TRISF7 1 0 :1:7 
 ]
 "29633
-[u S1025 . 1 `S1016 1 . 1 0 ]
-[v _TRISFbits TRISFbits `VES1025  1 e 1 @3974 ]
+[u S1032 . 1 `S1023 1 . 1 0 ]
+[v _TRISFbits TRISFbits `VES1032  1 e 1 @3974 ]
 [s S73 . 1 `uc 1 TRISG0 1 0 :1:0 
 `uc 1 TRISG1 1 0 :1:1 
 `uc 1 TRISG2 1 0 :1:2 
@@ -289,7 +289,7 @@
 "29748
 [u S601 . 1 `S596 1 . 1 0 ]
 [v _TRISHbits TRISHbits `VES601  1 e 1 @3976 ]
-[s S1058 . 1 `uc 1 RF0 1 0 :1:0 
+[s S1065 . 1 `uc 1 RF0 1 0 :1:0 
 `uc 1 RF1 1 0 :1:1 
 `uc 1 RF2 1 0 :1:2 
 `uc 1 RF3 1 0 :1:3 
@@ -299,12 +299,12 @@
 `uc 1 RF7 1 0 :1:7 
 ]
 "30278
-[s S1067 . 1 `uc 1 . 1 0 :1:0 
+[s S1074 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 C2OUTF 1 0 :1:1 
 `uc 1 C1OUTF 1 0 :1:2 
 ]
-[u S1071 . 1 `S1058 1 . 1 0 `S1067 1 . 1 0 ]
-[v _PORTFbits PORTFbits `VES1071  1 e 1 @3982 ]
+[u S1078 . 1 `S1065 1 . 1 0 `S1074 1 . 1 0 ]
+[v _PORTFbits PORTFbits `VES1078  1 e 1 @3982 ]
 "33876
 [v _CCPR2H CCPR2H `VEuc  1 e 1 @4006 ]
 [s S389 . 1 `uc 1 MODE 1 0 :4:0 
@@ -464,12 +464,12 @@
 "35949
 "35949
 [v _T2CLKCONbits T2CLKCONbits `VES332  1 e 1 @4031 ]
-"19 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/main.c
+"20 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"83
-[v main@i i `i  1 a 2 8 ]
-"91
+"80
+[v main@j j `i  1 a 2 8 ]
+"147
 } 0
 "5 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM/lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c
 [v _initDCmotorsPWM initDCmotorsPWM `(v  1 e 1 0 ]

@@ -7,10 +7,10 @@ Linker command line:
   -cn \
   -h+dist/default/production\final-project-tomas-thomas.X.production.sym \
   --cmf=dist/default/production\final-project-tomas-thomas.X.production.cmf \
-  -z -Q18F67K40 -oC:\Users\tjhla\AppData\Local\Temp\xcAstuc.\driver_tmp_3.o \
+  -z -Q18F67K40 -oC:\Users\tjhla\AppData\Local\Temp\xcAsn7o.\driver_tmp_3.o \
   --defsym=__MPLAB_BUILD=1 --fixupoverflow=error \
   -Mdist/default/production/final-project-tomas-thomas.X.production.map \
-  --md=C:\Users\tjhla\AppData\Local\Temp\xcAstuc.\driver_tmp_0.dat -E1 \
+  --md=C:\Users\tjhla\AppData\Local\Temp\xcAsn7o.\driver_tmp_0.dat -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ACODE=00h-01FFFFh -ACONST=00h-01FFFFh \
   -ASMALLCONST=0E00h-0EFFhx498 -AMEDIUMCONST=0E00h-0FFFFh,010E00h-01FFFFh \
   -ACOMRAM=01h-05Fh -AABS1=00h-0DE9h -ABIGRAM=01h-0DE9h \
@@ -30,7 +30,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\tjhla\AppData\Local\Temp\xcAstuc.\driver_tmp_9.o \
+  C:\Users\tjhla\AppData\Local\Temp\xcAsn7o.\driver_tmp_9.o \
   dist/default/production\final-project-tomas-thomas.X.production.o 
 
 Object code version is 3.11
@@ -40,29 +40,29 @@ Machine type is 18F67K40
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\tjhla\AppData\Local\Temp\xcAstuc.\driver_tmp_9.o
+C:\Users\tjhla\AppData\Local\Temp\xcAsn7o.\driver_tmp_9.o
                 config                           300000   300000        6        0       4
                 init                                  0        0        4        0       0
 dist/default/production\final-project-tomas-thomas.X.production.o
                 config                           300000   300000        6        0       4
                 smallconst                          E00      E00        2      700       0
-                text2                               F02      F02       D2      701       0
-                text1                               FD4      FD4       94      701       0
-                text0                               E02      E02      100      701       0
-                cstackCOMRAM                         1B       1B        A        1       1
-                dataCOMRAM                           25       25        1        1       1
-                bssCOMRAM                             1        1       1A        1       1
-                cinit                              1068     1068       24      701       0
-                idataCOMRAM                        108C     108C        1      701       0
+                text2                               FC2      FC2       D2      701       0
+                text1                              1094     1094       94      701       0
+                text0                               E02      E02      1C0      701       0
+                cstackCOMRAM                         26       26        A        1       1
+                dataCOMRAM                           30       30        1        1       1
+                bssCOMRAM                             1        1       25        1       1
+                cinit                              1128     1128       24      701       0
+                idataCOMRAM                        114C     114C        1      701       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
                 init                                  0        0        4         0
-                text2                               F02      F02       D2         0
-                text1                               FD4      FD4       94         0
-                text0                               E02      E02      100         0
-                cinit                              1068     1068       24         0
-                idataCOMRAM                        108C     108C        1         0
+                text2                               FC2      FC2       D2         0
+                text1                              1094     1094       94         0
+                text0                               E02      E02      1C0         0
+                cinit                              1128     1128       24         0
+                idataCOMRAM                        114C     114C        1         0
 
         CLASS   CONST          
 
@@ -72,9 +72,9 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                cstackCOMRAM                         1B       1B        A         1
-                dataCOMRAM                           25       25        1         1
-                bssCOMRAM                             1        1       1A         1
+                cstackCOMRAM                         26       26        A         1
+                dataCOMRAM                           30       30        1         1
+                bssCOMRAM                             1        1       25         1
 
         CLASS   ABS1           
 
@@ -132,9 +132,9 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                bssCOMRAM                      000001  000025  000026         1       1  COMRAM  
+                bssCOMRAM                      000001  000030  000031         1       1  COMRAM  
                 smallconst                     000E00  000002  000E02       700       0  SMALLCON
-                text0                          000E02  00028B  00108D       701       0  CODE    
+                text0                          000E02  00034B  00114D       701       0  CODE    
 
 
 UNUSED ADDRESS RANGES
@@ -154,21 +154,21 @@ UNUSED ADDRESS RANGES
         BANK7            000700-0007FF              100
         BANK8            000800-0008FF              100
         BANK9            000900-0009FF              100
-        BIGRAM           000026-000DE9              DC4
+        BIGRAM           000031-000DE9              DB9
         BIGSFR           000DEF-000FFF              211
         CODE             000004-000DFF              DFC
-                         00108D-01FFFF            1EF73
-        COMRAM           000026-00005F               3A
+                         00114D-01FFFF            1EEB3
+        COMRAM           000031-00005F               2F
         CONFIG           300006-30000B                6
         CONST            000004-000DFF              DFC
-                         00108D-01FFFF            1EF73
+                         00114D-01FFFF            1EEB3
         EEDATA           310000-3103FF              400
         IDLOC            200000-20000F               10
-        MEDIUMCONST      00108D-00FFFF             EF73
+        MEDIUMCONST      00114D-00FFFF             EEB3
                          010E00-01FFFF             F200
         RAM              000060-000DE9              100
         SFR              000DEF-000FFF              100
-        SMALLCONST       00108D-01FFFF              100
+        SMALLCONST       00114D-01FFFF              100
 
                                   Symbol Table
 
@@ -265,8 +265,8 @@ __Hreset_vec                reset_vec    000000
 __Hrparam                   rparam       000000
 __Hsfr                      sfr          000000
 __Hsmallconst               smallconst   000E02
-__Hspace_0                  (abs)        00108D
-__Hspace_1                  (abs)        000026
+__Hspace_0                  (abs)        00114D
+__Hspace_1                  (abs)        000031
 __Hspace_2                  (abs)        000000
 __Hspace_4                  (abs)        600006
 __Hstack                    stack        000000
@@ -350,8 +350,8 @@ __Ltext                     text         000000
 __Ltext0                    text0        000000
 __Ltext1                    text1        000000
 __Ltext2                    text2        000000
-__S0                        (abs)        00108D
-__S1                        (abs)        000026
+__S0                        (abs)        00114D
+__S1                        (abs)        000031
 __S4                        (abs)        000000
 __S5                        (abs)        000000
 ___heap_hi                  (abs)        000000
@@ -369,68 +369,69 @@ ___stack_hi                 stack        000000
 ___stack_lo                 stack        000000
 __accesstop                 (abs)        000060
 __activetblptr              (abs)        000000
-__end_of__initialization    cinit        001086
-__end_of_adjust_calibration text2        000FD4
-__end_of_initDCmotorsPWM    text1        001068
-__end_of_main               text0        000F02
-__initialization            cinit        001068
+__end_of__initialization    cinit        001146
+__end_of_adjust_calibration text2        001094
+__end_of_initDCmotorsPWM    text1        001128
+__end_of_main               text0        000FC2
+__initialization            cinit        001128
 __mediumconst               mediumconst  000000
 __pbssCOMRAM                bssCOMRAM    000001
-__pcinit                    cinit        001068
-__pcstackCOMRAM             cstackCOMRAM 00001B
-__pdataCOMRAM               dataCOMRAM   000025
-__pidataCOMRAM              idataCOMRAM  00108C
+__pcinit                    cinit        001128
+__pcstackCOMRAM             cstackCOMRAM 000026
+__pdataCOMRAM               dataCOMRAM   000030
+__pidataCOMRAM              idataCOMRAM  00114C
 __psmallconst               smallconst   000E00
 __ptext0                    text0        000E02
-__ptext1                    text1        000FD4
-__ptext2                    text2        000F02
+__ptext1                    text1        001094
+__ptext2                    text2        000FC2
 __ramtop                    ramtop       000E00
 __smallconst                smallconst   000E00
-_adjust_calibration         text2        000F02
-_calibration                bssCOMRAM    000017
-_initDCmotorsPWM            text1        000FD4
+_adjust_calibration         text2        000FC2
+_calibration                bssCOMRAM    000021
+_initDCmotorsPWM            text1        001094
 _main                       text0        000E02
-_motorL                     bssCOMRAM    00000A
-_motorR                     bssCOMRAM    000001
-_off_period                 bssCOMRAM    000013
-_on_period                  bssCOMRAM    000015
-_temp                       dataCOMRAM   000025
-adjust_calibration@type     cstackCOMRAM 00001B
-end_of_initialization       cinit        001086
-initDCmotorsPWM@PWMperiod   cstackCOMRAM 00001B
+_motorL                     bssCOMRAM    000014
+_motorR                     bssCOMRAM    00000B
+_motor_adjustments          bssCOMRAM    000001
+_off_period                 bssCOMRAM    00001D
+_on_period                  bssCOMRAM    00001F
+_temp                       dataCOMRAM   000030
+adjust_calibration@type     cstackCOMRAM 000026
+end_of_initialization       cinit        001146
+initDCmotorsPWM@PWMperiod   cstackCOMRAM 000026
 intlevel0                   text         000000
 intlevel1                   text         000000
 intlevel2                   text         000000
 intlevel3                   text         000000
 isa$std                     (abs)        000001
 isa$xinst                   (abs)        000000
-main@i                      cstackCOMRAM 000023
+main@j                      cstackCOMRAM 00002E
 stackhi                     (abs)        000000
 stacklo                     (abs)        000000
 start                       init         000000
-start_initialization        cinit        001068
+start_initialization        cinit        001128
 
 
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 ../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c
-		_initDCmotorsPWM		CODE           	0FD4	0000	148
+		_initDCmotorsPWM		CODE           	1094	0000	148
 
 ../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c estimated size: 148
 
 shared
-		__initialization		CODE           	1068	0000	30
+		__initialization		CODE           	1128	0000	30
 
 shared estimated size: 30
 
 ../lab-6-motors-and-pwm-tomas-thomas.X/main.c
-		_main          		CODE           	0E02	0000	256
+		_main          		CODE           	0E02	0000	448
 
-../lab-6-motors-and-pwm-tomas-thomas.X/main.c estimated size: 256
+../lab-6-motors-and-pwm-tomas-thomas.X/main.c estimated size: 448
 
 ../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c
-		_adjust_calibration		CODE           	0F02	0000	210
+		_adjust_calibration		CODE           	0FC2	0000	210
 
 ../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c estimated size: 210
 

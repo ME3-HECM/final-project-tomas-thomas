@@ -24184,17 +24184,32 @@ void delay_ms_function(unsigned int milliseconds);
 
 
 typedef struct calibration_structure {
+    char index;
     char left_45;
     char right_45;
     char forward_motorL;
     char forward_motorR;
-
 } calibration_structure;
 
 struct calibration_structure calibration;
 
 void adjust_calibration(int *type);
 # 14 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
+
+# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.h" 1
+# 10 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.h"
+void calibration_general(unsigned int number);
+
+
+typedef struct calibration_variables {
+    unsigned int index;
+    unsigned int forward_left;
+    unsigned int forward_right;
+    unsigned int left_45;
+    unsigned int right_45;
+};
+struct calibration_variables motor_adjustments;
+# 15 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
@@ -24348,7 +24363,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 15 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
+# 16 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
 
 
 
@@ -24372,17 +24387,7 @@ void main(void){
     motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);
     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
     motorR.PWMperiod=PWMperiod;
-
-
-    calibration.left_45 = 10;
-    calibration.right_45 = 20;
-    calibration.forward_motorL = 20;
-    calibration.forward_motorR = 20;
-
-
-
-
-
+# 47 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
     TRISDbits.TRISD7 = 0;
     LATDbits.LATD7 = 0;
 
@@ -24397,23 +24402,68 @@ void main(void){
 
     TRISFbits.TRISF3=1;
     ANSELFbits.ANSELF3=0;
-# 73 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
+
+
+
+    calibration.index = 0;
+
+
+
+    calibration.left_45 = 10;
+    calibration.right_45 = 20;
+    calibration.forward_motorL = 20;
+    calibration.forward_motorR = 20;
+
+
     while(1){
+
+
+
 
         if(!PORTFbits.RF2){
-            break;
-        }
-
-        adjust_calibration(&calibration.left_45);
-    }
-
-    while(1){
-        for(int i = 0; i< calibration.left_45; i++){
+            for(int j = 0; j< calibration.index; j++){
             _delay((unsigned long)((200)*(64000000/4000.0)));
             LATHbits.LATH3 = 1;
             _delay((unsigned long)((200)*(64000000/4000.0)));
             LATHbits.LATH3 = 0;
+            }
+            break;
         }
-        break;
+
+        if(!PORTFbits.RF3){
+            calibration.index++;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 1;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 0;
+
+            if(calibration.index > 5){calibration.index = -2;}
+
+        }
+    }
+# 112 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
+    while(1){
+        if(calibration.index == 0){
+            if(!PORTFbits.RF2){break;}
+        }
+
+        if(calibration.index == 1){
+           if(!PORTFbits.RF2){break;}
+        }
+
+        if(calibration.index == -1){
+            if(!PORTFbits.RF2){break;}
+        }
+
+        if(calibration.index == -2){
+            adjust_calibration(&calibration.left_45);
+            if(!PORTFbits.RF2){break;}
+        }
+
+        if(calibration.index == 2){
+            adjust_calibration(&calibration.right_45);
+            if(!PORTFbits.RF2){break;}
+        }
+# 146 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
     }
 }
