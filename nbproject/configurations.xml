@@ -19,6 +19,10 @@
       <itemPath>color.h</itemPath>
       <itemPath>../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h</itemPath>
       <itemPath>../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c</itemPath>
+      <itemPath>serial.c</itemPath>
+      <itemPath>serial.h</itemPath>
+      <itemPath>i2c.c</itemPath>
+      <itemPath>i2c.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
