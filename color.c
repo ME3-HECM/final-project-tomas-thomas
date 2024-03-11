@@ -125,12 +125,17 @@ float custom_floatmodulo(float x, float y) {
 }
 
 
-void RGB_to_HSV(float R, float G, float B, float *H, float *S, float *V) { //function to convert 16bit RGB values to HSV
+void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V) { //function to convert 16bit RGB values to HSV
     
     //Normalise 16bit RGB values to be within the range of 0-1
     float r = R/65535.0; 
     float g = G/65535.0; 
     float b = B/65535.0;
+    
+    //calculating brightness normalisation factor from the Clear Channel output
+    //Term normalises the value according to brightness levels measured(affected by brightness of reflected light, measurement distance from card, and ambient lighting)
+    //This makes readings and comparisons more consistent
+    float c_norm = 1.0 /(C/65535.0);
     
     //finding Maximum/Minimum of the RGB values and Difference between them
     float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b); //shorthand conditional statements for finding max/min
@@ -163,8 +168,8 @@ void RGB_to_HSV(float R, float G, float B, float *H, float *S, float *V) { //fun
     }
     
     //calculating Value
-    *V = maxRGB * 100.0; //Multiplying by 100 converts the value to a percentage. Assigning Value.
-}
+    *V = maxRGB * 100.0 * c_norm; //Assigning Value. Multiplying by 100 converts the value to a percentage, and normalised by brightness normalisation factor.
+}   
 
 unsigned int color_cardCheck(void) { //function to check the color of the card on the maze wall. Output is an integer corresponding to color
     
@@ -173,16 +178,19 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     float g = color_read_Green();
     float b = color_read_Blue();
     
+    //read 16bit Clear Channel (brightness) value for normalisation
+    float c = color_read_Clear(); //
+    
     //define HSV variables
     float H;
     float S;
     float V;
     
-    RGB_to_HSV(r,g,b,&H,&S,&V); //convert 16bit RGB values to H (0-360), S (0-100), and V(0-100)
+    RGB_to_HSV(r,g,b,c,&H,&S,&V); //convert 16bit RGB values to H (0-360), S (0-100), and V(0-100)
     
     //Now need to use serial to find out specific values and ranges for each color card
     //Also need to consider changing code to be done without using floats (only integers - saves memory significantly)
-    //Also need to think about normalising for the clear channel (i.e. brightness)
+    
     
 //---------------------USE FOR TESTING WITH SERIAL AND LAPTOP - DETERMINE CARD HSV VALUES------------------------------------------
     // Create a string with color information and send it via serial communication for testing
