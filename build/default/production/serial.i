@@ -1,4 +1,4 @@
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c"
+# 1 "serial.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c" 2
+# 1 "serial.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24086,289 +24086,133 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c" 2
+# 1 "serial.c" 2
 
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.h" 1
+# 1 "./serial.h" 1
+# 13 "./serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
 
-
-
-
-
-
-
-typedef struct DC_motor {
-    char power;
-    char direction;
-    char brakemode;
-    unsigned int PWMperiod;
-    unsigned char *posDutyHighByte;
-    unsigned char *negDutyHighByte;
-} DC_motor;
-
-struct DC_motor motorL, motorR;
-
-char temp = 7;
-
-void initDCmotorsPWM(unsigned int PWMperiod);
-void setMotorPWM(DC_motor *m);
-void stop(DC_motor *mL, DC_motor *mR);
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
-
-
-void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
-void delay_ms_function(unsigned int milliseconds);
-# 2 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c" 2
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
 
 
 
-void initDCmotorsPWM(unsigned int PWMperiod){
-
-    TRISEbits.TRISE2 = 0;
-    TRISEbits.TRISE4 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISGbits.TRISG6 = 0;
-
-    LATEbits.LATE2 = 0;
-    LATEbits.LATE4 = 0;
-    LATCbits.LATC7 = 0;
-    LATGbits.LATG6 = 0;
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
 
 
-    RE2PPS=0x05;
-    RE4PPS=0x06;
-    RC7PPS=0x07;
-    RG6PPS=0x08;
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
 
 
-    T2CONbits.CKPS=100;
-    T2HLTbits.MODE=0b00000;
-    T2CLKCONbits.CS=0b0001;
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 2 "serial.c" 2
+
+
+void initUSART4(void) {
+    RC0PPS = 0x12;
+    RX4PPS = 0x11;
+
+    BAUD4CONbits.BRG16 = 0;
+    TX4STAbits.BRGH = 0;
+
+    SP4BRGL = 51;
+    SP4BRGH = 0;
 
 
 
-    T2PR=PWMperiod;
-    T2CONbits.ON=1;
 
 
 
-    CCPR1H=0;
-    CCPR2H=0;
-    CCPR3H=0;
-    CCPR4H=0;
+
+    RC4STAbits.CREN = 1;
+    TX4STAbits.TXEN = 1;
+    RC4STAbits.SPEN = 1;
 
 
-    CCPTMRS0bits.C1TSEL=0;
-    CCPTMRS0bits.C2TSEL=0;
-    CCPTMRS0bits.C3TSEL=0;
-    CCPTMRS0bits.C4TSEL=0;
-
-
-    CCP1CONbits.FMT=1;
-    CCP1CONbits.CCP1MODE=0b1100;
-    CCP1CONbits.EN=1;
-
-    CCP2CONbits.FMT=1;
-    CCP2CONbits.CCP2MODE=0b1100;
-    CCP2CONbits.EN=1;
-
-    CCP3CONbits.FMT=1;
-    CCP3CONbits.CCP3MODE=0b1100;
-    CCP3CONbits.EN=1;
-
-    CCP4CONbits.FMT=1;
-    CCP4CONbits.CCP4MODE=0b1100;
-    CCP4CONbits.EN=1;
-
-
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 0;
-}
-void delay_ms_function(unsigned int milliseconds) {
-    while (milliseconds > 0) {
-        _delay((unsigned long)((1)*(64000000/4000.0)));
-        milliseconds--;
-    }
 }
 
 
-void setMotorPWM(DC_motor *m)
-{
-    unsigned char posDuty, negDuty;
+char getCharSerial4(void) {
+    while (!PIR4bits.RC4IF);
+    return RC4REG;
+}
 
-    if(m->brakemode) {
-        posDuty=m->PWMperiod - ((unsigned int)(m->power)*(m->PWMperiod))/100;
-        negDuty=m->PWMperiod;
-    }
-    else {
-        posDuty=0;
-  negDuty=((unsigned int)(m->power)*(m->PWMperiod))/100;
-    }
 
-    if (m->direction) {
-        *(m->posDutyHighByte)=posDuty;
-        *(m->negDutyHighByte)=negDuty;
-    } else {
-        *(m->posDutyHighByte)=negDuty;
-        *(m->negDutyHighByte)=posDuty;
-    }
+void sendCharSerial4(char charToSend) {
+    while (!PIR4bits.TX4IF);
+    TX4REG = charToSend;
 }
 
 
 
-void stop(DC_motor *mL, DC_motor *mR){
+void sendStringSerial4(char *string){
 
-    mL->brakemode = 1;
-    mR->brakemode = 1;
-
-
-    while(mL->power || mR->power > 0){
-        if(mL->power > 0 ){
-            mL->power--;
-            setMotorPWM(mL);
-
-        }
-        if(mR->power > 0 ){
-            mR->power--;
-            setMotorPWM(mR);
-        }
-    _delay((unsigned long)((800)*(64000000/4000000.0)));
-    }
-}
-
-
-void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
-
-
-
-
-
-    int max_power = 20;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
-
-
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ;
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
-
-
-
-
-    for(int j=0; j<Distance_Calibration; j++){
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
-
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
-            mR->power--;
-        }
-        if(mL->power> 0 ){
-            mL->power--;
-        }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
+    while(*string != 0){
+  sendCharSerial4(*string++);
+ }
 }
 
 
 
 
-void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
-    mL->direction = 0;
-    mR->direction = 1;
-
-    int max_power = 20;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
 
 
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ;
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
-
-
-    for(int j=0; j<rotation_calibration; j++){
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
-
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
-            mR->power--;
-        }
-        if(mL->power> 0 ){
-            mL->power--;
-        }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
+char getCharFromRxBuf(void){
+    if (RxBufReadCnt>=20) {RxBufReadCnt=0;}
+    return EUSART4RXbuf[RxBufReadCnt++];
 }
 
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
-    mL->direction = 1;
-    mR->direction = 0;
 
-   int max_power = 20;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
-
-
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ;
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
-
-
-    for(int j=0; j<rotation_calibration; j++){
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
-
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
-            mR->power--;
-        }
-        if(mL->power> 0 ){
-            mL->power--;
-        }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
+void putCharToRxBuf(char byte){
+    if (RxBufWriteCnt>=20) {RxBufWriteCnt=0;}
+    EUSART4RXbuf[RxBufWriteCnt++]=byte;
 }
 
 
 
-void fullSpeedAhead(DC_motor *mL, DC_motor *mR){
+
+char isDataInRxBuf (void){
+    return (RxBufWriteCnt!=RxBufReadCnt);
+}
+
+
+
+char getCharFromTxBuf(void){
+    if (TxBufReadCnt>=60) {TxBufReadCnt=0;}
+    return EUSART4TXbuf[TxBufReadCnt++];
+}
+
+
+void putCharToTxBuf(char byte){
+    if (TxBufWriteCnt>=60) {TxBufWriteCnt=0;}
+    EUSART4TXbuf[TxBufWriteCnt++]=byte;
+}
 
 
 
 
-    mL->direction = 1;
-    mR->direction = 1;
+char isDataInTxBuf (void){
+    return (TxBufWriteCnt!=TxBufReadCnt);
+}
 
-    for(unsigned int i=0; i < 50; i++){
-        mL->power++;
-        mR->power++;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
 
+void TxBufferedString(char *string){
+
+}
+
+
+
+void sendTxBuf(void){
+    if (isDataInTxBuf()) {PIE4bits.TX4IE=1;}
 }

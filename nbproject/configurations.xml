@@ -12,17 +12,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c</itemPath>
-      <itemPath>../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.h</itemPath>
-      <itemPath>../lab-6-motors-and-pwm-tomas-thomas.X/main.c</itemPath>
       <itemPath>color.c</itemPath>
       <itemPath>color.h</itemPath>
-      <itemPath>../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h</itemPath>
-      <itemPath>../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c</itemPath>
       <itemPath>serial.c</itemPath>
       <itemPath>serial.h</itemPath>
       <itemPath>i2c.c</itemPath>
       <itemPath>i2c.h</itemPath>
+      <itemPath>main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

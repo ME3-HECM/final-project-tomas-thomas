@@ -1,4 +1,4 @@
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c"
+# 1 "serial.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,12 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c" 2
-
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h" 1
-
-
-
+# 1 "serial.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24091,40 +24086,133 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 4 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h" 2
+# 1 "serial.c" 2
+
+# 1 "./serial.h" 1
+# 13 "./serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
+
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
+
+
+
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
+
+
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
+
+
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 2 "serial.c" 2
+
+
+void initUSART4(void) {
+    RC0PPS = 0x12;
+    RX4PPS = 0x11;
+
+    BAUD4CONbits.BRG16 = 0;
+    TX4STAbits.BRGH = 0;
+
+    SP4BRGL = 51;
+    SP4BRGH = 0;
 
 
 
 
-typedef struct calibration_structure {
-    char index;
-    char left_45;
-    char right_45;
-    char forward_motorL;
-    char forward_motorR;
-} calibration_structure;
-
-struct calibration_structure calibration;
-
-void adjust_calibration(int *type);
-# 2 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c" 2
 
 
 
-void adjust_calibration(int *type){
-    if(!PORTFbits.RF2){
-        _delay((unsigned long)((200)*(64000000/4000.0)));
-        *type = *type + 1;
-        LATDbits.LATD7 = 1;
-        _delay((unsigned long)((200)*(64000000/4000.0)));
-        LATDbits.LATD7 = 0;
-    }
+    RC4STAbits.CREN = 1;
+    TX4STAbits.TXEN = 1;
+    RC4STAbits.SPEN = 1;
 
-    if(!PORTFbits.RF3){
-        _delay((unsigned long)((200)*(64000000/4000.0)));
-        *type = *type - 1;
-        LATHbits.LATH3 = 1;
-        _delay((unsigned long)((200)*(64000000/4000.0)));
-        LATHbits.LATH3 = 0;
-    }
+
+}
+
+
+char getCharSerial4(void) {
+    while (!PIR4bits.RC4IF);
+    return RC4REG;
+}
+
+
+void sendCharSerial4(char charToSend) {
+    while (!PIR4bits.TX4IF);
+    TX4REG = charToSend;
+}
+
+
+
+void sendStringSerial4(char *string){
+
+    while(*string != 0){
+  sendCharSerial4(*string++);
+ }
+}
+
+
+
+
+
+
+char getCharFromRxBuf(void){
+    if (RxBufReadCnt>=20) {RxBufReadCnt=0;}
+    return EUSART4RXbuf[RxBufReadCnt++];
+}
+
+
+void putCharToRxBuf(char byte){
+    if (RxBufWriteCnt>=20) {RxBufWriteCnt=0;}
+    EUSART4RXbuf[RxBufWriteCnt++]=byte;
+}
+
+
+
+
+char isDataInRxBuf (void){
+    return (RxBufWriteCnt!=RxBufReadCnt);
+}
+
+
+
+char getCharFromTxBuf(void){
+    if (TxBufReadCnt>=60) {TxBufReadCnt=0;}
+    return EUSART4TXbuf[TxBufReadCnt++];
+}
+
+
+void putCharToTxBuf(char byte){
+    if (TxBufWriteCnt>=60) {TxBufWriteCnt=0;}
+    EUSART4TXbuf[TxBufWriteCnt++]=byte;
+}
+
+
+
+
+char isDataInTxBuf (void){
+    return (TxBufWriteCnt!=TxBufReadCnt);
+}
+
+
+void TxBufferedString(char *string){
+
+}
+
+
+
+void sendTxBuf(void){
+    if (isDataInTxBuf()) {PIE4bits.TX4IE=1;}
 }

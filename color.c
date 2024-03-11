@@ -18,18 +18,15 @@ void color_click_init(void)
 
     //set integration time
 	color_writetoaddr(0x01, 0xD5);
-}
-
-void color_TRILED_ON(void) {
+    
     //Turn on the tri-color LED (red, green, and blue) on color-clicker, to have white LED shining looking for card surfaces in maze
-    //Must be used after color_click_init() is called
     
     //set all LEDs to be outputs
     TRISGbits.TRISG1 = 0; //Set TRIS value for red LED to zero (output)
     TRISAbits.TRISA4 = 0; //Set TRIS value for green LED to zero (output)
     TRISFbits.TRISF7 = 0; //Set TRIS value for blue LED to zero (output)
-            
-    //Turn on red, green and blue LEDs in tri-color LED
+    
+    //Turn on red, green and blue LEDs in tri-color LED to (form white light)
     LATGbits.LATG1 = 1; //Set red LED on
     LATAbits.LATA4 = 1; //Set green LED on
     LATFbits.LATF7 = 1; //Set blue LED on
@@ -194,16 +191,16 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     
 //---------------------USE FOR TESTING WITH SERIAL AND LAPTOP - DETERMINE CARD HSV VALUES------------------------------------------
     // Create a string with color information and send it via serial communication for testing
-//    char senddata[25]; //Empty char to hold string data
-//    sprintf(senddata,"H:%.2f S: %.2f V: %.2f ",H,S,V);
-//    sendStringSerial4(senddata);
-//    __delay_ms(50); //required delay
+    char senddata[25]; //Empty char to hold string data
+    sprintf(senddata,"H:%.2f S: %.2f V: %.2f ",H,S,V);
+    sendStringSerial4(senddata);
+    __delay_ms(50); //required delay
 //---------------------------------------------------------------------------------------------------------------------------------
     
     //comparing with predetermined thresholds from testing, to determine which color the card is
     //Labels - 1.Red 2.Green 3.Blue 4.Yellow 5.Pink 6.Orange 7.Light Blue 8. White 9. Black
     
-    unsigned int card_color;
+    unsigned int card_color = 0;
     
     //Check HSV values against known colors for cards
     if (H && S && V) {card_color = 1;} //1. Red check

@@ -24359,18 +24359,6 @@ void color_click_init(void)
 
 
  color_writetoaddr(0x01, 0xD5);
-
-    TRISGbits.TRISG1 = 0;
-    TRISAbits.TRISA4 = 0;
-    TRISFbits.TRISF7 = 0;
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 1;
-
-    LATGbits.LATG1 = 1;
-    LATAbits.LATA4 = 1;
-    LATFbits.LATF7 = 1;
-
-
 }
 
 void color_TRILED_ON(void) {
@@ -24381,8 +24369,7 @@ void color_TRILED_ON(void) {
     TRISGbits.TRISG1 = 0;
     TRISAbits.TRISA4 = 0;
     TRISFbits.TRISF7 = 0;
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 1;
+
 
     LATGbits.LATG1 = 1;
     LATAbits.LATA4 = 1;
