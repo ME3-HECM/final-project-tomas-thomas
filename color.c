@@ -88,6 +88,7 @@ unsigned int color_read_Blue(void) //same function as above but for blue light
 
 unsigned int color_read_Clear(void) //same function as above but examining the clear channel on the color sensor
                                     //can use this value to normalise the others (r,g,b) and to interpret brightness of reflected light, indicating when the buggy is near/approaching a colored card
+                                    //clear channel provides a measure of the brightness/ambient light
 {
 	unsigned int tmp;
 	I2C_2_Master_Start();         //Start condition
@@ -99,4 +100,64 @@ unsigned int color_read_Clear(void) //same function as above but examining the c
 	tmp=tmp | (I2C_2_Master_Read(0)<<8); //read the Clear MSB (don't acknowledge as this is the last read)
 	I2C_2_Master_Stop();          //Stop condition
 	return tmp;
+}
+
+void RGB_to_HSV(float R, float G, float B, float *H, float *S, float *V) { //function to convert standard 8bit RGB values to HSV
+    
+    //Normalise 16bit RGB values to be within the range of 0-1
+    float r = R/65535.0; 
+    float g = G/65535.0; 
+    float b = B/65535.0;
+    
+    //finding Maximum/Minimum of the RGB values and Difference between them
+    float Cmax = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
+    float Cmin = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b);
+    float delta = Cmax - Cmin;
+    
+    //using standard conversion equations to convert to HSV
+    
+    //calculating Hue (different equations depending on which color intensity is highest)
+    float H_temp;
+    
+    if (delta == 0) {H_temp = 0;}
+    
+    else if (Cmax == r) {H_temp = (((g-b)/delta)%6) * 60;}
+    
+    else if (Cmax == g) {H_temp = (((b-r)/delta) + 2) * 60;}
+    
+    else if (Cmax == b) {H_temp = (((r-g)/delta) + 4) * 60;}
+    
+    if (H_temp < 0) {H_temp = H_temp + 360;}
+    //if value is negative, add 360 degrees to make positive angle on color wheel for HUE
+    
+    *H = H_temp; //assign Hue value (in degrees)
+    
+    //calculating Saturation
+    if (Cmax == 0) {*S = 0;}
+    
+    else {
+        *S = (delta/Cmax) * 100; //Multiplying by 100 converts the value to a percentage. Assigning Saturation value.
+    }
+    
+    //calculating Value
+    *V = Cmax * 100; //Multiplying by 100 converts the value to a percentage. Assigning Value.
+}
+
+unsigned int color_cardCheck(void) { //function to check the color of the card on the maze wall. Output is an integer corresponding to color
+    
+    //read 16bit RGB values from each channel on color-clicker
+    float r = color_read_Red();
+    float g = color_read_Green();
+    float b = color_read_Blue();
+    
+    //define HSV variables
+    float H;
+    float S;
+    float V;
+    
+    RGB_to_HSV(r,g,b,*H,*S,*V); //convert 16bit RGB values to H (0-360), S (0-100), and V(0-100)
+    
+    
+    
+    
 }
