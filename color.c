@@ -102,7 +102,28 @@ unsigned int color_read_Clear(void) //same function as above but examining the c
 	return tmp;
 }
 
-void RGB_to_HSV(float R, float G, float B, float *H, float *S, float *V) { //function to convert standard 8bit RGB values to HSV
+
+//custom modulo function for floats to avoid importing math.h and saving memory. % function brings errors with floats, only good with integers
+float custom_floatmodulo(float x, float y) { 
+    // Ensure y is not zero to avoid division by zero
+    if (y == 0.0) {
+        return 0.0; // Return 0 if y is zero
+    }
+    
+    // Calculate the quotient
+    float quotient = x / y;
+    
+    // Calculate the integer part of the quotient
+    int intPart = (int)quotient;
+    
+    // Calculate the remainder
+    float remainder = x - intPart * y;
+    
+    return remainder;
+}
+
+
+void RGB_to_HSV(float R, float G, float B, float *H, float *S, float *V) { //function to convert 16bit RGB values to HSV
     
     //Normalise 16bit RGB values to be within the range of 0-1
     float r = R/65535.0; 
@@ -110,22 +131,22 @@ void RGB_to_HSV(float R, float G, float B, float *H, float *S, float *V) { //fun
     float b = B/65535.0;
     
     //finding Maximum/Minimum of the RGB values and Difference between them
-    float Cmax = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
-    float Cmin = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b);
-    float delta = Cmax - Cmin;
+    float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b); //shorthand conditional statements for finding max/min
+    float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b); //? symbol effectively asks condition that precedes it, then continues to either side of colon - if true : if false.
+    float deltaRGB = maxRGB - minRGB;
     
     //using standard conversion equations to convert to HSV
     
     //calculating Hue (different equations depending on which color intensity is highest)
     float H_temp;
     
-    if (delta == 0) {H_temp = 0;}
+    if (deltaRGB == 0) {H_temp = 0;}
     
-    else if (Cmax == r) {H_temp = (((g-b)/delta)%6) * 60;}
+    else if (maxRGB == r) {H_temp = custom_floatmodulo((g-b)/deltaRGB, 6.0) * 60;} //using custom float modulo function (modulo by 6)
     
-    else if (Cmax == g) {H_temp = (((b-r)/delta) + 2) * 60;}
+    else if (maxRGB == g) {H_temp = (((b-r)/deltaRGB) + 2) * 60;}
     
-    else if (Cmax == b) {H_temp = (((r-g)/delta) + 4) * 60;}
+    else if (maxRGB == b) {H_temp = (((r-g)/deltaRGB) + 4) * 60;}
     
     if (H_temp < 0) {H_temp = H_temp + 360;}
     //if value is negative, add 360 degrees to make positive angle on color wheel for HUE
@@ -133,14 +154,14 @@ void RGB_to_HSV(float R, float G, float B, float *H, float *S, float *V) { //fun
     *H = H_temp; //assign Hue value (in degrees)
     
     //calculating Saturation
-    if (Cmax == 0) {*S = 0;}
+    if (maxRGB == 0) {*S = 0;}
     
     else {
-        *S = (delta/Cmax) * 100; //Multiplying by 100 converts the value to a percentage. Assigning Saturation value.
+        *S = (deltaRGB/maxRGB) * 100.0; //Multiplying by 100 converts the value to a percentage. Assigning Saturation value.
     }
     
     //calculating Value
-    *V = Cmax * 100; //Multiplying by 100 converts the value to a percentage. Assigning Value.
+    *V = maxRGB * 100.0; //Multiplying by 100 converts the value to a percentage. Assigning Value.
 }
 
 unsigned int color_cardCheck(void) { //function to check the color of the card on the maze wall. Output is an integer corresponding to color
@@ -157,7 +178,7 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     
     RGB_to_HSV(r,g,b,*H,*S,*V); //convert 16bit RGB values to H (0-360), S (0-100), and V(0-100)
     
-    
+    //Now need to use serial to find out specific values and ranges for each color card
     
     
 }
