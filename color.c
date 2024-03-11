@@ -178,7 +178,7 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     float S;
     float V;
     
-    RGB_to_HSV(r,g,b,*H,*S,*V); //convert 16bit RGB values to H (0-360), S (0-100), and V(0-100)
+    RGB_to_HSV(r,g,b,&H,&S,&V); //convert 16bit RGB values to H (0-360), S (0-100), and V(0-100)
     
     //Now need to use serial to find out specific values and ranges for each color card
     //Also need to consider changing code to be done without using floats (only integers - saves memory significantly)
@@ -195,19 +195,19 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     //comparing with predetermined thresholds from testing, to determine which color the card is
     //Labels - 1.Red 2.Green 3.Blue 4.Yellow 5.Pink 6.Orange 7.Light Blue 8. White 9. Black
     
-    unsigned int value = 0; //fail safe is to assign this as zero, so that no command is triggered on the buggy by accident
+    unsigned int card_color;
     
     //Check HSV values against known colors for cards
-    if (H && S && V) {value = 1;} //1. Red check
+    if (H && S && V) {card_color = 1;} //1. Red check
     
-    else if (H && S && V) {value = 2;} //2. Green Check
-    else if (H && S && V) {value = 3;} //3. Blue Check
-    else if (H && S && V) {value = 4;} //4. Yellow Check
-    else if (H && S && V) {value = 5;} //5. Pink Check
-    else if (H && S && V) {value = 6;} //6. Orange Check
-    else if (H && S && V) {value = 7;} //7. Light Blue Check
-    else if (H && S && V) {value = 8;} //8. White Check
-    else if (H && S && V) {value = 9;} //9. Black Check
+    else if (H && S && V) {card_color = 2;} //2. Green Check
+    else if (H && S && V) {card_color = 3;} //3. Blue Check
+    else if (H && S && V) {card_color = 4;} //4. Yellow Check
+    else if (H && S && V) {card_color = 5;} //5. Pink Check
+    else if (H && S && V) {card_color = 6;} //6. Orange Check
+    else if (H && S && V) {card_color = 7;} //7. Light Blue Check
+    else if (H && S && V) {card_color = 8;} //8. White Check
+    else if (H && S && V) {card_color = 9;} //9. Black Check
         
-    return value; //output the determined color from the function
+    return card_color; //output the determined color from the function
 }
