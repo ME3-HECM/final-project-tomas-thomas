@@ -1,6 +1,8 @@
 #include <xc.h>
+#include <stdio.h>
 #include "color.h"
 #include "i2c.h"
+#include "serial.h"
 
 void color_click_init(void)
 {   
@@ -179,6 +181,33 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     RGB_to_HSV(r,g,b,*H,*S,*V); //convert 16bit RGB values to H (0-360), S (0-100), and V(0-100)
     
     //Now need to use serial to find out specific values and ranges for each color card
+    //Also need to consider changing code to be done without using floats (only integers - saves memory significantly)
+    //Also need to think about normalising for the clear channel (i.e. brightness)
     
+//---------------------USE FOR TESTING WITH SERIAL AND LAPTOP - DETERMINE CARD HSV VALUES------------------------------------------
+    // Create a string with color information and send it via serial communication for testing
+//    char senddata[25]; //Empty char to hold string data
+//    sprintf(senddata,"H:%.2f S: %.2f V: %.2f ",H,S,V);
+//    sendStringSerial4(senddata);
+//    __delay_ms(50); //required delay
+//---------------------------------------------------------------------------------------------------------------------------------
     
+    //comparing with predetermined thresholds from testing, to determine which color the card is
+    //Labels - 1.Red 2.Green 3.Blue 4.Yellow 5.Pink 6.Orange 7.Light Blue 8. White 9. Black
+    
+    unsigned int value = 0; //fail safe is to assign this as zero, so that no command is triggered on the buggy by accident
+    
+    //Check HSV values against known colors for cards
+    if (H && S && V) {value = 1;} //1. Red check
+    
+    else if (H && S && V) {value = 2;} //2. Green Check
+    else if (H && S && V) {value = 3;} //3. Blue Check
+    else if (H && S && V) {value = 4;} //4. Yellow Check
+    else if (H && S && V) {value = 5;} //5. Pink Check
+    else if (H && S && V) {value = 6;} //6. Orange Check
+    else if (H && S && V) {value = 7;} //7. Light Blue Check
+    else if (H && S && V) {value = 8;} //8. White Check
+    else if (H && S && V) {value = 9;} //9. Black Check
+        
+    return value; //output the determined color from the function
 }

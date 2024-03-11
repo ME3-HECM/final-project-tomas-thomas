@@ -34,8 +34,13 @@ unsigned int color_read_Green(void);
 unsigned int color_read_Blue(void);
 unsigned int color_read_Clear(void);
 
+//custom float modulo function to avoid need to import math.h (saves memory usage)
 float custom_floatmodulo(float x, float y);
 
+//function which can convert 16bit RGB values measured by RGBC channels on color-clicker to HSV (0-360,0-100,0-100)
 void RGB_to_HSV(float R, float G, float B, float *H, float *S, float *V);
+
+//Function to check card color on maze wall, and outputs an integer corresponding to the color
+unsigned int color_cardCheck(void);
 
 #endif
