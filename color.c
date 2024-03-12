@@ -199,7 +199,7 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     
     else if (H>67 && H<72 && S>50 && S<55 && V>40 && V<45) {card_color = 2;} //2. Green Check
     
-    else if (H>50 && H<59 && S<5 && V>30 && V<35) {card_color = 3;} //3. Blue Check - needed expanded bands to work in practice (STILL NEEDS EDITING)
+    else if (S<10 && V>30 && V<35) {card_color = 3;} //3. Blue Check - needed expanded bands to work in practice (STILL NEEDS EDITING) H>50 && H<59 &&
     
     else if (H>20 && H<25 && S>65 && S<70 && V>54 && V<57) {card_color = 4;} //4. Yellow Check
     

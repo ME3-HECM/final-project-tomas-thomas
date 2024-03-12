@@ -433,10 +433,10 @@
 [v color_cardCheck@senddata senddata `[25]uc  1 a 25 0 ]
 "184
 [v color_cardCheck@V V `f  1 a 4 51 ]
-"182
-[v color_cardCheck@H H `f  1 a 4 47 ]
 "183
-[v color_cardCheck@S S `f  1 a 4 43 ]
+[v color_cardCheck@S S `f  1 a 4 47 ]
+"182
+[v color_cardCheck@H H `f  1 a 4 43 ]
 "179
 [v color_cardCheck@c c `f  1 a 4 37 ]
 "176

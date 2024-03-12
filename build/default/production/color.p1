@@ -2563,9 +2563,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 2040  ]
 "202
-[; ;color.c: 202:     else if (H>50 && H<59 && S<5 && V>30 && V<35) {card_color = 3;}
+[; ;color.c: 202:     else if (S<10 && V>30 && V<35) {card_color = 3;}
 [e :U 2039 ]
-[e $ ! && && && && > _H -> -> 50 `i `f < _H -> -> 59 `i `f < _S -> -> 5 `i `f > _V -> -> 30 `i `f < _V -> -> 35 `i `f 2041  ]
+[e $ ! && && < _S -> -> 10 `i `f > _V -> -> 30 `i `f < _V -> -> 35 `i `f 2041  ]
 {
 [e = _card_color -> -> 3 `i `ui ]
 }
