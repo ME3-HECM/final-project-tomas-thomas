@@ -8,21 +8,20 @@
 
 #include <xc.h>
 #include "color.h"
+#include "serial.h"
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz 
 
 void main(void) {
     
     color_click_init();
+    initUSART4();
     __delay_ms(1000);
-//    color_TRILED_ON();
     
     while (1) {
 
-        color_cardCheck();
+        unsigned int a = color_cardCheck();
         __delay_ms(1000);
     }
     
-    
-    return;
 }

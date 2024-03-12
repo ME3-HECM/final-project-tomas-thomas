@@ -8,11 +8,12 @@
 # 2 "<built-in>" 2
 # 1 "main.c" 2
 
+#pragma config FEXTOSC = HS
+#pragma config RSTOSC = EXTOSC_4PLL
 
 
-
-
-
+#pragma config WDTCPS = WDTCPS_31
+#pragma config WDTE = OFF
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
@@ -24133,19 +24134,49 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
 unsigned int color_cardCheck(void);
 # 10 "main.c" 2
 
+# 1 "./serial.h" 1
+# 13 "./serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
+
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
+
+
+
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
+
+
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
+
+
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 11 "main.c" 2
+
+
+
 
 void main(void) {
 
     color_click_init();
+    initUSART4();
     _delay((unsigned long)((1000)*(64000000/4000.0)));
-    color_TRILED_ON();
 
     while (1) {
 
-        color_cardCheck();
+        unsigned int a = color_cardCheck();
         _delay((unsigned long)((1000)*(64000000/4000.0)));
     }
 
-
-    return;
 }

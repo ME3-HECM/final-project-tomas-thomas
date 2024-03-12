@@ -24360,29 +24360,13 @@ void color_click_init(void)
 
  color_writetoaddr(0x01, 0xD5);
 
-    TRISGbits.TRISG1 = 0;
-    TRISAbits.TRISA4 = 0;
-    TRISFbits.TRISF7 = 0;
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 1;
-
-    LATGbits.LATG1 = 1;
-    LATAbits.LATA4 = 1;
-    LATFbits.LATF7 = 1;
-
-
-}
-
-void color_TRILED_ON(void) {
-
 
 
 
     TRISGbits.TRISG1 = 0;
     TRISAbits.TRISA4 = 0;
     TRISFbits.TRISF7 = 0;
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 1;
+
 
     LATGbits.LATG1 = 1;
     LATAbits.LATA4 = 1;
@@ -24541,35 +24525,33 @@ unsigned int color_cardCheck(void) {
     float V;
 
     RGB_to_HSV(r,g,b,c,&H,&S,&V);
+# 195 "color.c"
+    unsigned int card_color = 0;
 
 
+    if (H>355 && H<360 && S>85 && S<90 && V>80 && V<85) {card_color = 1;}
 
+    else if (H>67 && H<72 && S>50 && S<55 && V>40 && V<45) {card_color = 2;}
 
+    else if (H>50 && H<59 && S<5 && V>30 && V<35) {card_color = 3;}
+
+    else if (H>20 && H<25 && S>65 && S<70 && V>54 && V<57) {card_color = 4;}
+
+    else if (H>13 && H<18 && S>55 && S<60 && V>50 && V<54) {card_color = 5;}
+
+    else if (H>5 && H<10 && S>70 && S<75 && V>62 && V<67) {card_color = 6;}
+
+    else if (H>74 && H<82 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
+
+    else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;}
 
 
 
     char senddata[25];
-    sprintf(senddata,"H:%.2f S: %.2f V: %.2f ",H,S,V);
+    sprintf(senddata,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color);
     sendStringSerial4(senddata);
     _delay((unsigned long)((50)*(64000000/4000.0)));
 
-
-
-
-
-    unsigned int card_color = 0;
-
-
-    if (H && S && V) {card_color = 1;}
-
-    else if (H && S && V) {card_color = 2;}
-    else if (H && S && V) {card_color = 3;}
-    else if (H && S && V) {card_color = 4;}
-    else if (H && S && V) {card_color = 5;}
-    else if (H && S && V) {card_color = 6;}
-    else if (H && S && V) {card_color = 7;}
-    else if (H && S && V) {card_color = 8;}
-    else if (H && S && V) {card_color = 9;}
 
     return card_color;
 }

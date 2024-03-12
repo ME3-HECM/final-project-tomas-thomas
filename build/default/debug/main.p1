@@ -3,16 +3,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 ./color.h
 [; ;./color.h: 12: void color_click_init(void);
 [v _color_click_init `(v ~T0 @X0 0 ef ]
+"23 ./serial.h
+[; ;./serial.h: 23: void initUSART4(void);
+[v _initUSART4 `(v ~T0 @X0 0 ef ]
 [v F205 `(v ~T0 @X0 1 tf1`ul ]
 "20 C:\Program Files\Microchip\xc8\v2.45\pic\include\builtins.h
 [v __delay `JF205 ~T0 @X0 0 e ]
 [p i __delay ]
-"20 ./color.h
-[; ;./color.h: 20: void color_TRILED_ON(void);
-[v _color_TRILED_ON `(v ~T0 @X0 0 ef ]
-"44
+"44 ./color.h
 [; ;./color.h: 44: unsigned int color_cardCheck(void);
 [v _color_cardCheck `(ui ~T0 @X0 0 ef ]
+"2 main.c
+[p x FEXTOSC  =  HS      ]
+"3
+[p x RSTOSC  =  EXTOSC_4PLL ]
+"6
+[p x WDTCPS  =  WDTCPS_31 ]
+"7
+[p x WDTE  =  OFF         ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 54: __asm("PPSLOCK equ 0DEFh");
 [; <" PPSLOCK equ 0DEFh ;# ">
@@ -1987,42 +1995,70 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40592
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 40592: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"13 ./serial.h
+[; ;./serial.h: 13: volatile char EUSART4RXbuf[20];
+[v _EUSART4RXbuf `Vuc ~T0 @X0 -> 20 `i e ]
+"14
+[; ;./serial.h: 14: volatile char RxBufWriteCnt=0;
+[v _RxBufWriteCnt `Vuc ~T0 @X0 1 e ]
+[i _RxBufWriteCnt
+-> -> 0 `i `uc
+]
+"15
+[; ;./serial.h: 15: volatile char RxBufReadCnt=0;
+[v _RxBufReadCnt `Vuc ~T0 @X0 1 e ]
+[i _RxBufReadCnt
+-> -> 0 `i `uc
+]
+"17
+[; ;./serial.h: 17: volatile char EUSART4TXbuf[60];
+[v _EUSART4TXbuf `Vuc ~T0 @X0 -> 60 `i e ]
+"18
+[; ;./serial.h: 18: volatile char TxBufWriteCnt=0;
+[v _TxBufWriteCnt `Vuc ~T0 @X0 1 e ]
+[i _TxBufWriteCnt
+-> -> 0 `i `uc
+]
+"19
+[; ;./serial.h: 19: volatile char TxBufReadCnt=0;
+[v _TxBufReadCnt `Vuc ~T0 @X0 1 e ]
+[i _TxBufReadCnt
+-> -> 0 `i `uc
+]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"12 main.c
-[; ;main.c: 12: void main(void) {
+"15 main.c
+[; ;main.c: 15: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"14
-[; ;main.c: 14:     color_click_init();
+"17
+[; ;main.c: 17:     color_click_init();
 [e ( _color_click_init ..  ]
-"15
-[; ;main.c: 15:     _delay((unsigned long)((1000)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"16
-[; ;main.c: 16:     color_TRILED_ON();
-[e ( _color_TRILED_ON ..  ]
 "18
-[; ;main.c: 18:     while (1) {
+[; ;main.c: 18:     initUSART4();
+[e ( _initUSART4 ..  ]
+"19
+[; ;main.c: 19:     _delay((unsigned long)((1000)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"21
+[; ;main.c: 21:     while (1) {
 [e :U 2017 ]
 {
-"20
-[; ;main.c: 20:         color_cardCheck();
-[e ( _color_cardCheck ..  ]
-"21
-[; ;main.c: 21:         _delay((unsigned long)((1000)*(64000000/4000.0)));
+"23
+[; ;main.c: 23:         unsigned int a = color_cardCheck();
+[v _a `ui ~T0 @X0 1 a ]
+[e = _a ( _color_cardCheck ..  ]
+"24
+[; ;main.c: 24:         _delay((unsigned long)((1000)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"22
-[; ;main.c: 22:     }
+"25
+[; ;main.c: 25:     }
 }
 [e :U 2016 ]
 [e $U 2017  ]
 [e :U 2018 ]
-"25
-[; ;main.c: 25:     return;
-[e $UE 2015  ]
-"26
-[; ;main.c: 26: }
+"27
+[; ;main.c: 27: }
 [e :UE 2015 ]
 }

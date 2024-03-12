@@ -189,30 +189,35 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     //Also need to consider changing code to be done without using floats (only integers - saves memory significantly)
     
     
-//---------------------USE FOR TESTING WITH SERIAL AND LAPTOP - DETERMINE CARD HSV VALUES------------------------------------------
-    // Create a string with color information and send it via serial communication for testing
-    char senddata[25]; //Empty char to hold string data
-    sprintf(senddata,"H:%.2f S: %.2f V: %.2f ",H,S,V);
-    sendStringSerial4(senddata);
-    __delay_ms(50); //required delay
-//---------------------------------------------------------------------------------------------------------------------------------
-    
     //comparing with predetermined thresholds from testing, to determine which color the card is
     //Labels - 1.Red 2.Green 3.Blue 4.Yellow 5.Pink 6.Orange 7.Light Blue 8. White 9. Black
     
     unsigned int card_color = 0;
     
-    //Check HSV values against known colors for cards
-    if (H && S && V) {card_color = 1;} //1. Red check
+    //Check HSV values against known colors for cards - all measured using color clicker and recorded with serial output and laptop
+    if (H>355 && H<360 && S>85 && S<90 && V>80 && V<85) {card_color = 1;} //1. Red check
     
-    else if (H && S && V) {card_color = 2;} //2. Green Check
-    else if (H && S && V) {card_color = 3;} //3. Blue Check
-    else if (H && S && V) {card_color = 4;} //4. Yellow Check
-    else if (H && S && V) {card_color = 5;} //5. Pink Check
-    else if (H && S && V) {card_color = 6;} //6. Orange Check
-    else if (H && S && V) {card_color = 7;} //7. Light Blue Check
-    else if (H && S && V) {card_color = 8;} //8. White Check
-    else if (H && S && V) {card_color = 9;} //9. Black Check
-        
+    else if (H>67 && H<72 && S>50 && S<55 && V>40 && V<45) {card_color = 2;} //2. Green Check
+    
+    else if (H>50 && H<59 && S<5 && V>30 && V<35) {card_color = 3;} //3. Blue Check - needed expanded bands to work in practice (STILL NEEDS EDITING)
+    
+    else if (H>20 && H<25 && S>65 && S<70 && V>54 && V<57) {card_color = 4;} //4. Yellow Check
+    
+    else if (H>13 && H<18 && S>55 && S<60 && V>50 && V<54) {card_color = 5;} //5. Pink Check
+    
+    else if (H>5 && H<10 && S>70 && S<75 && V>62 && V<67) {card_color = 6;} //6. Orange Check
+    
+    else if (H>74 && H<82 && S>28 && S<33 && V>37 && V<42) {card_color = 7;} //7. Light Blue Check - needed expanded bands to work in practice
+    
+    else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;} //8. White Check
+    
+    //---------------------USE FOR TESTING WITH SERIAL AND LAPTOP - DETERMINE CARD HSV VALUES------------------------------------------
+    // Create a string with color information and send it via serial communication for testing
+    char senddata[25]; //Empty char to hold string data
+    sprintf(senddata,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color);
+    sendStringSerial4(senddata);
+    __delay_ms(50); //required delay
+//---------------------------------------------------------------------------------------------------------------------------------
+    
     return card_color; //output the determined color from the function
 }
