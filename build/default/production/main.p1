@@ -2124,182 +2124,179 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./calibration.h: 20: struct calibration_structure calibration;
 [v _calibration `S2016 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"16 main.c
-[; ;main.c: 16: void main(void){
+"18 main.c
+[; ;main.c: 18: void main(void){
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"17
-[; ;main.c: 17:     unsigned int PWMperiod = 99;
+"19
+[; ;main.c: 19:     unsigned int PWMperiod = 99;
 [v _PWMperiod `ui ~T0 @X0 1 a ]
 [e = _PWMperiod -> -> 99 `i `ui ]
-"18
-[; ;main.c: 18:     initDCmotorsPWM(PWMperiod);
+"20
+[; ;main.c: 20:     initDCmotorsPWM(PWMperiod);
 [e ( _initDCmotorsPWM (1 _PWMperiod ]
-"22
-[; ;main.c: 22:     motorL.power=0;
-[e = . _motorL 0 -> -> 0 `i `uc ]
-"23
-[; ;main.c: 23:     motorL.direction=1;
-[e = . _motorL 1 -> -> 1 `i `uc ]
 "24
-[; ;main.c: 24:     motorL.brakemode=1;
-[e = . _motorL 2 -> -> 1 `i `uc ]
+[; ;main.c: 24:     motorL.power=0;
+[e = . _motorL 0 -> -> 0 `i `uc ]
 "25
-[; ;main.c: 25:     motorL.posDutyHighByte=(unsigned char *)(&CCPR1H);
-[e = . _motorL 4 -> &U _CCPR1H `*uc ]
+[; ;main.c: 25:     motorL.direction=1;
+[e = . _motorL 1 -> -> 1 `i `uc ]
 "26
-[; ;main.c: 26:     motorL.negDutyHighByte=(unsigned char *)(&CCPR2H);
-[e = . _motorL 5 -> &U _CCPR2H `*uc ]
+[; ;main.c: 26:     motorL.brakemode=1;
+[e = . _motorL 2 -> -> 1 `i `uc ]
 "27
-[; ;main.c: 27:     motorL.PWMperiod=PWMperiod;
-[e = . _motorL 3 _PWMperiod ]
+[; ;main.c: 27:     motorL.posDutyHighByte=(unsigned char *)(&CCPR1H);
+[e = . _motorL 4 -> &U _CCPR1H `*uc ]
+"28
+[; ;main.c: 28:     motorL.negDutyHighByte=(unsigned char *)(&CCPR2H);
+[e = . _motorL 5 -> &U _CCPR2H `*uc ]
 "29
-[; ;main.c: 29:     motorR.power=0;
-[e = . _motorR 0 -> -> 0 `i `uc ]
-"30
-[; ;main.c: 30:     motorR.direction=1;
-[e = . _motorR 1 -> -> 1 `i `uc ]
+[; ;main.c: 29:     motorL.PWMperiod=PWMperiod;
+[e = . _motorL 3 _PWMperiod ]
 "31
-[; ;main.c: 31:     motorR.brakemode=1;
-[e = . _motorR 2 -> -> 1 `i `uc ]
+[; ;main.c: 31:     motorR.power=0;
+[e = . _motorR 0 -> -> 0 `i `uc ]
 "32
-[; ;main.c: 32:     motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);
-[e = . _motorR 4 -> &U _CCPR3H `*uc ]
+[; ;main.c: 32:     motorR.direction=1;
+[e = . _motorR 1 -> -> 1 `i `uc ]
 "33
-[; ;main.c: 33:     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
-[e = . _motorR 5 -> &U _CCPR4H `*uc ]
+[; ;main.c: 33:     motorR.brakemode=1;
+[e = . _motorR 2 -> -> 1 `i `uc ]
 "34
-[; ;main.c: 34:     motorR.PWMperiod=PWMperiod;
+[; ;main.c: 34:     motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);
+[e = . _motorR 4 -> &U _CCPR3H `*uc ]
+"35
+[; ;main.c: 35:     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
+[e = . _motorR 5 -> &U _CCPR4H `*uc ]
+"36
+[; ;main.c: 36:     motorR.PWMperiod=PWMperiod;
 [e = . _motorR 3 _PWMperiod ]
-"40
-[; ;main.c: 40:     TRISDbits.TRISD7 = 0;
+"42
+[; ;main.c: 42:     TRISDbits.TRISD7 = 0;
 [e = . . _TRISDbits 0 7 -> -> 0 `i `uc ]
-"41
-[; ;main.c: 41:     LATDbits.LATD7 = 0;
+"43
+[; ;main.c: 43:     LATDbits.LATD7 = 0;
 [e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
-"44
-[; ;main.c: 44:     TRISHbits.TRISH3 = 0;
+"46
+[; ;main.c: 46:     TRISHbits.TRISH3 = 0;
 [e = . . _TRISHbits 0 3 -> -> 0 `i `uc ]
-"45
-[; ;main.c: 45:     LATHbits.LATH3 = 0;
+"47
+[; ;main.c: 47:     LATHbits.LATH3 = 0;
 [e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
-"48
-[; ;main.c: 48:     TRISFbits.TRISF2=1;
+"50
+[; ;main.c: 50:     TRISFbits.TRISF2=1;
 [e = . . _TRISFbits 0 2 -> -> 1 `i `uc ]
-"49
-[; ;main.c: 49:     ANSELFbits.ANSELF2=0;
+"51
+[; ;main.c: 51:     ANSELFbits.ANSELF2=0;
 [e = . . _ANSELFbits 0 2 -> -> 0 `i `uc ]
-"52
-[; ;main.c: 52:     TRISFbits.TRISF3=1;
+"54
+[; ;main.c: 54:     TRISFbits.TRISF3=1;
 [e = . . _TRISFbits 0 3 -> -> 1 `i `uc ]
-"53
-[; ;main.c: 53:     ANSELFbits.ANSELF3=0;
+"55
+[; ;main.c: 55:     ANSELFbits.ANSELF3=0;
 [e = . . _ANSELFbits 0 3 -> -> 0 `i `uc ]
-"57
-[; ;main.c: 57:     calibration.index = 1;
+"59
+[; ;main.c: 59:     calibration.index = 1;
 [e = . _calibration 0 -> -> 1 `i `uc ]
-"58
-[; ;main.c: 58:     calibration.over = 0;
+"60
+[; ;main.c: 60:     calibration.over = 0;
 [e = . _calibration 1 -> -> 0 `i `uc ]
-"64
-[; ;main.c: 64:     calibration.left_90 = 60;
-[e = . _calibration 2 -> -> 60 `i `uc ]
-"65
-[; ;main.c: 65:     calibration.right_90 = 10;
-[e = . _calibration 3 -> -> 10 `i `uc ]
 "66
-[; ;main.c: 66:     calibration.left_135 = 60;
-[e = . _calibration 4 -> -> 60 `i `uc ]
+[; ;main.c: 66:     calibration.left_90 = 60;
+[e = . _calibration 2 -> -> 60 `i `uc ]
 "67
-[; ;main.c: 67:     calibration.right_135 = 10;
-[e = . _calibration 5 -> -> 10 `i `uc ]
+[; ;main.c: 67:     calibration.right_90 = 10;
+[e = . _calibration 3 -> -> 10 `i `uc ]
 "68
-[; ;main.c: 68:     calibration.forward = 10;
-[e = . _calibration 6 -> -> 10 `i `uc ]
+[; ;main.c: 68:     calibration.left_135 = 60;
+[e = . _calibration 4 -> -> 60 `i `uc ]
 "69
-[; ;main.c: 69:     calibration.forward_motorL = 20;
-[e = . _calibration 7 -> -> 20 `i `uc ]
+[; ;main.c: 69:     calibration.right_135 = 10;
+[e = . _calibration 5 -> -> 10 `i `uc ]
 "70
-[; ;main.c: 70:     calibration.forward_motorR = 20;
+[; ;main.c: 70:     calibration.forward = 10;
+[e = . _calibration 6 -> -> 10 `i `uc ]
+"71
+[; ;main.c: 71:     calibration.forward_motorL = 20;
+[e = . _calibration 7 -> -> 20 `i `uc ]
+"72
+[; ;main.c: 72:     calibration.forward_motorR = 20;
 [e = . _calibration 8 -> -> 20 `i `uc ]
-"77
-[; ;main.c: 77:     while(1){
+"79
+[; ;main.c: 79:     while(1){
 [e :U 2021 ]
 {
-"81
-[; ;main.c: 81:         if(calibration.index == 1){
+"83
+[; ;main.c: 83:         if(calibration.index == 1){
 [e $ ! == -> . _calibration 0 `i -> 1 `i 2023  ]
 {
-"82
-[; ;main.c: 82:             adjust_calibration(&calibration.right_90);
-[e ( _adjust_calibration (1 -> &U . _calibration 3 `*i ]
-"83
-[; ;main.c: 83:             turnRIGHT(calibration.right_90, &motorL, &motorR);
-[e ( _turnRIGHT (3 , , . _calibration 3 &U _motorL &U _motorR ]
 "84
-[; ;main.c: 84:             switch_calibration(&calibration.index);
-[e ( _switch_calibration (1 -> &U . _calibration 0 `*i ]
+[; ;main.c: 84:             adjust_calibration(&calibration.right_90);
+[e ( _adjust_calibration (1 -> &U . _calibration 3 `*i ]
 "85
-[; ;main.c: 85:         }
+[; ;main.c: 85:             turnRIGHT(calibration.right_90, &motorL, &motorR);
+[e ( _turnRIGHT (3 , , . _calibration 3 &U _motorL &U _motorR ]
+"86
+[; ;main.c: 86:             switch_calibration(&calibration.index);
+[e ( _switch_calibration (1 -> &U . _calibration 0 `*i ]
+"87
+[; ;main.c: 87:         }
 }
 [e :U 2023 ]
-"88
-[; ;main.c: 88:         if(calibration.index == 2){
+"90
+[; ;main.c: 90:         if(calibration.index == 2){
 [e $ ! == -> . _calibration 0 `i -> 2 `i 2024  ]
 {
-"89
-[; ;main.c: 89:             adjust_calibration(&calibration.left_90);
-[e ( _adjust_calibration (1 -> &U . _calibration 2 `*i ]
-"90
-[; ;main.c: 90:             turnLEFT(calibration.left_90, &motorL, &motorR);
-[e ( _turnLEFT (3 , , . _calibration 2 &U _motorL &U _motorR ]
 "91
-[; ;main.c: 91:             switch_calibration(&calibration.index);
-[e ( _switch_calibration (1 -> &U . _calibration 0 `*i ]
+[; ;main.c: 91:             adjust_calibration(&calibration.left_90);
+[e ( _adjust_calibration (1 -> &U . _calibration 2 `*i ]
 "92
-[; ;main.c: 92:         }
+[; ;main.c: 92:             turnLEFT(calibration.left_90, &motorL, &motorR);
+[e ( _turnLEFT (3 , , . _calibration 2 &U _motorL &U _motorR ]
+"93
+[; ;main.c: 93:             switch_calibration(&calibration.index);
+[e ( _switch_calibration (1 -> &U . _calibration 0 `*i ]
+"94
+[; ;main.c: 94:         }
 }
 [e :U 2024 ]
-"95
-[; ;main.c: 95:         if(calibration.index == 3){
+"97
+[; ;main.c: 97:         if(calibration.index == 3){
 [e $ ! == -> . _calibration 0 `i -> 3 `i 2025  ]
 {
-"96
-[; ;main.c: 96:             adjust_calibration(&calibration.forward);
-[e ( _adjust_calibration (1 -> &U . _calibration 6 `*i ]
-"97
-[; ;main.c: 97:             forward(calibration.forward, &motorL, &motorR);
-[e ( _forward (3 , , . _calibration 6 &U _motorL &U _motorR ]
 "98
-[; ;main.c: 98:             switch_calibration(&calibration.index);
-[e ( _switch_calibration (1 -> &U . _calibration 0 `*i ]
+[; ;main.c: 98:             adjust_calibration(&calibration.forward);
+[e ( _adjust_calibration (1 -> &U . _calibration 6 `*i ]
 "99
-[; ;main.c: 99:         }
+[; ;main.c: 99:             forward(calibration.forward, &motorL, &motorR);
+[e ( _forward (3 , , . _calibration 6 &U _motorL &U _motorR ]
+"100
+[; ;main.c: 100:             switch_calibration(&calibration.index);
+[e ( _switch_calibration (1 -> &U . _calibration 0 `*i ]
+"101
+[; ;main.c: 101:         }
 }
 [e :U 2025 ]
-"118
-[; ;main.c: 118:         if(calibration.index == 5){
-[e $ ! == -> . _calibration 0 `i -> 5 `i 2026  ]
+"108
+[; ;main.c: 108:         if(calibration.index == 4){
+[e $ ! == -> . _calibration 0 `i -> 4 `i 2026  ]
 {
-"119
-[; ;main.c: 119:             calibration.index = 1;
-[e = . _calibration 0 -> -> 1 `i `uc ]
-"120
-[; ;main.c: 120:             break;
+"110
+[; ;main.c: 110:             break;
 [e $U 2022  ]
-"121
-[; ;main.c: 121:         }
+"111
+[; ;main.c: 111:         }
 }
 [e :U 2026 ]
-"123
-[; ;main.c: 123:     }
+"113
+[; ;main.c: 113:     }
 }
 [e :U 2020 ]
 [e $U 2021  ]
 [e :U 2022 ]
-"124
-[; ;main.c: 124: }
+"114
+[; ;main.c: 114: }
 [e :UE 2019 ]
 }

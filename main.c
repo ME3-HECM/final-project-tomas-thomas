@@ -9,7 +9,9 @@
 #include <xc.h>
 #include "dc_motor_v1.h"
 #include "calibration.h"
+#include "color.h"
 #include <stdio.h>
+
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 

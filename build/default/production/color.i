@@ -24245,19 +24245,7 @@ char *tempnam(const char *, const char *);
 # 1 "./color.h" 1
 # 12 "./color.h"
 void color_click_init(void);
-
-
-
-
-
-
-
-void color_TRILED_ON(void);
-
-
-
-
-
+# 26 "./color.h"
 void color_writetoaddr(char address, char value);
 
 
