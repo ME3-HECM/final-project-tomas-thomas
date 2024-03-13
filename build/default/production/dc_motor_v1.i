@@ -24241,6 +24241,9 @@ void stop(DC_motor *mL, DC_motor *mR){
 
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
+    mL->direction = 1;
+    mR->direction = 1;
+
 
 
 

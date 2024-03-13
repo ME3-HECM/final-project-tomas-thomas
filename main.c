@@ -98,26 +98,14 @@ void main(void){
             switch_calibration(&calibration.index);
         }
         
+        // to add later
         //180
-                
-//        //135 R
-//        if(calibration.index == 1){
-//            adjust_calibration(&calibration.right_45);
-//            turnRIGHT(calibration.right_135, &motorL, &motorR);  
-//            switch_calibration(&calibration.index);
-//        }
-//
-//        
-//        //135 R
-//        if(calibration.index == 2){
-//            adjust_calibration(&calibration.left_45);
-//            turnLEFT(calibration.left_135, &motorL, &motorR);
-//            switch_calibration(&calibration.index);
-//        }
+        //135 right
+        //135 left
         
-        if(calibration.index == 5){
-            calibration.index = 1; 
-            break;
+        if(calibration.index == 4){
+//            calibration.index = 1; 
+            break; //quits us out of the calibration routine
         }
         
     }

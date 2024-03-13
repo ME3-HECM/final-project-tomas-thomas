@@ -47,9 +47,9 @@
 [v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
 "122
 [v _forward forward `(v  1 e 1 0 ]
-"165
+"168
 [v _turnLEFT turnLEFT `(v  1 e 1 0 ]
-"203
+"206
 [v _turnRIGHT turnRIGHT `(v  1 e 1 0 ]
 "16 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\main.c
 [v _main main `(v  1 e 1 0 ]
@@ -477,45 +477,45 @@
 {
 "124
 } 0
-"203 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\dc_motor_v1.c
+"206 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\dc_motor_v1.c
 [v _turnRIGHT turnRIGHT `(v  1 e 1 0 ]
 {
 [v turnRIGHT@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
-"221
+"224
 [v turnRIGHT@j j `i  1 a 2 26 ]
-"212
+"215
 [v turnRIGHT@i i `i  1 a 2 24 ]
-"209
+"212
 [v turnRIGHT@delay_time delay_time `i  1 a 2 30 ]
-"207
+"210
 [v turnRIGHT@max_power max_power `i  1 a 2 28 ]
-"203
+"206
 [v turnRIGHT@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
 [s S78 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 [v turnRIGHT@mL mL `*.30S78  1 p 1 18 ]
 [v turnRIGHT@mR mR `*.30S78  1 p 1 19 ]
 [v turnRIGHT@rotation_calibration rotation_calibration `uc  1 a 1 23 ]
-"237
+"240
 } 0
-"165
+"168
 [v _turnLEFT turnLEFT `(v  1 e 1 0 ]
 {
 [v turnLEFT@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
-"183
+"186
 [v turnLEFT@j j `i  1 a 2 26 ]
-"174
+"177
 [v turnLEFT@i i `i  1 a 2 24 ]
-"171
+"174
 [v turnLEFT@delay_time delay_time `i  1 a 2 30 ]
-"169
+"172
 [v turnLEFT@max_power max_power `i  1 a 2 28 ]
-"165
+"168
 [v turnLEFT@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
 [s S78 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 [v turnLEFT@mL mL `*.30S78  1 p 1 18 ]
 [v turnLEFT@mR mR `*.30S78  1 p 1 19 ]
 [v turnLEFT@rotation_calibration rotation_calibration `uc  1 a 1 23 ]
-"199
+"202
 } 0
 "44 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\calibration.c
 [v _switch_calibration switch_calibration `(v  1 e 1 0 ]
@@ -533,22 +533,21 @@
 [v _forward forward `(v  1 e 1 0 ]
 {
 [v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 wreg ]
-"144
+"147
 [v forward@j j `i  1 a 2 26 ]
-"133
+"136
 [v forward@i i `i  1 a 2 24 ]
-"130
+"133
 [v forward@delay_time delay_time `i  1 a 2 30 ]
-"128
+"131
 [v forward@max_power max_power `i  1 a 2 28 ]
 "122
 [v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 wreg ]
 [s S78 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 [v forward@mL mL `*.30S78  1 p 1 18 ]
 [v forward@mR mR `*.30S78  1 p 1 19 ]
-"128
 [v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 23 ]
-"160
+"163
 } 0
 "75
 [v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]

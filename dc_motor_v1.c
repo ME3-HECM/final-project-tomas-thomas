@@ -120,6 +120,9 @@ void stop(DC_motor *mL, DC_motor *mR){ //decrement the power slowly
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
+    mL->direction = 1;
+    mR->direction = 1; 
+    
     // The plan 
         //Get left and right motor to go at the same speed 
         // making the intital assumption that the controllers might be different
