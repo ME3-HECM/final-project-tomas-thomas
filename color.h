@@ -17,7 +17,7 @@ void color_click_init(void);
  *	value is the value that will be written to that address
  ***********************************************/
 
-void color_TRILED_ON(void);
+//void color_TRILED_ON(void);
 //This function turns on all three LEDs (r,g,b) in the tri-color LED on the color-clicker
 //Produces white light which is used for detecting cards and their color
 
