@@ -24186,8 +24186,8 @@ void delay_ms_function(unsigned int milliseconds);
 typedef struct calibration_structure {
     char index;
     char over;
-    char left_45;
-    char right_45;
+    char left_90;
+    char right_90;
     char left_135;
     char right_135;
     char forward;
@@ -24439,14 +24439,14 @@ void main(void){
 
 
         if(calibration.index == 1){
-            adjust_calibration(&calibration.right_45);
+            adjust_calibration(&calibration.right_90);
             turnRIGHT(calibration.right_90, &motorL, &motorR);
             switch_calibration(&calibration.index);
         }
 
 
         if(calibration.index == 2){
-            adjust_calibration(&calibration.left_45);
+            adjust_calibration(&calibration.left_90);
             turnLEFT(calibration.left_90, &motorL, &motorR);
             switch_calibration(&calibration.index);
         }
@@ -24454,27 +24454,14 @@ void main(void){
 
         if(calibration.index == 3){
             adjust_calibration(&calibration.forward);
-            turnLEFT(calibration.left_90, &motorL, &motorR);
+            forward(calibration.forward, &motorL, &motorR);
             switch_calibration(&calibration.index);
         }
-
-
-
-
-        if(calibration.index == 1){
-            adjust_calibration(&calibration.right_45);
-            turnRIGHT(calibration.right_135, &motorL, &motorR);
-            switch_calibration(&calibration.index);
+# 122 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
+        if(calibration.index == 5){
+            calibration.index = 1;
+            break;
         }
 
-
-
-        if(calibration.index == 2){
-            adjust_calibration(&calibration.left_45);
-            turnLEFT(calibration.left_135, &motorL, &motorR);
-            switch_calibration(&calibration.index);
-        }
-
-        if(calibration.index == 3){calibration.index = 1;}
     }
 }

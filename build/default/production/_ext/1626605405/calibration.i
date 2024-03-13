@@ -24099,8 +24099,8 @@ unsigned char __t3rd16on(void);
 typedef struct calibration_structure {
     char index;
     char over;
-    char left_45;
-    char right_45;
+    char left_90;
+    char right_90;
     char left_135;
     char right_135;
     char forward;
