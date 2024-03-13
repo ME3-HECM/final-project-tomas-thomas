@@ -24217,6 +24217,7 @@ void setMotorPWM(DC_motor *m)
 
 
 
+
 void stop(DC_motor *mL, DC_motor *mR){
 
     mL->brakemode = 1;
@@ -24236,6 +24237,7 @@ void stop(DC_motor *mL, DC_motor *mR){
     _delay((unsigned long)((800)*(64000000/4000000.0)));
     }
 }
+
 
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
@@ -24317,6 +24319,8 @@ void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     }
 }
 
+
+
 void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 1;
     mR->direction = 0;
@@ -24351,24 +24355,4 @@ void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
         setMotorPWM(mL);
         delay_ms_function(delay_time);
     }
-}
-
-
-
-void fullSpeedAhead(DC_motor *mL, DC_motor *mR){
-
-
-
-
-    mL->direction = 1;
-    mR->direction = 1;
-
-    for(unsigned int i=0; i < 50; i++){
-        mL->power++;
-        mR->power++;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
 }
