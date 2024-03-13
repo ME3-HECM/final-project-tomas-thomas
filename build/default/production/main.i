@@ -24335,6 +24335,35 @@ char *ctermid(char *);
 char *tempnam(const char *, const char *);
 # 13 "main.c" 2
 
+# 1 "./serial.h" 1
+# 13 "./serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
+
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
+
+
+
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
+
+
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
+
+
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 14 "main.c" 2
 
 
 
@@ -24380,7 +24409,7 @@ void main(void){
 
 
 
-    calibration.index = 1;
+    calibration.index = 4;
     calibration.over = 0;
 
 
@@ -24388,14 +24417,12 @@ void main(void){
 
 
     calibration.left_90 = 60;
-    calibration.right_90 = 10;
+    calibration.right_90 = 60;
     calibration.left_135 = 60;
     calibration.right_135 = 10;
     calibration.forward = 10;
     calibration.forward_motorL = 20;
     calibration.forward_motorR = 20;
-
-
 
 
 
@@ -24433,6 +24460,72 @@ void main(void){
 
             break;
         }
+    }
+
+
+
+    char Operation_Count = 0;
+    char Forward_Count = 0;
+    char Operation_History[20] = {0};
+    int Color_Value;
+
+    color_click_init();
+    initUSART4();
+
+
+
+    _delay((unsigned long)((1000)*(64000000/4000.0)));
+
+
+
+    while(1){
+        LATHbits.LATH3 = 1;
+        LATDbits.LATD7 = 1;
+
+
+
+        _delay((unsigned long)((1000)*(64000000/4000.0)));
+        Forward_Count++;
+        Color_Value = color_cardCheck();
+
+        LATHbits.LATH3 = 0;
+        LATDbits.LATD7 = 0;
+        _delay((unsigned long)((1000)*(64000000/4000.0)));
+
+        if(Color_Value != 0){
+            Operation_History[Operation_Count] = Forward_Count + 10;
+            Forward_Count = 0;
+            Operation_Count++;
+
+            if(Color_Value == 1){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                turnRIGHT(calibration.right_90, &motorL, &motorR);
+            }
+
+            else if(Color_Value == 2){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                turnLEFT(calibration.left_90, &motorL, &motorR);
+            }
+            else if(Color_Value == 3){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                turnLEFT(calibration.left_90, &motorL, &motorR);
+                turnLEFT(calibration.left_90, &motorL, &motorR);
+            }
+        }
+
+
+
+         char senddata[20];
+
+         for (int i = 0; i < 10; i++) {
+            sprintf(senddata, "%u, ", Operation_History[i]);
+            sendStringSerial4(senddata);
+            _delay((unsigned long)((50)*(64000000/4000.0)));
+        }
+
 
     }
 }

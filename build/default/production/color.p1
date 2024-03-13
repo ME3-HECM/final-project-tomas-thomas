@@ -102,12 +102,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "43
 [; ;./i2c.h: 43: unsigned char I2C_2_Master_Read(unsigned char ack);
 [v _I2C_2_Master_Read `(uc ~T0 @X0 0 ef1`uc ]
-"121 C:\Program Files\Microchip\xc8\v2.45\pic\include\c99\stdio.h
-[; ;C:\Program Files\Microchip\xc8\v2.45\pic\include\c99\stdio.h: 121: int sprintf(char *restrict, const char *restrict, ...);
-[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"26 ./serial.h
-[; ;./serial.h: 26: void sendStringSerial4(char *string);
-[v _sendStringSerial4 `(v ~T0 @X0 0 ef1`*uc ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 54: __asm("PPSLOCK equ 0DEFh");
 [; <" PPSLOCK equ 0DEFh ;# ">
@@ -2082,36 +2076,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40592
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 40592: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"13 ./serial.h
-[; ;./serial.h: 13: volatile char EUSART4RXbuf[20];
-[v _EUSART4RXbuf `Vuc ~T0 @X0 -> 20 `i e ]
-"14
-[; ;./serial.h: 14: volatile char RxBufWriteCnt=0;
-[v _RxBufWriteCnt `Vuc ~T0 @X0 1 e ]
-[i _RxBufWriteCnt
--> -> 0 `i `uc
-]
-"15
-[; ;./serial.h: 15: volatile char RxBufReadCnt=0;
-[v _RxBufReadCnt `Vuc ~T0 @X0 1 e ]
-[i _RxBufReadCnt
--> -> 0 `i `uc
-]
-"17
-[; ;./serial.h: 17: volatile char EUSART4TXbuf[60];
-[v _EUSART4TXbuf `Vuc ~T0 @X0 -> 60 `i e ]
-"18
-[; ;./serial.h: 18: volatile char TxBufWriteCnt=0;
-[v _TxBufWriteCnt `Vuc ~T0 @X0 1 e ]
-[i _TxBufWriteCnt
--> -> 0 `i `uc
-]
-"19
-[; ;./serial.h: 19: volatile char TxBufReadCnt=0;
-[v _TxBufReadCnt `Vuc ~T0 @X0 1 e ]
-[i _TxBufReadCnt
--> -> 0 `i `uc
-]
 "7 color.c
 [; ;color.c: 7: void color_click_init(void)
 [v _color_click_init `(v ~T0 @X0 1 ef ]
@@ -2617,18 +2581,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2042 ]
 [e :U 2040 ]
 [e :U 2038 ]
-"216
-[; ;color.c: 216:     char senddata[25];
-[v _senddata `uc ~T0 @X0 -> 25 `i a ]
-"217
-[; ;color.c: 217:     sprintf(senddata,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color);
-[e ( _sprintf (1 , , , , (. , &U _senddata :s 1C -> _H `d -> _S `d -> _V `d _card_color ]
-"218
-[; ;color.c: 218:     sendStringSerial4(senddata);
-[e ( _sendStringSerial4 (1 &U _senddata ]
-"219
-[; ;color.c: 219:     _delay((unsigned long)((50)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "222
 [; ;color.c: 222:     return card_color;
 [e ) _card_color ]
@@ -2637,5 +2589,3 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;color.c: 223: }
 [e :UE 2036 ]
 }
-[p f _sprintf 8463360 ]
-[a 1C 72 58 37 46 50 102 32 83 58 32 37 46 50 102 32 86 58 32 37 46 50 102 32 67 58 37 117 0 ]

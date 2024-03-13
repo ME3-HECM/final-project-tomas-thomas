@@ -128,6 +128,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 "29
 [; ;./dc_motor_v1.h: 29: void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 [v _forward `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
+"12 ./color.h
+[; ;./color.h: 12: void color_click_init(void);
+[v _color_click_init `(v ~T0 @X0 0 ef ]
+"23 ./serial.h
+[; ;./serial.h: 23: void initUSART4(void);
+[v _initUSART4 `(v ~T0 @X0 0 ef ]
+[v F205 `(v ~T0 @X0 1 tf1`ul ]
+"20 C:\Program Files\Microchip\xc8\v2.45\pic\include\builtins.h
+[v __delay `JF205 ~T0 @X0 0 e ]
+[p i __delay ]
+"44 ./color.h
+[; ;./color.h: 44: unsigned int color_cardCheck(void);
+[v _color_cardCheck `(ui ~T0 @X0 0 ef ]
+"121 C:\Program Files\Microchip\xc8\v2.45\pic\include\c99\stdio.h
+[; ;C:\Program Files\Microchip\xc8\v2.45\pic\include\c99\stdio.h: 121: int sprintf(char *restrict, const char *restrict, ...);
+[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
+"26 ./serial.h
+[; ;./serial.h: 26: void sendStringSerial4(char *string);
+[v _sendStringSerial4 `(v ~T0 @X0 0 ef1`*uc ]
 "2 main.c
 [p x FEXTOSC  =  HS      ]
 "3
@@ -2123,6 +2142,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 "20 ./calibration.h
 [; ;./calibration.h: 20: struct calibration_structure calibration;
 [v _calibration `S2016 ~T0 @X0 1 e ]
+"13 ./serial.h
+[; ;./serial.h: 13: volatile char EUSART4RXbuf[20];
+[v _EUSART4RXbuf `Vuc ~T0 @X0 -> 20 `i e ]
+"14
+[; ;./serial.h: 14: volatile char RxBufWriteCnt=0;
+[v _RxBufWriteCnt `Vuc ~T0 @X0 1 e ]
+[i _RxBufWriteCnt
+-> -> 0 `i `uc
+]
+"15
+[; ;./serial.h: 15: volatile char RxBufReadCnt=0;
+[v _RxBufReadCnt `Vuc ~T0 @X0 1 e ]
+[i _RxBufReadCnt
+-> -> 0 `i `uc
+]
+"17
+[; ;./serial.h: 17: volatile char EUSART4TXbuf[60];
+[v _EUSART4TXbuf `Vuc ~T0 @X0 -> 60 `i e ]
+"18
+[; ;./serial.h: 18: volatile char TxBufWriteCnt=0;
+[v _TxBufWriteCnt `Vuc ~T0 @X0 1 e ]
+[i _TxBufWriteCnt
+-> -> 0 `i `uc
+]
+"19
+[; ;./serial.h: 19: volatile char TxBufReadCnt=0;
+[v _TxBufReadCnt `Vuc ~T0 @X0 1 e ]
+[i _TxBufReadCnt
+-> -> 0 `i `uc
+]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "18 main.c
 [; ;main.c: 18: void main(void){
@@ -2198,8 +2247,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 55:     ANSELFbits.ANSELF3=0;
 [e = . . _ANSELFbits 0 3 -> -> 0 `i `uc ]
 "59
-[; ;main.c: 59:     calibration.index = 1;
-[e = . _calibration 0 -> -> 1 `i `uc ]
+[; ;main.c: 59:     calibration.index = 4;
+[e = . _calibration 0 -> -> 4 `i `uc ]
 "60
 [; ;main.c: 60:     calibration.over = 0;
 [e = . _calibration 1 -> -> 0 `i `uc ]
@@ -2207,8 +2256,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 66:     calibration.left_90 = 60;
 [e = . _calibration 2 -> -> 60 `i `uc ]
 "67
-[; ;main.c: 67:     calibration.right_90 = 10;
-[e = . _calibration 3 -> -> 10 `i `uc ]
+[; ;main.c: 67:     calibration.right_90 = 60;
+[e = . _calibration 3 -> -> 60 `i `uc ]
 "68
 [; ;main.c: 68:     calibration.left_135 = 60;
 [e = . _calibration 4 -> -> 60 `i `uc ]
@@ -2224,79 +2273,248 @@ Version 4.0 HI-TECH Software Intermediate Code
 "72
 [; ;main.c: 72:     calibration.forward_motorR = 20;
 [e = . _calibration 8 -> -> 20 `i `uc ]
-"79
-[; ;main.c: 79:     while(1){
+"77
+[; ;main.c: 77:     while(1){
 [e :U 2021 ]
 {
-"83
-[; ;main.c: 83:         if(calibration.index == 1){
+"81
+[; ;main.c: 81:         if(calibration.index == 1){
 [e $ ! == -> . _calibration 0 `i -> 1 `i 2023  ]
 {
-"84
-[; ;main.c: 84:             adjust_calibration(&calibration.right_90);
+"82
+[; ;main.c: 82:             adjust_calibration(&calibration.right_90);
 [e ( _adjust_calibration (1 -> &U . _calibration 3 `*i ]
-"85
-[; ;main.c: 85:             turnRIGHT(calibration.right_90, &motorL, &motorR);
+"83
+[; ;main.c: 83:             turnRIGHT(calibration.right_90, &motorL, &motorR);
 [e ( _turnRIGHT (3 , , . _calibration 3 &U _motorL &U _motorR ]
-"86
-[; ;main.c: 86:             switch_calibration(&calibration.index);
+"84
+[; ;main.c: 84:             switch_calibration(&calibration.index);
 [e ( _switch_calibration (1 -> &U . _calibration 0 `*i ]
-"87
-[; ;main.c: 87:         }
+"85
+[; ;main.c: 85:         }
 }
 [e :U 2023 ]
-"90
-[; ;main.c: 90:         if(calibration.index == 2){
+"88
+[; ;main.c: 88:         if(calibration.index == 2){
 [e $ ! == -> . _calibration 0 `i -> 2 `i 2024  ]
 {
-"91
-[; ;main.c: 91:             adjust_calibration(&calibration.left_90);
+"89
+[; ;main.c: 89:             adjust_calibration(&calibration.left_90);
 [e ( _adjust_calibration (1 -> &U . _calibration 2 `*i ]
-"92
-[; ;main.c: 92:             turnLEFT(calibration.left_90, &motorL, &motorR);
+"90
+[; ;main.c: 90:             turnLEFT(calibration.left_90, &motorL, &motorR);
 [e ( _turnLEFT (3 , , . _calibration 2 &U _motorL &U _motorR ]
-"93
-[; ;main.c: 93:             switch_calibration(&calibration.index);
+"91
+[; ;main.c: 91:             switch_calibration(&calibration.index);
 [e ( _switch_calibration (1 -> &U . _calibration 0 `*i ]
-"94
-[; ;main.c: 94:         }
+"92
+[; ;main.c: 92:         }
 }
 [e :U 2024 ]
-"97
-[; ;main.c: 97:         if(calibration.index == 3){
+"95
+[; ;main.c: 95:         if(calibration.index == 3){
 [e $ ! == -> . _calibration 0 `i -> 3 `i 2025  ]
 {
-"98
-[; ;main.c: 98:             adjust_calibration(&calibration.forward);
+"96
+[; ;main.c: 96:             adjust_calibration(&calibration.forward);
 [e ( _adjust_calibration (1 -> &U . _calibration 6 `*i ]
-"99
-[; ;main.c: 99:             forward(calibration.forward, &motorL, &motorR);
+"97
+[; ;main.c: 97:             forward(calibration.forward, &motorL, &motorR);
 [e ( _forward (3 , , . _calibration 6 &U _motorL &U _motorR ]
-"100
-[; ;main.c: 100:             switch_calibration(&calibration.index);
+"98
+[; ;main.c: 98:             switch_calibration(&calibration.index);
 [e ( _switch_calibration (1 -> &U . _calibration 0 `*i ]
-"101
-[; ;main.c: 101:         }
+"99
+[; ;main.c: 99:         }
 }
 [e :U 2025 ]
-"108
-[; ;main.c: 108:         if(calibration.index == 4){
+"106
+[; ;main.c: 106:         if(calibration.index == 4){
 [e $ ! == -> . _calibration 0 `i -> 4 `i 2026  ]
 {
-"110
-[; ;main.c: 110:             break;
+"108
+[; ;main.c: 108:             break;
 [e $U 2022  ]
-"111
-[; ;main.c: 111:         }
+"109
+[; ;main.c: 109:         }
 }
 [e :U 2026 ]
-"113
-[; ;main.c: 113:     }
+"110
+[; ;main.c: 110:     }
 }
 [e :U 2020 ]
 [e $U 2021  ]
 [e :U 2022 ]
 "114
-[; ;main.c: 114: }
+[; ;main.c: 114:     char Operation_Count = 0;
+[v _Operation_Count `uc ~T0 @X0 1 a ]
+[e = _Operation_Count -> -> 0 `i `uc ]
+"115
+[; ;main.c: 115:     char Forward_Count = 0;
+[v _Forward_Count `uc ~T0 @X0 1 a ]
+[e = _Forward_Count -> -> 0 `i `uc ]
+[v F14550 `uc ~T0 @X0 -> 20 `i s ]
+[i F14550
+:U ..
+"116
+[; ;main.c: 116:     char Operation_History[20] = {0};
+-> -> 0 `i `uc
+..
+]
+[v _Operation_History `uc ~T0 @X0 -> 20 `i a ]
+[e = _Operation_History F14550 ]
+"117
+[; ;main.c: 117:     int Color_Value;
+[v _Color_Value `i ~T0 @X0 1 a ]
+"119
+[; ;main.c: 119:     color_click_init();
+[e ( _color_click_init ..  ]
+"120
+[; ;main.c: 120:     initUSART4();
+[e ( _initUSART4 ..  ]
+"124
+[; ;main.c: 124:     _delay((unsigned long)((1000)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"128
+[; ;main.c: 128:     while(1){
+[e :U 2028 ]
+{
+"129
+[; ;main.c: 129:         LATHbits.LATH3 = 1;
+[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
+"130
+[; ;main.c: 130:         LATDbits.LATD7 = 1;
+[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+"134
+[; ;main.c: 134:         _delay((unsigned long)((1000)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"135
+[; ;main.c: 135:         Forward_Count++;
+[e ++ _Forward_Count -> -> 1 `i `uc ]
+"136
+[; ;main.c: 136:         Color_Value = color_cardCheck();
+[e = _Color_Value -> ( _color_cardCheck ..  `i ]
+"138
+[; ;main.c: 138:         LATHbits.LATH3 = 0;
+[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
+"139
+[; ;main.c: 139:         LATDbits.LATD7 = 0;
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+"140
+[; ;main.c: 140:         _delay((unsigned long)((1000)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"142
+[; ;main.c: 142:         if(Color_Value != 0){
+[e $ ! != _Color_Value -> 0 `i 2030  ]
+{
+"143
+[; ;main.c: 143:             Operation_History[Operation_Count] = Forward_Count + 10;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> + -> _Forward_Count `i -> 10 `i `uc ]
+"144
+[; ;main.c: 144:             Forward_Count = 0;
+[e = _Forward_Count -> -> 0 `i `uc ]
+"145
+[; ;main.c: 145:             Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"147
+[; ;main.c: 147:             if(Color_Value == 1){
+[e $ ! == _Color_Value -> 1 `i 2031  ]
+{
+"148
+[; ;main.c: 148:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
+"149
+[; ;main.c: 149:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"150
+[; ;main.c: 150:                 turnRIGHT(calibration.right_90, &motorL, &motorR);
+[e ( _turnRIGHT (3 , , . _calibration 3 &U _motorL &U _motorR ]
+"151
+[; ;main.c: 151:             }
+}
+[e $U 2032  ]
+"153
+[; ;main.c: 153:             else if(Color_Value == 2){
+[e :U 2031 ]
+[e $ ! == _Color_Value -> 2 `i 2033  ]
+{
+"154
+[; ;main.c: 154:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
+"155
+[; ;main.c: 155:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"156
+[; ;main.c: 156:                 turnLEFT(calibration.left_90, &motorL, &motorR);
+[e ( _turnLEFT (3 , , . _calibration 2 &U _motorL &U _motorR ]
+"157
+[; ;main.c: 157:             }
+}
+[e $U 2034  ]
+"158
+[; ;main.c: 158:             else if(Color_Value == 3){
+[e :U 2033 ]
+[e $ ! == _Color_Value -> 3 `i 2035  ]
+{
+"159
+[; ;main.c: 159:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
+"160
+[; ;main.c: 160:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"161
+[; ;main.c: 161:                 turnLEFT(calibration.left_90, &motorL, &motorR);
+[e ( _turnLEFT (3 , , . _calibration 2 &U _motorL &U _motorR ]
+"162
+[; ;main.c: 162:                 turnLEFT(calibration.left_90, &motorL, &motorR);
+[e ( _turnLEFT (3 , , . _calibration 2 &U _motorL &U _motorR ]
+"163
+[; ;main.c: 163:             }
+}
+[e :U 2035 ]
+[e :U 2034 ]
+[e :U 2032 ]
+"164
+[; ;main.c: 164:         }
+}
+[e :U 2030 ]
+"168
+[; ;main.c: 168:          char senddata[20];
+[v _senddata `uc ~T0 @X0 -> 20 `i a ]
+"170
+[; ;main.c: 170:          for (int i = 0; i < 10; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 10 `i 2036  ]
+[e $U 2037  ]
+[e :U 2036 ]
+{
+"171
+[; ;main.c: 171:             sprintf(senddata, "%u, ", Operation_History[i]);
+[e ( _sprintf (1 , (. , &U _senddata :s 1C -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i ]
+"172
+[; ;main.c: 172:             sendStringSerial4(senddata);
+[e ( _sendStringSerial4 (1 &U _senddata ]
+"173
+[; ;main.c: 173:             _delay((unsigned long)((50)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"174
+[; ;main.c: 174:         }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 10 `i 2036  ]
+[e :U 2037 ]
+}
+"177
+[; ;main.c: 177:     }
+}
+[e :U 2027 ]
+[e $U 2028  ]
+[e :U 2029 ]
+"178
+[; ;main.c: 178: }
 [e :UE 2019 ]
 }
+[p f _sprintf 8389632 ]
+[a 1C 37 117 44 32 0 ]

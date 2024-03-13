@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "color.h"
 #include "i2c.h"
-#include "serial.h"
+//#include "serial.h"
 
 void color_click_init(void)
 {   
@@ -213,10 +213,10 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     
     //---------------------USE FOR TESTING WITH SERIAL AND LAPTOP - DETERMINE CARD HSV VALUES------------------------------------------
     // Create a string with color information and send it via serial communication for testing
-    char senddata[25]; //Empty char to hold string data
-    sprintf(senddata,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color);
-    sendStringSerial4(senddata);
-    __delay_ms(50); //required delay
+//    char senddata[25]; //Empty char to hold string data
+//    sprintf(senddata,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color);
+//    sendStringSerial4(senddata);
+//    __delay_ms(50); //required delay
 //---------------------------------------------------------------------------------------------------------------------------------
     
     return card_color; //output the determined color from the function

@@ -11,7 +11,7 @@
 #include "calibration.h"
 #include "color.h"
 #include <stdio.h>
-
+#include "serial.h"
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 
@@ -56,7 +56,7 @@ void main(void){
     
  //~~~~~~~~~~~~~~ Calibration variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    
-    calibration.index = 1;  // tracking function set up commands the be 1, 2, 3, 4, 5, 6 etc. and then its reverse to be the negative value of it.
+    calibration.index = 4;  // tracking function set up commands the be 1, 2, 3, 4, 5, 6 etc. and then its reverse to be the negative value of it.
     calibration.over = 0;
         // 1 = forward,     -1 = backward
         // 2 = right,       -2 = left
@@ -64,17 +64,15 @@ void main(void){
         // read the array backwardss, with a -1 sign, extra zeros in the array get skipped 
     
     calibration.left_90 = 60;
-    calibration.right_90 = 10;
+    calibration.right_90 = 60;
     calibration.left_135 = 60;
     calibration.right_135 = 10;
     calibration.forward = 10;
     calibration.forward_motorL = 20;
     calibration.forward_motorR = 20;
     
-    
-   
-    
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+//~~~~~~~~~~~~~~~ Calibration Code ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     while(1){ //calibration selecting loop
 //        while (calibration.over < 2){
@@ -108,11 +106,72 @@ void main(void){
         if(calibration.index == 4){
 //            calibration.index = 1; 
             break; //quits us out of the calibration routine
-        }
-        
+        }     
     }
-}      
+      
                     
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~ Maze Finding Code ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    char Operation_Count = 0;
+    char Forward_Count = 0;
+    char Operation_History[20] = {0}; //20 slots
+    int Color_Value;
+    
+    color_click_init();
+    initUSART4();
+    
+        //look into pointers and arrays if need requires
+    
+    __delay_ms(1000); //delay between calibration and operation
+    
+    // there's some way to input a calibration struture 
+    
+    while(1){
+        LATHbits.LATH3 = 1;
+        LATDbits.LATD7 = 1; 
 
-
+        //inverse array function
+//        forward(calibration.forward, &motorL, &motorR);
+        __delay_ms(1000);
+        Forward_Count++;
+        Color_Value = color_cardCheck(); //reutrns 1 to 8 integer value
+        
+        LATHbits.LATH3 = 0;
+        LATDbits.LATD7 = 0;
+        __delay_ms(1000);
+        
+        if(Color_Value != 0){//detects a colour  
+            Operation_History[Operation_Count] = Forward_Count + 10;    //10 offset for reasons
+            Forward_Count = 0;
+            Operation_Count++;
+                    
+            if(Color_Value == 1){ //detects that it is red - turn right 90
+                Operation_History[Operation_Count] = Color_Value;    //1 = red value 
+                Operation_Count++;
+                turnRIGHT(calibration.right_90, &motorL, &motorR); 
+            }
+            
+            else if(Color_Value == 2){ //detects that it is green - turn left 90
+                Operation_History[Operation_Count] = Color_Value;    //1 = red value 
+                Operation_Count++;
+                turnLEFT(calibration.left_90, &motorL, &motorR); 
+            }
+            else if(Color_Value == 3){ //detects that it is blue - turn 180                     some calibration issues
+                Operation_History[Operation_Count] = Color_Value;    //1 = red value 
+                Operation_Count++;
+                turnLEFT(calibration.left_90, &motorL, &motorR);
+                turnLEFT(calibration.left_90, &motorL, &motorR);
+            }
+        }  
+    
+            //--------------------- SERIAL COMMUNICATION ------------------------------------------
+         char senddata[20]; //Empty char to hold string data
+         
+         for (int i = 0; i < 10; i++) {
+            sprintf(senddata, "%u, ", Operation_History[i]);
+            sendStringSerial4(senddata);
+            __delay_ms(50); // Required delay
+        }
+         
+        //--------------------------------------
+    }        
+}          
