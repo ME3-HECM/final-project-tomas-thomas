@@ -243,7 +243,7 @@ bssCOMRAM 1 30 COMRAM 1 1
 text0 E02 114C CODE E02 0
 %locals
 dist/default/production\final-project-tomas-thomas.X.production.o
-C:\Users\tjhla\AppData\Local\Temp\xcAsn7o.\driver_tmp_1.s
+C:\Users\tjhla\AppData\Local\Temp\xcAs19ok.\driver_tmp_1.s
 5461 1128 0 CODE 0
 5463 1128 0 CODE 0
 5466 1128 0 CODE 0
@@ -317,7 +317,7 @@ C:\Users\tjhla\AppData\Local\Temp\xcAsn7o.\driver_tmp_1.s
 131 FA8 0 CODE 0
 132 FB0 0 CODE 0
 147 FBE 0 CODE 0
-../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c
+../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c
 5 1094 0 CODE 0
 7 1094 0 CODE 0
 8 1096 0 CODE 0

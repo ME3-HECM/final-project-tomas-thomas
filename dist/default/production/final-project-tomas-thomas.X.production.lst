@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Fri Mar 08 16:56:08 2024
+                                                                                               Wed Mar 13 15:09:37 2024
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	18F67K40
@@ -70,36 +70,36 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
     56                           
     57                           ;initializer for _temp
     58   00114C  07                 	db	7
-    59   000000                     _TRISFbits	set	3974
-    60   000000                     _LATDbits	set	3964
-    61   000000                     _TRISDbits	set	3972
-    62   000000                     _TRISGbits	set	3975
+    59   000000                     _TRISGbits	set	3975
+    60   000000                     _TRISEbits	set	3973
+    61   000000                     _TRISFbits	set	3974
+    62   000000                     _TRISHbits	set	3976
     63   000000                     _RC7PPS	set	3689
     64   000000                     _RE2PPS	set	3700
-    65   000000                     _LATCbits	set	3963
-    66   000000                     _LATEbits	set	3965
-    67   000000                     _TRISCbits	set	3971
-    68   000000                     _TRISEbits	set	3973
-    69   000000                     _PORTFbits	set	3982
-    70   000000                     _TRISHbits	set	3976
-    71   000000                     _T2PR	set	4028
-    72   000000                     _T2CONbits	set	4029
-    73   000000                     _CCPR2H	set	4006
-    74   000000                     _CCPR1H	set	4010
-    75   000000                     _LATGbits	set	3967
-    76   000000                     _LATHbits	set	3968
-    77   000000                     _RE4PPS	set	3702
-    78   000000                     _RG6PPS	set	3720
-    79   000000                     _ANSELFbits	set	3764
-    80   000000                     _CCPR4H	set	3873
-    81   000000                     _CCPR3H	set	3877
-    82   000000                     _T2CLKCONbits	set	4031
-    83   000000                     _T2HLTbits	set	4030
-    84   000000                     _CCP1CONbits	set	4011
-    85   000000                     _CCPTMRS0bits	set	4013
-    86   000000                     _CCP2CONbits	set	4007
-    87   000000                     _CCP3CONbits	set	3878
-    88   000000                     _CCP4CONbits	set	3874
+    65   000000                     _ANSELFbits	set	3764
+    66   000000                     _CCPR4H	set	3873
+    67   000000                     _CCPR3H	set	3877
+    68   000000                     _CCPR2H	set	4006
+    69   000000                     _CCPR1H	set	4010
+    70   000000                     _CCP1CONbits	set	4011
+    71   000000                     _CCPTMRS0bits	set	4013
+    72   000000                     _T2PR	set	4028
+    73   000000                     _T2CONbits	set	4029
+    74   000000                     _CCP2CONbits	set	4007
+    75   000000                     _CCP3CONbits	set	3878
+    76   000000                     _LATCbits	set	3963
+    77   000000                     _LATDbits	set	3964
+    78   000000                     _TRISDbits	set	3972
+    79   000000                     _CCP4CONbits	set	3874
+    80   000000                     _LATGbits	set	3967
+    81   000000                     _LATEbits	set	3965
+    82   000000                     _LATHbits	set	3968
+    83   000000                     _PORTFbits	set	3982
+    84   000000                     _TRISCbits	set	3971
+    85   000000                     _RE4PPS	set	3702
+    86   000000                     _RG6PPS	set	3720
+    87   000000                     _T2CLKCONbits	set	4031
+    88   000000                     _T2HLTbits	set	4030
     89                           
     90                           ; #config settings
     91                           
@@ -366,7 +366,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    343   000E7E  EF43  F007         	goto	u411
    344   000E82  EF45  F007         	goto	u410
    345   000E86                     u411:
-   346   000E86  EF7B  F007         	goto	l177
+   346   000E86  EF7B  F007         	goto	l48
    347   000E8A                     u410:
    348   000E8A                     
    349                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 80:             for(int j = 0; j< calibr
@@ -375,7 +375,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    351   000E8C  6E2F               	movwf	(main@j+1)^0,c
    352   000E8E  0E00               	movlw	0
    353   000E90  6E2E               	movwf	main@j^0,c
-   354   000E92  EF67  F007         	goto	l178
+   354   000E92  EF67  F007         	goto	l49
    355   000E96                     l1396:
    356                           
    357                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 81:             _delay((unsigned long)((
@@ -419,7 +419,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    393                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 85:             }
    394   000ECA  4A2E               	infsnz	main@j^0,f,c
    395   000ECC  2A2F               	incf	(main@j+1)^0,f,c
-   396   000ECE                     l178:
+   396   000ECE                     l49:
    397   000ECE  5021               	movf	_calibration^0,w,c
    398   000ED0  6E2B               	movwf	??_main^0,c
    399   000ED2  6A2C               	clrf	(??_main+1)^0,c
@@ -438,7 +438,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    412   000EEE  EF4B  F007         	goto	l1396
    413   000EF2                     u420:
    414   000EF2  EFA9  F007         	goto	l1418
-   415   000EF6                     l177:
+   415   000EF6                     l48:
    416                           
    417                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 89:         if(!PORTFbits.RF3){
    418   000EF6  B68E               	btfsc	142,3,c	;volatile
@@ -520,7 +520,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    490   000F6C                     u461:
    491   000F6C  EFBA  F007         	goto	l1424
    492   000F70                     u460:
-   493   000F70  EFDF  F007         	goto	l198
+   493   000F70  EFDF  F007         	goto	l69
    494   000F74                     l1424:
    495                           
    496                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 117:         if(calibration.index == 1){
@@ -538,10 +538,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    507   000F86  EFC7  F007         	goto	u481
    508   000F8A  EFC9  F007         	goto	u480
    509   000F8E                     u481:
-   510   000F8E  EFCB  F007         	goto	l191
+   510   000F8E  EFCB  F007         	goto	l62
    511   000F92                     u480:
-   512   000F92  EFDF  F007         	goto	l198
-   513   000F96                     l191:
+   512   000F92  EFDF  F007         	goto	l69
+   513   000F96                     l62:
    514   000F96                     l1440:
    515                           
    516                           ;../lab-6-motors-and-pwm-tomas-thomas.X/main.c: 130:         if(calibration.index == 2){
@@ -568,14 +568,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    535   000FBA                     u501:
    536   000FBA  EFA9  F007         	goto	l1418
    537   000FBE                     u500:
-   538   000FBE                     l198:
+   538   000FBE                     l69:
    539   000FBE  EF00  F000         	goto	start
    540   000FC2                     __end_of_main:
    541                           	callstack 0
    542                           
    543 ;; *************** function _initDCmotorsPWM *****************
    544 ;; Defined at:
-   545 ;;		line 5 in file "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c"
+   545 ;;		line 5 in file "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c"
    546 ;; Parameters:    Size  Location     Type
    547 ;;  PWMperiod       2    0[COMRAM] unsigned int 
    548 ;; Auto vars:     Size  Location     Type
@@ -613,166 +613,170 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    575   001094                     _initDCmotorsPWM:
    576                           	callstack 30
    577   001094                     
-   578                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 7:     TRISEbits.TRISE2 = 0;
+   578                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 7:     TRISEbits.TRISE2 = 0;
    579   001094  9485               	bcf	133,2,c	;volatile
    580                           
-   581                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 8:     TRISEbits.TRISE4 = 0;
+   581                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 8:     TRISEbits.TRISE4 = 0;
    582   001096  9885               	bcf	133,4,c	;volatile
    583                           
-   584                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 9:     TRISCbits.TRISC7 = 0;
+   584                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 9:     TRISCbits.TRISC7 = 0;
    585   001098  9E83               	bcf	131,7,c	;volatile
    586                           
-   587                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 10:     TRISGbits.TRISG6 = 0;
+   587                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 10:     TRISGbits.TRISG6 = 0;
    588   00109A  9C87               	bcf	135,6,c	;volatile
    589                           
-   590                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 12:     LATEbits.LATE2 = 0;
+   590                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 12:     LATEbits.LATE2 = 0;
    591   00109C  947D               	bcf	125,2,c	;volatile
    592                           
-   593                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 13:     LATEbits.LATE4 = 0;
+   593                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 13:     LATEbits.LATE4 = 0;
    594   00109E  987D               	bcf	125,4,c	;volatile
    595                           
-   596                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 14:     LATCbits.LATC7 = 0;
+   596                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 14:     LATCbits.LATC7 = 0;
    597   0010A0  9E7B               	bcf	123,7,c	;volatile
    598                           
-   599                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 15:     LATGbits.LATG6 = 0;
+   599                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 15:     LATGbits.LATG6 = 0;
    600   0010A2  9C7F               	bcf	127,6,c	;volatile
    601   0010A4                     
-   602                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 18:     RE2PPS=0x05;
+   602                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 18:     RE2PPS=0x05;
    603   0010A4  0E05               	movlw	5
    604   0010A6  010E               	movlb	14	; () banked
    605   0010A8  6F74               	movwf	116,b	;volatile
    606                           
-   607                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 19:     RE4PPS=0x06;
+   607                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 19:     RE4PPS=0x06;
    608   0010AA  0E06               	movlw	6
    609   0010AC  6F76               	movwf	118,b	;volatile
    610                           
-   611                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 20:     RC7PPS=0x07;
+   611                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 20:     RC7PPS=0x07;
    612   0010AE  0E07               	movlw	7
    613   0010B0  6F69               	movwf	105,b	;volatile
    614                           
-   615                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 21:     RG6PPS=0x08;
+   615                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 21:     RG6PPS=0x08;
    616   0010B2  0E08               	movlw	8
    617   0010B4  6F88               	movwf	136,b	;volatile
    618                           
-   619                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 24:     T2CONbits.CKPS=100;
+   619                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 24:     T2CONbits.CKPS=100;
    620   0010B6  50BD               	movf	189,w,c	;volatile
    621   0010B8  0B8F               	andlw	-113
    622   0010BA  0940               	iorlw	64
    623   0010BC  6EBD               	movwf	189,c	;volatile
    624                           
-   625                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 25:     T2HLTbits.MODE=0b00000;
+   625                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 25:     T2HLTbits.MODE=0b00000;
    626   0010BE  0EE0               	movlw	-32
    627   0010C0  16BE               	andwf	190,f,c	;volatile
    628                           
-   629                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 26:     T2CLKCONbits.CS=0b0001;
+   629                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 26:     T2CLKCONbits.CS=0b0001;
    630   0010C2  50BF               	movf	191,w,c	;volatile
    631   0010C4  0BF0               	andlw	-16
    632   0010C6  0901               	iorlw	1
    633   0010C8  6EBF               	movwf	191,c	;volatile
    634   0010CA                     
    635                           ; BSR set to: 14
-   636                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 30:     T2PR=PWMperiod;
+   636                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 30:     T2PR=PWMperiod;
    637   0010CA  C026  FFBC         	movff	initDCmotorsPWM@PWMperiod,4028	;volatile
    638   0010CE                     
    639                           ; BSR set to: 14
-   640                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 31:     T2CONbits.ON=1;
+   640                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 31:     T2CONbits.ON=1;
    641   0010CE  8EBD               	bsf	189,7,c	;volatile
    642                           
-   643                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 35:     CCPR1H=0;
+   643                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 35:     CCPR1H=0;
    644   0010D0  0E00               	movlw	0
    645   0010D2  6EAA               	movwf	170,c	;volatile
    646                           
-   647                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 36:     CCPR2H=0;
+   647                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 36:     CCPR2H=0;
    648   0010D4  0E00               	movlw	0
    649   0010D6  6EA6               	movwf	166,c	;volatile
    650                           
-   651                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 37:     CCPR3H=0;
+   651                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 37:     CCPR3H=0;
    652   0010D8  0E00               	movlw	0
    653   0010DA  010F               	movlb	15	; () banked
    654   0010DC  6F25               	movwf	37,b	;volatile
    655                           
-   656                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 38:     CCPR4H=0;
+   656                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 38:     CCPR4H=0;
    657   0010DE  0E00               	movlw	0
    658   0010E0  6F21               	movwf	33,b	;volatile
    659                           
-   660                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 41:     CCPTMRS0bits.C1TSEL=0;
+   660                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 41:     CCPTMRS0bits.C1TSEL=0;
    661   0010E2  0EFC               	movlw	-4
    662   0010E4  16AD               	andwf	173,f,c	;volatile
    663                           
-   664                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 42:     CCPTMRS0bits.C2TSEL=0;
+   664                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 42:     CCPTMRS0bits.C2TSEL=0;
    665   0010E6  0EF3               	movlw	-13
    666   0010E8  16AD               	andwf	173,f,c	;volatile
    667                           
-   668                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 43:     CCPTMRS0bits.C3TSEL=0;
+   668                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 43:     CCPTMRS0bits.C3TSEL=0;
    669   0010EA  0ECF               	movlw	-49
    670   0010EC  16AD               	andwf	173,f,c	;volatile
    671                           
-   672                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 44:     CCPTMRS0bits.C4TSEL=0;
+   672                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 44:     CCPTMRS0bits.C4TSEL=0;
    673   0010EE  0E3F               	movlw	-193
    674   0010F0  16AD               	andwf	173,f,c	;volatile
    675   0010F2                     
    676                           ; BSR set to: 15
-   677                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 47:     CCP1CONbits.FMT=1;
+   677                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 47:     CCP1CONbits.FMT=1;
    678   0010F2  88AB               	bsf	171,4,c	;volatile
    679                           
-   680                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 48:     CCP1CONbits.CCP1MODE=0b1100;
+   680                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 48:     CCP1CONbits.CCP1MODE=0b11
+      +                          00;
    681   0010F4  50AB               	movf	171,w,c	;volatile
    682   0010F6  0BF0               	andlw	-16
    683   0010F8  090C               	iorlw	12
    684   0010FA  6EAB               	movwf	171,c	;volatile
    685   0010FC                     
    686                           ; BSR set to: 15
-   687                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 49:     CCP1CONbits.EN=1;
+   687                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 49:     CCP1CONbits.EN=1;
    688   0010FC  8EAB               	bsf	171,7,c	;volatile
    689   0010FE                     
    690                           ; BSR set to: 15
-   691                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 51:     CCP2CONbits.FMT=1;
+   691                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 51:     CCP2CONbits.FMT=1;
    692   0010FE  88A7               	bsf	167,4,c	;volatile
    693                           
-   694                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 52:     CCP2CONbits.CCP2MODE=0b1100;
+   694                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 52:     CCP2CONbits.CCP2MODE=0b11
+      +                          00;
    695   001100  50A7               	movf	167,w,c	;volatile
    696   001102  0BF0               	andlw	-16
    697   001104  090C               	iorlw	12
    698   001106  6EA7               	movwf	167,c	;volatile
    699   001108                     
    700                           ; BSR set to: 15
-   701                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 53:     CCP2CONbits.EN=1;
+   701                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 53:     CCP2CONbits.EN=1;
    702   001108  8EA7               	bsf	167,7,c	;volatile
    703   00110A                     
    704                           ; BSR set to: 15
-   705                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 55:     CCP3CONbits.FMT=1;
+   705                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 55:     CCP3CONbits.FMT=1;
    706   00110A  8926               	bsf	38,4,b	;volatile
    707                           
-   708                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 56:     CCP3CONbits.CCP3MODE=0b1100;
+   708                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 56:     CCP3CONbits.CCP3MODE=0b11
+      +                          00;
    709   00110C  5126               	movf	38,w,b	;volatile
    710   00110E  0BF0               	andlw	-16
    711   001110  090C               	iorlw	12
    712   001112  6F26               	movwf	38,b	;volatile
    713   001114                     
    714                           ; BSR set to: 15
-   715                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 57:     CCP3CONbits.EN=1;
+   715                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 57:     CCP3CONbits.EN=1;
    716   001114  8F26               	bsf	38,7,b	;volatile
    717   001116                     
    718                           ; BSR set to: 15
-   719                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 59:     CCP4CONbits.FMT=1;
+   719                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 59:     CCP4CONbits.FMT=1;
    720   001116  8922               	bsf	34,4,b	;volatile
    721                           
-   722                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 60:     CCP4CONbits.CCP4MODE=0b1100;
+   722                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 60:     CCP4CONbits.CCP4MODE=0b11
+      +                          00;
    723   001118  5122               	movf	34,w,b	;volatile
    724   00111A  0BF0               	andlw	-16
    725   00111C  090C               	iorlw	12
    726   00111E  6F22               	movwf	34,b	;volatile
    727   001120                     
    728                           ; BSR set to: 15
-   729                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 61:     CCP4CONbits.EN=1;
+   729                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 61:     CCP4CONbits.EN=1;
    730   001120  8F22               	bsf	34,7,b	;volatile
    731   001122                     
    732                           ; BSR set to: 15
-   733                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 64:     TRISHbits.TRISH3 = 0;
+   733                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 64:     TRISHbits.TRISH3 = 0;
    734   001122  9688               	bcf	136,3,c	;volatile
    735   001124                     
    736                           ; BSR set to: 15
-   737                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c: 65:     LATHbits.LATH3 = 0;
+   737                           ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c: 65:     LATHbits.LATH3 = 0;
    738   001124  9680               	bcf	128,3,c	;volatile
    739   001126                     
    740                           ; BSR set to: 15
@@ -889,7 +893,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    844   00102A  EF19  F008         	goto	u401
    845   00102E  EF1B  F008         	goto	u400
    846   001032                     u401:
-   847   001032  EF49  F008         	goto	l238
+   847   001032  EF49  F008         	goto	l109
    848   001036                     u400:
    849   001036                     
    850                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 15:         _delay((unsigned long
@@ -947,7 +951,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    900   001090                     
    901                           ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 19:         LATHbits.LATH3 = 0;
    902   001090  9680               	bcf	128,3,c	;volatile
-   903   001092                     l238:
+   903   001092                     l109:
    904   001092  0012               	return		;funcret
    905   001094                     __end_of_adjust_calibration:
    906                           	callstack 0
@@ -1067,88 +1071,88 @@ Pointer List with Targets:
 		 -> calibration(COMRAM[5]), 
 
     forward@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     forward@mL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     forward@mR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     forward@mR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     fullSpeedAhead@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     fullSpeedAhead@mL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     fullSpeedAhead@mR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     fullSpeedAhead@mR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     motorL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     motorL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     motorR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     motorR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     S24DC_motor$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     S24DC_motor$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     setMotorPWM@m$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     setMotorPWM@m$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     stop@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     stop@mL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     stop@mR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     stop@mR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     turnLEFT@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     turnLEFT@mL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     turnLEFT@mR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     turnLEFT@mR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     turnRIGHT@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     turnRIGHT@mL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
     turnRIGHT@mR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhllll[1]), CCPR4H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR2H(BITBIGSFRlllllll[1]), CCPR4H(BITBIGSFRlllllll[1]), 
 
     turnRIGHT@mR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhllll[1]), CCPR3H(BITBIGSFRllllhhhlll[1]), 
+		 -> CCPR1H(BITBIGSFRlllllll[1]), CCPR3H(BITBIGSFRlllllll[1]), 
 
 
 Critical Paths under _main in COMRAM
@@ -1269,23 +1273,23 @@ BANK13              EA      0       0      31        0.0%
 BITBANK0            A0      0       0       4        0.0%
 BANK0               A0      0       0       5        0.0%
 BITBIGSFRllllll     7A      0       0      47        0.0%
-BITBIGSFRllllhh     6C      0       0      42        0.0%
+BITBIGSFRllllh      6C      0       0      42        0.0%
 BITCOMRAM           5F      0       0       0        0.0%
 COMRAM              5F      A      30       1       50.5%
-BITBIGSFRllllhh     54      0       0      40        0.0%
-BITBIGSFRhhh        40      0       0      32        0.0%
-BITBIGSFRllllhh     2B      0       0      43        0.0%
-BITBIGSFRhhlllh     17      0       0      36        0.0%
-BITBIGSFRllllhh     11      0       0      44        0.0%
-BITBIGSFRhhlhh       E      0       0      33        0.0%
-BITBIGSFRlllllh      A      0       0      46        0.0%
-BITBIGSFRhhllll      5      0       0      37        0.0%
-BITBIGSFRllllhh      2      0       0      41        0.0%
-BITBIGSFRhhllh       2      0       0      35        0.0%
-BITBIGSFRllhh        2      0       0      38        0.0%
-BITBIGSFRhhlhl       1      0       0      34        0.0%
-BITBIGSFRllllhl      1      0       0      45        0.0%
-BITBIGSFRllhl        1      0       0      39        0.0%
+BITBIGSFRllhll      54      0       0      40        0.0%
+BITBIGSFRhh         40      0       0      32        0.0%
+BITBIGSFRlllllh     2B      0       0      43        0.0%
+BITBIGSFRllhhhh     17      0       0      36        0.0%
+BITBIGSFRlllllh     11      0       0      44        0.0%
+BITBIGSFRhlh         E      0       0      33        0.0%
+BITBIGSFRllllll      A      0       0      46        0.0%
+BITBIGSFRllhhhl      5      0       0      37        0.0%
+BITBIGSFRllhlhh      2      0       0      38        0.0%
+BITBIGSFRlllh        2      0       0      41        0.0%
+BITBIGSFRlh          2      0       0      35        0.0%
+BITBIGSFRlllllh      1      0       0      45        0.0%
+BITBIGSFRllhlhl      1      0       0      39        0.0%
+BITBIGSFRhll         1      0       0      34        0.0%
 BIGSFR               0      0       0     200        0.0%
 BITSFR_3             0      0       0     200        0.0%
 SFR_3                0      0       0     200        0.0%
@@ -1303,10 +1307,10 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Fri Mar 08 16:56:08 2024
+Symbol Table                                                                                   Wed Mar 13 15:09:37 2024
 
-                        l61 1126                         l238 1092                         l191 0F96  
-                       l177 0EF6                         l178 0ECE                         l198 0FBE  
+                        l62 0F96                          l48 0EF6                          l49 0ECE  
+                        l69 0FBE                         l109 1092                         l170 1126  
                        u400 1036                         u401 1032                         u410 0E8A  
                        u411 0E86                         u500 0FBE                         u420 0EF2  
                        u501 0FBA                         u421 0EEE                         u430 0F04  
