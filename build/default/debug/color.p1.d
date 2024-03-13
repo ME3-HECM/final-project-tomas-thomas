@@ -1,4 +1,4 @@
-build/default/production/color.p1:  \
+build/default/debug/color.p1:  \
 color.c  \
 color.h  \
 i2c.h  \

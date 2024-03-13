@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:build/default/production/dc_motor_v1.i
-# 1 "dc_motor_v1.c"
-========
 # 1 "serial.c"
->>>>>>>> Light-Sensing:build/default/production/serial.i
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -10,11 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-<<<<<<<< HEAD:build/default/production/dc_motor_v1.i
-# 1 "dc_motor_v1.c" 2
-========
 # 1 "serial.c" 2
->>>>>>>> Light-Sensing:build/default/production/serial.i
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24094,11 +24086,6 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-<<<<<<<< HEAD:build/default/production/dc_motor_v1.i
-# 1 "dc_motor_v1.c" 2
-
-# 1 "./dc_motor_v1.h" 1
-========
 # 1 "serial.c" 2
 
 # 1 "./serial.h" 1
@@ -24140,7 +24127,6 @@ void initUSART4(void) {
 
     SP4BRGL = 51;
     SP4BRGH = 0;
->>>>>>>> Light-Sensing:build/default/production/serial.i
 
 
 
@@ -24153,82 +24139,6 @@ void initUSART4(void) {
     RC4STAbits.SPEN = 1;
 
 
-<<<<<<<< HEAD:build/default/production/dc_motor_v1.i
-void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
-void delay_ms_function(unsigned int milliseconds);
-# 2 "dc_motor_v1.c" 2
-
-
-
-void initDCmotorsPWM(unsigned int PWMperiod){
-
-    TRISEbits.TRISE2 = 0;
-    TRISEbits.TRISE4 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISGbits.TRISG6 = 0;
-
-    LATEbits.LATE2 = 0;
-    LATEbits.LATE4 = 0;
-    LATCbits.LATC7 = 0;
-    LATGbits.LATG6 = 0;
-
-
-    RE2PPS=0x05;
-    RE4PPS=0x06;
-    RC7PPS=0x07;
-    RG6PPS=0x08;
-
-
-    T2CONbits.CKPS=100;
-    T2HLTbits.MODE=0b00000;
-    T2CLKCONbits.CS=0b0001;
-
-
-
-    T2PR=PWMperiod;
-    T2CONbits.ON=1;
-
-
-
-    CCPR1H=0;
-    CCPR2H=0;
-    CCPR3H=0;
-    CCPR4H=0;
-
-
-    CCPTMRS0bits.C1TSEL=0;
-    CCPTMRS0bits.C2TSEL=0;
-    CCPTMRS0bits.C3TSEL=0;
-    CCPTMRS0bits.C4TSEL=0;
-
-
-    CCP1CONbits.FMT=1;
-    CCP1CONbits.CCP1MODE=0b1100;
-    CCP1CONbits.EN=1;
-
-    CCP2CONbits.FMT=1;
-    CCP2CONbits.CCP2MODE=0b1100;
-    CCP2CONbits.EN=1;
-
-    CCP3CONbits.FMT=1;
-    CCP3CONbits.CCP3MODE=0b1100;
-    CCP3CONbits.EN=1;
-
-    CCP4CONbits.FMT=1;
-    CCP4CONbits.CCP4MODE=0b1100;
-    CCP4CONbits.EN=1;
-
-
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 0;
-}
-void delay_ms_function(unsigned int milliseconds) {
-    while (milliseconds > 0) {
-        _delay((unsigned long)((1)*(64000000/4000.0)));
-        milliseconds--;
-    }
-========
->>>>>>>> Light-Sensing:build/default/production/serial.i
 }
 
 
@@ -24245,78 +24155,11 @@ void sendCharSerial4(char charToSend) {
 
 
 
-<<<<<<<< HEAD:build/default/production/dc_motor_v1.i
-
-void stop(DC_motor *mL, DC_motor *mR){
-
-    mL->brakemode = 1;
-    mR->brakemode = 1;
-
-
-    while(mL->power || mR->power > 0){
-        if(mL->power > 0 ){
-            mL->power--;
-            setMotorPWM(mL);
-
-        }
-        if(mR->power > 0 ){
-            mR->power--;
-            setMotorPWM(mR);
-        }
-    _delay((unsigned long)((800)*(64000000/4000000.0)));
-    }
-}
-
-
-
-void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
-    mL->direction = 1;
-    mR->direction = 1;
-
-
-
-
-
-
-    int max_power = 20;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
-
-
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ;
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
-
-
-
-
-    for(int j=0; j<Distance_Calibration; j++){
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
-
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
-            mR->power--;
-        }
-        if(mL->power> 0 ){
-            mL->power--;
-        }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
-========
 void sendStringSerial4(char *string){
 
     while(*string != 0){
   sendCharSerial4(*string++);
  }
->>>>>>>> Light-Sensing:build/default/production/serial.i
 }
 
 
@@ -24329,21 +24172,11 @@ char getCharFromRxBuf(void){
     return EUSART4RXbuf[RxBufReadCnt++];
 }
 
-<<<<<<<< HEAD:build/default/production/dc_motor_v1.i
-
-
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
-    mL->direction = 1;
-    mR->direction = 0;
-========
->>>>>>>> Light-Sensing:build/default/production/serial.i
 
 void putCharToRxBuf(char byte){
     if (RxBufWriteCnt>=20) {RxBufWriteCnt=0;}
     EUSART4RXbuf[RxBufWriteCnt++]=byte;
 }
-<<<<<<<< HEAD:build/default/production/dc_motor_v1.i
-========
 
 
 
@@ -24382,4 +24215,3 @@ void TxBufferedString(char *string){
 void sendTxBuf(void){
     if (isDataInTxBuf()) {PIE4bits.TX4IE=1;}
 }
->>>>>>>> Light-Sensing:build/default/production/serial.i

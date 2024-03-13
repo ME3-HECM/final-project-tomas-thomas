@@ -56,7 +56,7 @@ unsigned char I2C_2_Master_Read(unsigned char ack)
   I2C_2_Master_Idle();
   tmp = SSP2BUF;                //Read data from SS2PBUF
   I2C_2_Master_Idle();
-  SSP2CON2bits.ACKDT = !ack;     // 0 turns on acknowledge data bit
+  SSP2CON2bits.ACKDT = !ack;     // 0 turns on acknowledge data bit (if ack = 0 -> this becomes a NACK (not-acknowledge bit) and so starting sequence below does not send an acknowledge bit - that's why this works. You don't need to send an acknowledge bit on the final read.)
   SSP2CON2bits.ACKEN = 1;        //start acknowledge sequence
   return tmp;
 }
