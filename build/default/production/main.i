@@ -1,4 +1,4 @@
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
+# 1 "main.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
+# 1 "main.c" 2
 
 #pragma config FEXTOSC = HS
 #pragma config RSTOSC = EXTOSC_4PLL
@@ -24095,54 +24095,9 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 9 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
+# 9 "main.c" 2
 
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.h" 1
-
-
-
-
-
-
-
-
-unsigned int on_period, off_period;
-
-void Interrupts_init(void);
-void __attribute__((picinterrupt(("high_priority")))) HighISR();
-
-void Timer0_init(void);
-void write16bitTMR0val(unsigned int);
-
-void angle2PWM(unsigned int angle);
-# 10 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/ADC.h" 1
-
-
-
-
-
-
-
-void ADC_init(void);
-unsigned int ADC_getval(void);
-# 11 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/LCD.h" 1
-# 17 "../lab-6-motors-and-pwm-tomas-thomas.X/LCD.h"
-void LCD_E_TOG(void);
-void LCD_sendnibble(unsigned char number);
-void LCD_sendbyte(unsigned char Byte, char type);
-void LCD_Init(void);
-void LCD_setline (char line);
-void LCD_sendstring(char *string);
-void LCD_scroll(void);
-void LCD_clear(void);
-void ADC2String(char *buf, unsigned int number);
-# 12 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.h" 1
+# 1 "./dc_motor_v1.h" 1
 
 
 
@@ -24173,9 +24128,9 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void delay_ms_function(unsigned int milliseconds);
-# 13 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
+# 10 "main.c" 2
 
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h" 1
+# 1 "./calibration.h" 1
 
 
 
@@ -24199,22 +24154,7 @@ struct calibration_structure calibration;
 
 void adjust_calibration(int *calibration_label);
 void switch_calibration(int *calibration_index);
-# 14 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.h" 1
-# 10 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.h"
-void calibration_general(unsigned int number);
-
-
-typedef struct calibration_variables {
-    unsigned int index;
-    unsigned int forward_left;
-    unsigned int forward_right;
-    unsigned int left_45;
-    unsigned int right_45;
-};
-struct calibration_variables motor_adjustments;
-# 15 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
+# 11 "main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
@@ -24368,7 +24308,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 16 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
+# 12 "main.c" 2
 
 
 
@@ -24457,7 +24397,7 @@ void main(void){
             forward(calibration.forward, &motorL, &motorR);
             switch_calibration(&calibration.index);
         }
-# 122 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
+# 118 "main.c"
         if(calibration.index == 5){
             calibration.index = 1;
             break;

@@ -1,4 +1,4 @@
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c"
+# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c" 2
+# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24086,9 +24086,9 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c" 2
+# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c" 2
 
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.h" 1
+# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.h" 1
 
 
 
@@ -24119,7 +24119,7 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void delay_ms_function(unsigned int milliseconds);
-# 2 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor.c" 2
+# 2 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c" 2
 
 
 
@@ -24217,6 +24217,7 @@ void setMotorPWM(DC_motor *m)
 
 
 
+
 void stop(DC_motor *mL, DC_motor *mR){
 
     mL->brakemode = 1;
@@ -24236,6 +24237,7 @@ void stop(DC_motor *mL, DC_motor *mR){
     _delay((unsigned long)((800)*(64000000/4000000.0)));
     }
 }
+
 
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
@@ -24317,6 +24319,8 @@ void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     }
 }
 
+
+
 void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 1;
     mR->direction = 0;
@@ -24351,24 +24355,4 @@ void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
         setMotorPWM(mL);
         delay_ms_function(delay_time);
     }
-}
-
-
-
-void fullSpeedAhead(DC_motor *mL, DC_motor *mR){
-
-
-
-
-    mL->direction = 1;
-    mR->direction = 1;
-
-    for(unsigned int i=0; i < 50; i++){
-        mL->power++;
-        mR->power++;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
 }

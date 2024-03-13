@@ -1,4 +1,4 @@
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
+# 1 "calibration.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,14 +6,10 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
+# 1 "calibration.c" 2
 
-#pragma config FEXTOSC = HS
-#pragma config RSTOSC = EXTOSC_4PLL
+# 1 "./calibration.h" 1
 
-
-#pragma config WDTCPS = WDTCPS_31
-#pragma config WDTE = OFF
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
@@ -24095,54 +24091,30 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 9 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/rc_servo.h" 1
+# 4 "./calibration.h" 2
 
 
 
 
+typedef struct calibration_structure {
+    char index;
+    char over;
+    char left_90;
+    char right_90;
+    char left_135;
+    char right_135;
+    char forward;
+    char forward_motorL;
+    char forward_motorR;
+} calibration_structure;
 
+struct calibration_structure calibration;
 
+void adjust_calibration(int *calibration_label);
+void switch_calibration(int *calibration_index);
+# 2 "calibration.c" 2
 
-
-unsigned int on_period, off_period;
-
-void Interrupts_init(void);
-void __attribute__((picinterrupt(("high_priority")))) HighISR();
-
-void Timer0_init(void);
-void write16bitTMR0val(unsigned int);
-
-void angle2PWM(unsigned int angle);
-# 10 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/ADC.h" 1
-
-
-
-
-
-
-
-void ADC_init(void);
-unsigned int ADC_getval(void);
-# 11 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/LCD.h" 1
-# 17 "../lab-6-motors-and-pwm-tomas-thomas.X/LCD.h"
-void LCD_E_TOG(void);
-void LCD_sendnibble(unsigned char number);
-void LCD_sendbyte(unsigned char Byte, char type);
-void LCD_Init(void);
-void LCD_setline (char line);
-void LCD_sendstring(char *string);
-void LCD_scroll(void);
-void LCD_clear(void);
-void ADC2String(char *buf, unsigned int number);
-# 12 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.h" 1
+# 1 "./dc_motor_v1.h" 1
 
 
 
@@ -24173,295 +24145,65 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void delay_ms_function(unsigned int milliseconds);
-# 13 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
+# 3 "calibration.c" 2
 
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h" 1
 
 
-
-
-
-
-
-typedef struct calibration_structure {
-    char index;
-    char over;
-    char left_90;
-    char right_90;
-    char left_135;
-    char right_135;
-    char forward;
-    char forward_motorL;
-    char forward_motorR;
-} calibration_structure;
-
-struct calibration_structure calibration;
-
-void adjust_calibration(int *calibration_label);
-void switch_calibration(int *calibration_index);
-# 14 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.h" 1
-# 10 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.h"
-void calibration_general(unsigned int number);
-
-
-typedef struct calibration_variables {
-    unsigned int index;
-    unsigned int forward_left;
-    unsigned int forward_right;
-    unsigned int left_45;
-    unsigned int right_45;
-};
-struct calibration_variables motor_adjustments;
-# 15 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
-# 24 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 1 3
-# 12 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef void * va_list[1];
-
-
-
-
-typedef void * __isoc_va_list[1];
-# 143 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef __int24 ssize_t;
-# 255 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long off_t;
-# 409 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef struct _IO_FILE FILE;
-# 25 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 2 3
-# 52 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
-typedef union _G_fpos64_t {
- char __opaque[16];
- double __align;
-} fpos_t;
-
-extern FILE *const stdin;
-extern FILE *const stdout;
-extern FILE *const stderr;
-
-
-
-
-
-FILE *fopen(const char *restrict, const char *restrict);
-FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
-int fclose(FILE *);
-
-int remove(const char *);
-int rename(const char *, const char *);
-
-int feof(FILE *);
-int ferror(FILE *);
-int fflush(FILE *);
-void clearerr(FILE *);
-
-int fseek(FILE *, long, int);
-long ftell(FILE *);
-void rewind(FILE *);
-
-int fgetpos(FILE *restrict, fpos_t *restrict);
-int fsetpos(FILE *, const fpos_t *);
-
-size_t fread(void *restrict, size_t, size_t, FILE *restrict);
-size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
-
-int fgetc(FILE *);
-int getc(FILE *);
-int getchar(void);
-
-
-
-
-
-int ungetc(int, FILE *);
-int getch(void);
-
-int fputc(int, FILE *);
-int putc(int, FILE *);
-int putchar(int);
-
-
-
-
-
-void putch(char);
-
-char *fgets(char *restrict, int, FILE *restrict);
-
-char *gets(char *);
-
-
-int fputs(const char *restrict, FILE *restrict);
-int puts(const char *);
-
-__attribute__((__format__(__printf__, 1, 2)))
-int printf(const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int fprintf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int sprintf(char *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 3, 4)))
-int snprintf(char *restrict, size_t, const char *restrict, ...);
-
-__attribute__((__format__(__printf__, 1, 0)))
-int vprintf(const char *restrict, __isoc_va_list);
-int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 2, 0)))
-int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 3, 0)))
-int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
-
-__attribute__((__format__(__scanf__, 1, 2)))
-int scanf(const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int fscanf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int sscanf(const char *restrict, const char *restrict, ...);
-
-__attribute__((__format__(__scanf__, 1, 0)))
-int vscanf(const char *restrict, __isoc_va_list);
-int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__scanf__, 2, 0)))
-int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
-
-void perror(const char *);
-
-int setvbuf(FILE *restrict, char *restrict, int, size_t);
-void setbuf(FILE *restrict, char *restrict);
-
-char *tmpnam(char *);
-FILE *tmpfile(void);
-
-
-
-
-FILE *fmemopen(void *restrict, size_t, const char *restrict);
-FILE *open_memstream(char **, size_t *);
-FILE *fdopen(int, const char *);
-FILE *popen(const char *, const char *);
-int pclose(FILE *);
-int fileno(FILE *);
-int fseeko(FILE *, off_t, int);
-off_t ftello(FILE *);
-int dprintf(int, const char *restrict, ...);
-int vdprintf(int, const char *restrict, __isoc_va_list);
-void flockfile(FILE *);
-int ftrylockfile(FILE *);
-void funlockfile(FILE *);
-int getc_unlocked(FILE *);
-int getchar_unlocked(void);
-int putc_unlocked(int, FILE *);
-int putchar_unlocked(int);
-ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
-ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
-int renameat(int, const char *, int, const char *);
-char *ctermid(char *);
-
-
-
-
-
-
-
-char *tempnam(const char *, const char *);
-# 16 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
-
-
-
-
-void main(void){
-    unsigned int PWMperiod = 99;
-    initDCmotorsPWM(PWMperiod);
-
-
-
-    motorL.power=0;
-    motorL.direction=1;
-    motorL.brakemode=1;
-    motorL.posDutyHighByte=(unsigned char *)(&CCPR1H);
-    motorL.negDutyHighByte=(unsigned char *)(&CCPR2H);
-    motorL.PWMperiod=PWMperiod;
-
-    motorR.power=0;
-    motorR.direction=1;
-    motorR.brakemode=1;
-    motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);
-    motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
-    motorR.PWMperiod=PWMperiod;
-
-
-
-
-
-    TRISDbits.TRISD7 = 0;
-    LATDbits.LATD7 = 0;
-
-
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 0;
-
-
-    TRISFbits.TRISF2=1;
-    ANSELFbits.ANSELF2=0;
-
-
-    TRISFbits.TRISF3=1;
-    ANSELFbits.ANSELF3=0;
-
-
-
-    calibration.index = 1;
-    calibration.over = 0;
-
-
-
-
-
-    calibration.left_90 = 60;
-    calibration.right_90 = 10;
-    calibration.left_135 = 60;
-    calibration.right_135 = 10;
-    calibration.forward = 10;
-    calibration.forward_motorL = 20;
-    calibration.forward_motorR = 20;
-
-
-
-
+void adjust_calibration(int *calibration_label){
 
 
     while(1){
 
+        if(!PORTFbits.RF3 || !PORTFbits.RF2){
+            _delay((unsigned long)((100)*(64000000/4000.0)));
 
+            if(!PORTFbits.RF3 && !PORTFbits.RF2 ){
 
-        if(calibration.index == 1){
-            adjust_calibration(&calibration.right_90);
-            turnRIGHT(calibration.right_90, &motorL, &motorR);
-            switch_calibration(&calibration.index);
+                LATHbits.LATH3 = 1;
+                LATDbits.LATD7 = 1;
+                _delay((unsigned long)((1000)*(64000000/4000.0)));
+                LATHbits.LATH3 = 0;
+                LATDbits.LATD7 = 0;
+                break;
+            }
+            else{
+                if(!PORTFbits.RF2){
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    *calibration_label = *calibration_label + 5;
+                    LATDbits.LATD7 = 1;
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    LATDbits.LATD7 = 0;
+                }
+
+                if(!PORTFbits.RF3){
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    *calibration_label = *calibration_label - 5;
+                    LATHbits.LATH3 = 1;
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    LATHbits.LATH3 = 0;
+                }
+            }
         }
+    }
+}
 
-
-        if(calibration.index == 2){
-            adjust_calibration(&calibration.left_90);
-            turnLEFT(calibration.left_90, &motorL, &motorR);
-            switch_calibration(&calibration.index);
-        }
-
-
-        if(calibration.index == 3){
-            adjust_calibration(&calibration.forward);
-            forward(calibration.forward, &motorL, &motorR);
-            switch_calibration(&calibration.index);
-        }
-# 122 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
-        if(calibration.index == 5){
-            calibration.index = 1;
+void switch_calibration(int *calibration_index){
+    while(1){
+        if(!PORTFbits.RF2){
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            *calibration_index = *calibration_index + 1;
+            LATDbits.LATD7 = 1;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATDbits.LATD7 = 0;
             break;
         }
 
+        if(!PORTFbits.RF3){
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 1;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 0;
+            break;
+        }
     }
 }

@@ -24098,33 +24098,112 @@ unsigned char __t3rd16on(void);
 
 typedef struct calibration_structure {
     char index;
-    char left_45;
-    char right_45;
+    char over;
+    char left_90;
+    char right_90;
+    char left_135;
+    char right_135;
+    char forward;
     char forward_motorL;
     char forward_motorR;
 } calibration_structure;
 
 struct calibration_structure calibration;
 
-void adjust_calibration(int *type);
+void adjust_calibration(int *calibration_label);
+void switch_calibration(int *calibration_index);
 # 2 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c" 2
 
+# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.h" 1
 
 
-void adjust_calibration(int *type){
-    if(!PORTFbits.RF2){
-        _delay((unsigned long)((200)*(64000000/4000.0)));
-        *type = *type + 1;
-        LATDbits.LATD7 = 1;
-        _delay((unsigned long)((200)*(64000000/4000.0)));
-        LATDbits.LATD7 = 0;
+
+
+
+
+
+typedef struct DC_motor {
+    char power;
+    char direction;
+    char brakemode;
+    unsigned int PWMperiod;
+    unsigned char *posDutyHighByte;
+    unsigned char *negDutyHighByte;
+} DC_motor;
+
+struct DC_motor motorL, motorR;
+
+char temp = 7;
+
+void initDCmotorsPWM(unsigned int PWMperiod);
+void setMotorPWM(DC_motor *m);
+void stop(DC_motor *mL, DC_motor *mR);
+void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
+
+
+void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void delay_ms_function(unsigned int milliseconds);
+# 3 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c" 2
+
+
+
+void adjust_calibration(int *calibration_label){
+
+
+    while(1){
+
+        if(!PORTFbits.RF3 || !PORTFbits.RF2){
+            _delay((unsigned long)((100)*(64000000/4000.0)));
+
+            if(!PORTFbits.RF3 && !PORTFbits.RF2 ){
+
+                LATHbits.LATH3 = 1;
+                LATDbits.LATD7 = 1;
+                _delay((unsigned long)((1000)*(64000000/4000.0)));
+                LATHbits.LATH3 = 0;
+                LATDbits.LATD7 = 0;
+                break;
+            }
+            else{
+                if(!PORTFbits.RF2){
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    *calibration_label = *calibration_label + 5;
+                    LATDbits.LATD7 = 1;
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    LATDbits.LATD7 = 0;
+                }
+
+                if(!PORTFbits.RF3){
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    *calibration_label = *calibration_label - 5;
+                    LATHbits.LATH3 = 1;
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    LATHbits.LATH3 = 0;
+                }
+            }
+        }
     }
+}
 
-    if(!PORTFbits.RF3){
-        _delay((unsigned long)((200)*(64000000/4000.0)));
-        *type = *type - 1;
-        LATHbits.LATH3 = 1;
-        _delay((unsigned long)((200)*(64000000/4000.0)));
-        LATHbits.LATH3 = 0;
+void switch_calibration(int *calibration_index){
+    while(1){
+        if(!PORTFbits.RF2){
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            *calibration_index = *calibration_index + 1;
+            LATDbits.LATD7 = 1;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATDbits.LATD7 = 0;
+            break;
+        }
+
+        if(!PORTFbits.RF3){
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 1;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 0;
+            break;
+        }
     }
 }
