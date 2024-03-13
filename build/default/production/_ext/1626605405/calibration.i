@@ -24101,6 +24101,9 @@ typedef struct calibration_structure {
     char over;
     char left_45;
     char right_45;
+    char left_135;
+    char right_135;
+    char forward;
     char forward_motorL;
     char forward_motorR;
 } calibration_structure;
@@ -24108,6 +24111,7 @@ typedef struct calibration_structure {
 struct calibration_structure calibration;
 
 void adjust_calibration(int *calibration_label);
+void switch_calibration(int *calibration_index);
 # 2 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c" 2
 
 # 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.h" 1
@@ -24155,7 +24159,6 @@ void adjust_calibration(int *calibration_label){
 
             if(!PORTFbits.RF3 && !PORTFbits.RF2 ){
 
-
                 LATHbits.LATH3 = 1;
                 LATDbits.LATD7 = 1;
                 _delay((unsigned long)((1000)*(64000000/4000.0)));
@@ -24180,6 +24183,27 @@ void adjust_calibration(int *calibration_label){
                     LATHbits.LATH3 = 0;
                 }
             }
+        }
+    }
+}
+
+void switch_calibration(int *calibration_index){
+    while(1){
+        if(!PORTFbits.RF2){
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            *calibration_index = *calibration_index + 1;
+            LATDbits.LATD7 = 1;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATDbits.LATD7 = 0;
+            break;
+        }
+
+        if(!PORTFbits.RF3){
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 1;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 0;
+            break;
         }
     }
 }

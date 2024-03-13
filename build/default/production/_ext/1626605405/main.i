@@ -24188,6 +24188,9 @@ typedef struct calibration_structure {
     char over;
     char left_45;
     char right_45;
+    char left_135;
+    char right_135;
+    char forward;
     char forward_motorL;
     char forward_motorR;
 } calibration_structure;
@@ -24195,6 +24198,7 @@ typedef struct calibration_structure {
 struct calibration_structure calibration;
 
 void adjust_calibration(int *calibration_label);
+void switch_calibration(int *calibration_index);
 # 14 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c" 2
 
 # 1 "../lab-6-motors-and-pwm-tomas-thomas.X/calibration_routine.h" 1
@@ -24410,35 +24414,67 @@ void main(void){
 
 
 
-    calibration.index = 0;
+    calibration.index = 1;
     calibration.over = 0;
 
 
 
-    calibration.left_45 = 60;
-    calibration.right_45 = 10;
+
+
+    calibration.left_90 = 60;
+    calibration.right_90 = 10;
+    calibration.left_135 = 60;
+    calibration.right_135 = 10;
+    calibration.forward = 10;
     calibration.forward_motorL = 20;
     calibration.forward_motorR = 20;
 
 
 
 
+
+
     while(1){
 
-        while(!PORTFbits.RF3 && !PORTFbits.RF2){
-            _delay((unsigned long)((1000)*(64000000/4000.0)));
-           calibration.index++;
-        }
+
 
         if(calibration.index == 1){
             adjust_calibration(&calibration.right_45);
-            turnRIGHT(calibration.right_45, &motorL, &motorR);
+            turnRIGHT(calibration.right_90, &motorL, &motorR);
+            switch_calibration(&calibration.index);
         }
+
 
         if(calibration.index == 2){
             adjust_calibration(&calibration.left_45);
-            turnLEFT(calibration.left_45, &motorL, &motorR);
-        )
-# 110 "../lab-6-motors-and-pwm-tomas-thomas.X/main.c"
+            turnLEFT(calibration.left_90, &motorL, &motorR);
+            switch_calibration(&calibration.index);
+        }
+
+
+        if(calibration.index == 3){
+            adjust_calibration(&calibration.forward);
+            turnLEFT(calibration.left_90, &motorL, &motorR);
+            switch_calibration(&calibration.index);
+        }
+
+
+
+
+        if(calibration.index == 1){
+            adjust_calibration(&calibration.right_45);
+            turnRIGHT(calibration.right_135, &motorL, &motorR);
+            switch_calibration(&calibration.index);
+        }
+
+
+
+        if(calibration.index == 2){
+            adjust_calibration(&calibration.left_45);
+            turnLEFT(calibration.left_135, &motorL, &motorR);
+            switch_calibration(&calibration.index);
+        }
+
+        if(calibration.index == 3){calibration.index = 1;}
     }
 }

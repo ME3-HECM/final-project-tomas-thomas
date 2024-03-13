@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "8 ../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h
 [; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h: 8: typedef struct calibration_structure {
-[s S2015 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2015 calibration_structure index over left_45 right_45 forward_motorL forward_motorR ]
+[s S2015 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S2015 calibration_structure index over left_45 right_45 left_135 right_135 forward forward_motorL forward_motorR ]
 "8 ../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.h
 [; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.h: 8: typedef struct DC_motor {
 [s S2016 `uc 1 `uc 1 `uc 1 `ui 1 `*uc 1 `*uc 1 ]
@@ -2046,8 +2046,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40592
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 40592: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"17 ../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h: 17: struct calibration_structure calibration;
+"20 ../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.h: 20: struct calibration_structure calibration;
 [v _calibration `S2015 ~T0 @X0 1 e ]
 "17 ../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.h
 [; ;../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.h: 17: struct DC_motor motorL, motorR;
@@ -2081,93 +2081,163 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 14:             if(!PORTFbits.RF3 && !PORTFbits.RF2 ){
 [e $ ! && ! != -> . . _PORTFbits 0 3 `i -> 0 `i ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2022  ]
 {
-"17
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 17:                 LATHbits.LATH3 = 1;
+"16
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 16:                 LATHbits.LATH3 = 1;
 [e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
-"18
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 18:                 LATDbits.LATD7 = 1;
+"17
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 17:                 LATDbits.LATD7 = 1;
 [e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
-"19
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 19:                 _delay((unsigned long)((1000)*(64000000/4000.0)));
+"18
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 18:                 _delay((unsigned long)((1000)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"20
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 20:                 LATHbits.LATH3 = 0;
+"19
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 19:                 LATHbits.LATH3 = 0;
 [e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
-"21
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 21:                 LATDbits.LATD7 = 0;
+"20
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 20:                 LATDbits.LATD7 = 0;
 [e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
-"22
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 22:                 break;
+"21
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 21:                 break;
 [e $U 2020  ]
-"23
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 23:             }
+"22
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 22:             }
 }
 [e $U 2023  ]
-"24
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 24:             else{
+"23
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 23:             else{
 [e :U 2022 ]
 {
-"25
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 25:                 if(!PORTFbits.RF2){
+"24
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 24:                 if(!PORTFbits.RF2){
 [e $ ! ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2024  ]
 {
+"25
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 25:                     _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "26
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 26:                     _delay((unsigned long)((200)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"27
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 27:                     *calibration_label = *calibration_label + 5;
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 26:                     *calibration_label = *calibration_label + 5;
 [e = *U _calibration_label + *U _calibration_label -> 5 `i ]
-"28
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 28:                     LATDbits.LATD7 = 1;
+"27
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 27:                     LATDbits.LATD7 = 1;
 [e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
-"29
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 29:                     _delay((unsigned long)((200)*(64000000/4000.0)));
+"28
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 28:                     _delay((unsigned long)((200)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"30
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 30:                     LATDbits.LATD7 = 0;
+"29
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 29:                     LATDbits.LATD7 = 0;
 [e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
-"31
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 31:                 }
+"30
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 30:                 }
 }
 [e :U 2024 ]
-"33
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 33:                 if(!PORTFbits.RF3){
+"32
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 32:                 if(!PORTFbits.RF3){
 [e $ ! ! != -> . . _PORTFbits 0 3 `i -> 0 `i 2025  ]
 {
+"33
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 33:                     _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "34
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 34:                     _delay((unsigned long)((200)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"35
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 35:                     *calibration_label = *calibration_label - 5;
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 34:                     *calibration_label = *calibration_label - 5;
 [e = *U _calibration_label - *U _calibration_label -> 5 `i ]
-"36
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 36:                     LATHbits.LATH3 = 1;
+"35
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 35:                     LATHbits.LATH3 = 1;
 [e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
-"37
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 37:                     _delay((unsigned long)((200)*(64000000/4000.0)));
+"36
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 36:                     _delay((unsigned long)((200)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"38
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 38:                     LATHbits.LATH3 = 0;
+"37
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 37:                     LATHbits.LATH3 = 0;
 [e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
-"39
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 39:                 }
+"38
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 38:                 }
 }
 [e :U 2025 ]
-"40
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 40:             }
+"39
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 39:             }
 }
 [e :U 2023 ]
-"41
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 41:         }
+"40
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 40:         }
 }
 [e :U 2021 ]
-"42
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 42:     }
+"41
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 41:     }
 }
 [e :U 2018 ]
 [e $U 2019  ]
 [e :U 2020 ]
-"43
-[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 43: }
+"42
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 42: }
 [e :UE 2017 ]
+}
+"44
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 44: void switch_calibration(int *calibration_index){
+[v _switch_calibration `(v ~T0 @X0 1 ef1`*i ]
+{
+[e :U _switch_calibration ]
+[v _calibration_index `*i ~T0 @X0 1 r1 ]
+[f ]
+"45
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 45:     while(1){
+[e :U 2028 ]
+{
+"46
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 46:         if(!PORTFbits.RF2){
+[e $ ! ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2030  ]
+{
+"47
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 47:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"48
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 48:             *calibration_index = *calibration_index + 1;
+[e = *U _calibration_index + *U _calibration_index -> 1 `i ]
+"49
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 49:             LATDbits.LATD7 = 1;
+[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+"50
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 50:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"51
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 51:             LATDbits.LATD7 = 0;
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+"52
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 52:             break;
+[e $U 2029  ]
+"53
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 53:         }
+}
+[e :U 2030 ]
+"55
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 55:         if(!PORTFbits.RF3){
+[e $ ! ! != -> . . _PORTFbits 0 3 `i -> 0 `i 2031  ]
+{
+"56
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 56:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"57
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 57:             LATHbits.LATH3 = 1;
+[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
+"58
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 58:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"59
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 59:             LATHbits.LATH3 = 0;
+[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
+"60
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 60:             break;
+[e $U 2029  ]
+"61
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 61:         }
+}
+[e :U 2031 ]
+"62
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 62:     }
+}
+[e :U 2027 ]
+[e $U 2028  ]
+[e :U 2029 ]
+"63
+[; ;../lab-6-motors-and-pwm-tomas-thomas.X/calibration.c: 63: }
+[e :UE 2026 ]
 }
