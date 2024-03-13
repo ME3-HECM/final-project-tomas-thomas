@@ -24533,15 +24533,15 @@ unsigned int color_cardCheck(void) {
 
     else if (H>67 && H<72 && S>50 && S<55 && V>40 && V<45) {card_color = 2;}
 
-    else if (H>52 && H<57 && S<5 && V>30 && V<35) {card_color = 3;}
+    else if (S<10 && V>30 && V<35) {card_color = 3;}
 
-    else if (H>28 && H<23 && S>65 && S<70 && V>54 && V<57) {card_color = 4;}
+    else if (H>20 && H<25 && S>65 && S<70 && V>54 && V<57) {card_color = 4;}
 
     else if (H>13 && H<18 && S>55 && S<60 && V>50 && V<54) {card_color = 5;}
 
     else if (H>5 && H<10 && S>70 && S<75 && V>62 && V<67) {card_color = 6;}
 
-    else if (H>74 && H<79 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
+    else if (H>74 && H<82 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
 
     else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;}
 

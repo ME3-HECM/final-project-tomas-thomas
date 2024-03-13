@@ -24531,7 +24531,7 @@ unsigned int color_cardCheck(void) {
 
     if (H>355 && H<360 && S>85 && S<90 && V>80 && V<85) {card_color = 1;}
 
-    else if (H>67 && H<72 && S>50 && S<55 && V>40 && V<45) {card_color = 2;}
+    else if (H>67 && H<79 && S>50 && S<57 && V>40 && V<46) {card_color = 2;}
 
     else if (S<10 && V>30 && V<35) {card_color = 3;}
 
@@ -24541,7 +24541,7 @@ unsigned int color_cardCheck(void) {
 
     else if (H>5 && H<10 && S>70 && S<75 && V>62 && V<67) {card_color = 6;}
 
-    else if (H>74 && H<82 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
+    else if (H>74 && H<85 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
 
     else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;}
 

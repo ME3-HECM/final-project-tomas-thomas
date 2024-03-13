@@ -197,7 +197,7 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     //Check HSV values against known colors for cards - all measured using color clicker and recorded with serial output and laptop
     if (H>355 && H<360 && S>85 && S<90 && V>80 && V<85) {card_color = 1;} //1. Red check
     
-    else if (H>67 && H<72 && S>50 && S<55 && V>40 && V<45) {card_color = 2;} //2. Green Check
+    else if (H>67 && H<79 && S>50 && S<57 && V>40 && V<46) {card_color = 2;} //2. Green Check
     
     else if (S<10 && V>30 && V<35) {card_color = 3;} //3. Blue Check - needed expanded bands to work in practice (STILL NEEDS EDITING) H>50 && H<59 &&
     
@@ -207,7 +207,7 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     
     else if (H>5 && H<10 && S>70 && S<75 && V>62 && V<67) {card_color = 6;} //6. Orange Check
     
-    else if (H>74 && H<82 && S>28 && S<33 && V>37 && V<42) {card_color = 7;} //7. Light Blue Check - needed expanded bands to work in practice
+    else if (H>74 && H<85 && S>28 && S<33 && V>37 && V<42) {card_color = 7;} //7. Light Blue Check - needed expanded bands to work in practice
     
     else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;} //8. White Check
     
