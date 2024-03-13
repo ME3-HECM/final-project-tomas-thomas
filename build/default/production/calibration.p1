@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "8 ./calibration.h
 [; ;./calibration.h: 8: typedef struct calibration_structure {
-[s S2015 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2015 calibration_structure index over left_90 right_90 left_135 right_135 forward forward_motorL forward_motorR ]
+[s S2015 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S2015 calibration_structure index over left_90 right_90 left_135 right_135 forward backward forward_motorL forward_motorR ]
 "8 ./dc_motor_v1.h
 [; ;./dc_motor_v1.h: 8: typedef struct DC_motor {
 [s S2016 `uc 1 `uc 1 `uc 1 `ui 1 `*uc 1 `*uc 1 ]
@@ -2046,8 +2046,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40592
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 40592: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"20 ./calibration.h
-[; ;./calibration.h: 20: struct calibration_structure calibration;
+"21 ./calibration.h
+[; ;./calibration.h: 21: struct calibration_structure calibration;
 [v _calibration `S2015 ~T0 @X0 1 e ]
 "17 ./dc_motor_v1.h
 [; ;./dc_motor_v1.h: 17: struct DC_motor motorL, motorR;

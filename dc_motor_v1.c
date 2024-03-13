@@ -163,6 +163,44 @@ void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
+    mL->direction = 0;
+    mR->direction = 0; 
+    
+    //Speed control variables
+    int max_power = 20;         //tunable values
+    int acceleration_time = 100;    //[mirco-s]    //check that value is accepted by the delay function
+    int delay_time = acceleration_time/max_power;
+    
+    //acceleration period
+    for(int i=0; i< max_power; i++){
+        mL->power = mL->power + 1;
+        mR->power = mR->power + 1 ; //can I increase this by more than one
+        setMotorPWM(mR);
+        setMotorPWM(mL);
+        delay_ms_function(delay_time); //function to make sure the acceleration for power happens in the correct amount of time 
+    }
+
+    //constant velocity    
+    for(int j=0; j<Distance_Calibration; j++){
+        __delay_ms(10);            //can be reduced to refine the accuracy of distance travelled
+    }
+    
+    //deceleration period
+    while(mL->power || mR->power > 0){
+        if(mR->power> 0 ){
+            mR->power--;
+        }
+        if(mL->power> 0 ){
+            mL->power--;
+        }
+        setMotorPWM(mR);
+        setMotorPWM(mL);
+        delay_ms_function(delay_time);    // this could make it more stable if more time?  
+    }     
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //check max pulse I can deliver to motors - thats the max speed
 void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){

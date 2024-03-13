@@ -56,7 +56,7 @@ void main(void){
     
  //~~~~~~~~~~~~~~ Calibration variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    
-    calibration.index = 4;  // tracking function set up commands the be 1, 2, 3, 4, 5, 6 etc. and then its reverse to be the negative value of it.
+    calibration.index = 1;  // tracking function set up commands the be 1, 2, 3, 4, 5, 6 etc. and then its reverse to be the negative value of it.
     calibration.over = 0;
         // 1 = forward,     -1 = backward
         // 2 = right,       -2 = left
@@ -67,7 +67,9 @@ void main(void){
     calibration.right_90 = 60;
     calibration.left_135 = 60;
     calibration.right_135 = 10;
-    calibration.forward = 10;
+    calibration.forward = 50;
+    calibration.backward = 50;
+    
     calibration.forward_motorL = 20;
     calibration.forward_motorR = 20;
     
@@ -113,6 +115,7 @@ void main(void){
 //~~~~~~~~~~~~~~~~~~~~~~ Maze Finding Code ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     char Operation_Count = 0;
     char Forward_Count = 0;
+    char length = 20;       //should be changed
     char Operation_History[20] = {0}; //20 slots
     int Color_Value;
     
@@ -129,8 +132,7 @@ void main(void){
         LATHbits.LATH3 = 1;
         LATDbits.LATD7 = 1; 
 
-        //inverse array function
-//        forward(calibration.forward, &motorL, &motorR);
+        forward(calibration.forward, &motorL, &motorR);
         __delay_ms(1000);
         Forward_Count++;
         Color_Value = color_cardCheck(); //reutrns 1 to 8 integer value
@@ -147,19 +149,81 @@ void main(void){
             if(Color_Value == 1){ //detects that it is red - turn right 90
                 Operation_History[Operation_Count] = Color_Value;    //1 = red value 
                 Operation_Count++;
+                backward(calibration.backward, &motorL, &motorR);
                 turnRIGHT(calibration.right_90, &motorL, &motorR); 
             }
+            
             
             else if(Color_Value == 2){ //detects that it is green - turn left 90
                 Operation_History[Operation_Count] = Color_Value;    //1 = red value 
                 Operation_Count++;
+                backward(calibration.backward, &motorL, &motorR);
                 turnLEFT(calibration.left_90, &motorL, &motorR); 
             }
+            
+            
             else if(Color_Value == 3){ //detects that it is blue - turn 180                     some calibration issues
                 Operation_History[Operation_Count] = Color_Value;    //1 = red value 
                 Operation_Count++;
+                backward(calibration.backward, &motorL, &motorR);
                 turnLEFT(calibration.left_90, &motorL, &motorR);
                 turnLEFT(calibration.left_90, &motorL, &motorR);
+            }
+            
+            else if(Color_Value == 8){ //detects that it is white - return home            
+                backward(calibration.backward, &motorL, &motorR);
+                // 180
+                turnLEFT(calibration.left_90, &motorL, &motorR);
+                turnLEFT(calibration.left_90, &motorL, &motorR);
+                backward(calibration.backward, &motorL, &motorR);
+                
+                for (int i = (length-1); i >= 0; i--) {
+                    if(Operation_History[i] == 1){  //opposite of right = left
+                        turnLEFT(calibration.left_90, &motorL, &motorR); 
+                        backward(calibration.backward, &motorL, &motorR);
+                    }
+                    else if(Operation_History[i] == 2){ //opposite of left = right
+                        turnRIGHT(calibration.right_90, &motorL, &motorR);
+                        backward(calibration.backward, &motorL, &motorR);
+                    }
+                    
+                    else if(Operation_History[i] == 3){
+                        turnLEFT(calibration.left_90, &motorL, &motorR); 
+                        turnLEFT(calibration.left_90, &motorL, &motorR); 
+                    }
+//                        
+//                    }
+//                    else if(Operation_History[i] == 4){
+//                        //opposite of 1
+//                    }
+//                    else if(Operation_History[i] == 5){
+//                        //opposite of 1
+//                    }
+//                    else if(Operation_History[i] == 6){
+//                        //opposite of 1
+//                    }
+//                    else if(Operation_History[i] == 7){
+//                        //opposite of 1
+//                    }
+//                    else if(Operation_History[i] == 8){
+//                        //opposite of 1
+//                    }
+                    else if(Operation_History[i] > 10){  
+                        unsigned char distance_back = Operation_History[i] - 10;
+                        for (int j = 0; j < distance_back; j++) {forward(calibration.forward, &motorL, &motorR);}
+                        // need to have a go back by a half
+                    }
+                    else if(Operation_History[i] == 1){
+                        //opposite of 1
+                    }
+                 
+                    
+                }
+                
+                //read reverse of list 
+                //adding 
+                
+                
             }
         }  
     
@@ -174,4 +238,4 @@ void main(void){
          
         //--------------------------------------
     }        
-}          
+}

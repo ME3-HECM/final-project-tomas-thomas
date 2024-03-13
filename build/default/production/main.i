@@ -24127,6 +24127,7 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void delay_ms_function(unsigned int milliseconds);
 # 10 "main.c" 2
 
@@ -24146,6 +24147,7 @@ typedef struct calibration_structure {
     char left_135;
     char right_135;
     char forward;
+    char backward;
     char forward_motorL;
     char forward_motorR;
 } calibration_structure;
@@ -24409,7 +24411,7 @@ void main(void){
 
 
 
-    calibration.index = 4;
+    calibration.index = 1;
     calibration.over = 0;
 
 
@@ -24420,7 +24422,9 @@ void main(void){
     calibration.right_90 = 60;
     calibration.left_135 = 60;
     calibration.right_135 = 10;
-    calibration.forward = 10;
+    calibration.forward = 50;
+    calibration.backward = 50;
+
     calibration.forward_motorL = 20;
     calibration.forward_motorR = 20;
 
@@ -24466,6 +24470,7 @@ void main(void){
 
     char Operation_Count = 0;
     char Forward_Count = 0;
+    char length = 20;
     char Operation_History[20] = {0};
     int Color_Value;
 
@@ -24482,8 +24487,7 @@ void main(void){
         LATHbits.LATH3 = 1;
         LATDbits.LATD7 = 1;
 
-
-
+        forward(calibration.forward, &motorL, &motorR);
         _delay((unsigned long)((1000)*(64000000/4000.0)));
         Forward_Count++;
         Color_Value = color_cardCheck();
@@ -24500,22 +24504,67 @@ void main(void){
             if(Color_Value == 1){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
+                backward(calibration.backward, &motorL, &motorR);
                 turnRIGHT(calibration.right_90, &motorL, &motorR);
             }
+
 
             else if(Color_Value == 2){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
+                backward(calibration.backward, &motorL, &motorR);
                 turnLEFT(calibration.left_90, &motorL, &motorR);
             }
+
+
             else if(Color_Value == 3){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
+                backward(calibration.backward, &motorL, &motorR);
                 turnLEFT(calibration.left_90, &motorL, &motorR);
                 turnLEFT(calibration.left_90, &motorL, &motorR);
             }
-        }
 
+            else if(Color_Value == 8){
+                backward(calibration.backward, &motorL, &motorR);
+
+                turnLEFT(calibration.left_90, &motorL, &motorR);
+                turnLEFT(calibration.left_90, &motorL, &motorR);
+                backward(calibration.backward, &motorL, &motorR);
+
+                for (int i = (length-1); i >= 0; i--) {
+                    if(Operation_History[i] == 1){
+                        turnLEFT(calibration.left_90, &motorL, &motorR);
+                        backward(calibration.backward, &motorL, &motorR);
+                    }
+                    else if(Operation_History[i] == 2){
+                        turnRIGHT(calibration.right_90, &motorL, &motorR);
+                        backward(calibration.backward, &motorL, &motorR);
+                    }
+
+                    else if(Operation_History[i] == 3){
+                        turnLEFT(calibration.left_90, &motorL, &motorR);
+                        turnLEFT(calibration.left_90, &motorL, &motorR);
+                    }
+# 211 "main.c"
+                    else if(Operation_History[i] > 10){
+                        unsigned char distance_back = Operation_History[i] - 10;
+                        for (int j = 0; j < distance_back; j++) {forward(calibration.forward, &motorL, &motorR);}
+
+                    }
+                    else if(Operation_History[i] == 1){
+
+                    }
+
+
+                }
+
+
+
+
+
+            }
+        }
 
 
          char senddata[20];

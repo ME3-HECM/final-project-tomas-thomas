@@ -24104,6 +24104,7 @@ typedef struct calibration_structure {
     char left_135;
     char right_135;
     char forward;
+    char backward;
     char forward_motorL;
     char forward_motorR;
 } calibration_structure;
@@ -24144,6 +24145,7 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void delay_ms_function(unsigned int milliseconds);
 # 3 "calibration.c" 2
 

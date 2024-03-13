@@ -24118,6 +24118,7 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void delay_ms_function(unsigned int milliseconds);
 # 2 "dc_motor_v1.c" 2
 
@@ -24263,6 +24264,44 @@ void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
     }
 
 
+
+
+    for(int j=0; j<Distance_Calibration; j++){
+        _delay((unsigned long)((10)*(64000000/4000.0)));
+    }
+
+
+    while(mL->power || mR->power > 0){
+        if(mR->power> 0 ){
+            mR->power--;
+        }
+        if(mL->power> 0 ){
+            mL->power--;
+        }
+        setMotorPWM(mR);
+        setMotorPWM(mL);
+        delay_ms_function(delay_time);
+    }
+}
+
+
+void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
+    mL->direction = 0;
+    mR->direction = 0;
+
+
+    int max_power = 20;
+    int acceleration_time = 100;
+    int delay_time = acceleration_time/max_power;
+
+
+    for(int i=0; i< max_power; i++){
+        mL->power = mL->power + 1;
+        mR->power = mR->power + 1 ;
+        setMotorPWM(mR);
+        setMotorPWM(mL);
+        delay_ms_function(delay_time);
+    }
 
 
     for(int j=0; j<Distance_Calibration; j++){

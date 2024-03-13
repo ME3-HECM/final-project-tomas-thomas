@@ -27,6 +27,7 @@ void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 //void turn (char direction, char rotation, DC_motor *mL, DC_motor *mR);
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void delay_ms_function(unsigned int milliseconds);
 
 #endif
