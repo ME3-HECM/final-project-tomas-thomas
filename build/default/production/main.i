@@ -24141,7 +24141,6 @@ void delay_ms_function(unsigned int milliseconds);
 
 typedef struct calibration_structure {
     char index;
-    char over;
     char left_90;
     char right_90;
     char left_135;
@@ -24412,18 +24411,17 @@ void main(void){
 
 
     calibration.index = 1;
-    calibration.over = 0;
 
 
 
 
 
-    calibration.left_90 = 60;
-    calibration.right_90 = 60;
+    calibration.right_90 = 78;
+    calibration.left_90 = 77;
     calibration.left_135 = 60;
     calibration.right_135 = 10;
-    calibration.forward = 50;
-    calibration.backward = 50;
+    calibration.forward = 70;
+    calibration.backward = 70;
 
     calibration.forward_motorL = 20;
     calibration.forward_motorR = 20;
@@ -24449,9 +24447,15 @@ void main(void){
         }
 
 
-        if(calibration.index == 3){
+        if(calibration.index == 4){
             adjust_calibration(&calibration.forward);
             forward(calibration.forward, &motorL, &motorR);
+            switch_calibration(&calibration.index);
+        }
+
+        if(calibration.index == 5){
+            adjust_calibration(&calibration.backward);
+            backward(calibration.backward, &motorL, &motorR);
             switch_calibration(&calibration.index);
         }
 
@@ -24460,7 +24464,7 @@ void main(void){
 
 
 
-        if(calibration.index == 4){
+        if(calibration.index == 3){
 
             break;
         }
@@ -24479,7 +24483,7 @@ void main(void){
 
 
 
-    _delay((unsigned long)((1000)*(64000000/4000.0)));
+
 
 
 
@@ -24488,13 +24492,13 @@ void main(void){
         LATDbits.LATD7 = 1;
 
         forward(calibration.forward, &motorL, &motorR);
-        _delay((unsigned long)((1000)*(64000000/4000.0)));
+
         Forward_Count++;
         Color_Value = color_cardCheck();
 
         LATHbits.LATH3 = 0;
         LATDbits.LATD7 = 0;
-        _delay((unsigned long)((1000)*(64000000/4000.0)));
+
 
         if(Color_Value != 0){
             Operation_History[Operation_Count] = Forward_Count + 10;
@@ -24513,6 +24517,7 @@ void main(void){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
                 backward(calibration.backward, &motorL, &motorR);
+
                 turnLEFT(calibration.left_90, &motorL, &motorR);
             }
 
@@ -24526,10 +24531,12 @@ void main(void){
             }
 
             else if(Color_Value == 8){
+
                 backward(calibration.backward, &motorL, &motorR);
 
                 turnLEFT(calibration.left_90, &motorL, &motorR);
                 turnLEFT(calibration.left_90, &motorL, &motorR);
+                backward(calibration.backward, &motorL, &motorR);
                 backward(calibration.backward, &motorL, &motorR);
 
                 for (int i = (length-1); i >= 0; i--) {
@@ -24546,7 +24553,7 @@ void main(void){
                         turnLEFT(calibration.left_90, &motorL, &motorR);
                         turnLEFT(calibration.left_90, &motorL, &motorR);
                     }
-# 211 "main.c"
+# 219 "main.c"
                     else if(Operation_History[i] > 10){
                         unsigned char distance_back = Operation_History[i] - 10;
                         for (int j = 0; j < distance_back; j++) {forward(calibration.forward, &motorL, &motorR);}

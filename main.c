@@ -57,18 +57,17 @@ void main(void){
  //~~~~~~~~~~~~~~ Calibration variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    
     calibration.index = 1;  // tracking function set up commands the be 1, 2, 3, 4, 5, 6 etc. and then its reverse to be the negative value of it.
-    calibration.over = 0;
         // 1 = forward,     -1 = backward
         // 2 = right,       -2 = left
     
         // read the array backwardss, with a -1 sign, extra zeros in the array get skipped 
     
-    calibration.left_90 = 60;
-    calibration.right_90 = 60;
+    calibration.right_90 = 78;
+    calibration.left_90 = 77;
     calibration.left_135 = 60;
     calibration.right_135 = 10;
-    calibration.forward = 50;
-    calibration.backward = 50;
+    calibration.forward = 70;
+    calibration.backward = 70;
     
     calibration.forward_motorL = 20;
     calibration.forward_motorR = 20;
@@ -94,9 +93,15 @@ void main(void){
         }
         
         //forward 
-        if(calibration.index == 3){
+        if(calibration.index == 4){
             adjust_calibration(&calibration.forward);
             forward(calibration.forward, &motorL, &motorR);
+            switch_calibration(&calibration.index);
+        }
+        
+        if(calibration.index == 5){
+            adjust_calibration(&calibration.backward);
+            backward(calibration.backward, &motorL, &motorR);
             switch_calibration(&calibration.index);
         }
         
@@ -105,7 +110,7 @@ void main(void){
         //135 right
         //135 left
         
-        if(calibration.index == 4){
+        if(calibration.index == 3){
 //            calibration.index = 1; 
             break; //quits us out of the calibration routine
         }     
@@ -124,7 +129,7 @@ void main(void){
     
         //look into pointers and arrays if need requires
     
-    __delay_ms(1000); //delay between calibration and operation
+//    __delay_ms(1000); //delay between calibration and operation
     
     // there's some way to input a calibration struture 
     
@@ -133,13 +138,13 @@ void main(void){
         LATDbits.LATD7 = 1; 
 
         forward(calibration.forward, &motorL, &motorR);
-        __delay_ms(1000);
+//        __delay_ms(10);
         Forward_Count++;
         Color_Value = color_cardCheck(); //reutrns 1 to 8 integer value
         
         LATHbits.LATH3 = 0;
         LATDbits.LATD7 = 0;
-        __delay_ms(1000);
+//        __delay_ms(10);
         
         if(Color_Value != 0){//detects a colour  
             Operation_History[Operation_Count] = Forward_Count + 10;    //10 offset for reasons
@@ -158,6 +163,7 @@ void main(void){
                 Operation_History[Operation_Count] = Color_Value;    //1 = red value 
                 Operation_Count++;
                 backward(calibration.backward, &motorL, &motorR);
+              
                 turnLEFT(calibration.left_90, &motorL, &motorR); 
             }
             
@@ -171,10 +177,12 @@ void main(void){
             }
             
             else if(Color_Value == 8){ //detects that it is white - return home            
+                
                 backward(calibration.backward, &motorL, &motorR);
                 // 180
                 turnLEFT(calibration.left_90, &motorL, &motorR);
                 turnLEFT(calibration.left_90, &motorL, &motorR);
+                backward(calibration.backward, &motorL, &motorR);
                 backward(calibration.backward, &motorL, &motorR);
                 
                 for (int i = (length-1); i >= 0; i--) {

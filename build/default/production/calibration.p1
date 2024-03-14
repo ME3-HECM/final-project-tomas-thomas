@@ -1,8 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "8 ./calibration.h
 [; ;./calibration.h: 8: typedef struct calibration_structure {
-[s S2015 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2015 calibration_structure index over left_90 right_90 left_135 right_135 forward backward forward_motorL forward_motorR ]
+[s S2015 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S2015 calibration_structure index left_90 right_90 left_135 right_135 forward backward forward_motorL forward_motorR ]
 "8 ./dc_motor_v1.h
 [; ;./dc_motor_v1.h: 8: typedef struct DC_motor {
 [s S2016 `uc 1 `uc 1 `uc 1 `ui 1 `*uc 1 `*uc 1 ]
@@ -2046,8 +2046,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40592
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 40592: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"21 ./calibration.h
-[; ;./calibration.h: 21: struct calibration_structure calibration;
+"20 ./calibration.h
+[; ;./calibration.h: 20: struct calibration_structure calibration;
 [v _calibration `S2015 ~T0 @X0 1 e ]
 "17 ./dc_motor_v1.h
 [; ;./dc_motor_v1.h: 17: struct DC_motor motorL, motorR;
@@ -2115,8 +2115,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;calibration.c: 25:                     _delay((unsigned long)((200)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "26
-[; ;calibration.c: 26:                     *calibration_label = *calibration_label + 5;
-[e = *U _calibration_label + *U _calibration_label -> 5 `i ]
+[; ;calibration.c: 26:                     *calibration_label = *calibration_label + 2;
+[e = *U _calibration_label + *U _calibration_label -> 2 `i ]
 "27
 [; ;calibration.c: 27:                     LATDbits.LATD7 = 1;
 [e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
@@ -2138,8 +2138,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;calibration.c: 33:                     _delay((unsigned long)((200)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "34
-[; ;calibration.c: 34:                     *calibration_label = *calibration_label - 5;
-[e = *U _calibration_label - *U _calibration_label -> 5 `i ]
+[; ;calibration.c: 34:                     *calibration_label = *calibration_label - 2;
+[e = *U _calibration_label - *U _calibration_label -> 2 `i ]
 "35
 [; ;calibration.c: 35:                     LATHbits.LATH3 = 1;
 [e = . . _LATHbits 0 3 -> -> 1 `i `uc ]

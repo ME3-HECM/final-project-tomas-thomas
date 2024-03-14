@@ -24098,7 +24098,6 @@ unsigned char __t3rd16on(void);
 
 typedef struct calibration_structure {
     char index;
-    char over;
     char left_90;
     char right_90;
     char left_135;
@@ -24171,7 +24170,7 @@ void adjust_calibration(int *calibration_label){
             else{
                 if(!PORTFbits.RF2){
                     _delay((unsigned long)((200)*(64000000/4000.0)));
-                    *calibration_label = *calibration_label + 5;
+                    *calibration_label = *calibration_label + 2;
                     LATDbits.LATD7 = 1;
                     _delay((unsigned long)((200)*(64000000/4000.0)));
                     LATDbits.LATD7 = 0;
@@ -24179,7 +24178,7 @@ void adjust_calibration(int *calibration_label){
 
                 if(!PORTFbits.RF3){
                     _delay((unsigned long)((200)*(64000000/4000.0)));
-                    *calibration_label = *calibration_label - 5;
+                    *calibration_label = *calibration_label - 2;
                     LATHbits.LATH3 = 1;
                     _delay((unsigned long)((200)*(64000000/4000.0)));
                     LATHbits.LATH3 = 0;

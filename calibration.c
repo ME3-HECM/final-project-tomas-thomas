@@ -23,7 +23,7 @@ void adjust_calibration(int *calibration_label){ //take the calibration variable
             else{
                 if(!PORTFbits.RF2){     //if Right LED is pressed
                     __delay_ms(200);
-                    *calibration_label = *calibration_label + 5;
+                    *calibration_label = *calibration_label + 2;
                     LATDbits.LATD7 = 1;
                     __delay_ms(200);
                     LATDbits.LATD7 = 0;
@@ -31,7 +31,7 @@ void adjust_calibration(int *calibration_label){ //take the calibration variable
 
                 if(!PORTFbits.RF3){     //if Left LED is pressed
                     __delay_ms(200);
-                    *calibration_label = *calibration_label - 5;
+                    *calibration_label = *calibration_label - 2;
                     LATHbits.LATH3 = 1;
                     __delay_ms(200);
                     LATHbits.LATH3 = 0;
