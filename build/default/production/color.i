@@ -24245,19 +24245,7 @@ char *tempnam(const char *, const char *);
 # 1 "./color.h" 1
 # 12 "./color.h"
 void color_click_init(void);
-
-
-
-
-
-
-
-void color_TRILED_ON(void);
-
-
-
-
-
+# 26 "./color.h"
 void color_writetoaddr(char address, char value);
 
 
@@ -24373,6 +24361,14 @@ void color_click_init(void)
     LATFbits.LATF7 = 1;
 
 
+    TRISHbits.TRISH1 = 0;
+    LATHbits.LATH1 = 1;
+
+    TRISDbits.TRISD4 = 0;
+    LATDbits.LATD4 = 1;
+
+    TRISDbits.TRISD3 = 0;
+    LATDbits.LATD3 = 1;
 }
 
 void color_writetoaddr(char address, char value){
@@ -24525,7 +24521,7 @@ unsigned int color_cardCheck(void) {
     float V;
 
     RGB_to_HSV(r,g,b,c,&H,&S,&V);
-# 195 "color.c"
+# 203 "color.c"
     unsigned int card_color = 0;
 
 

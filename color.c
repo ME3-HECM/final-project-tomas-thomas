@@ -31,7 +31,15 @@ void color_click_init(void)
     LATAbits.LATA4 = 1; //Set green LED on
     LATFbits.LATF7 = 1; //Set blue LED on
     
-    //what other lights should we have on? Ask TOM!
+    //Turn on Headlamps and Breaklights
+    TRISHbits.TRISH1 = 0; //Set both Headlamps and Breaklights as outputs (zero)
+    LATHbits.LATH1 = 1; //Set both Headlamps and Breaklights on
+    
+    TRISDbits.TRISD4 = 0; //Set Breaklights as outputs (zero)
+    LATDbits.LATD4 = 1; //Set Breaklights on (at full brightness)
+    
+    TRISDbits.TRISD3 = 0; //Set Headlamps as outputs (zero)
+    LATDbits.LATD3 = 1; //Set Headlamps on (at full brightness)
 }
 
 void color_writetoaddr(char address, char value){

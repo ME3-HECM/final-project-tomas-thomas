@@ -10,12 +10,16 @@
 #include "dc_motor_v1.h"
 #include "calibration.h"
 #include <stdio.h>
+#include "color.h"
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 
 void main(void){
     unsigned int PWMperiod = 99;
     initDCmotorsPWM(PWMperiod);
+    
+    color_click_init();
+    
     
 //~~~~~~~~~~~~~~~~ Left and Right Motor initial conditions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //fast decay = coast, slow decay=resisting current

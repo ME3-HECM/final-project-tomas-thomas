@@ -24310,12 +24310,40 @@ char *ctermid(char *);
 char *tempnam(const char *, const char *);
 # 12 "main.c" 2
 
+# 1 "./color.h" 1
+# 12 "./color.h"
+void color_click_init(void);
+# 26 "./color.h"
+void color_writetoaddr(char address, char value);
+
+
+
+
+
+unsigned int color_read_Red(void);
+unsigned int color_read_Green(void);
+unsigned int color_read_Blue(void);
+unsigned int color_read_Clear(void);
+
+
+float custom_floatmodulo(float x, float y);
+
+
+void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V);
+
+
+unsigned int color_cardCheck(void);
+# 13 "main.c" 2
+
 
 
 
 void main(void){
     unsigned int PWMperiod = 99;
     initDCmotorsPWM(PWMperiod);
+
+    color_click_init();
+
 
 
 
@@ -24397,9 +24425,14 @@ void main(void){
             forward(calibration.forward, &motorL, &motorR);
             switch_calibration(&calibration.index);
         }
-# 118 "main.c"
-        if(calibration.index == 5){
-            calibration.index = 1;
+
+
+
+
+
+
+        if(calibration.index == 4){
+
             break;
         }
 
