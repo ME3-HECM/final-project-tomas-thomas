@@ -2629,9 +2629,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor_v1.c: 124:     mR->direction = 1;
 [e = . *U _mR 1 -> -> 1 `i `uc ]
 "131
-[; ;dc_motor_v1.c: 131:     int max_power = 20;
+[; ;dc_motor_v1.c: 131:     int max_power = 40;
 [v _max_power `i ~T0 @X0 1 a ]
-[e = _max_power -> 20 `i ]
+[e = _max_power -> 40 `i ]
 "132
 [; ;dc_motor_v1.c: 132:     int acceleration_time = 100;
 [v _acceleration_time `i ~T0 @X0 1 a ]
@@ -2754,9 +2754,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor_v1.c: 168:     mR->direction = 0;
 [e = . *U _mR 1 -> -> 0 `i `uc ]
 "171
-[; ;dc_motor_v1.c: 171:     int max_power = 20;
+[; ;dc_motor_v1.c: 171:     int max_power = 40;
 [v _max_power `i ~T0 @X0 1 a ]
-[e = _max_power -> 20 `i ]
+[e = _max_power -> 40 `i ]
 "172
 [; ;dc_motor_v1.c: 172:     int acceleration_time = 100;
 [v _acceleration_time `i ~T0 @X0 1 a ]
@@ -2879,9 +2879,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor_v1.c: 208:     mR->direction = 1;
 [e = . *U _mR 1 -> -> 1 `i `uc ]
 "210
-[; ;dc_motor_v1.c: 210:     int max_power = 20;
+[; ;dc_motor_v1.c: 210:     int max_power = 40;
 [v _max_power `i ~T0 @X0 1 a ]
-[e = _max_power -> 20 `i ]
+[e = _max_power -> 40 `i ]
 "211
 [; ;dc_motor_v1.c: 211:     int acceleration_time = 100;
 [v _acceleration_time `i ~T0 @X0 1 a ]
@@ -3004,9 +3004,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;dc_motor_v1.c: 246:     mR->direction = 0;
 [e = . *U _mR 1 -> -> 0 `i `uc ]
 "248
-[; ;dc_motor_v1.c: 248:    int max_power = 20;
+[; ;dc_motor_v1.c: 248:    int max_power = 40;
 [v _max_power `i ~T0 @X0 1 a ]
-[e = _max_power -> 20 `i ]
+[e = _max_power -> 40 `i ]
 "249
 [; ;dc_motor_v1.c: 249:     int acceleration_time = 100;
 [v _acceleration_time `i ~T0 @X0 1 a ]

@@ -56,16 +56,16 @@ void main(void){
     
  //~~~~~~~~~~~~~~ Calibration variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    
-    calibration.index = 5;  // tracking function set up commands the be 1, 2, 3, 4, 5, 6 etc. and then its reverse to be the negative value of it.
+    calibration.index = 1;  // tracking function set up commands the be 1, 2, 3, 4, 5, 6 etc. and then its reverse to be the negative value of it.
        
-    calibration.right_90 = 78;
-    calibration.left_90 = 77;
+    calibration.right_90 = 25;
+    calibration.left_90 = 25;
     
-    calibration.right_135 = 140;
-    calibration.left_135 = 140;
+    calibration.right_135 = 40;
+    calibration.left_135 = 40;
     
-    calibration.forward = 70;
-    calibration.backward = 40;
+    calibration.forward = 100;
+    calibration.backward = 100;
   
 //~~~~~~~~~~~~~~~ Executable code for the buggy ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
@@ -73,11 +73,11 @@ void main(void){
 
         pause_until_RF2_pressed();
 
-        calibration_routine(&calibration, &motorL, &motorR);
+//        calibration_routine(&calibration, &motorL, &motorR);
 
         maze_search(&calibration, &motorL, &motorR);
 //
-        maze_return(&calibration, &motorL, &motorR);
+//        maze_return(&calibration, &motorL, &motorR);
 
     }
 }

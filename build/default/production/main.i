@@ -24426,16 +24426,16 @@ void main(void){
 
 
 
-    calibration.index = 5;
+    calibration.index = 1;
 
-    calibration.right_90 = 78;
-    calibration.left_90 = 77;
+    calibration.right_90 = 25;
+    calibration.left_90 = 25;
 
-    calibration.right_135 = 140;
-    calibration.left_135 = 140;
+    calibration.right_135 = 40;
+    calibration.left_135 = 40;
 
-    calibration.forward = 70;
-    calibration.backward = 40;
+    calibration.forward = 100;
+    calibration.backward = 100;
 
 
 
@@ -24443,11 +24443,11 @@ void main(void){
 
         pause_until_RF2_pressed();
 
-        calibration_routine(&calibration, &motorL, &motorR);
+
 
         maze_search(&calibration, &motorL, &motorR);
 
-        maze_return(&calibration, &motorL, &motorR);
+
 
     }
 }

@@ -24198,7 +24198,7 @@ void adjust_calibration(int *calibration_label){
 
                 if(!PORTFbits.RF3){
                     _delay((unsigned long)((200)*(64000000/4000.0)));
-                    *calibration_label = *calibration_label - 2;
+                    *calibration_label = *calibration_label -2;
                     LATHbits.LATH3 = 1;
                     _delay((unsigned long)((200)*(64000000/4000.0)));
                     LATHbits.LATH3 = 0;
@@ -24233,13 +24233,13 @@ void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
     while(1){
 
 
-        if(c->index == 5){
+        if(c->index == 1){
             adjust_calibration(&(c->right_90));
             rightTURN(c->right_90, mL, mR);
             switch_calibration(&(c->index));
         }
 
-        if(c->index == 6){
+        if(c->index == 2){
             adjust_calibration(&(c->left_90));
             leftTURN(c->left_90, mL, mR);
             switch_calibration(&(c->index));
@@ -24256,19 +24256,20 @@ void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             switch_calibration(&(c->index));
         }
 
-        if(c->index == 1 ){
+        if(c->index == 5 ){
             adjust_calibration(&(c->forward));
             forward(c->forward, mL, mR);
             switch_calibration(&(c->index));
         }
-        if(c->index == 2){
+
+        if(c->index == 6){
             adjust_calibration(&(c->backward));
             backward(c->backward, mL, mR);
             switch_calibration(&(c->index));
         }
 
         if(c->index == 7){
-            c->index = 5;
+            c->index = 1;
             break;
         }
     }

@@ -2199,7 +2199,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;calibration.c: 49:                     _delay((unsigned long)((200)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "50
-[; ;calibration.c: 50:                     *calibration_label = *calibration_label - 2;
+[; ;calibration.c: 50:                     *calibration_label = *calibration_label -2;
 [e = *U _calibration_label - *U _calibration_label -> 2 `i ]
 "51
 [; ;calibration.c: 51:                     LATHbits.LATH3 = 1;
@@ -2316,8 +2316,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2039 ]
 {
 "85
-[; ;calibration.c: 85:         if(c->index == 5){
-[e $ ! == -> . *U _c 0 `i -> 5 `i 2041  ]
+[; ;calibration.c: 85:         if(c->index == 1){
+[e $ ! == -> . *U _c 0 `i -> 1 `i 2041  ]
 {
 "86
 [; ;calibration.c: 86:             adjust_calibration(&(c->right_90));
@@ -2333,8 +2333,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 2041 ]
 "91
-[; ;calibration.c: 91:         if(c->index == 6){
-[e $ ! == -> . *U _c 0 `i -> 6 `i 2042  ]
+[; ;calibration.c: 91:         if(c->index == 2){
+[e $ ! == -> . *U _c 0 `i -> 2 `i 2042  ]
 {
 "92
 [; ;calibration.c: 92:             adjust_calibration(&(c->left_90));
@@ -2384,8 +2384,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 2044 ]
 "108
-[; ;calibration.c: 108:         if(c->index == 1 ){
-[e $ ! == -> . *U _c 0 `i -> 1 `i 2045  ]
+[; ;calibration.c: 108:         if(c->index == 5 ){
+[e $ ! == -> . *U _c 0 `i -> 5 `i 2045  ]
 {
 "109
 [; ;calibration.c: 109:             adjust_calibration(&(c->forward));
@@ -2400,44 +2400,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;calibration.c: 112:         }
 }
 [e :U 2045 ]
-"113
-[; ;calibration.c: 113:         if(c->index == 2){
-[e $ ! == -> . *U _c 0 `i -> 2 `i 2046  ]
-{
 "114
-[; ;calibration.c: 114:             adjust_calibration(&(c->backward));
-[e ( _adjust_calibration (1 -> &U . *U _c 6 `*i ]
+[; ;calibration.c: 114:         if(c->index == 6){
+[e $ ! == -> . *U _c 0 `i -> 6 `i 2046  ]
+{
 "115
-[; ;calibration.c: 115:             backward(c->backward, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+[; ;calibration.c: 115:             adjust_calibration(&(c->backward));
+[e ( _adjust_calibration (1 -> &U . *U _c 6 `*i ]
 "116
-[; ;calibration.c: 116:             switch_calibration(&(c->index));
-[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+[; ;calibration.c: 116:             backward(c->backward, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "117
-[; ;calibration.c: 117:         }
+[; ;calibration.c: 117:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"118
+[; ;calibration.c: 118:         }
 }
 [e :U 2046 ]
-"119
-[; ;calibration.c: 119:         if(c->index == 7){
+"120
+[; ;calibration.c: 120:         if(c->index == 7){
 [e $ ! == -> . *U _c 0 `i -> 7 `i 2047  ]
 {
-"120
-[; ;calibration.c: 120:             c->index = 5;
-[e = . *U _c 0 -> -> 5 `i `uc ]
 "121
-[; ;calibration.c: 121:             break;
-[e $U 2040  ]
+[; ;calibration.c: 121:             c->index = 1;
+[e = . *U _c 0 -> -> 1 `i `uc ]
 "122
-[; ;calibration.c: 122:         }
+[; ;calibration.c: 122:             break;
+[e $U 2040  ]
+"123
+[; ;calibration.c: 123:         }
 }
 [e :U 2047 ]
-"123
-[; ;calibration.c: 123:     }
+"124
+[; ;calibration.c: 124:     }
 }
 [e :U 2038 ]
 [e $U 2039  ]
 [e :U 2040 ]
-"124
-[; ;calibration.c: 124: }
+"125
+[; ;calibration.c: 125: }
 [e :UE 2037 ]
 }
