@@ -14,7 +14,6 @@
 
 ## Project Challenge and Instructions
 <a name="project-challenge-and-instructions"></a>
-[Description of project challenge and instructions for participants]
 
 ### Challenge brief
 
@@ -74,12 +73,21 @@ Final testing will take place in the CAGB 6th Floor Drawing Room and testing are
 <a name="in-depth-view-of-code-path"></a>
 [Detailed explanation of the code path]
 
-## Movement Calibration
+## Movement Structure
 <a name="movement-calibration"></a>
-[Explanation of movement calibration process]
 
-## Colour Calibration
+### Movement Process
+[Explanation of movement process]
+
+### Movement Calibration
+
+## Colour Sensing Structure
 <a name="colour-calibration"></a>
+
+### Colour Sensing Process
+[Explanation of movement process]
+
+### Colour Calibration
 [Explanation of colour calibration process]
 
 ## Exemptions?
