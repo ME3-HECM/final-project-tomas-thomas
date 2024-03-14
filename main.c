@@ -64,8 +64,12 @@ void main(void){
     calibration.right_135 = 40;
     calibration.left_135 = 40;
     
-    calibration.forward = 100;
-    calibration.backward = 100;
+    calibration.forward_one = 100;
+    calibration.backward_one = 100;
+    
+    calibration.forward_half = 33;
+    calibration.backward_half = 33;
+
   
 //~~~~~~~~~~~~~~~ Executable code for the buggy ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
@@ -73,11 +77,11 @@ void main(void){
 
         pause_until_RF2_pressed();
 
-//        calibration_routine(&calibration, &motorL, &motorR);
+        calibration_routine(&calibration, &motorL, &motorR);
 
         maze_search(&calibration, &motorL, &motorR);
 //
-//        maze_return(&calibration, &motorL, &motorR);
+        maze_return(&calibration, &motorL, &motorR);
 
     }
 }

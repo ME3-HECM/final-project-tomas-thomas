@@ -24169,8 +24169,10 @@ typedef struct calibration_structure {
     char right_135;
     char left_135;
 
-    char forward;
-    char backward;
+    char forward_one;
+    char backward_one;
+    char forward_half;
+    char backward_half;
 
 } calibration_structure;
 
@@ -24210,7 +24212,7 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
         LATHbits.LATH3 = 1;
         LATDbits.LATD7 = 1;
 
-        forward(c->forward, mL, mR);
+        forward(c->forward_one, mL, mR);
         Forward_Count++;
         Color_Value = color_cardCheck();
 
@@ -24227,21 +24229,21 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             if(Color_Value == 1){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
-                backward(c->backward/2, mL, mR);
+                backward(c->backward_half, mL, mR);
                 rightTURN(c->right_90, mL, mR);
             }
 
             else if(Color_Value == 2){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
-                backward(c->backward/2, mL, mR);
+                backward(c->backward_half, mL, mR);
                 leftTURN(c->left_90, mL, mR);
             }
 
             else if(Color_Value == 3){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
-                backward(c->backward/2, mL, mR);
+                backward(c->backward_half, mL, mR);
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
             }
@@ -24249,41 +24251,41 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             else if(Color_Value == 4){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
-                backward(c->backward/2, mL, mR);
-                backward(c->backward, mL, mR);
+                backward(c->backward_half, mL, mR);
+                backward(c->backward_one, mL, mR);
                 rightTURN(c->right_90, mL, mR);
             }
 
             else if(Color_Value == 5){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
-                backward(c->backward/2, mL, mR);
-                backward(c->backward, mL, mR);
+                backward(c->backward_half, mL, mR);
+                backward(c->backward_one, mL, mR);
                 leftTURN(c->left_90, mL, mR);
             }
 
             else if(Color_Value == 6){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
-                backward(c->backward/2, mL, mR);
+                backward(c->backward_half, mL, mR);
                 rightTURN(c->right_135, mL, mR);
             }
 
             else if(Color_Value == 7){
                 Operation_History[Operation_Count] = Color_Value;
                 Operation_Count++;
-                backward(c->backward/2, mL, mR);
+                backward(c->backward_half, mL, mR);
                 leftTURN(c->left_135, mL, mR);
             }
 
             else if(Color_Value == 8){
 
-                backward(c->backward/2, mL, mR);
+                backward(c->backward_half, mL, mR);
 
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
-                backward(c->backward, mL, mR);
-                forward((c->forward)/2, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
                 break;
             }
         }
@@ -24299,20 +24301,20 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             if(Operation_History[i] > 10){
                 unsigned char distance_back = Operation_History[i] - 10;
                 for (int j = 0; j < distance_back-1; j++) {
-                    forward(c->forward, mL, mR);
+                    forward(c->forward_one, mL, mR);
                 }
-                forward((c->forward)/2, mL, mR);
+                forward(c->forward_half, mL, mR);
 
             }
 
             else if(Operation_History[i] == 1){
                 leftTURN(c->left_90, mL, mR);
-                backward(c->backward, mL, mR);
+                backward(c->backward_one, mL, mR);
             }
 
             else if(Operation_History[i] == 2){
                 rightTURN(c->right_90, mL, mR);
-                backward(c->backward, mL, mR);
+                backward(c->backward_one, mL, mR);
             }
 
             else if(Operation_History[i] == 3){
@@ -24326,41 +24328,41 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
 
 
                 rightTURN(c->right_90, mL, mR);
-                forward(c->forward, mL, mR);
+                forward(c->forward_one, mL, mR);
 
 
-                forward(c->forward, mL, mR);
-                backward(c->backward/2, mL, mR);
+                forward(c->forward_one, mL, mR);
+                backward(c->backward_half, mL, mR);
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
-                backward(c->backward, mL, mR);
-                forward(c->forward/2, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
             }
 
             else if(Operation_History[i] == 5){
                 leftTURN(c->right_90, mL, mR);
-                forward(c->forward, mL, mR);
+                forward(c->forward_one, mL, mR);
 
 
-                forward(c->forward, mL, mR);
-                backward(c->backward/2, mL, mR);
+                forward(c->forward_one, mL, mR);
+                backward(c->backward_half, mL, mR);
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
-                backward(c->backward, mL, mR);
-                forward(c->forward/2, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
 
             }
 
             else if(Operation_History[i] == 6){
                 leftTURN(c->left_135, mL, mR);
-                backward(c->backward, mL, mR);
-                forward(c->forward/2, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
             }
 
             else if(Operation_History[i] == 7){
                 rightTURN(c->right_135, mL, mR);
-                backward(c->backward, mL, mR);
-                forward(c->forward/2, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
             }
 
             else if(Operation_History[i] == 8){

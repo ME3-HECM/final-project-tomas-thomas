@@ -106,18 +106,30 @@ void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
         }
         
         if(c->index == 5 ){ //forward
-            adjust_calibration(&(c->forward));
-            forward(c->forward, mL, mR);  
+            adjust_calibration(&(c->forward_one));
+            forward(c->forward_one, mL, mR);  
             switch_calibration(&(c->index));
         }
         
         if(c->index == 6){ //backward
-            adjust_calibration(&(c->backward));
-            backward(c->backward, mL, mR);  
+            adjust_calibration(&(c->backward_one));
+            backward(c->backward_one, mL, mR);  
             switch_calibration(&(c->index));
         }
         
-        if(c->index == 7){//this value should be 7 - currently 3 for testing
+        if(c->index == 7 ){ //forward
+            adjust_calibration(&(c->forward_half));
+            forward(c->forward_half, mL, mR);  
+            switch_calibration(&(c->index));
+        }
+        
+        if(c->index == 8){ //backward
+            adjust_calibration(&(c->backward_half));
+            backward(c->backward_half, mL, mR);  
+            switch_calibration(&(c->index));
+        }
+        
+        if(c->index == 9){//this value should be 7 - currently 3 for testing
             c->index = 1; 
             break; //quits us out of the calibration routine
         }

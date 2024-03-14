@@ -5,8 +5,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S2015 DC_motor power direction brakemode PWMperiod posDutyHighByte negDutyHighByte ]
 "9 ./calibration.h
 [; ;./calibration.h: 9: typedef struct calibration_structure {
-[s S2016 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2016 calibration_structure index right_90 left_90 right_135 left_135 forward backward ]
+[s S2016 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S2016 calibration_structure index right_90 left_90 right_135 left_135 forward_one backward_one forward_half backward_half ]
 "28487 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28487:     struct {
 [s S1349 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -2068,8 +2068,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _temp
 -> -> 7 `i `uc
 ]
-"22 ./calibration.h
-[; ;./calibration.h: 22: struct calibration_structure calibration;
+"24 ./calibration.h
+[; ;./calibration.h: 24: struct calibration_structure calibration;
 [v _calibration `S2016 ~T0 @X0 1 e ]
 "6 calibration.c
 [; ;calibration.c: 6: void pause_until_RF2_pressed(){
@@ -2388,10 +2388,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> . *U _c 0 `i -> 5 `i 2045  ]
 {
 "109
-[; ;calibration.c: 109:             adjust_calibration(&(c->forward));
+[; ;calibration.c: 109:             adjust_calibration(&(c->forward_one));
 [e ( _adjust_calibration (1 -> &U . *U _c 5 `*i ]
 "110
-[; ;calibration.c: 110:             forward(c->forward, mL, mR);
+[; ;calibration.c: 110:             forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
 "111
 [; ;calibration.c: 111:             switch_calibration(&(c->index));
@@ -2405,10 +2405,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == -> . *U _c 0 `i -> 6 `i 2046  ]
 {
 "115
-[; ;calibration.c: 115:             adjust_calibration(&(c->backward));
+[; ;calibration.c: 115:             adjust_calibration(&(c->backward_one));
 [e ( _adjust_calibration (1 -> &U . *U _c 6 `*i ]
 "116
-[; ;calibration.c: 116:             backward(c->backward, mL, mR);
+[; ;calibration.c: 116:             backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "117
 [; ;calibration.c: 117:             switch_calibration(&(c->index));
@@ -2418,26 +2418,60 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 2046 ]
 "120
-[; ;calibration.c: 120:         if(c->index == 7){
+[; ;calibration.c: 120:         if(c->index == 7 ){
 [e $ ! == -> . *U _c 0 `i -> 7 `i 2047  ]
 {
 "121
-[; ;calibration.c: 121:             c->index = 1;
-[e = . *U _c 0 -> -> 1 `i `uc ]
+[; ;calibration.c: 121:             adjust_calibration(&(c->forward_half));
+[e ( _adjust_calibration (1 -> &U . *U _c 7 `*i ]
 "122
-[; ;calibration.c: 122:             break;
-[e $U 2040  ]
+[; ;calibration.c: 122:             forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
 "123
-[; ;calibration.c: 123:         }
+[; ;calibration.c: 123:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"124
+[; ;calibration.c: 124:         }
 }
 [e :U 2047 ]
-"124
-[; ;calibration.c: 124:     }
+"126
+[; ;calibration.c: 126:         if(c->index == 8){
+[e $ ! == -> . *U _c 0 `i -> 8 `i 2048  ]
+{
+"127
+[; ;calibration.c: 127:             adjust_calibration(&(c->backward_half));
+[e ( _adjust_calibration (1 -> &U . *U _c 8 `*i ]
+"128
+[; ;calibration.c: 128:             backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"129
+[; ;calibration.c: 129:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"130
+[; ;calibration.c: 130:         }
+}
+[e :U 2048 ]
+"132
+[; ;calibration.c: 132:         if(c->index == 9){
+[e $ ! == -> . *U _c 0 `i -> 9 `i 2049  ]
+{
+"133
+[; ;calibration.c: 133:             c->index = 1;
+[e = . *U _c 0 -> -> 1 `i `uc ]
+"134
+[; ;calibration.c: 134:             break;
+[e $U 2040  ]
+"135
+[; ;calibration.c: 135:         }
+}
+[e :U 2049 ]
+"136
+[; ;calibration.c: 136:     }
 }
 [e :U 2038 ]
 [e $U 2039  ]
 [e :U 2040 ]
-"125
-[; ;calibration.c: 125: }
+"137
+[; ;calibration.c: 137: }
 [e :UE 2037 ]
 }

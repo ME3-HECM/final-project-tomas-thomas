@@ -14,8 +14,10 @@ typedef struct calibration_structure { //definition of DC_motor structure
     char right_135;
     char left_135;
     
-    char forward;
-    char backward;
+    char forward_one;
+    char backward_one;
+    char forward_half;
+    char backward_half;
 
 } calibration_structure;
 

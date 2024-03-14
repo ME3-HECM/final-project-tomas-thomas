@@ -24138,8 +24138,10 @@ typedef struct calibration_structure {
     char right_135;
     char left_135;
 
-    char forward;
-    char backward;
+    char forward_one;
+    char backward_one;
+    char forward_half;
+    char backward_half;
 
 } calibration_structure;
 
@@ -24257,18 +24259,30 @@ void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
         }
 
         if(c->index == 5 ){
-            adjust_calibration(&(c->forward));
-            forward(c->forward, mL, mR);
+            adjust_calibration(&(c->forward_one));
+            forward(c->forward_one, mL, mR);
             switch_calibration(&(c->index));
         }
 
         if(c->index == 6){
-            adjust_calibration(&(c->backward));
-            backward(c->backward, mL, mR);
+            adjust_calibration(&(c->backward_one));
+            backward(c->backward_one, mL, mR);
             switch_calibration(&(c->index));
         }
 
-        if(c->index == 7){
+        if(c->index == 7 ){
+            adjust_calibration(&(c->forward_half));
+            forward(c->forward_half, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index == 8){
+            adjust_calibration(&(c->backward_half));
+            backward(c->backward_half, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index == 9){
             c->index = 1;
             break;
         }

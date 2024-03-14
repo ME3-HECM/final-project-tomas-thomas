@@ -5,8 +5,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S2015 DC_motor power direction brakemode PWMperiod posDutyHighByte negDutyHighByte ]
 "9 ./calibration.h
 [; ;./calibration.h: 9: typedef struct calibration_structure {
-[s S2016 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2016 calibration_structure index right_90 left_90 right_135 left_135 forward backward ]
+[s S2016 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S2016 calibration_structure index right_90 left_90 right_135 left_135 forward_one backward_one forward_half backward_half ]
 "12 ./color.h
 [; ;./color.h: 12: void color_click_init(void);
 [v _color_click_init `(v ~T0 @X0 0 ef ]
@@ -2059,8 +2059,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _temp
 -> -> 7 `i `uc
 ]
-"22 ./calibration.h
-[; ;./calibration.h: 22: struct calibration_structure calibration;
+"24 ./calibration.h
+[; ;./calibration.h: 24: struct calibration_structure calibration;
 [v _calibration `S2016 ~T0 @X0 1 e ]
 "15 ./pathfinder_file.h
 [; ;./pathfinder_file.h: 15: char Operation_Count = 0;
@@ -2117,7 +2117,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 14:         LATDbits.LATD7 = 1;
 [e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
 "16
-[; ;pathfinder_file.c: 16:         forward(c->forward, mL, mR);
+[; ;pathfinder_file.c: 16:         forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
 "17
 [; ;pathfinder_file.c: 17:         Forward_Count++;
@@ -2155,8 +2155,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 32:                 Operation_Count++;
 [e ++ _Operation_Count -> -> 1 `i `uc ]
 "33
-[; ;pathfinder_file.c: 33:                 backward(c->backward/2, mL, mR);
-[e ( _backward (3 , , -> / -> . *U _c 6 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 33:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "34
 [; ;pathfinder_file.c: 34:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
@@ -2176,8 +2176,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 39:                 Operation_Count++;
 [e ++ _Operation_Count -> -> 1 `i `uc ]
 "40
-[; ;pathfinder_file.c: 40:                 backward(c->backward/2, mL, mR);
-[e ( _backward (3 , , -> / -> . *U _c 6 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 40:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "41
 [; ;pathfinder_file.c: 41:                 leftTURN(c->left_90, mL, mR);
 [e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
@@ -2197,8 +2197,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 46:                 Operation_Count++;
 [e ++ _Operation_Count -> -> 1 `i `uc ]
 "47
-[; ;pathfinder_file.c: 47:                 backward(c->backward/2, mL, mR);
-[e ( _backward (3 , , -> / -> . *U _c 6 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 47:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "48
 [; ;pathfinder_file.c: 48:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
@@ -2221,10 +2221,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 54:                 Operation_Count++;
 [e ++ _Operation_Count -> -> 1 `i `uc ]
 "55
-[; ;pathfinder_file.c: 55:                 backward(c->backward/2, mL, mR);
-[e ( _backward (3 , , -> / -> . *U _c 6 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 55:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "56
-[; ;pathfinder_file.c: 56:                 backward(c->backward, mL, mR);
+[; ;pathfinder_file.c: 56:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "57
 [; ;pathfinder_file.c: 57:                 rightTURN(c->right_90, mL, mR);
@@ -2245,10 +2245,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 62:                 Operation_Count++;
 [e ++ _Operation_Count -> -> 1 `i `uc ]
 "63
-[; ;pathfinder_file.c: 63:                 backward(c->backward/2, mL, mR);
-[e ( _backward (3 , , -> / -> . *U _c 6 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 63:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "64
-[; ;pathfinder_file.c: 64:                 backward(c->backward, mL, mR);
+[; ;pathfinder_file.c: 64:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "65
 [; ;pathfinder_file.c: 65:                 leftTURN(c->left_90, mL, mR);
@@ -2269,8 +2269,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 70:                 Operation_Count++;
 [e ++ _Operation_Count -> -> 1 `i `uc ]
 "71
-[; ;pathfinder_file.c: 71:                 backward(c->backward/2, mL, mR);
-[e ( _backward (3 , , -> / -> . *U _c 6 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 71:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "72
 [; ;pathfinder_file.c: 72:                 rightTURN(c->right_135, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
@@ -2290,8 +2290,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 77:                 Operation_Count++;
 [e ++ _Operation_Count -> -> 1 `i `uc ]
 "78
-[; ;pathfinder_file.c: 78:                 backward(c->backward/2, mL, mR);
-[e ( _backward (3 , , -> / -> . *U _c 6 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 78:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "79
 [; ;pathfinder_file.c: 79:                 leftTURN(c->left_135, mL, mR);
 [e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
@@ -2305,8 +2305,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! == _Color_Value -> 8 `i 2036  ]
 {
 "84
-[; ;pathfinder_file.c: 84:                 backward(c->backward/2, mL, mR);
-[e ( _backward (3 , , -> / -> . *U _c 6 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 84:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "86
 [; ;pathfinder_file.c: 86:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
@@ -2314,11 +2314,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 87:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "88
-[; ;pathfinder_file.c: 88:                 backward(c->backward, mL, mR);
+[; ;pathfinder_file.c: 88:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "89
-[; ;pathfinder_file.c: 89:                 forward((c->forward)/2, mL, mR);
-[e ( _forward (3 , , -> / -> . *U _c 5 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 89:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
 "90
 [; ;pathfinder_file.c: 90:                 break;
 [e $U 2020  ]
@@ -2386,7 +2386,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2045 ]
 {
 "105
-[; ;pathfinder_file.c: 105:                     forward(c->forward, mL, mR);
+[; ;pathfinder_file.c: 105:                     forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
 "106
 [; ;pathfinder_file.c: 106:                 }
@@ -2397,8 +2397,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2046 ]
 }
 "107
-[; ;pathfinder_file.c: 107:                 forward((c->forward)/2, mL, mR);
-[e ( _forward (3 , , -> / -> . *U _c 5 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 107:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
 "109
 [; ;pathfinder_file.c: 109:             }
 }
@@ -2412,7 +2412,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 112:                 leftTURN(c->left_90, mL, mR);
 [e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
 "113
-[; ;pathfinder_file.c: 113:                 backward(c->backward, mL, mR);
+[; ;pathfinder_file.c: 113:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "114
 [; ;pathfinder_file.c: 114:             }
@@ -2427,7 +2427,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 117:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "118
-[; ;pathfinder_file.c: 118:                 backward(c->backward, mL, mR);
+[; ;pathfinder_file.c: 118:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "119
 [; ;pathfinder_file.c: 119:             }
@@ -2463,14 +2463,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 131:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "132
-[; ;pathfinder_file.c: 132:                 forward(c->forward, mL, mR);
+[; ;pathfinder_file.c: 132:                 forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
 "135
-[; ;pathfinder_file.c: 135:                 forward(c->forward, mL, mR);
+[; ;pathfinder_file.c: 135:                 forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
 "136
-[; ;pathfinder_file.c: 136:                 backward(c->backward/2, mL, mR);
-[e ( _backward (3 , , -> / -> . *U _c 6 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 136:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "137
 [; ;pathfinder_file.c: 137:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
@@ -2478,11 +2478,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 138:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "139
-[; ;pathfinder_file.c: 139:                 backward(c->backward, mL, mR);
+[; ;pathfinder_file.c: 139:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "140
-[; ;pathfinder_file.c: 140:                 forward(c->forward/2, mL, mR);
-[e ( _forward (3 , , -> / -> . *U _c 5 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 140:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
 "141
 [; ;pathfinder_file.c: 141:             }
 }
@@ -2496,14 +2496,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 144:                 leftTURN(c->right_90, mL, mR);
 [e ( _leftTURN (3 , , . *U _c 1 _mL _mR ]
 "145
-[; ;pathfinder_file.c: 145:                 forward(c->forward, mL, mR);
+[; ;pathfinder_file.c: 145:                 forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
 "148
-[; ;pathfinder_file.c: 148:                 forward(c->forward, mL, mR);
+[; ;pathfinder_file.c: 148:                 forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
 "149
-[; ;pathfinder_file.c: 149:                 backward(c->backward/2, mL, mR);
-[e ( _backward (3 , , -> / -> . *U _c 6 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 149:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "150
 [; ;pathfinder_file.c: 150:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
@@ -2511,11 +2511,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 151:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "152
-[; ;pathfinder_file.c: 152:                 backward(c->backward, mL, mR);
+[; ;pathfinder_file.c: 152:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "153
-[; ;pathfinder_file.c: 153:                 forward(c->forward/2, mL, mR);
-[e ( _forward (3 , , -> / -> . *U _c 5 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 153:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
 "155
 [; ;pathfinder_file.c: 155:             }
 }
@@ -2529,11 +2529,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 158:                 leftTURN(c->left_135, mL, mR);
 [e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
 "159
-[; ;pathfinder_file.c: 159:                 backward(c->backward, mL, mR);
+[; ;pathfinder_file.c: 159:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "160
-[; ;pathfinder_file.c: 160:                 forward(c->forward/2, mL, mR);
-[e ( _forward (3 , , -> / -> . *U _c 5 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 160:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
 "161
 [; ;pathfinder_file.c: 161:             }
 }
@@ -2547,11 +2547,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder_file.c: 164:                 rightTURN(c->right_135, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
 "165
-[; ;pathfinder_file.c: 165:                 backward(c->backward, mL, mR);
+[; ;pathfinder_file.c: 165:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "166
-[; ;pathfinder_file.c: 166:                 forward(c->forward/2, mL, mR);
-[e ( _forward (3 , , -> / -> . *U _c 5 `i -> 2 `i `uc _mL _mR ]
+[; ;pathfinder_file.c: 166:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
 "167
 [; ;pathfinder_file.c: 167:             }
 }

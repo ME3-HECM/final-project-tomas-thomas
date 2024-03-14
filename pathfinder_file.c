@@ -13,7 +13,7 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
         LATHbits.LATH3 = 1;
         LATDbits.LATD7 = 1; 
 
-        forward(c->forward, mL, mR);
+        forward(c->forward_one, mL, mR);
         Forward_Count++;
         Color_Value = color_cardCheck(); //reutrns 1 to 8 integer value
         
@@ -30,21 +30,21 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             if(Color_Value == 1){ //detects that it is red - turn right 90
                 Operation_History[Operation_Count] = Color_Value;    //1 = red value 
                 Operation_Count++;
-                backward(c->backward/2, mL, mR);
+                backward(c->backward_half, mL, mR);
                 rightTURN(c->right_90, mL, mR);
             }
             
             else if(Color_Value == 2){ //detects that it is green - turn left 90
                 Operation_History[Operation_Count] = Color_Value;    //1 = red value 
                 Operation_Count++;
-                backward(c->backward/2, mL, mR);
+                backward(c->backward_half, mL, mR);
                 leftTURN(c->left_90, mL, mR);  
             }
            
             else if(Color_Value == 3){ //detects that it is blue - turn 180                     some calibration issues
                 Operation_History[Operation_Count] = Color_Value;    //1 = red value 
                 Operation_Count++;
-                backward(c->backward/2, mL, mR);
+                backward(c->backward_half, mL, mR);
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
             }
@@ -52,41 +52,41 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             else if(Color_Value == 4){ //detects that it is yellow - reverse 1 square turn right 90                     some calibration issues
                 Operation_History[Operation_Count] = Color_Value;    
                 Operation_Count++;
-                backward(c->backward/2, mL, mR); // half back off from wall
-                backward(c->backward, mL, mR); //reverse for 1 square
+                backward(c->backward_half, mL, mR); // half back off from wall
+                backward(c->backward_one, mL, mR); //reverse for 1 square
                 rightTURN(c->right_90, mL, mR); //turn 90 left
             }
             
             else if(Color_Value == 5){ //detects that it is pink - reverse 1 square turn left 90                     some calibration issues
                 Operation_History[Operation_Count] = Color_Value;   
                 Operation_Count++;
-                backward(c->backward/2, mL, mR); // half back off from wall
-                backward(c->backward, mL, mR); //reverse for 1 square
+                backward(c->backward_half, mL, mR); // half back off from wall
+                backward(c->backward_one, mL, mR); //reverse for 1 square
                 leftTURN(c->left_90, mL, mR);  
             }
             
             else if(Color_Value == 6){ //detects that it is orange - turn right 135                  some calibration issues
                 Operation_History[Operation_Count] = Color_Value;    
                 Operation_Count++;
-                backward(c->backward/2, mL, mR); // half back off from wall
+                backward(c->backward_half, mL, mR); // half back off from wall
                 rightTURN(c->right_135, mL, mR);
             }
             
             else if(Color_Value == 7){ //detects that it is light blue - turn Left 135                  some calibration issues
                 Operation_History[Operation_Count] = Color_Value; 
                 Operation_Count++;
-                backward(c->backward/2, mL, mR); // half back off from wall
+                backward(c->backward_half, mL, mR); // half back off from wall
                 leftTURN(c->left_135, mL, mR);
             }
             
             else if(Color_Value == 8){ //detects that it is white - return home            
                 
-                backward(c->backward/2, mL, mR); // half back off from wall
+                backward(c->backward_half, mL, mR); // half back off from wall
                 // 180
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
-                backward(c->backward, mL, mR);
-                forward((c->forward)/2, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
                 break;
             }
         }
@@ -102,20 +102,20 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             if(Operation_History[i] > 10){  
                 unsigned char distance_back = Operation_History[i] - 10;
                 for (int j = 0; j < distance_back-1; j++) {
-                    forward(c->forward, mL, mR);
+                    forward(c->forward_one, mL, mR);
                 }
-                forward((c->forward)/2, mL, mR);
+                forward(c->forward_half, mL, mR);
                 // need to have a go back by a half  
             }
 //
             else if(Operation_History[i] == 1){  //opposite of right = left
                 leftTURN(c->left_90, mL, mR);
-                backward(c->backward, mL, mR);   
+                backward(c->backward_one, mL, mR);   
             }
 
             else if(Operation_History[i] == 2){ //opposite of left = right
                 rightTURN(c->right_90, mL, mR);
-                backward(c->backward, mL, mR);
+                backward(c->backward_one, mL, mR);
             }
 
             else if(Operation_History[i] == 3){
@@ -129,41 +129,41 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 
                 //opposite of yellow
                 rightTURN(c->right_90, mL, mR);
-                forward(c->forward, mL, mR);
+                forward(c->forward_one, mL, mR);
                 
                 //reallignement to wall
-                forward(c->forward, mL, mR);    //contact with the wall to allign
-                backward(c->backward/2, mL, mR); // halfbackwards to move back to center of square
+                forward(c->forward_one, mL, mR);    //contact with the wall to allign
+                backward(c->backward_half, mL, mR); // halfbackwards to move back to center of square
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
-                backward(c->backward, mL, mR); //full backwards
-                forward(c->forward/2, mL, mR); //half foward
+                backward(c->backward_one, mL, mR); //full backwards
+                forward(c->forward_half, mL, mR); //half foward
             }
 
             else if(Operation_History[i] == 5){
                 leftTURN(c->right_90, mL, mR);
-                forward(c->forward, mL, mR);
+                forward(c->forward_one, mL, mR);
                 
                 //reallignement to wall
-                forward(c->forward, mL, mR);    //contact with the wall to allign
-                backward(c->backward/2, mL, mR); // halfbackwards to move back to center of square
+                forward(c->forward_one, mL, mR);    //contact with the wall to allign
+                backward(c->backward_half, mL, mR); // halfbackwards to move back to center of square
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
-                backward(c->backward, mL, mR); //full backwards
-                forward(c->forward/2, mL, mR); //half foward
+                backward(c->backward_one, mL, mR); //full backwards
+                forward(c->forward_half, mL, mR); //half foward
                 
             }
 
             else if(Operation_History[i] == 6){
                 leftTURN(c->left_135, mL, mR);  //counter to right 135
-                backward(c->backward, mL, mR);  //full backwards
-                forward(c->forward/2, mL, mR);  //half forward
+                backward(c->backward_one, mL, mR);  //full backwards
+                forward(c->forward_half, mL, mR);  //half forward
             }
 
             else if(Operation_History[i] == 7){
                 rightTURN(c->right_135, mL, mR);
-                backward(c->backward, mL, mR);  //full backwards
-                forward(c->forward/2, mL, mR);  //half forward
+                backward(c->backward_one, mL, mR);  //full backwards
+                forward(c->forward_half, mL, mR);  //half forward
             }
 
             else if(Operation_History[i] == 8){

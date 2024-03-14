@@ -24148,8 +24148,10 @@ typedef struct calibration_structure {
     char right_135;
     char left_135;
 
-    char forward;
-    char backward;
+    char forward_one;
+    char backward_one;
+    char forward_half;
+    char backward_half;
 
 } calibration_structure;
 
@@ -24434,8 +24436,12 @@ void main(void){
     calibration.right_135 = 40;
     calibration.left_135 = 40;
 
-    calibration.forward = 100;
-    calibration.backward = 100;
+    calibration.forward_one = 100;
+    calibration.backward_one = 100;
+
+    calibration.forward_half = 20;
+    calibration.backward_half = 20;
+
 
 
 
@@ -24443,11 +24449,11 @@ void main(void){
 
         pause_until_RF2_pressed();
 
-
+        calibration_routine(&calibration, &motorL, &motorR);
 
         maze_search(&calibration, &motorL, &motorR);
 
-
+        maze_return(&calibration, &motorL, &motorR);
 
     }
 }
