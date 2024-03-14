@@ -21,8 +21,8 @@ char temp = 7;
 void initDCmotorsPWM(unsigned int PWMperiod); // function to setup PWM
 void setMotorPWM(DC_motor *m);
 void stop(DC_motor *mL, DC_motor *mR);
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 //void turn (char direction, char rotation, DC_motor *mL, DC_motor *mR);

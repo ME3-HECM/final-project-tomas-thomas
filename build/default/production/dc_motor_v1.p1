@@ -2864,10 +2864,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2046 ]
 }
 "206
-[; ;dc_motor_v1.c: 206: void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
-[v _turnLEFT `(v ~T0 @X0 1 ef3`uc`*S2015`*S2015 ]
+[; ;dc_motor_v1.c: 206: void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
+[v _leftTURN `(v ~T0 @X0 1 ef3`uc`*S2015`*S2015 ]
 {
-[e :U _turnLEFT ]
+[e :U _leftTURN ]
 [v _rotation_calibration `uc ~T0 @X0 1 r1 ]
 [v _mL `*S2015 ~T0 @X0 1 r2 ]
 [v _mR `*S2015 ~T0 @X0 1 r3 ]
@@ -2989,10 +2989,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2060 ]
 }
 "244
-[; ;dc_motor_v1.c: 244: void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
-[v _turnRIGHT `(v ~T0 @X0 1 ef3`uc`*S2015`*S2015 ]
+[; ;dc_motor_v1.c: 244: void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
+[v _rightTURN `(v ~T0 @X0 1 ef3`uc`*S2015`*S2015 ]
 {
-[e :U _turnRIGHT ]
+[e :U _rightTURN ]
 [v _rotation_calibration `uc ~T0 @X0 1 r1 ]
 [v _mL `*S2015 ~T0 @X0 1 r2 ]
 [v _mR `*S2015 ~T0 @X0 1 r3 ]

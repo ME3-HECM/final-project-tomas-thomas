@@ -24112,8 +24112,8 @@ char temp = 7;
 void initDCmotorsPWM(unsigned int PWMperiod);
 void setMotorPWM(DC_motor *m);
 void stop(DC_motor *mL, DC_motor *mR);
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 
@@ -24325,7 +24325,7 @@ void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
 
 
 
-void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
+void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 0;
     mR->direction = 1;
 
@@ -24363,7 +24363,7 @@ void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
 
 
 
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
+void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 1;
     mR->direction = 0;
 

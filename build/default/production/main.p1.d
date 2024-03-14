@@ -3,4 +3,5 @@ main.c  \
 dc_motor_v1.h  \
 calibration.h  \
 color.h  \
-serial.h 
+serial.h  \
+pathfinder_file.h 

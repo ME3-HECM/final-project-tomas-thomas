@@ -24093,27 +24093,6 @@ unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
 # 4 "./calibration.h" 2
 
-
-
-
-typedef struct calibration_structure {
-    char index;
-    char left_90;
-    char right_90;
-    char left_135;
-    char right_135;
-    char forward;
-    char backward;
-    char forward_motorL;
-    char forward_motorR;
-} calibration_structure;
-
-struct calibration_structure calibration;
-
-void adjust_calibration(int *calibration_label);
-void switch_calibration(int *calibration_index);
-# 2 "calibration.c" 2
-
 # 1 "./dc_motor_v1.h" 1
 
 
@@ -24138,17 +24117,58 @@ char temp = 7;
 void initDCmotorsPWM(unsigned int PWMperiod);
 void setMotorPWM(DC_motor *m);
 void stop(DC_motor *mL, DC_motor *mR);
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void delay_ms_function(unsigned int milliseconds);
-# 3 "calibration.c" 2
+# 5 "./calibration.h" 2
 
 
+
+
+typedef struct calibration_structure {
+    char index;
+
+    char right_90;
+    char left_90;
+    char right_135;
+    char left_135;
+
+    char forward;
+    char backward;
+
+} calibration_structure;
+
+struct calibration_structure calibration;
+
+void pause_until_RF2_pressed();
+void adjust_calibration(int *calibration_label);
+void switch_calibration(int *calibration_index);
+void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
+# 2 "calibration.c" 2
+
+
+
+
+void pause_until_RF2_pressed(){
+    while(1){
+
+        LATDbits.LATD7 = 1;
+        _delay((unsigned long)((100)*(64000000/4000.0)));
+        LATDbits.LATD7 = 0;
+        _delay((unsigned long)((100)*(64000000/4000.0)));
+
+        if(!PORTFbits.RF2){
+        _delay((unsigned long)((200)*(64000000/4000.0)));
+        LATDbits.LATD7 = 0;
+        break;
+        }
+    }
+}
 
 void adjust_calibration(int *calibration_label){
 
@@ -24204,6 +24224,51 @@ void switch_calibration(int *calibration_index){
             LATHbits.LATH3 = 1;
             _delay((unsigned long)((200)*(64000000/4000.0)));
             LATHbits.LATH3 = 0;
+            break;
+        }
+    }
+}
+
+void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+    while(1){
+
+
+        if(c->index == 5){
+            adjust_calibration(&(c->right_90));
+            rightTURN(c->right_90, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index == 6){
+            adjust_calibration(&(c->left_90));
+            leftTURN(c->left_90, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index == 3){
+            adjust_calibration(&(c->right_135));
+            rightTURN(c->right_135, mL, mR);
+            switch_calibration(&(c->index));
+        }
+        if(c->index == 4){
+            adjust_calibration(&(c->left_135));
+            leftTURN(c->left_135, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index == 1 ){
+            adjust_calibration(&(c->forward));
+            forward(c->forward, mL, mR);
+            switch_calibration(&(c->index));
+        }
+        if(c->index == 2){
+            adjust_calibration(&(c->backward));
+            backward(c->backward, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index == 7){
+            c->index = 5;
             break;
         }
     }

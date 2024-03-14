@@ -203,7 +203,7 @@ void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //check max pulse I can deliver to motors - thats the max speed
-void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
+void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 0;
     mR->direction = 1; 
     
@@ -241,7 +241,7 @@ void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
+void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 1;
     mR->direction = 0; 
     

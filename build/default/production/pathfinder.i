@@ -1,4 +1,4 @@
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c"
+# 1 "pathfinder.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c" 2
+# 1 "pathfinder.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24086,9 +24086,14 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c" 2
+# 1 "pathfinder.c" 2
 
-# 1 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.h" 1
+# 1 "./pathfinder.h" 1
+
+
+
+
+# 1 "./dc_motor_v1.h" 1
 
 
 
@@ -24112,247 +24117,192 @@ char temp = 7;
 void initDCmotorsPWM(unsigned int PWMperiod);
 void setMotorPWM(DC_motor *m);
 void stop(DC_motor *mL, DC_motor *mR);
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
 
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void delay_ms_function(unsigned int milliseconds);
-# 2 "../lab-6-motors-and-pwm-tomas-thomas.X/dc_motor_v1.c" 2
+# 5 "./pathfinder.h" 2
 
-
-
-void initDCmotorsPWM(unsigned int PWMperiod){
-
-    TRISEbits.TRISE2 = 0;
-    TRISEbits.TRISE4 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISGbits.TRISG6 = 0;
-
-    LATEbits.LATE2 = 0;
-    LATEbits.LATE4 = 0;
-    LATCbits.LATC7 = 0;
-    LATGbits.LATG6 = 0;
-
-
-    RE2PPS=0x05;
-    RE4PPS=0x06;
-    RC7PPS=0x07;
-    RG6PPS=0x08;
-
-
-    T2CONbits.CKPS=100;
-    T2HLTbits.MODE=0b00000;
-    T2CLKCONbits.CS=0b0001;
-
-
-
-    T2PR=PWMperiod;
-    T2CONbits.ON=1;
-
-
-
-    CCPR1H=0;
-    CCPR2H=0;
-    CCPR3H=0;
-    CCPR4H=0;
-
-
-    CCPTMRS0bits.C1TSEL=0;
-    CCPTMRS0bits.C2TSEL=0;
-    CCPTMRS0bits.C3TSEL=0;
-    CCPTMRS0bits.C4TSEL=0;
-
-
-    CCP1CONbits.FMT=1;
-    CCP1CONbits.CCP1MODE=0b1100;
-    CCP1CONbits.EN=1;
-
-    CCP2CONbits.FMT=1;
-    CCP2CONbits.CCP2MODE=0b1100;
-    CCP2CONbits.EN=1;
-
-    CCP3CONbits.FMT=1;
-    CCP3CONbits.CCP3MODE=0b1100;
-    CCP3CONbits.EN=1;
-
-    CCP4CONbits.FMT=1;
-    CCP4CONbits.CCP4MODE=0b1100;
-    CCP4CONbits.EN=1;
-
-
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 0;
-}
-void delay_ms_function(unsigned int milliseconds) {
-    while (milliseconds > 0) {
-        _delay((unsigned long)((1)*(64000000/4000.0)));
-        milliseconds--;
-    }
-}
-
-
-void setMotorPWM(DC_motor *m)
-{
-    unsigned char posDuty, negDuty;
-
-    if(m->brakemode) {
-        posDuty=m->PWMperiod - ((unsigned int)(m->power)*(m->PWMperiod))/100;
-        negDuty=m->PWMperiod;
-    }
-    else {
-        posDuty=0;
-  negDuty=((unsigned int)(m->power)*(m->PWMperiod))/100;
-    }
-
-    if (m->direction) {
-        *(m->posDutyHighByte)=posDuty;
-        *(m->negDutyHighByte)=negDuty;
-    } else {
-        *(m->posDutyHighByte)=negDuty;
-        *(m->negDutyHighByte)=posDuty;
-    }
-}
+# 1 "./color.h" 1
+# 12 "./color.h"
+void color_click_init(void);
+# 26 "./color.h"
+void color_writetoaddr(char address, char value);
 
 
 
 
-void stop(DC_motor *mL, DC_motor *mR){
 
-    mL->brakemode = 1;
-    mR->brakemode = 1;
+unsigned int color_read_Red(void);
+unsigned int color_read_Green(void);
+unsigned int color_read_Blue(void);
+unsigned int color_read_Clear(void);
 
 
-    while(mL->power || mR->power > 0){
-        if(mL->power > 0 ){
-            mL->power--;
-            setMotorPWM(mL);
+float custom_floatmodulo(float x, float y);
 
+
+void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V);
+
+
+unsigned int color_cardCheck(void);
+# 6 "./pathfinder.h" 2
+
+# 1 "./calibration.h" 1
+
+
+
+
+
+
+
+
+typedef struct calibration_structure {
+    char index;
+
+    char right_90;
+    char left_90;
+    char right_135;
+    char left_135;
+
+    char forward;
+    char backward;
+
+} calibration_structure;
+
+struct calibration_structure calibration;
+
+void pause_until_RF2_pressed();
+void adjust_calibration(int *calibration_label);
+void switch_calibration(int *calibration_index);
+void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
+# 7 "./pathfinder.h" 2
+
+
+
+
+
+void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR);
+void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
+
+char Operation_Count = 0;
+char Forward_Count = 0;
+char length = 50;
+char Operation_History[50] = {0};
+
+int Color_Value;
+# 2 "pathfinder.c" 2
+
+
+
+
+
+
+void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+
+    while(1){
+        LATHbits.LATH3 = 1;
+        LATDbits.LATD7 = 1;
+
+        forward(c->forward, mL, mR);
+        Forward_Count++;
+        Color_Value = color_cardCheck();
+
+        LATHbits.LATH3 = 0;
+        LATDbits.LATD7 = 0;
+
+
+        if(Color_Value != 0){
+            Operation_History[Operation_Count] = Forward_Count + 10;
+            Forward_Count = 0;
+            Operation_Count++;
+
+            if(Color_Value == 1){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                backward(c->backward, mL, mR);
+                rightTURN(c->right_135, mL, mR);
+            }
+
+            else if(Color_Value == 2){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                backward(c->backward, mL, mR);
+                leftTURN(c->left_135, mL, mR);
+            }
+
+
+            else if(Color_Value == 3){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                backward(c->backward, mL, mR);
+                rightTURN(c->right_135, mL, mR);
+                rightTURN(c->right_135, mL, mR);
+            }
+
+            else if(Color_Value == 8){
+
+                backward(c->backward, mL, mR);
+
+                rightTURN(c->right_135, mL, mR);
+                rightTURN(c->right_135, mL, mR);
+                backward(c->backward, mL, mR);
+                backward(c->backward, mL, mR);
+                break;
+            }
         }
-        if(mR->power > 0 ){
-            mR->power--;
-            setMotorPWM(mR);
-        }
-    _delay((unsigned long)((800)*(64000000/4000000.0)));
-    }
-}
-
-
-
-void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
-
-
-
-
-
-    int max_power = 20;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
-
-
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ;
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
-
-
-
-
-    for(int j=0; j<Distance_Calibration; j++){
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
-
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
-            mR->power--;
-        }
-        if(mL->power> 0 ){
-            mL->power--;
-        }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
     }
 }
 
+void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+    for (int i = (length-1); i >= 0; i--) {
 
+        if(Operation_History[i] > 10){
+            unsigned char distance_back = Operation_History[i] - 10;
+            for (int j = 0; j < distance_back; j++) {forward(c->forward, mL, mR);}
 
-
-void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
-    mL->direction = 0;
-    mR->direction = 1;
-
-    int max_power = 20;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
-
-
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ;
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
-
-
-    for(int j=0; j<rotation_calibration; j++){
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
-
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
-            mR->power--;
         }
-        if(mL->power> 0 ){
-            mL->power--;
+
+        else if(Operation_History[i] == 1){
+            leftTURN(c->left_135, mL, mR);
+            backward(c->backward, mL, mR);
         }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
-}
 
-
-
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR){
-    mL->direction = 1;
-    mR->direction = 0;
-
-   int max_power = 20;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
-
-
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ;
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
-    }
-
-
-    for(int j=0; j<rotation_calibration; j++){
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
-
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
-            mR->power--;
+        else if(Operation_History[i] == 2){
+            rightTURN(c->right_135, mL, mR);
+            backward(c->backward, mL, mR);
         }
-        if(mL->power> 0 ){
-            mL->power--;
+
+        else if(Operation_History[i] == 3){
+            rightTURN(c->right_135, mL, mR);
+            rightTURN(c->right_135, mL, mR);
         }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);
+
+        else if(Operation_History[i] == 4){
+
+        }
+
+        else if(Operation_History[i] == 5){
+
+        }
+
+        else if(Operation_History[i] == 6){
+
+        }
+
+        else if(Operation_History[i] == 7){
+
+        }
+
+        else if(Operation_History[i] == 8){
+
+        }
+        else if(Operation_History[i] == 0){
+            break;
+        }
     }
 }

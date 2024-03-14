@@ -24117,7 +24117,8 @@ char isDataInTxBuf (void);
 void TxBufferedString(char *string);
 void sendTxBuf(void);
 # 2 "serial.c" 2
-# 57 "serial.c"
+
+
 void initUSART4(void) {
     RC0PPS = 0x12;
     RX4PPS = 0x11;
