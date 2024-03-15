@@ -7,14 +7,41 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./calibration.h: 9: typedef struct calibration_structure {
 [s S2016 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S2016 calibration_structure index right_90 left_90 right_135 left_135 forward_one backward_one forward_half backward_half ]
-"12 ./color.h
-[; ;./color.h: 12: void color_click_init(void);
-[v _color_click_init `(v ~T0 @X0 0 ef ]
+"28487 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28487:     struct {
+[s S1349 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1349 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"28497
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28497:     struct {
+[s S1350 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1350 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
+"28486
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28486: typedef union {
+[u S1348 `S1349 1 `S1350 1 ]
+[n S1348 . . . ]
+"28508
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28508: extern volatile LATDbits_t LATDbits __attribute__((address(0xF7C)));
+[v _LATDbits `VS1348 ~T0 @X0 0 e@3964 ]
 [v F205 `(v ~T0 @X0 1 tf1`ul ]
 "20 C:\Program Files\Microchip\xc8\v2.45\pic\include\builtins.h
 [v __delay `JF205 ~T0 @X0 0 e ]
 [p i __delay ]
-"28912 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
+"30262 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 30262:     struct {
+[s S1412 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1412 . RF0 RF1 RF2 RF3 RF4 RF5 RF6 RF7 ]
+"30272
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 30272:     struct {
+[s S1413 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1413 . . C2OUTF C1OUTF ]
+"30261
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 30261: typedef union {
+[u S1411 `S1412 1 `S1413 1 ]
+[n S1411 . . . ]
+"30278
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 30278: extern volatile PORTFbits_t PORTFbits __attribute__((address(0xF8E)));
+[v _PORTFbits `VS1411 ~T0 @X0 0 e@3982 ]
+"28912
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28912:     struct {
 [s S1361 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S1361 . LATH0 LATH1 LATH2 LATH3 ]
@@ -45,36 +72,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "28941
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28941: extern volatile LATHbits_t LATHbits __attribute__((address(0xF80)));
 [v _LATHbits `VS1360 ~T0 @X0 0 e@3968 ]
-"28487
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28487:     struct {
-[s S1349 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1349 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
-"28497
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28497:     struct {
-[s S1350 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1350 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
-"28486
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28486: typedef union {
-[u S1348 `S1349 1 `S1350 1 ]
-[n S1348 . . . ]
-"28508
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28508: extern volatile LATDbits_t LATDbits __attribute__((address(0xF7C)));
-[v _LATDbits `VS1348 ~T0 @X0 0 e@3964 ]
-"27 ./dc_motor_v1.h
-[; ;./dc_motor_v1.h: 27: void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
-[v _forward `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
-"38 ./color.h
-[; ;./color.h: 38: unsigned int color_cardCheck(void);
-[v _color_cardCheck `(ui ~T0 @X0 0 ef ]
-"28 ./dc_motor_v1.h
-[; ;./dc_motor_v1.h: 28: void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
-[v _backward `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
-"25
+"25 ./dc_motor_v1.h
 [; ;./dc_motor_v1.h: 25: void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 [v _rightTURN `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
 "26
 [; ;./dc_motor_v1.h: 26: void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 [v _leftTURN `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
+"27
+[; ;./dc_motor_v1.h: 27: void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+[v _forward `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
+"28
+[; ;./dc_motor_v1.h: 28: void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+[v _backward `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 54: __asm("PPSLOCK equ 0DEFh");
 [; <" PPSLOCK equ 0DEFh ;# ">
@@ -2056,591 +2065,407 @@ Version 4.0 HI-TECH Software Intermediate Code
 "22 ./calibration.h
 [; ;./calibration.h: 22: struct calibration_structure calibration;
 [v _calibration `S2016 ~T0 @X0 1 e ]
-"15 ./pathfinder_file.h
-[; ;./pathfinder_file.h: 15: char Operation_Count = 0;
-[v _Operation_Count `uc ~T0 @X0 1 e ]
-[i _Operation_Count
--> -> 0 `i `uc
-]
-"16
-[; ;./pathfinder_file.h: 16: char Forward_Count = 0;
-[v _Forward_Count `uc ~T0 @X0 1 e ]
-[i _Forward_Count
--> -> 0 `i `uc
-]
-"17
-[; ;./pathfinder_file.h: 17: char length = 50;
-[v _length `uc ~T0 @X0 1 e ]
-[i _length
--> -> 50 `i `uc
-]
-"18
-[; ;./pathfinder_file.h: 18: char Operation_History[50] = {0};
-[v _Operation_History `uc ~T0 @X0 -> 50 `i e ]
-[i _Operation_History
-:U ..
--> -> 0 `i `uc
-..
-]
-"19
-[; ;./pathfinder_file.h: 19: char forward_reset_threshold = 15;
-[v _forward_reset_threshold `uc ~T0 @X0 1 e ]
-[i _forward_reset_threshold
--> -> 15 `i `uc
-]
-"21
-[; ;./pathfinder_file.h: 21: int Color_Value;
-[v _Color_Value `i ~T0 @X0 1 e ]
-"6 pathfinder_file.c
-[; ;pathfinder_file.c: 6: void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
-[v _maze_search `(v ~T0 @X0 1 ef3`*S2016`*S2015`*S2015 ]
+"6 calibration.c
+[; ;calibration.c: 6: void pause_until_RF2_pressed(){
+[v _pause_until_RF2_pressed `(v ~T0 @X0 1 ef ]
 {
-[e :U _maze_search ]
-[v _c `*S2016 ~T0 @X0 1 r1 ]
-[v _mL `*S2015 ~T0 @X0 1 r2 ]
-[v _mR `*S2015 ~T0 @X0 1 r3 ]
+[e :U _pause_until_RF2_pressed ]
 [f ]
-"9
-[; ;pathfinder_file.c: 9:     color_click_init();
-[e ( _color_click_init ..  ]
-"11
-[; ;pathfinder_file.c: 11:     while(1){
+"10
+[; ;calibration.c: 10:     while(1){
 [e :U 2019 ]
 {
-"13
-[; ;pathfinder_file.c: 13:         _delay((unsigned long)((500)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"14
-[; ;pathfinder_file.c: 14:         LATHbits.LATH3 = 1;
-[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
-"15
-[; ;pathfinder_file.c: 15:         LATDbits.LATD7 = 1;
+"12
+[; ;calibration.c: 12:         LATDbits.LATD7 = 1;
 [e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
-"18
-[; ;pathfinder_file.c: 18:         forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"19
-[; ;pathfinder_file.c: 19:         Forward_Count++;
-[e ++ _Forward_Count -> -> 1 `i `uc ]
-"20
-[; ;pathfinder_file.c: 20:         Color_Value = color_cardCheck();
-[e = _Color_Value -> ( _color_cardCheck ..  `i ]
-"22
-[; ;pathfinder_file.c: 22:         LATHbits.LATH3 = 0;
-[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
-"23
-[; ;pathfinder_file.c: 23:         LATDbits.LATD7 = 0;
+"13
+[; ;calibration.c: 13:         _delay((unsigned long)((100)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"14
+[; ;calibration.c: 14:         LATDbits.LATD7 = 0;
 [e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
-"28
-[; ;pathfinder_file.c: 28:         if(Forward_Count > forward_reset_threshold){
-[e $ ! > -> _Forward_Count `i -> _forward_reset_threshold `i 2021  ]
+"15
+[; ;calibration.c: 15:         _delay((unsigned long)((100)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"17
+[; ;calibration.c: 17:         if(!PORTFbits.RF2){
+[e $ ! ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2021  ]
 {
-"29
-[; ;pathfinder_file.c: 29:             backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"30
-[; ;pathfinder_file.c: 30:             rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"31
-[; ;pathfinder_file.c: 31:             rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"32
-[; ;pathfinder_file.c: 32:             backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"33
-[; ;pathfinder_file.c: 33:             for (int i = 0; i < forward_reset_threshold; i++) {
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 2025  ]
-[e :U 2022 ]
-{
-"34
-[; ;pathfinder_file.c: 34:                  forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"36
-[; ;pathfinder_file.c: 36:             }
-}
-[e ++ _i -> 1 `i ]
-[e :U 2025 ]
-[e $ < _i -> _forward_reset_threshold `i 2022  ]
-[e :U 2023 ]
-}
-"37
-[; ;pathfinder_file.c: 37:             backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"38
-[; ;pathfinder_file.c: 38:             break;
+"18
+[; ;calibration.c: 18:         _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"19
+[; ;calibration.c: 19:         LATDbits.LATD7 = 0;
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+"20
+[; ;calibration.c: 20:         break;
 [e $U 2020  ]
-"39
-[; ;pathfinder_file.c: 39:         }
+"21
+[; ;calibration.c: 21:         }
 }
 [e :U 2021 ]
-"41
-[; ;pathfinder_file.c: 41:         if(Color_Value != 0){
-[e $ ! != _Color_Value -> 0 `i 2026  ]
-{
-"43
-[; ;pathfinder_file.c: 43:             Operation_History[Operation_Count] = Forward_Count + 10;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> + -> _Forward_Count `i -> 10 `i `uc ]
-"44
-[; ;pathfinder_file.c: 44:             Forward_Count = 0;
-[e = _Forward_Count -> -> 0 `i `uc ]
-"45
-[; ;pathfinder_file.c: 45:             Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"47
-[; ;pathfinder_file.c: 47:             if(Color_Value == 1){
-[e $ ! == _Color_Value -> 1 `i 2027  ]
-{
-"48
-[; ;pathfinder_file.c: 48:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"49
-[; ;pathfinder_file.c: 49:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"50
-[; ;pathfinder_file.c: 50:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"51
-[; ;pathfinder_file.c: 51:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"52
-[; ;pathfinder_file.c: 52:             }
-}
-[e $U 2028  ]
-"54
-[; ;pathfinder_file.c: 54:             else if(Color_Value == 2){
-[e :U 2027 ]
-[e $ ! == _Color_Value -> 2 `i 2029  ]
-{
-"55
-[; ;pathfinder_file.c: 55:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"56
-[; ;pathfinder_file.c: 56:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"57
-[; ;pathfinder_file.c: 57:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"58
-[; ;pathfinder_file.c: 58:                 leftTURN(c->left_90, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
-"59
-[; ;pathfinder_file.c: 59:             }
-}
-[e $U 2030  ]
-"61
-[; ;pathfinder_file.c: 61:             else if(Color_Value == 3){
-[e :U 2029 ]
-[e $ ! == _Color_Value -> 3 `i 2031  ]
-{
-"62
-[; ;pathfinder_file.c: 62:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"63
-[; ;pathfinder_file.c: 63:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"64
-[; ;pathfinder_file.c: 64:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"65
-[; ;pathfinder_file.c: 65:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"66
-[; ;pathfinder_file.c: 66:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"67
-[; ;pathfinder_file.c: 67:             }
-}
-[e $U 2032  ]
-"69
-[; ;pathfinder_file.c: 69:             else if(Color_Value == 4){
-[e :U 2031 ]
-[e $ ! == _Color_Value -> 4 `i 2033  ]
-{
-"70
-[; ;pathfinder_file.c: 70:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"71
-[; ;pathfinder_file.c: 71:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"72
-[; ;pathfinder_file.c: 72:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"73
-[; ;pathfinder_file.c: 73:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"74
-[; ;pathfinder_file.c: 74:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"75
-[; ;pathfinder_file.c: 75:             }
-}
-[e $U 2034  ]
-"77
-[; ;pathfinder_file.c: 77:             else if(Color_Value == 5){
-[e :U 2033 ]
-[e $ ! == _Color_Value -> 5 `i 2035  ]
-{
-"78
-[; ;pathfinder_file.c: 78:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"79
-[; ;pathfinder_file.c: 79:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"80
-[; ;pathfinder_file.c: 80:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"81
-[; ;pathfinder_file.c: 81:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"82
-[; ;pathfinder_file.c: 82:                 leftTURN(c->left_90, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
-"83
-[; ;pathfinder_file.c: 83:             }
-}
-[e $U 2036  ]
-"85
-[; ;pathfinder_file.c: 85:             else if(Color_Value == 6){
-[e :U 2035 ]
-[e $ ! == _Color_Value -> 6 `i 2037  ]
-{
-"86
-[; ;pathfinder_file.c: 86:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"87
-[; ;pathfinder_file.c: 87:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"88
-[; ;pathfinder_file.c: 88:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"89
-[; ;pathfinder_file.c: 89:                 rightTURN(c->right_135, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
-"90
-[; ;pathfinder_file.c: 90:             }
-}
-[e $U 2038  ]
-"92
-[; ;pathfinder_file.c: 92:             else if(Color_Value == 7){
-[e :U 2037 ]
-[e $ ! == _Color_Value -> 7 `i 2039  ]
-{
-"93
-[; ;pathfinder_file.c: 93:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"94
-[; ;pathfinder_file.c: 94:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"95
-[; ;pathfinder_file.c: 95:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"96
-[; ;pathfinder_file.c: 96:                 leftTURN(c->left_135, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
-"97
-[; ;pathfinder_file.c: 97:             }
-}
-[e $U 2040  ]
-"99
-[; ;pathfinder_file.c: 99:             else if(Color_Value == 8){
-[e :U 2039 ]
-[e $ ! == _Color_Value -> 8 `i 2041  ]
-{
-"101
-[; ;pathfinder_file.c: 101:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"102
-[; ;pathfinder_file.c: 102:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"103
-[; ;pathfinder_file.c: 103:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"104
-[; ;pathfinder_file.c: 104:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"105
-[; ;pathfinder_file.c: 105:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"106
-[; ;pathfinder_file.c: 106:                 break;
-[e $U 2020  ]
-"107
-[; ;pathfinder_file.c: 107:             }
-}
-[e :U 2041 ]
-[e :U 2040 ]
-[e :U 2038 ]
-[e :U 2036 ]
-[e :U 2034 ]
-[e :U 2032 ]
-[e :U 2030 ]
-[e :U 2028 ]
-"108
-[; ;pathfinder_file.c: 108:         }
-}
-[e :U 2026 ]
-"109
-[; ;pathfinder_file.c: 109:     }
+"22
+[; ;calibration.c: 22:     }
 }
 [e :U 2018 ]
 [e $U 2019  ]
 [e :U 2020 ]
-"110
-[; ;pathfinder_file.c: 110: }
+"23
+[; ;calibration.c: 23: }
 [e :UE 2017 ]
 }
-"112
-[; ;pathfinder_file.c: 112: void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
-[v _maze_return `(v ~T0 @X0 1 ef3`*S2016`*S2015`*S2015 ]
+"25
+[; ;calibration.c: 25: void adjust_calibration(int *calibration_label){
+[v _adjust_calibration `(v ~T0 @X0 1 ef1`*i ]
 {
-[e :U _maze_return ]
+[e :U _adjust_calibration ]
+[v _calibration_label `*i ~T0 @X0 1 r1 ]
+[f ]
+"29
+[; ;calibration.c: 29:     while(1){
+[e :U 2024 ]
+{
+"31
+[; ;calibration.c: 31:         if(!PORTFbits.RF3 || !PORTFbits.RF2){
+[e $ ! || ! != -> . . _PORTFbits 0 3 `i -> 0 `i ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2026  ]
+{
+"32
+[; ;calibration.c: 32:             _delay((unsigned long)((100)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"34
+[; ;calibration.c: 34:             if(!PORTFbits.RF3 && !PORTFbits.RF2 ){
+[e $ ! && ! != -> . . _PORTFbits 0 3 `i -> 0 `i ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2027  ]
+{
+"36
+[; ;calibration.c: 36:                 LATHbits.LATH3 = 1;
+[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
+"37
+[; ;calibration.c: 37:                 LATDbits.LATD7 = 1;
+[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+"38
+[; ;calibration.c: 38:                 _delay((unsigned long)((1000)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"39
+[; ;calibration.c: 39:                 LATHbits.LATH3 = 0;
+[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
+"40
+[; ;calibration.c: 40:                 LATDbits.LATD7 = 0;
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+"41
+[; ;calibration.c: 41:                 break;
+[e $U 2025  ]
+"42
+[; ;calibration.c: 42:             }
+}
+[e $U 2028  ]
+"43
+[; ;calibration.c: 43:             else{
+[e :U 2027 ]
+{
+"44
+[; ;calibration.c: 44:                 if(!PORTFbits.RF2){
+[e $ ! ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2029  ]
+{
+"45
+[; ;calibration.c: 45:                     _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"46
+[; ;calibration.c: 46:                     *calibration_label = *calibration_label + 1;
+[e = *U _calibration_label + *U _calibration_label -> 1 `i ]
+"47
+[; ;calibration.c: 47:                     LATDbits.LATD7 = 1;
+[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+"48
+[; ;calibration.c: 48:                     _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"49
+[; ;calibration.c: 49:                     LATDbits.LATD7 = 0;
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+"50
+[; ;calibration.c: 50:                 }
+}
+[e :U 2029 ]
+"52
+[; ;calibration.c: 52:                 if(!PORTFbits.RF3){
+[e $ ! ! != -> . . _PORTFbits 0 3 `i -> 0 `i 2030  ]
+{
+"53
+[; ;calibration.c: 53:                     _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"54
+[; ;calibration.c: 54:                     *calibration_label = *calibration_label - 1;
+[e = *U _calibration_label - *U _calibration_label -> 1 `i ]
+"55
+[; ;calibration.c: 55:                     LATHbits.LATH3 = 1;
+[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
+"56
+[; ;calibration.c: 56:                     _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"57
+[; ;calibration.c: 57:                     LATHbits.LATH3 = 0;
+[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
+"58
+[; ;calibration.c: 58:                 }
+}
+[e :U 2030 ]
+"59
+[; ;calibration.c: 59:             }
+}
+[e :U 2028 ]
+"60
+[; ;calibration.c: 60:         }
+}
+[e :U 2026 ]
+"61
+[; ;calibration.c: 61:     }
+}
+[e :U 2023 ]
+[e $U 2024  ]
+[e :U 2025 ]
+"62
+[; ;calibration.c: 62: }
+[e :UE 2022 ]
+}
+"64
+[; ;calibration.c: 64: void switch_calibration(int *calibration_index){
+[v _switch_calibration `(v ~T0 @X0 1 ef1`*i ]
+{
+[e :U _switch_calibration ]
+[v _calibration_index `*i ~T0 @X0 1 r1 ]
+[f ]
+"69
+[; ;calibration.c: 69:     while(1){
+[e :U 2033 ]
+{
+"70
+[; ;calibration.c: 70:         if(!PORTFbits.RF2){
+[e $ ! ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2035  ]
+{
+"71
+[; ;calibration.c: 71:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"72
+[; ;calibration.c: 72:             *calibration_index = *calibration_index + 1;
+[e = *U _calibration_index + *U _calibration_index -> 1 `i ]
+"73
+[; ;calibration.c: 73:             LATDbits.LATD7 = 1;
+[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+"74
+[; ;calibration.c: 74:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"75
+[; ;calibration.c: 75:             LATDbits.LATD7 = 0;
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+"76
+[; ;calibration.c: 76:             break;
+[e $U 2034  ]
+"77
+[; ;calibration.c: 77:         }
+}
+[e :U 2035 ]
+"79
+[; ;calibration.c: 79:         if(!PORTFbits.RF3){
+[e $ ! ! != -> . . _PORTFbits 0 3 `i -> 0 `i 2036  ]
+{
+"80
+[; ;calibration.c: 80:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"81
+[; ;calibration.c: 81:             LATHbits.LATH3 = 1;
+[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
+"82
+[; ;calibration.c: 82:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"83
+[; ;calibration.c: 83:             LATHbits.LATH3 = 0;
+[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
+"84
+[; ;calibration.c: 84:             break;
+[e $U 2034  ]
+"85
+[; ;calibration.c: 85:         }
+}
+[e :U 2036 ]
+"86
+[; ;calibration.c: 86:     }
+}
+[e :U 2032 ]
+[e $U 2033  ]
+[e :U 2034 ]
+"87
+[; ;calibration.c: 87: }
+[e :UE 2031 ]
+}
+"89
+[; ;calibration.c: 89: void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+[v _calibration_routine `(v ~T0 @X0 1 ef3`*S2016`*S2015`*S2015 ]
+{
+[e :U _calibration_routine ]
 [v _c `*S2016 ~T0 @X0 1 r1 ]
 [v _mL `*S2015 ~T0 @X0 1 r2 ]
 [v _mR `*S2015 ~T0 @X0 1 r3 ]
 [f ]
-"115
-[; ;pathfinder_file.c: 115:     while(1){
-[e :U 2044 ]
+"93
+[; ;calibration.c: 93:     while(1){
+[e :U 2039 ]
 {
-"117
-[; ;pathfinder_file.c: 117:         for (int i = length; i >= 0; i--) {
+"95
+[; ;calibration.c: 95:         if(c->index == 1){
+[e $ ! == -> . *U _c 0 `i -> 1 `i 2041  ]
 {
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> _length `i ]
-[e $ >= _i -> 0 `i 2046  ]
-[e $U 2047  ]
-[e :U 2046 ]
-{
-"119
-[; ;pathfinder_file.c: 119:             if(Operation_History[i] > 10){
-[e $ ! > -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 10 `i 2049  ]
-{
-"120
-[; ;pathfinder_file.c: 120:                 unsigned char distance_back = Operation_History[i] - 10;
-[v _distance_back `uc ~T0 @X0 1 a ]
-[e = _distance_back -> - -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 10 `i `uc ]
-"121
-[; ;pathfinder_file.c: 121:                 for (int j = 0; j < distance_back-1; j++) {
-{
-[v _j `i ~T0 @X0 1 a ]
-[e = _j -> 0 `i ]
-[e $U 2053  ]
-[e :U 2050 ]
-{
-"122
-[; ;pathfinder_file.c: 122:                     forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"123
-[; ;pathfinder_file.c: 123:                 }
+"96
+[; ;calibration.c: 96:             adjust_calibration(&(c->right_90));
+[e ( _adjust_calibration (1 -> &U . *U _c 1 `*i ]
+"97
+[; ;calibration.c: 97:             rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"98
+[; ;calibration.c: 98:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"99
+[; ;calibration.c: 99:         }
 }
-[e ++ _j -> 1 `i ]
-[e :U 2053 ]
-[e $ < _j - -> _distance_back `i -> 1 `i 2050  ]
-[e :U 2051 ]
-}
-"124
-[; ;pathfinder_file.c: 124:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"126
-[; ;pathfinder_file.c: 126:             }
-}
-[e $U 2054  ]
-"128
-[; ;pathfinder_file.c: 128:             else if(Operation_History[i] == 1){
-[e :U 2049 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 1 `i 2055  ]
+[e :U 2041 ]
+"101
+[; ;calibration.c: 101:         if(c->index == 2){
+[e $ ! == -> . *U _c 0 `i -> 2 `i 2042  ]
 {
-"129
-[; ;pathfinder_file.c: 129:                 leftTURN(c->left_90, mL, mR);
+"102
+[; ;calibration.c: 102:             adjust_calibration(&(c->left_90));
+[e ( _adjust_calibration (1 -> &U . *U _c 2 `*i ]
+"103
+[; ;calibration.c: 103:             leftTURN(c->left_90, mL, mR);
 [e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
-"130
-[; ;pathfinder_file.c: 130:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"131
-[; ;pathfinder_file.c: 131:             }
+"104
+[; ;calibration.c: 104:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"105
+[; ;calibration.c: 105:         }
 }
-[e $U 2056  ]
-"133
-[; ;pathfinder_file.c: 133:             else if(Operation_History[i] == 2){
-[e :U 2055 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 2 `i 2057  ]
+[e :U 2042 ]
+"107
+[; ;calibration.c: 107:         if(c->index == 3){
+[e $ ! == -> . *U _c 0 `i -> 3 `i 2043  ]
 {
-"134
-[; ;pathfinder_file.c: 134:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"135
-[; ;pathfinder_file.c: 135:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"136
-[; ;pathfinder_file.c: 136:             }
-}
-[e $U 2058  ]
-"138
-[; ;pathfinder_file.c: 138:             else if(Operation_History[i] == 3){
-[e :U 2057 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 3 `i 2059  ]
-{
-"139
-[; ;pathfinder_file.c: 139:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"140
-[; ;pathfinder_file.c: 140:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"141
-[; ;pathfinder_file.c: 141:             }
-}
-[e $U 2060  ]
-"143
-[; ;pathfinder_file.c: 143:             else if(Operation_History[i] == 4){
-[e :U 2059 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 4 `i 2061  ]
-{
-"145
-[; ;pathfinder_file.c: 145:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"146
-[; ;pathfinder_file.c: 146:                 forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"149
-[; ;pathfinder_file.c: 149:                 forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"150
-[; ;pathfinder_file.c: 150:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"151
-[; ;pathfinder_file.c: 151:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"152
-[; ;pathfinder_file.c: 152:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"153
-[; ;pathfinder_file.c: 153:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"154
-[; ;pathfinder_file.c: 154:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"155
-[; ;pathfinder_file.c: 155:             }
-}
-[e $U 2062  ]
-"157
-[; ;pathfinder_file.c: 157:             else if(Operation_History[i] == 5){
-[e :U 2061 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 5 `i 2063  ]
-{
-"158
-[; ;pathfinder_file.c: 158:                 leftTURN(c->right_90, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 1 _mL _mR ]
-"159
-[; ;pathfinder_file.c: 159:                 forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"162
-[; ;pathfinder_file.c: 162:                 forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"163
-[; ;pathfinder_file.c: 163:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"164
-[; ;pathfinder_file.c: 164:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"165
-[; ;pathfinder_file.c: 165:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"166
-[; ;pathfinder_file.c: 166:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"167
-[; ;pathfinder_file.c: 167:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"169
-[; ;pathfinder_file.c: 169:             }
-}
-[e $U 2064  ]
-"171
-[; ;pathfinder_file.c: 171:             else if(Operation_History[i] == 6){
-[e :U 2063 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 6 `i 2065  ]
-{
-"172
-[; ;pathfinder_file.c: 172:                 leftTURN(c->left_135, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
-"173
-[; ;pathfinder_file.c: 173:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"174
-[; ;pathfinder_file.c: 174:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"175
-[; ;pathfinder_file.c: 175:             }
-}
-[e $U 2066  ]
-"177
-[; ;pathfinder_file.c: 177:             else if(Operation_History[i] == 7){
-[e :U 2065 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 7 `i 2067  ]
-{
-"178
-[; ;pathfinder_file.c: 178:                 rightTURN(c->right_135, mL, mR);
+"108
+[; ;calibration.c: 108:             adjust_calibration(&(c->right_135));
+[e ( _adjust_calibration (1 -> &U . *U _c 3 `*i ]
+"109
+[; ;calibration.c: 109:             rightTURN(c->right_135, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
-"179
-[; ;pathfinder_file.c: 179:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"180
-[; ;pathfinder_file.c: 180:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"181
-[; ;pathfinder_file.c: 181:             }
-}
-[e :U 2067 ]
-[e :U 2066 ]
-[e :U 2064 ]
-[e :U 2062 ]
-[e :U 2060 ]
-[e :U 2058 ]
-[e :U 2056 ]
-[e :U 2054 ]
-"184
-[; ;pathfinder_file.c: 184:         }
-}
-[e -- _i -> 1 `i ]
-[e $ >= _i -> 0 `i 2046  ]
-[e :U 2047 ]
-}
-"187
-[; ;pathfinder_file.c: 187:         Operation_Count = 0;
-[e = _Operation_Count -> -> 0 `i `uc ]
-"188
-[; ;pathfinder_file.c: 188:         for (int i = 0; i < 50; ++i) {
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 50 `i 2068  ]
-[e $U 2069  ]
-[e :U 2068 ]
-{
-"189
-[; ;pathfinder_file.c: 189:             Operation_History[i] = 0;
-[e = *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux -> -> 0 `i `uc ]
-"190
-[; ;pathfinder_file.c: 190:         }
-}
-[e =+ _i -> 1 `i ]
-[e $ < _i -> 50 `i 2068  ]
-[e :U 2069 ]
-}
-"192
-[; ;pathfinder_file.c: 192:         break;
-[e $U 2045  ]
-"193
-[; ;pathfinder_file.c: 193:     }
+"110
+[; ;calibration.c: 110:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"111
+[; ;calibration.c: 111:         }
 }
 [e :U 2043 ]
-[e $U 2044  ]
+"112
+[; ;calibration.c: 112:         if(c->index == 4){
+[e $ ! == -> . *U _c 0 `i -> 4 `i 2044  ]
+{
+"113
+[; ;calibration.c: 113:             adjust_calibration(&(c->left_135));
+[e ( _adjust_calibration (1 -> &U . *U _c 4 `*i ]
+"114
+[; ;calibration.c: 114:             leftTURN(c->left_135, mL, mR);
+[e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
+"115
+[; ;calibration.c: 115:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"116
+[; ;calibration.c: 116:         }
+}
+[e :U 2044 ]
+"118
+[; ;calibration.c: 118:         if(c->index == 5 ){
+[e $ ! == -> . *U _c 0 `i -> 5 `i 2045  ]
+{
+"119
+[; ;calibration.c: 119:             adjust_calibration(&(c->forward_one));
+[e ( _adjust_calibration (1 -> &U . *U _c 5 `*i ]
+"120
+[; ;calibration.c: 120:             forward(c->forward_one, mL, mR);
+[e ( _forward (3 , , . *U _c 5 _mL _mR ]
+"121
+[; ;calibration.c: 121:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"122
+[; ;calibration.c: 122:         }
+}
 [e :U 2045 ]
-"194
-[; ;pathfinder_file.c: 194: }
-[e :UE 2042 ]
+"124
+[; ;calibration.c: 124:         if(c->index == 6){
+[e $ ! == -> . *U _c 0 `i -> 6 `i 2046  ]
+{
+"125
+[; ;calibration.c: 125:             adjust_calibration(&(c->backward_one));
+[e ( _adjust_calibration (1 -> &U . *U _c 6 `*i ]
+"126
+[; ;calibration.c: 126:             backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"127
+[; ;calibration.c: 127:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"128
+[; ;calibration.c: 128:         }
+}
+[e :U 2046 ]
+"130
+[; ;calibration.c: 130:         if(c->index == 7 ){
+[e $ ! == -> . *U _c 0 `i -> 7 `i 2047  ]
+{
+"131
+[; ;calibration.c: 131:             adjust_calibration(&(c->forward_half));
+[e ( _adjust_calibration (1 -> &U . *U _c 7 `*i ]
+"132
+[; ;calibration.c: 132:             forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"133
+[; ;calibration.c: 133:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"134
+[; ;calibration.c: 134:         }
+}
+[e :U 2047 ]
+"136
+[; ;calibration.c: 136:         if(c->index == 8){
+[e $ ! == -> . *U _c 0 `i -> 8 `i 2048  ]
+{
+"137
+[; ;calibration.c: 137:             adjust_calibration(&(c->backward_half));
+[e ( _adjust_calibration (1 -> &U . *U _c 8 `*i ]
+"138
+[; ;calibration.c: 138:             backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"139
+[; ;calibration.c: 139:             switch_calibration(&(c->index));
+[e ( _switch_calibration (1 -> &U . *U _c 0 `*i ]
+"140
+[; ;calibration.c: 140:         }
+}
+[e :U 2048 ]
+"142
+[; ;calibration.c: 142:         if(c->index >= 9){
+[e $ ! >= -> . *U _c 0 `i -> 9 `i 2049  ]
+{
+"143
+[; ;calibration.c: 143:             c->index = 1;
+[e = . *U _c 0 -> -> 1 `i `uc ]
+"144
+[; ;calibration.c: 144:             break;
+[e $U 2040  ]
+"145
+[; ;calibration.c: 145:         }
+}
+[e :U 2049 ]
+"146
+[; ;calibration.c: 146:     }
+}
+[e :U 2038 ]
+[e $U 2039  ]
+[e :U 2040 ]
+"147
+[; ;calibration.c: 147: }
+[e :UE 2037 ]
 }

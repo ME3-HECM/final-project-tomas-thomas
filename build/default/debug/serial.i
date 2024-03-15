@@ -1,4 +1,4 @@
-# 1 "pathfinder_file.c"
+# 1 "serial.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "pathfinder_file.c" 2
+# 1 "serial.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24086,312 +24086,133 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 1 "pathfinder_file.c" 2
+# 1 "serial.c" 2
 
-# 1 "./pathfinder_file.h" 1
+# 1 "./serial.h" 1
+# 13 "./serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
 
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
 
 
 
-# 1 "./dc_motor_v1.h" 1
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
 
 
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
 
 
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 2 "serial.c" 2
 
 
+void initUSART4(void) {
+    RC0PPS = 0x12;
+    RX4PPS = 0x11;
 
-typedef struct DC_motor {
-    char power;
-    char direction;
-    char brakemode;
-    unsigned int PWMperiod;
-    unsigned char *posDutyHighByte;
-    unsigned char *negDutyHighByte;
-} DC_motor;
+    BAUD4CONbits.BRG16 = 0;
+    TX4STAbits.BRGH = 0;
 
-struct DC_motor motorL, motorR;
+    SP4BRGL = 51;
+    SP4BRGH = 0;
 
 
-void initDCmotorsPWM(unsigned int PWMperiod);
-void setMotorPWM(DC_motor *m);
 
-void stop(DC_motor *mL, DC_motor *mR);
 
-void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
-void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 
-void delay_ms_function(unsigned int milliseconds);
-# 5 "./pathfinder_file.h" 2
 
-# 1 "./color.h" 1
-# 12 "./color.h"
-void color_click_init(void);
 
+    RC4STAbits.CREN = 1;
+    TX4STAbits.TXEN = 1;
+    RC4STAbits.SPEN = 1;
 
 
-
-
-
-
-void color_writetoaddr(char address, char value);
-
-
-
-
-
-unsigned int color_read_Red(void);
-unsigned int color_read_Green(void);
-unsigned int color_read_Blue(void);
-unsigned int color_read_Clear(void);
-
-
-float custom_floatmodulo(float x, float y);
-
-
-void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V);
-
-
-unsigned int color_cardCheck(void);
-# 6 "./pathfinder_file.h" 2
-
-# 1 "./calibration.h" 1
-
-
-
-
-
-
-
-
-typedef struct calibration_structure {
-    char index;
-    char right_90;
-    char left_90;
-    char right_135;
-    char left_135;
-    char forward_one;
-    char backward_one;
-    char forward_half;
-    char backward_half;
-
-} calibration_structure;
-
-struct calibration_structure calibration;
-
-void pause_until_RF2_pressed();
-void adjust_calibration(int *calibration_label);
-void switch_calibration(int *calibration_index);
-void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
-# 7 "./pathfinder_file.h" 2
-
-
-
-
-
-void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR);
-void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
-
-char Operation_Count = 0;
-char Forward_Count = 0;
-char length = 50;
-char Operation_History[50] = {0};
-char forward_reset_threshold = 15;
-
-int Color_Value;
-# 2 "pathfinder_file.c" 2
-
-
-
-
-void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
-
-
-    color_click_init();
-
-    while(1){
-
-        _delay((unsigned long)((500)*(64000000/4000.0)));
-        LATHbits.LATH3 = 1;
-        LATDbits.LATD7 = 1;
-
-
-        forward(c->forward_one, mL, mR);
-        Forward_Count++;
-        Color_Value = color_cardCheck();
-
-        LATHbits.LATH3 = 0;
-        LATDbits.LATD7 = 0;
-
-
-
-
-        if(Forward_Count > forward_reset_threshold){
-            backward(c->backward_half, mL, mR);
-            rightTURN(c->right_90, mL, mR);
-            rightTURN(c->right_90, mL, mR);
-            backward(c->backward_one, mL, mR);
-            for (int i = 0; i < forward_reset_threshold; i++) {
-                 forward(c->forward_one, mL, mR);
-
-            }
-            backward(c->backward_half, mL, mR);
-            break;
-        }
-
-        if(Color_Value != 0){
-
-            Operation_History[Operation_Count] = Forward_Count + 10;
-            Forward_Count = 0;
-            Operation_Count++;
-
-            if(Color_Value == 1){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-            }
-
-            else if(Color_Value == 2){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                leftTURN(c->left_90, mL, mR);
-            }
-
-            else if(Color_Value == 3){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-            }
-
-            else if(Color_Value == 4){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                backward(c->backward_one, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-            }
-
-            else if(Color_Value == 5){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                backward(c->backward_one, mL, mR);
-                leftTURN(c->left_90, mL, mR);
-            }
-
-            else if(Color_Value == 6){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_135, mL, mR);
-            }
-
-            else if(Color_Value == 7){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                leftTURN(c->left_135, mL, mR);
-            }
-
-            else if(Color_Value == 8){
-
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                backward(c->backward_one, mL, mR);
-                forward(c->forward_half, mL, mR);
-                break;
-            }
-        }
-    }
 }
 
-void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+
+char getCharSerial4(void) {
+    while (!PIR4bits.RC4IF);
+    return RC4REG;
+}
 
 
-    while(1){
-
-        for (int i = length; i >= 0; i--) {
-
-            if(Operation_History[i] > 10){
-                unsigned char distance_back = Operation_History[i] - 10;
-                for (int j = 0; j < distance_back-1; j++) {
-                    forward(c->forward_one, mL, mR);
-                }
-                forward(c->forward_half, mL, mR);
-
-            }
-
-            else if(Operation_History[i] == 1){
-                leftTURN(c->left_90, mL, mR);
-                backward(c->backward_one, mL, mR);
-            }
-
-            else if(Operation_History[i] == 2){
-                rightTURN(c->right_90, mL, mR);
-                backward(c->backward_one, mL, mR);
-            }
-
-            else if(Operation_History[i] == 3){
-                rightTURN(c->right_90, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-            }
-
-            else if(Operation_History[i] == 4){
-
-                rightTURN(c->right_90, mL, mR);
-                forward(c->forward_one, mL, mR);
+void sendCharSerial4(char charToSend) {
+    while (!PIR4bits.TX4IF);
+    TX4REG = charToSend;
+}
 
 
-                forward(c->forward_one, mL, mR);
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                backward(c->backward_one, mL, mR);
-                forward(c->forward_half, mL, mR);
-            }
 
-            else if(Operation_History[i] == 5){
-                leftTURN(c->right_90, mL, mR);
-                forward(c->forward_one, mL, mR);
+void sendStringSerial4(char *string){
+
+    while(*string != 0){
+  sendCharSerial4(*string++);
+ }
+}
 
 
-                forward(c->forward_one, mL, mR);
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                backward(c->backward_one, mL, mR);
-                forward(c->forward_half, mL, mR);
-
-            }
-
-            else if(Operation_History[i] == 6){
-                leftTURN(c->left_135, mL, mR);
-                backward(c->backward_one, mL, mR);
-                forward(c->forward_half, mL, mR);
-            }
-
-            else if(Operation_History[i] == 7){
-                rightTURN(c->right_135, mL, mR);
-                backward(c->backward_one, mL, mR);
-                forward(c->forward_half, mL, mR);
-            }
 
 
-        }
 
 
-        Operation_Count = 0;
-        for (int i = 0; i < 50; ++i) {
-            Operation_History[i] = 0;
-        }
+char getCharFromRxBuf(void){
+    if (RxBufReadCnt>=20) {RxBufReadCnt=0;}
+    return EUSART4RXbuf[RxBufReadCnt++];
+}
 
-        break;
-    }
+
+void putCharToRxBuf(char byte){
+    if (RxBufWriteCnt>=20) {RxBufWriteCnt=0;}
+    EUSART4RXbuf[RxBufWriteCnt++]=byte;
+}
+
+
+
+
+char isDataInRxBuf (void){
+    return (RxBufWriteCnt!=RxBufReadCnt);
+}
+
+
+
+char getCharFromTxBuf(void){
+    if (TxBufReadCnt>=60) {TxBufReadCnt=0;}
+    return EUSART4TXbuf[TxBufReadCnt++];
+}
+
+
+void putCharToTxBuf(char byte){
+    if (TxBufWriteCnt>=60) {TxBufWriteCnt=0;}
+    EUSART4TXbuf[TxBufWriteCnt++]=byte;
+}
+
+
+
+
+char isDataInTxBuf (void){
+    return (TxBufWriteCnt!=TxBufReadCnt);
+}
+
+
+void TxBufferedString(char *string){
+
+}
+
+
+
+void sendTxBuf(void){
+    if (isDataInTxBuf()) {PIE4bits.TX4IE=1;}
 }

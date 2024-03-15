@@ -624,8 +624,8 @@ cstackBANK0 60 FC BANK0 60 1
 bssBANK1 100 181 BANK1 100 1
 text6 E02 4C41 CODE E02 0
 %locals
-dist/default/production\final-project-tomas-thomas.X.production.o
-C:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_1.s
+dist/default/debug\final-project-tomas-thomas.X.debug.o
+C:\Users\thoma\AppData\Local\Temp\xcAs1p08.\driver_tmp_1.s
 9557 4B1A 0 CODE 0
 9559 4B1A 0 CODE 0
 9562 4B1A 0 CODE 0

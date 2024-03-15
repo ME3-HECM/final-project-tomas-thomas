@@ -1,4 +1,4 @@
-# 1 "pathfinder_file.c"
+# 1 "calibration.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,12 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "pathfinder_file.c" 2
+# 1 "calibration.c" 2
+
+# 1 "./calibration.h" 1
+
+
+
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24086,12 +24091,7 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 1 "pathfinder_file.c" 2
-
-# 1 "./pathfinder_file.h" 1
-
-
-
+# 4 "./calibration.h" 2
 
 # 1 "./dc_motor_v1.h" 1
 
@@ -24124,44 +24124,7 @@ void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 
 void delay_ms_function(unsigned int milliseconds);
-# 5 "./pathfinder_file.h" 2
-
-# 1 "./color.h" 1
-# 12 "./color.h"
-void color_click_init(void);
-
-
-
-
-
-
-
-void color_writetoaddr(char address, char value);
-
-
-
-
-
-unsigned int color_read_Red(void);
-unsigned int color_read_Green(void);
-unsigned int color_read_Blue(void);
-unsigned int color_read_Clear(void);
-
-
-float custom_floatmodulo(float x, float y);
-
-
-void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V);
-
-
-unsigned int color_cardCheck(void);
-# 6 "./pathfinder_file.h" 2
-
-# 1 "./calibration.h" 1
-
-
-
-
+# 5 "./calibration.h" 2
 
 
 
@@ -24185,213 +24148,150 @@ void pause_until_RF2_pressed();
 void adjust_calibration(int *calibration_label);
 void switch_calibration(int *calibration_index);
 void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
-# 7 "./pathfinder_file.h" 2
+# 2 "calibration.c" 2
 
 
 
 
-
-void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR);
-void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
-
-char Operation_Count = 0;
-char Forward_Count = 0;
-char length = 50;
-char Operation_History[50] = {0};
-char forward_reset_threshold = 15;
-
-int Color_Value;
-# 2 "pathfinder_file.c" 2
+void pause_until_RF2_pressed(){
 
 
-
-
-void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
-
-
-    color_click_init();
 
     while(1){
 
-        _delay((unsigned long)((500)*(64000000/4000.0)));
-        LATHbits.LATH3 = 1;
         LATDbits.LATD7 = 1;
-
-
-        forward(c->forward_one, mL, mR);
-        Forward_Count++;
-        Color_Value = color_cardCheck();
-
-        LATHbits.LATH3 = 0;
+        _delay((unsigned long)((100)*(64000000/4000.0)));
         LATDbits.LATD7 = 0;
+        _delay((unsigned long)((100)*(64000000/4000.0)));
 
-
-
-
-        if(Forward_Count > forward_reset_threshold){
-            backward(c->backward_half, mL, mR);
-            rightTURN(c->right_90, mL, mR);
-            rightTURN(c->right_90, mL, mR);
-            backward(c->backward_one, mL, mR);
-            for (int i = 0; i < forward_reset_threshold; i++) {
-                 forward(c->forward_one, mL, mR);
-
-            }
-            backward(c->backward_half, mL, mR);
-            break;
+        if(!PORTFbits.RF2){
+        _delay((unsigned long)((200)*(64000000/4000.0)));
+        LATDbits.LATD7 = 0;
+        break;
         }
+    }
+}
 
-        if(Color_Value != 0){
+void adjust_calibration(int *calibration_label){
 
-            Operation_History[Operation_Count] = Forward_Count + 10;
-            Forward_Count = 0;
-            Operation_Count++;
 
-            if(Color_Value == 1){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-            }
 
-            else if(Color_Value == 2){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                leftTURN(c->left_90, mL, mR);
-            }
+    while(1){
 
-            else if(Color_Value == 3){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-            }
+        if(!PORTFbits.RF3 || !PORTFbits.RF2){
+            _delay((unsigned long)((100)*(64000000/4000.0)));
 
-            else if(Color_Value == 4){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                backward(c->backward_one, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-            }
+            if(!PORTFbits.RF3 && !PORTFbits.RF2 ){
 
-            else if(Color_Value == 5){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                backward(c->backward_one, mL, mR);
-                leftTURN(c->left_90, mL, mR);
-            }
-
-            else if(Color_Value == 6){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_135, mL, mR);
-            }
-
-            else if(Color_Value == 7){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);
-                leftTURN(c->left_135, mL, mR);
-            }
-
-            else if(Color_Value == 8){
-
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                backward(c->backward_one, mL, mR);
-                forward(c->forward_half, mL, mR);
+                LATHbits.LATH3 = 1;
+                LATDbits.LATD7 = 1;
+                _delay((unsigned long)((1000)*(64000000/4000.0)));
+                LATHbits.LATH3 = 0;
+                LATDbits.LATD7 = 0;
                 break;
+            }
+            else{
+                if(!PORTFbits.RF2){
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    *calibration_label = *calibration_label + 1;
+                    LATDbits.LATD7 = 1;
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    LATDbits.LATD7 = 0;
+                }
+
+                if(!PORTFbits.RF3){
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    *calibration_label = *calibration_label - 1;
+                    LATHbits.LATH3 = 1;
+                    _delay((unsigned long)((200)*(64000000/4000.0)));
+                    LATHbits.LATH3 = 0;
+                }
             }
         }
     }
 }
 
-void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+void switch_calibration(int *calibration_index){
+
+
+
+
+    while(1){
+        if(!PORTFbits.RF2){
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            *calibration_index = *calibration_index + 1;
+            LATDbits.LATD7 = 1;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATDbits.LATD7 = 0;
+            break;
+        }
+
+        if(!PORTFbits.RF3){
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 1;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 0;
+            break;
+        }
+    }
+}
+
+void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+
 
 
     while(1){
 
-        for (int i = length; i >= 0; i--) {
-
-            if(Operation_History[i] > 10){
-                unsigned char distance_back = Operation_History[i] - 10;
-                for (int j = 0; j < distance_back-1; j++) {
-                    forward(c->forward_one, mL, mR);
-                }
-                forward(c->forward_half, mL, mR);
-
-            }
-
-            else if(Operation_History[i] == 1){
-                leftTURN(c->left_90, mL, mR);
-                backward(c->backward_one, mL, mR);
-            }
-
-            else if(Operation_History[i] == 2){
-                rightTURN(c->right_90, mL, mR);
-                backward(c->backward_one, mL, mR);
-            }
-
-            else if(Operation_History[i] == 3){
-                rightTURN(c->right_90, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-            }
-
-            else if(Operation_History[i] == 4){
-
-                rightTURN(c->right_90, mL, mR);
-                forward(c->forward_one, mL, mR);
-
-
-                forward(c->forward_one, mL, mR);
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                backward(c->backward_one, mL, mR);
-                forward(c->forward_half, mL, mR);
-            }
-
-            else if(Operation_History[i] == 5){
-                leftTURN(c->right_90, mL, mR);
-                forward(c->forward_one, mL, mR);
-
-
-                forward(c->forward_one, mL, mR);
-                backward(c->backward_half, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                rightTURN(c->right_90, mL, mR);
-                backward(c->backward_one, mL, mR);
-                forward(c->forward_half, mL, mR);
-
-            }
-
-            else if(Operation_History[i] == 6){
-                leftTURN(c->left_135, mL, mR);
-                backward(c->backward_one, mL, mR);
-                forward(c->forward_half, mL, mR);
-            }
-
-            else if(Operation_History[i] == 7){
-                rightTURN(c->right_135, mL, mR);
-                backward(c->backward_one, mL, mR);
-                forward(c->forward_half, mL, mR);
-            }
-
-
+        if(c->index == 1){
+            adjust_calibration(&(c->right_90));
+            rightTURN(c->right_90, mL, mR);
+            switch_calibration(&(c->index));
         }
 
-
-        Operation_Count = 0;
-        for (int i = 0; i < 50; ++i) {
-            Operation_History[i] = 0;
+        if(c->index == 2){
+            adjust_calibration(&(c->left_90));
+            leftTURN(c->left_90, mL, mR);
+            switch_calibration(&(c->index));
         }
 
-        break;
+        if(c->index == 3){
+            adjust_calibration(&(c->right_135));
+            rightTURN(c->right_135, mL, mR);
+            switch_calibration(&(c->index));
+        }
+        if(c->index == 4){
+            adjust_calibration(&(c->left_135));
+            leftTURN(c->left_135, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index == 5 ){
+            adjust_calibration(&(c->forward_one));
+            forward(c->forward_one, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index == 6){
+            adjust_calibration(&(c->backward_one));
+            backward(c->backward_one, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index == 7 ){
+            adjust_calibration(&(c->forward_half));
+            forward(c->forward_half, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index == 8){
+            adjust_calibration(&(c->backward_half));
+            backward(c->backward_half, mL, mR);
+            switch_calibration(&(c->index));
+        }
+
+        if(c->index >= 9){
+            c->index = 1;
+            break;
+        }
     }
 }

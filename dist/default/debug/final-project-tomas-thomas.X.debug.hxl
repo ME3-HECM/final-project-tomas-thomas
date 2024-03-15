@@ -1,18 +1,18 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_3.o
- -Odist/default/production\final-project-tomas-thomas.X.production.hex
- -logfile=dist/default/production\final-project-tomas-thomas.X.production.hxl
+ C:\Users\thoma\AppData\Local\Temp\xcAs1p08.\driver_tmp_3.o
+ -Odist/default/debug\final-project-tomas-thomas.X.debug.hex
+ -logfile=dist/default/debug\final-project-tomas-thomas.X.debug.hxl
  -addressing=1
  -break=300000
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 3h		(C:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_3.o)
-  E00h - 4C41h		(C:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_3.o)
-  300000h - 300001h		(C:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_3.o)
-  300004h - 300005h		(C:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_3.o)
+  0h - 3h		(C:\Users\thoma\AppData\Local\Temp\xcAs1p08.\driver_tmp_3.o)
+  E00h - 4C41h		(C:\Users\thoma\AppData\Local\Temp\xcAs1p08.\driver_tmp_3.o)
+  300000h - 300001h		(C:\Users\thoma\AppData\Local\Temp\xcAs1p08.\driver_tmp_3.o)
+  300004h - 300005h		(C:\Users\thoma\AppData\Local\Temp\xcAs1p08.\driver_tmp_3.o)
  Unused ranges:
   4h - DFFh
   4C42h - 2FFFFFh
@@ -21,7 +21,7 @@
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\thoma\AppData\Local\Temp\xcAs1p08.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------

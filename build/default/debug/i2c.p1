@@ -1,80 +1,96 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"8 ./dc_motor_v1.h
-[; ;./dc_motor_v1.h: 8: typedef struct DC_motor {
-[s S2015 `uc 1 `uc 1 `uc 1 `ui 1 `*uc 1 `*uc 1 ]
-[n S2015 DC_motor power direction brakemode PWMperiod posDutyHighByte negDutyHighByte ]
-"9 ./calibration.h
-[; ;./calibration.h: 9: typedef struct calibration_structure {
-[s S2016 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2016 calibration_structure index right_90 left_90 right_135 left_135 forward_one backward_one forward_half backward_half ]
-"12 ./color.h
-[; ;./color.h: 12: void color_click_init(void);
-[v _color_click_init `(v ~T0 @X0 0 ef ]
-[v F205 `(v ~T0 @X0 1 tf1`ul ]
-"20 C:\Program Files\Microchip\xc8\v2.45\pic\include\builtins.h
-[v __delay `JF205 ~T0 @X0 0 e ]
-[p i __delay ]
-"28912 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28912:     struct {
-[s S1361 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1361 . LATH0 LATH1 LATH2 LATH3 ]
-"28918
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28918:     struct {
-[s S1362 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1362 . LH0 LH1 LH2 LH3 ]
-"28924
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28924:     struct {
-[s S1363 :4 `uc 1 :1 `uc 1 ]
-[n S1363 . . LH4 ]
-"28928
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28928:     struct {
-[s S1364 :5 `uc 1 :1 `uc 1 ]
-[n S1364 . . LH5 ]
-"28932
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28932:     struct {
-[s S1365 :6 `uc 1 :1 `uc 1 ]
-[n S1365 . . LH6 ]
-"28936
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28936:     struct {
-[s S1366 :7 `uc 1 :1 `uc 1 ]
-[n S1366 . . LH7 ]
-"28911
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28911: typedef union {
-[u S1360 `S1361 1 `S1362 1 `S1363 1 `S1364 1 `S1365 1 `S1366 1 ]
-[n S1360 . . . . . . . ]
-"28941
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28941: extern volatile LATHbits_t LATHbits __attribute__((address(0xF80)));
-[v _LATHbits `VS1360 ~T0 @X0 0 e@3968 ]
-"28487
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28487:     struct {
-[s S1349 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1349 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
-"28497
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28497:     struct {
-[s S1350 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1350 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
-"28486
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28486: typedef union {
-[u S1348 `S1349 1 `S1350 1 ]
-[n S1348 . . . ]
-"28508
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28508: extern volatile LATDbits_t LATDbits __attribute__((address(0xF7C)));
-[v _LATDbits `VS1348 ~T0 @X0 0 e@3964 ]
-"27 ./dc_motor_v1.h
-[; ;./dc_motor_v1.h: 27: void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
-[v _forward `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
-"38 ./color.h
-[; ;./color.h: 38: unsigned int color_cardCheck(void);
-[v _color_cardCheck `(ui ~T0 @X0 0 ef ]
-"28 ./dc_motor_v1.h
-[; ;./dc_motor_v1.h: 28: void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
-[v _backward `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
-"25
-[; ;./dc_motor_v1.h: 25: void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-[v _rightTURN `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
-"26
-[; ;./dc_motor_v1.h: 26: void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-[v _leftTURN `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
+"14770 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14770:     struct {
+[s S693 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S693 . SSPM CKP SSPEN SSPOV WCOL ]
+"14777
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14777:     struct {
+[s S694 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S694 . SSPM0 SSPM1 SSPM2 SSPM3 ]
+"14783
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14783:     struct {
+[s S695 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S695 . SSPM02 SSPM12 SSPM22 SSPM32 CKP2 SSPEN2 SSPOV2 WCOL2 ]
+"14769
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14769: typedef union {
+[u S692 `S693 1 `S694 1 `S695 1 ]
+[n S692 . . . . ]
+"14794
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14794: extern volatile SSP2CON1bits_t SSP2CON1bits __attribute__((address(0xED9)));
+[v _SSP2CON1bits `VS692 ~T0 @X0 0 e@3801 ]
+"14120
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14120: extern volatile unsigned char SSP2ADD __attribute__((address(0xED6)));
+[v _SSP2ADD `Vuc ~T0 @X0 0 e@3798 ]
+"29383
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 29383:     struct {
+[s S1380 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1380 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
+"29382
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 29382: typedef union {
+[u S1379 `S1380 1 ]
+[n S1379 . . ]
+"29394
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 29394: extern volatile TRISDbits_t TRISDbits __attribute__((address(0xF84)));
+[v _TRISDbits `VS1379 ~T0 @X0 0 e@3972 ]
+"11502
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 11502:     struct {
+[s S542 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S542 . ANSELD0 ANSELD1 ANSELD2 ANSELD3 ANSELD4 ANSELD5 ANSELD6 ANSELD7 ]
+"11501
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 11501: typedef union {
+[u S541 `S542 1 ]
+[n S541 . . ]
+"11513
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 11513: extern volatile ANSELDbits_t ANSELDbits __attribute__((address(0xEA7)));
+[v _ANSELDbits `VS541 ~T0 @X0 0 e@3751 ]
+"3862
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 3862: extern volatile unsigned char SSP2DATPPS __attribute__((address(0xE1D)));
+[v _SSP2DATPPS `Vuc ~T0 @X0 0 e@3613 ]
+"3796
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 3796: extern volatile unsigned char SSP2CLKPPS __attribute__((address(0xE1C)));
+[v _SSP2CLKPPS `Vuc ~T0 @X0 0 e@3612 ]
+"8508
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 8508: extern volatile unsigned char RD5PPS __attribute__((address(0xE6F)));
+[v _RD5PPS `Vuc ~T0 @X0 0 e@3695 ]
+"8558
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 8558: extern volatile unsigned char RD6PPS __attribute__((address(0xE70)));
+[v _RD6PPS `Vuc ~T0 @X0 0 e@3696 ]
+"14310
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14310: extern volatile unsigned char SSP2STAT __attribute__((address(0xED8)));
+[v _SSP2STAT `Vuc ~T0 @X0 0 e@3800 ]
+"14884
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14884: extern volatile unsigned char SSP2CON2 __attribute__((address(0xEDA)));
+[v _SSP2CON2 `Vuc ~T0 @X0 0 e@3802 ]
+"14890
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14890:     struct {
+[s S697 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S697 . SEN RSEN PEN RCEN ACKEN ACKDT ACKSTAT GCEN ]
+"14900
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14900:     struct {
+[s S698 :1 `uc 1 :5 `uc 1 ]
+[n S698 . . ADMSK ]
+"14904
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14904:     struct {
+[s S699 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S699 . . ADMSK1 ADMSK2 ADMSK3 ADMSK4 ADMSK5 ]
+"14912
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14912:     struct {
+[s S700 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S700 . SEN2 ADMSK12 ADMSK22 ADMSK32 ACKEN2 ACKDT2 ACKSTAT2 GCEN2 ]
+"14922
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14922:     struct {
+[s S701 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S701 . . RSEN2 PEN2 RCEN2 ADMSK42 ADMSK52 ]
+"14889
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14889: typedef union {
+[u S696 `S697 1 `S698 1 `S699 1 `S700 1 `S701 1 ]
+[n S696 . . . . . . ]
+"14931
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14931: extern volatile SSP2CON2bits_t SSP2CON2bits __attribute__((address(0xEDA)));
+[v _SSP2CON2bits `VS696 ~T0 @X0 0 e@3802 ]
+"14100
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 14100: extern volatile unsigned char SSP2BUF __attribute__((address(0xED5)));
+[v _SSP2BUF `Vuc ~T0 @X0 0 e@3797 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 54: __asm("PPSLOCK equ 0DEFh");
 [; <" PPSLOCK equ 0DEFh ;# ">
@@ -2049,598 +2065,189 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40592
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 40592: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"17 ./dc_motor_v1.h
-[; ;./dc_motor_v1.h: 17: struct DC_motor motorL, motorR;
-[v _motorL `S2015 ~T0 @X0 1 e ]
-[v _motorR `S2015 ~T0 @X0 1 e ]
-"22 ./calibration.h
-[; ;./calibration.h: 22: struct calibration_structure calibration;
-[v _calibration `S2016 ~T0 @X0 1 e ]
-"15 ./pathfinder_file.h
-[; ;./pathfinder_file.h: 15: char Operation_Count = 0;
-[v _Operation_Count `uc ~T0 @X0 1 e ]
-[i _Operation_Count
--> -> 0 `i `uc
-]
-"16
-[; ;./pathfinder_file.h: 16: char Forward_Count = 0;
-[v _Forward_Count `uc ~T0 @X0 1 e ]
-[i _Forward_Count
--> -> 0 `i `uc
-]
-"17
-[; ;./pathfinder_file.h: 17: char length = 50;
-[v _length `uc ~T0 @X0 1 e ]
-[i _length
--> -> 50 `i `uc
-]
-"18
-[; ;./pathfinder_file.h: 18: char Operation_History[50] = {0};
-[v _Operation_History `uc ~T0 @X0 -> 50 `i e ]
-[i _Operation_History
-:U ..
--> -> 0 `i `uc
-..
-]
-"19
-[; ;./pathfinder_file.h: 19: char forward_reset_threshold = 15;
-[v _forward_reset_threshold `uc ~T0 @X0 1 e ]
-[i _forward_reset_threshold
--> -> 15 `i `uc
-]
-"21
-[; ;./pathfinder_file.h: 21: int Color_Value;
-[v _Color_Value `i ~T0 @X0 1 e ]
-"6 pathfinder_file.c
-[; ;pathfinder_file.c: 6: void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
-[v _maze_search `(v ~T0 @X0 1 ef3`*S2016`*S2015`*S2015 ]
+"4 i2c.c
+[; ;i2c.c: 4: void I2C_2_Master_Init(void)
+[v _I2C_2_Master_Init `(v ~T0 @X0 1 ef ]
+"5
+[; ;i2c.c: 5: {
 {
-[e :U _maze_search ]
-[v _c `*S2016 ~T0 @X0 1 r1 ]
-[v _mL `*S2015 ~T0 @X0 1 r2 ]
-[v _mR `*S2015 ~T0 @X0 1 r3 ]
+[e :U _I2C_2_Master_Init ]
 [f ]
+"7
+[; ;i2c.c: 7:   SSP2CON1bits.SSPM= 0b1000;
+[e = . . _SSP2CON1bits 0 0 -> -> 8 `i `uc ]
+"8
+[; ;i2c.c: 8:   SSP2CON1bits.SSPEN = 1;
+[e = . . _SSP2CON1bits 0 2 -> -> 1 `i `uc ]
 "9
-[; ;pathfinder_file.c: 9:     color_click_init();
-[e ( _color_click_init ..  ]
-"11
-[; ;pathfinder_file.c: 11:     while(1){
-[e :U 2019 ]
-{
+[; ;i2c.c: 9:   SSP2ADD = (64000000/(4*100000))-1;
+[e = _SSP2ADD -> - / -> 64000000 `l * -> -> 4 `i `l -> 100000 `l -> -> 1 `i `l `uc ]
+"12
+[; ;i2c.c: 12:   TRISDbits.TRISD5 = 1;
+[e = . . _TRISDbits 0 5 -> -> 1 `i `uc ]
 "13
-[; ;pathfinder_file.c: 13:         _delay((unsigned long)((500)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;i2c.c: 13:   TRISDbits.TRISD6 = 1;
+[e = . . _TRISDbits 0 6 -> -> 1 `i `uc ]
 "14
-[; ;pathfinder_file.c: 14:         LATHbits.LATH3 = 1;
-[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
+[; ;i2c.c: 14:   ANSELDbits.ANSELD5=0;
+[e = . . _ANSELDbits 0 5 -> -> 0 `i `uc ]
 "15
-[; ;pathfinder_file.c: 15:         LATDbits.LATD7 = 1;
-[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+[; ;i2c.c: 15:   ANSELDbits.ANSELD6=0;
+[e = . . _ANSELDbits 0 6 -> -> 0 `i `uc ]
+"16
+[; ;i2c.c: 16:   SSP2DATPPS=0x1D;
+[e = _SSP2DATPPS -> -> 29 `i `uc ]
+"17
+[; ;i2c.c: 17:   SSP2CLKPPS=0x1E;
+[e = _SSP2CLKPPS -> -> 30 `i `uc ]
 "18
-[; ;pathfinder_file.c: 18:         forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
+[; ;i2c.c: 18:   RD5PPS=0x1C;
+[e = _RD5PPS -> -> 28 `i `uc ]
 "19
-[; ;pathfinder_file.c: 19:         Forward_Count++;
-[e ++ _Forward_Count -> -> 1 `i `uc ]
+[; ;i2c.c: 19:   RD6PPS=0x1B;
+[e = _RD6PPS -> -> 27 `i `uc ]
 "20
-[; ;pathfinder_file.c: 20:         Color_Value = color_cardCheck();
-[e = _Color_Value -> ( _color_cardCheck ..  `i ]
+[; ;i2c.c: 20: }
+[e :UE 2015 ]
+}
 "22
-[; ;pathfinder_file.c: 22:         LATHbits.LATH3 = 0;
-[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
+[; ;i2c.c: 22: void I2C_2_Master_Idle(void)
+[v _I2C_2_Master_Idle `(v ~T0 @X0 1 ef ]
 "23
-[; ;pathfinder_file.c: 23:         LATDbits.LATD7 = 0;
-[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
-"28
-[; ;pathfinder_file.c: 28:         if(Forward_Count > forward_reset_threshold){
-[e $ ! > -> _Forward_Count `i -> _forward_reset_threshold `i 2021  ]
+[; ;i2c.c: 23: {
 {
-"29
-[; ;pathfinder_file.c: 29:             backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"30
-[; ;pathfinder_file.c: 30:             rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"31
-[; ;pathfinder_file.c: 31:             rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"32
-[; ;pathfinder_file.c: 32:             backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"33
-[; ;pathfinder_file.c: 33:             for (int i = 0; i < forward_reset_threshold; i++) {
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 2025  ]
-[e :U 2022 ]
-{
-"34
-[; ;pathfinder_file.c: 34:                  forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"36
-[; ;pathfinder_file.c: 36:             }
-}
-[e ++ _i -> 1 `i ]
-[e :U 2025 ]
-[e $ < _i -> _forward_reset_threshold `i 2022  ]
-[e :U 2023 ]
-}
-"37
-[; ;pathfinder_file.c: 37:             backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"38
-[; ;pathfinder_file.c: 38:             break;
-[e $U 2020  ]
-"39
-[; ;pathfinder_file.c: 39:         }
-}
-[e :U 2021 ]
-"41
-[; ;pathfinder_file.c: 41:         if(Color_Value != 0){
-[e $ ! != _Color_Value -> 0 `i 2026  ]
-{
-"43
-[; ;pathfinder_file.c: 43:             Operation_History[Operation_Count] = Forward_Count + 10;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> + -> _Forward_Count `i -> 10 `i `uc ]
-"44
-[; ;pathfinder_file.c: 44:             Forward_Count = 0;
-[e = _Forward_Count -> -> 0 `i `uc ]
-"45
-[; ;pathfinder_file.c: 45:             Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"47
-[; ;pathfinder_file.c: 47:             if(Color_Value == 1){
-[e $ ! == _Color_Value -> 1 `i 2027  ]
-{
-"48
-[; ;pathfinder_file.c: 48:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"49
-[; ;pathfinder_file.c: 49:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"50
-[; ;pathfinder_file.c: 50:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"51
-[; ;pathfinder_file.c: 51:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"52
-[; ;pathfinder_file.c: 52:             }
-}
-[e $U 2028  ]
-"54
-[; ;pathfinder_file.c: 54:             else if(Color_Value == 2){
-[e :U 2027 ]
-[e $ ! == _Color_Value -> 2 `i 2029  ]
-{
-"55
-[; ;pathfinder_file.c: 55:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"56
-[; ;pathfinder_file.c: 56:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"57
-[; ;pathfinder_file.c: 57:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"58
-[; ;pathfinder_file.c: 58:                 leftTURN(c->left_90, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
-"59
-[; ;pathfinder_file.c: 59:             }
-}
-[e $U 2030  ]
-"61
-[; ;pathfinder_file.c: 61:             else if(Color_Value == 3){
-[e :U 2029 ]
-[e $ ! == _Color_Value -> 3 `i 2031  ]
-{
-"62
-[; ;pathfinder_file.c: 62:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"63
-[; ;pathfinder_file.c: 63:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"64
-[; ;pathfinder_file.c: 64:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"65
-[; ;pathfinder_file.c: 65:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"66
-[; ;pathfinder_file.c: 66:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"67
-[; ;pathfinder_file.c: 67:             }
-}
-[e $U 2032  ]
-"69
-[; ;pathfinder_file.c: 69:             else if(Color_Value == 4){
-[e :U 2031 ]
-[e $ ! == _Color_Value -> 4 `i 2033  ]
-{
-"70
-[; ;pathfinder_file.c: 70:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"71
-[; ;pathfinder_file.c: 71:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"72
-[; ;pathfinder_file.c: 72:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"73
-[; ;pathfinder_file.c: 73:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"74
-[; ;pathfinder_file.c: 74:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"75
-[; ;pathfinder_file.c: 75:             }
-}
-[e $U 2034  ]
-"77
-[; ;pathfinder_file.c: 77:             else if(Color_Value == 5){
-[e :U 2033 ]
-[e $ ! == _Color_Value -> 5 `i 2035  ]
-{
-"78
-[; ;pathfinder_file.c: 78:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"79
-[; ;pathfinder_file.c: 79:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"80
-[; ;pathfinder_file.c: 80:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"81
-[; ;pathfinder_file.c: 81:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"82
-[; ;pathfinder_file.c: 82:                 leftTURN(c->left_90, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
-"83
-[; ;pathfinder_file.c: 83:             }
-}
-[e $U 2036  ]
-"85
-[; ;pathfinder_file.c: 85:             else if(Color_Value == 6){
-[e :U 2035 ]
-[e $ ! == _Color_Value -> 6 `i 2037  ]
-{
-"86
-[; ;pathfinder_file.c: 86:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"87
-[; ;pathfinder_file.c: 87:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"88
-[; ;pathfinder_file.c: 88:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"89
-[; ;pathfinder_file.c: 89:                 rightTURN(c->right_135, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
-"90
-[; ;pathfinder_file.c: 90:             }
-}
-[e $U 2038  ]
-"92
-[; ;pathfinder_file.c: 92:             else if(Color_Value == 7){
-[e :U 2037 ]
-[e $ ! == _Color_Value -> 7 `i 2039  ]
-{
-"93
-[; ;pathfinder_file.c: 93:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"94
-[; ;pathfinder_file.c: 94:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"95
-[; ;pathfinder_file.c: 95:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"96
-[; ;pathfinder_file.c: 96:                 leftTURN(c->left_135, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
-"97
-[; ;pathfinder_file.c: 97:             }
-}
-[e $U 2040  ]
-"99
-[; ;pathfinder_file.c: 99:             else if(Color_Value == 8){
-[e :U 2039 ]
-[e $ ! == _Color_Value -> 8 `i 2041  ]
-{
-"101
-[; ;pathfinder_file.c: 101:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"102
-[; ;pathfinder_file.c: 102:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"103
-[; ;pathfinder_file.c: 103:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"104
-[; ;pathfinder_file.c: 104:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"105
-[; ;pathfinder_file.c: 105:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"106
-[; ;pathfinder_file.c: 106:                 break;
-[e $U 2020  ]
-"107
-[; ;pathfinder_file.c: 107:             }
-}
-[e :U 2041 ]
-[e :U 2040 ]
-[e :U 2038 ]
-[e :U 2036 ]
-[e :U 2034 ]
-[e :U 2032 ]
-[e :U 2030 ]
-[e :U 2028 ]
-"108
-[; ;pathfinder_file.c: 108:         }
-}
-[e :U 2026 ]
-"109
-[; ;pathfinder_file.c: 109:     }
-}
-[e :U 2018 ]
-[e $U 2019  ]
-[e :U 2020 ]
-"110
-[; ;pathfinder_file.c: 110: }
-[e :UE 2017 ]
-}
-"112
-[; ;pathfinder_file.c: 112: void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
-[v _maze_return `(v ~T0 @X0 1 ef3`*S2016`*S2015`*S2015 ]
-{
-[e :U _maze_return ]
-[v _c `*S2016 ~T0 @X0 1 r1 ]
-[v _mL `*S2015 ~T0 @X0 1 r2 ]
-[v _mR `*S2015 ~T0 @X0 1 r3 ]
+[e :U _I2C_2_Master_Idle ]
 [f ]
-"115
-[; ;pathfinder_file.c: 115:     while(1){
-[e :U 2044 ]
-{
-"117
-[; ;pathfinder_file.c: 117:         for (int i = length; i >= 0; i--) {
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> _length `i ]
-[e $ >= _i -> 0 `i 2046  ]
-[e $U 2047  ]
-[e :U 2046 ]
-{
-"119
-[; ;pathfinder_file.c: 119:             if(Operation_History[i] > 10){
-[e $ ! > -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 10 `i 2049  ]
-{
-"120
-[; ;pathfinder_file.c: 120:                 unsigned char distance_back = Operation_History[i] - 10;
-[v _distance_back `uc ~T0 @X0 1 a ]
-[e = _distance_back -> - -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 10 `i `uc ]
-"121
-[; ;pathfinder_file.c: 121:                 for (int j = 0; j < distance_back-1; j++) {
-{
-[v _j `i ~T0 @X0 1 a ]
-[e = _j -> 0 `i ]
-[e $U 2053  ]
-[e :U 2050 ]
-{
-"122
-[; ;pathfinder_file.c: 122:                     forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"123
-[; ;pathfinder_file.c: 123:                 }
+"24
+[; ;i2c.c: 24:   while ((SSP2STAT & 0x04) || (SSP2CON2 & 0x1F));
+[e $U 2017  ]
+[e :U 2018 ]
+[e :U 2017 ]
+[e $ || != & -> _SSP2STAT `i -> 4 `i -> 0 `i != & -> _SSP2CON2 `i -> 31 `i -> 0 `i 2018  ]
+[e :U 2019 ]
+"25
+[; ;i2c.c: 25: }
+[e :UE 2016 ]
 }
-[e ++ _j -> 1 `i ]
-[e :U 2053 ]
-[e $ < _j - -> _distance_back `i -> 1 `i 2050  ]
-[e :U 2051 ]
-}
-"124
-[; ;pathfinder_file.c: 124:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"126
-[; ;pathfinder_file.c: 126:             }
-}
-[e $U 2054  ]
-"128
-[; ;pathfinder_file.c: 128:             else if(Operation_History[i] == 1){
-[e :U 2049 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 1 `i 2055  ]
+"27
+[; ;i2c.c: 27: void I2C_2_Master_Start(void)
+[v _I2C_2_Master_Start `(v ~T0 @X0 1 ef ]
+"28
+[; ;i2c.c: 28: {
 {
-"129
-[; ;pathfinder_file.c: 129:                 leftTURN(c->left_90, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
-"130
-[; ;pathfinder_file.c: 130:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"131
-[; ;pathfinder_file.c: 131:             }
+[e :U _I2C_2_Master_Start ]
+[f ]
+"29
+[; ;i2c.c: 29:   I2C_2_Master_Idle();
+[e ( _I2C_2_Master_Idle ..  ]
+"30
+[; ;i2c.c: 30:   SSP2CON2bits.SEN = 1;
+[e = . . _SSP2CON2bits 0 0 -> -> 1 `i `uc ]
+"31
+[; ;i2c.c: 31: }
+[e :UE 2020 ]
 }
-[e $U 2056  ]
-"133
-[; ;pathfinder_file.c: 133:             else if(Operation_History[i] == 2){
-[e :U 2055 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 2 `i 2057  ]
+"33
+[; ;i2c.c: 33: void I2C_2_Master_RepStart(void)
+[v _I2C_2_Master_RepStart `(v ~T0 @X0 1 ef ]
+"34
+[; ;i2c.c: 34: {
 {
-"134
-[; ;pathfinder_file.c: 134:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"135
-[; ;pathfinder_file.c: 135:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"136
-[; ;pathfinder_file.c: 136:             }
+[e :U _I2C_2_Master_RepStart ]
+[f ]
+"35
+[; ;i2c.c: 35:   I2C_2_Master_Idle();
+[e ( _I2C_2_Master_Idle ..  ]
+"36
+[; ;i2c.c: 36:   SSP2CON2bits.RSEN = 1;
+[e = . . _SSP2CON2bits 0 1 -> -> 1 `i `uc ]
+"37
+[; ;i2c.c: 37: }
+[e :UE 2021 ]
 }
-[e $U 2058  ]
-"138
-[; ;pathfinder_file.c: 138:             else if(Operation_History[i] == 3){
-[e :U 2057 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 3 `i 2059  ]
+"39
+[; ;i2c.c: 39: void I2C_2_Master_Stop()
+[v _I2C_2_Master_Stop `(v ~T0 @X0 1 ef ]
+"40
+[; ;i2c.c: 40: {
 {
-"139
-[; ;pathfinder_file.c: 139:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"140
-[; ;pathfinder_file.c: 140:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"141
-[; ;pathfinder_file.c: 141:             }
+[e :U _I2C_2_Master_Stop ]
+[f ]
+"41
+[; ;i2c.c: 41:   I2C_2_Master_Idle();
+[e ( _I2C_2_Master_Idle ..  ]
+"42
+[; ;i2c.c: 42:   SSP2CON2bits.PEN = 1;
+[e = . . _SSP2CON2bits 0 2 -> -> 1 `i `uc ]
+"43
+[; ;i2c.c: 43: }
+[e :UE 2022 ]
 }
-[e $U 2060  ]
-"143
-[; ;pathfinder_file.c: 143:             else if(Operation_History[i] == 4){
-[e :U 2059 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 4 `i 2061  ]
+"45
+[; ;i2c.c: 45: void I2C_2_Master_Write(unsigned char data_byte)
+[v _I2C_2_Master_Write `(v ~T0 @X0 1 ef1`uc ]
+"46
+[; ;i2c.c: 46: {
 {
-"145
-[; ;pathfinder_file.c: 145:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"146
-[; ;pathfinder_file.c: 146:                 forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"149
-[; ;pathfinder_file.c: 149:                 forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"150
-[; ;pathfinder_file.c: 150:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"151
-[; ;pathfinder_file.c: 151:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"152
-[; ;pathfinder_file.c: 152:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"153
-[; ;pathfinder_file.c: 153:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"154
-[; ;pathfinder_file.c: 154:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"155
-[; ;pathfinder_file.c: 155:             }
+[e :U _I2C_2_Master_Write ]
+"45
+[; ;i2c.c: 45: void I2C_2_Master_Write(unsigned char data_byte)
+[v _data_byte `uc ~T0 @X0 1 r1 ]
+"46
+[; ;i2c.c: 46: {
+[f ]
+"47
+[; ;i2c.c: 47:   I2C_2_Master_Idle();
+[e ( _I2C_2_Master_Idle ..  ]
+"48
+[; ;i2c.c: 48:   SSP2BUF = data_byte;
+[e = _SSP2BUF _data_byte ]
+"49
+[; ;i2c.c: 49: }
+[e :UE 2023 ]
 }
-[e $U 2062  ]
-"157
-[; ;pathfinder_file.c: 157:             else if(Operation_History[i] == 5){
-[e :U 2061 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 5 `i 2063  ]
+"51
+[; ;i2c.c: 51: unsigned char I2C_2_Master_Read(unsigned char ack)
+[v _I2C_2_Master_Read `(uc ~T0 @X0 1 ef1`uc ]
+"52
+[; ;i2c.c: 52: {
 {
-"158
-[; ;pathfinder_file.c: 158:                 leftTURN(c->right_90, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 1 _mL _mR ]
-"159
-[; ;pathfinder_file.c: 159:                 forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"162
-[; ;pathfinder_file.c: 162:                 forward(c->forward_one, mL, mR);
-[e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"163
-[; ;pathfinder_file.c: 163:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"164
-[; ;pathfinder_file.c: 164:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"165
-[; ;pathfinder_file.c: 165:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"166
-[; ;pathfinder_file.c: 166:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"167
-[; ;pathfinder_file.c: 167:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"169
-[; ;pathfinder_file.c: 169:             }
-}
-[e $U 2064  ]
-"171
-[; ;pathfinder_file.c: 171:             else if(Operation_History[i] == 6){
-[e :U 2063 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 6 `i 2065  ]
-{
-"172
-[; ;pathfinder_file.c: 172:                 leftTURN(c->left_135, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
-"173
-[; ;pathfinder_file.c: 173:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"174
-[; ;pathfinder_file.c: 174:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"175
-[; ;pathfinder_file.c: 175:             }
-}
-[e $U 2066  ]
-"177
-[; ;pathfinder_file.c: 177:             else if(Operation_History[i] == 7){
-[e :U 2065 ]
-[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 7 `i 2067  ]
-{
-"178
-[; ;pathfinder_file.c: 178:                 rightTURN(c->right_135, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
-"179
-[; ;pathfinder_file.c: 179:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"180
-[; ;pathfinder_file.c: 180:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"181
-[; ;pathfinder_file.c: 181:             }
-}
-[e :U 2067 ]
-[e :U 2066 ]
-[e :U 2064 ]
-[e :U 2062 ]
-[e :U 2060 ]
-[e :U 2058 ]
-[e :U 2056 ]
-[e :U 2054 ]
-"184
-[; ;pathfinder_file.c: 184:         }
-}
-[e -- _i -> 1 `i ]
-[e $ >= _i -> 0 `i 2046  ]
-[e :U 2047 ]
-}
-"187
-[; ;pathfinder_file.c: 187:         Operation_Count = 0;
-[e = _Operation_Count -> -> 0 `i `uc ]
-"188
-[; ;pathfinder_file.c: 188:         for (int i = 0; i < 50; ++i) {
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 50 `i 2068  ]
-[e $U 2069  ]
-[e :U 2068 ]
-{
-"189
-[; ;pathfinder_file.c: 189:             Operation_History[i] = 0;
-[e = *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux -> -> 0 `i `uc ]
-"190
-[; ;pathfinder_file.c: 190:         }
-}
-[e =+ _i -> 1 `i ]
-[e $ < _i -> 50 `i 2068  ]
-[e :U 2069 ]
-}
-"192
-[; ;pathfinder_file.c: 192:         break;
-[e $U 2045  ]
-"193
-[; ;pathfinder_file.c: 193:     }
-}
-[e :U 2043 ]
-[e $U 2044  ]
-[e :U 2045 ]
-"194
-[; ;pathfinder_file.c: 194: }
-[e :UE 2042 ]
+[e :U _I2C_2_Master_Read ]
+"51
+[; ;i2c.c: 51: unsigned char I2C_2_Master_Read(unsigned char ack)
+[v _ack `uc ~T0 @X0 1 r1 ]
+"52
+[; ;i2c.c: 52: {
+[f ]
+"53
+[; ;i2c.c: 53:   unsigned char tmp;
+[v _tmp `uc ~T0 @X0 1 a ]
+"54
+[; ;i2c.c: 54:   I2C_2_Master_Idle();
+[e ( _I2C_2_Master_Idle ..  ]
+"55
+[; ;i2c.c: 55:   SSP2CON2bits.RCEN = 1;
+[e = . . _SSP2CON2bits 0 3 -> -> 1 `i `uc ]
+"56
+[; ;i2c.c: 56:   I2C_2_Master_Idle();
+[e ( _I2C_2_Master_Idle ..  ]
+"57
+[; ;i2c.c: 57:   tmp = SSP2BUF;
+[e = _tmp _SSP2BUF ]
+"58
+[; ;i2c.c: 58:   I2C_2_Master_Idle();
+[e ( _I2C_2_Master_Idle ..  ]
+"59
+[; ;i2c.c: 59:   SSP2CON2bits.ACKDT = !ack;
+[e = . . _SSP2CON2bits 0 5 -> -> ! != -> _ack `i -> 0 `i `i `uc ]
+"60
+[; ;i2c.c: 60:   SSP2CON2bits.ACKEN = 1;
+[e = . . _SSP2CON2bits 0 4 -> -> 1 `i `uc ]
+"61
+[; ;i2c.c: 61:   return tmp;
+[e ) _tmp ]
+[e $UE 2024  ]
+"62
+[; ;i2c.c: 62: }
+[e :UE 2024 ]
 }
