@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Fri Mar 15 01:46:45 2024
+                                                                                               Fri Mar 15 05:09:10 2024
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	18F67K40
@@ -117,58 +117,58 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    103   000000                     _TX4REG	set	3812
    104   000000                     _RC4STAbits	set	3815
    105   000000                     _SP4BRGH	set	3814
-   106   000000                     _TRISDbits	set	3972
-   107   000000                     _LATEbits	set	3965
+   106   000000                     _LATEbits	set	3965
+   107   000000                     _TRISEbits	set	3973
    108   000000                     _LATHbits	set	3968
    109   000000                     _SSP2CON2bits	set	3802
    110   000000                     _RX4PPS	set	3605
    111   000000                     _SSP2CLKPPS	set	3612
    112   000000                     _SSP2DATPPS	set	3613
-   113   000000                     _RC7PPS	set	3689
-   114   000000                     _RE2PPS	set	3700
-   115   000000                     _LATAbits	set	3961
-   116   000000                     _LATGbits	set	3967
-   117   000000                     _TRISAbits	set	3969
-   118   000000                     _TRISGbits	set	3975
-   119   000000                     _TRISHbits	set	3976
-   120   000000                     _PORTFbits	set	3982
-   121   000000                     _TRISCbits	set	3971
-   122   000000                     _TRISEbits	set	3973
-   123   000000                     _TRISFbits	set	3974
-   124   000000                     _LATCbits	set	3963
-   125   000000                     _LATDbits	set	3964
-   126   000000                     _LATFbits	set	3966
-   127   000000                     _T2PR	set	4028
-   128   000000                     _T2CONbits	set	4029
-   129   000000                     _CCPR2H	set	4006
-   130   000000                     _CCPR1H	set	4010
-   131   000000                     _RE4PPS	set	3702
-   132   000000                     _RG6PPS	set	3720
-   133   000000                     _RD5PPS	set	3695
-   134   000000                     _ANSELDbits	set	3751
-   135   000000                     _ANSELFbits	set	3764
-   136   000000                     _CCPR4H	set	3873
-   137   000000                     _CCPR3H	set	3877
-   138   000000                     _T2CLKCONbits	set	4031
-   139   000000                     _T2HLTbits	set	4030
-   140   000000                     _CCP1CONbits	set	4011
-   141   000000                     _CCPTMRS0bits	set	4013
-   142   000000                     _CCP2CONbits	set	4007
-   143   000000                     _CCP3CONbits	set	3878
-   144   000000                     _CCP4CONbits	set	3874
-   145   000000                     _SSP2BUF	set	3797
-   146   000000                     _SSP2ADD	set	3798
-   147   000000                     _SSP2CON1bits	set	3801
-   148   000000                     _RC4REG	set	3811
-   149   000000                     _SP4BRGL	set	3813
-   150   000000                     _TX4STAbits	set	3816
-   151   000000                     _BAUD4CONbits	set	3817
-   152   000000                     _SSP2CON2	set	3802
-   153   000000                     _SSP2STAT	set	3800
-   154   000000                     _PIE4bits	set	3629
-   155   000000                     _PIR4bits	set	3639
-   156   000000                     _RC0PPS	set	3682
-   157   000000                     _RD6PPS	set	3696
+   113   000000                     _ANSELDbits	set	3751
+   114   000000                     _SSP2ADD	set	3798
+   115   000000                     _SSP2CON1bits	set	3801
+   116   000000                     _LATAbits	set	3961
+   117   000000                     _LATGbits	set	3967
+   118   000000                     _TRISAbits	set	3969
+   119   000000                     _TRISGbits	set	3975
+   120   000000                     _TRISHbits	set	3976
+   121   000000                     _PORTFbits	set	3982
+   122   000000                     _TRISCbits	set	3971
+   123   000000                     _TRISDbits	set	3972
+   124   000000                     _TRISFbits	set	3974
+   125   000000                     _LATCbits	set	3963
+   126   000000                     _LATDbits	set	3964
+   127   000000                     _LATFbits	set	3966
+   128   000000                     _RC4REG	set	3811
+   129   000000                     _SP4BRGL	set	3813
+   130   000000                     _TX4STAbits	set	3816
+   131   000000                     _BAUD4CONbits	set	3817
+   132   000000                     _SSP2CON2	set	3802
+   133   000000                     _CCPR4H	set	3873
+   134   000000                     _CCPR3H	set	3877
+   135   000000                     _SSP2STAT	set	3800
+   136   000000                     _ANSELFbits	set	3764
+   137   000000                     _SSP2BUF	set	3797
+   138   000000                     _PIE4bits	set	3629
+   139   000000                     _PIR4bits	set	3639
+   140   000000                     _RC0PPS	set	3682
+   141   000000                     _RC7PPS	set	3689
+   142   000000                     _RD5PPS	set	3695
+   143   000000                     _RE2PPS	set	3700
+   144   000000                     _RD6PPS	set	3696
+   145   000000                     _T2PR	set	4028
+   146   000000                     _T2CONbits	set	4029
+   147   000000                     _CCPR2H	set	4006
+   148   000000                     _CCPR1H	set	4010
+   149   000000                     _RE4PPS	set	3702
+   150   000000                     _RG6PPS	set	3720
+   151   000000                     _T2CLKCONbits	set	4031
+   152   000000                     _T2HLTbits	set	4030
+   153   000000                     _CCP1CONbits	set	4011
+   154   000000                     _CCPTMRS0bits	set	4013
+   155   000000                     _CCP2CONbits	set	4007
+   156   000000                     _CCP3CONbits	set	3878
+   157   000000                     _CCP4CONbits	set	3874
    158                           
    159                           ; #config settings
    160                           
@@ -478,8 +478,8 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    464                           	psect	cstackCOMRAM
    465   000001                     __pcstackCOMRAM:
    466                           	callstack 0
-   467   000001                     ??_pause_until_RF2_pressed:
-   468   000001                     ??_I2C_2_Master_Idle:
+   467   000001                     ??_I2C_2_Master_Idle:
+   468   000001                     ??_pause_until_RF2_pressed:
    469   000001                     ?___wmul:
    470                           	callstack 0
    471   000001                     ?___awdiv:
@@ -806,7 +806,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    792                           
    793                           ; 1 bytes @ 0x29
    794   00002A                     	ds	1
-   795   00002B                     maze_return@i_2040:
+   795   00002B                     maze_return@i_1876:
    796                           	callstack 0
    797                           
    798                           ; 2 bytes @ 0x2A
@@ -1196,7 +1196,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1172                           	callstack 0
   1173   004A5A                     _pause_until_RF2_pressed:
   1174                           	callstack 30
-  1175   004A5A                     l130:
+  1175   004A5A                     l178:
   1176                           
   1177                           ;calibration.c: 12:         LATDbits.LATD7 = 1;
   1178   004A5A  8E7C               	bsf	124,7,c	;volatile
@@ -1239,7 +1239,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1215   004A90  EF4C  F025         	goto	u4711
   1216   004A94  EF4E  F025         	goto	u4710
   1217   004A98                     u4711:
-  1218   004A98  EF2D  F025         	goto	l130
+  1218   004A98  EF2D  F025         	goto	l178
   1219   004A9C                     u4710:
   1220   004A9C                     
   1221                           ;calibration.c: 18:         _delay((unsigned long)((200)*(64000000/4000.0)));
@@ -1479,7 +1479,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1450   002130  EC89  F01F         	call	_backward
   1451                           
   1452                           ;pathfinder_file.c: 38:             break;
-  1453   002134  EF7D  F012         	goto	l568
+  1453   002134  EF7D  F012         	goto	l484
   1454   002138                     l5918:
   1455                           
   1456                           ; BSR set to: 0
@@ -1937,7 +1937,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1900   00245C  EF32  F012         	goto	u7451
   1901   002460  EF34  F012         	goto	u7450
   1902   002464                     u7451:
-  1903   002464  EF7B  F012         	goto	l561
+  1903   002464  EF7B  F012         	goto	l477
   1904   002468                     u7450:
   1905   002468                     
   1906                           ; BSR set to: 0
@@ -2001,12 +2001,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1964   0024EE  EC4B  F01D         	call	_forward
   1965                           
   1966                           ;pathfinder_file.c: 106:                 break;
-  1967   0024F2  EF7D  F012         	goto	l568
-  1968   0024F6                     l561:
+  1967   0024F2  EF7D  F012         	goto	l484
+  1968   0024F6                     l477:
   1969                           
   1970                           ; BSR set to: 0
   1971   0024F6  EF00  F010         	goto	l5888
-  1972   0024FA                     l568:
+  1972   0024FA                     l484:
   1973   0024FA  0012               	return		;funcret
   1974   0024FC                     __end_of_maze_search:
   1975                           	callstack 0
@@ -4083,13 +4083,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3973                           	callstack 0
   3974   004D4E                     _I2C_2_Master_Idle:
   3975                           	callstack 26
-  3976   004D4E                     l404:
+  3976   004D4E                     l135:
   3977   004D4E  010E               	movlb	14	; () banked
   3978   004D50  B5D8               	btfsc	216,2,b	;volatile
   3979   004D52  EFAD  F026         	goto	u5531
   3980   004D56  EFAF  F026         	goto	u5530
   3981   004D5A                     u5531:
-  3982   004D5A  EFA7  F026         	goto	l404
+  3982   004D5A  EFA7  F026         	goto	l135
   3983   004D5E                     u5530:
   3984   004D5E                     
   3985                           ; BSR set to: 14
@@ -4100,7 +4100,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3990   004D68  EFB8  F026         	goto	u5541
   3991   004D6C  EFBA  F026         	goto	u5540
   3992   004D70                     u5541:
-  3993   004D70  EFA7  F026         	goto	l404
+  3993   004D70  EFA7  F026         	goto	l135
   3994   004D74                     u5540:
   3995   004D74                     
   3996                           ; BSR set to: 14
@@ -7930,7 +7930,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7764   002DCA  EFE9  F016         	goto	u7541
   7765   002DCE  EFEB  F016         	goto	u7540
   7766   002DD2                     u7541:
-  7767   002DD2  EF14  F017         	goto	l586
+  7767   002DD2  EF14  F017         	goto	l502
   7768   002DD6                     u7540:
   7769   002DD6                     
   7770                           ;pathfinder_file.c: 178:                 rightTURN(c->right_135, mL, mR);
@@ -7966,7 +7966,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7800   002E1E  50DF               	movf	indf2,w,c
   7801   002E20  EC4B  F01D         	call	_forward
   7802   002E24  EF14  F017         	goto	l6054
-  7803   002E28                     l586:
+  7803   002E28                     l502:
   7804   002E28                     l6054:
   7805                           
   7806                           ;pathfinder_file.c: 184:         }
@@ -7987,29 +7987,29 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7821                           
   7822                           ;pathfinder_file.c: 188:         for (int i = 0; i < 50; ++i) {
   7823   002E42  0E00               	movlw	0
-  7824   002E44  6E2C               	movwf	(maze_return@i_2040+1)^0,c
+  7824   002E44  6E2C               	movwf	(maze_return@i_1876+1)^0,c
   7825   002E46  0E00               	movlw	0
-  7826   002E48  6E2B               	movwf	maze_return@i_2040^0,c
+  7826   002E48  6E2B               	movwf	maze_return@i_1876^0,c
   7827   002E4A                     l6064:
   7828                           
   7829                           ;pathfinder_file.c: 189:             Operation_History[i] = 0;
   7830   002E4A  0E3C               	movlw	low _Operation_History
-  7831   002E4C  242B               	addwf	maze_return@i_2040^0,w,c
+  7831   002E4C  242B               	addwf	maze_return@i_1876^0,w,c
   7832   002E4E  6ED9               	movwf	fsr2l,c
   7833   002E50  0E01               	movlw	high _Operation_History
-  7834   002E52  202C               	addwfc	(maze_return@i_2040+1)^0,w,c
+  7834   002E52  202C               	addwfc	(maze_return@i_1876+1)^0,w,c
   7835   002E54  6EDA               	movwf	fsr2h,c
   7836   002E56  6ADF               	clrf	indf2,c
   7837   002E58                     
   7838                           ;pathfinder_file.c: 190:         }
-  7839   002E58  4A2B               	infsnz	maze_return@i_2040^0,f,c
-  7840   002E5A  2A2C               	incf	(maze_return@i_2040+1)^0,f,c
-  7841   002E5C  BE2C               	btfsc	(maze_return@i_2040+1)^0,7,c
+  7839   002E58  4A2B               	infsnz	maze_return@i_1876^0,f,c
+  7840   002E5A  2A2C               	incf	(maze_return@i_1876+1)^0,f,c
+  7841   002E5C  BE2C               	btfsc	(maze_return@i_1876+1)^0,7,c
   7842   002E5E  EF3A  F017         	goto	u7561
-  7843   002E62  502C               	movf	(maze_return@i_2040+1)^0,w,c
+  7843   002E62  502C               	movf	(maze_return@i_1876+1)^0,w,c
   7844   002E64  E109               	bnz	u7560
   7845   002E66  0E32               	movlw	50
-  7846   002E68  5C2B               	subwf	maze_return@i_2040^0,w,c
+  7846   002E68  5C2B               	subwf	maze_return@i_1876^0,w,c
   7847   002E6A  A0D8               	btfss	status,0,c
   7848   002E6C  EF3A  F017         	goto	u7561
   7849   002E70  EF3C  F017         	goto	u7560
@@ -8277,7 +8277,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8101                           	callstack 0
   8102   00363E                     _calibration_routine:
   8103                           	callstack 27
-  8104   00363E                     l158:
+  8104   00363E                     l206:
   8105   00363E                     
   8106                           ;calibration.c: 95:         if(c->index == 1){
   8107   00363E  C021  FFD9         	movff	calibration_routine@c,fsr2l
@@ -8590,7 +8590,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8414   0038C8  EF68  F01C         	goto	u7341
   8415   0038CC  EF6A  F01C         	goto	u7340
   8416   0038D0                     u7341:
-  8417   0038D0  EF1F  F01B         	goto	l158
+  8417   0038D0  EF1F  F01B         	goto	l206
   8418   0038D4                     u7340:
   8419   0038D4                     
   8420                           ;calibration.c: 143:             c->index = 1;
@@ -8642,14 +8642,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8461                           	callstack 0
   8462   0047F6                     _switch_calibration:
   8463                           	callstack 29
-  8464   0047F6                     l150:
+  8464   0047F6                     l198:
   8465                           
   8466                           ;calibration.c: 70:         if(!PORTFbits.RF2){
   8467   0047F6  B48E               	btfsc	142,2,c	;volatile
   8468   0047F8  EF00  F024         	goto	u7001
   8469   0047FC  EF02  F024         	goto	u7000
   8470   004800                     u7001:
-  8471   004800  EF32  F024         	goto	l151
+  8471   004800  EF32  F024         	goto	l199
   8472   004804                     u7000:
   8473   004804                     
   8474                           ;calibration.c: 71:             _delay((unsigned long)((200)*(64000000/4000.0)));
@@ -8703,15 +8703,15 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8522   00485E  9E7C               	bcf	124,7,c	;volatile
   8523                           
   8524                           ;calibration.c: 76:             break;
-  8525   004860  EF53  F024         	goto	l155
-  8526   004864                     l151:
+  8525   004860  EF53  F024         	goto	l203
+  8526   004864                     l199:
   8527                           
   8528                           ;calibration.c: 79:         if(!PORTFbits.RF3){
   8529   004864  B68E               	btfsc	142,3,c	;volatile
   8530   004866  EF37  F024         	goto	u7011
   8531   00486A  EF39  F024         	goto	u7010
   8532   00486E                     u7011:
-  8533   00486E  EFFB  F023         	goto	l150
+  8533   00486E  EFFB  F023         	goto	l198
   8534   004872                     u7010:
   8535   004872                     
   8536                           ;calibration.c: 80:             _delay((unsigned long)((200)*(64000000/4000.0)));
@@ -8749,7 +8749,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8568   0048A4                     
   8569                           ;calibration.c: 83:             LATHbits.LATH3 = 0;
   8570   0048A4  9680               	bcf	128,3,c	;volatile
-  8571   0048A6                     l155:
+  8571   0048A6                     l203:
   8572   0048A6  0012               	return		;funcret
   8573   0048A8                     __end_of_switch_calibration:
   8574                           	callstack 0
@@ -8917,7 +8917,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8731   003CCA  6E1C               	movwf	(rightTURN@j+1)^0,c
   8732   003CCC  0E00               	movlw	0
   8733   003CCE  6E1B               	movwf	rightTURN@j^0,c
-  8734   003CD0  EF73  F01E         	goto	l298
+  8734   003CD0  EF73  F01E         	goto	l346
   8735   003CD4                     l5658:
   8736                           
   8737                           ;dc_motor_v1.c: 275:         _delay((unsigned long)((10)*(64000000/4000.0)));
@@ -8933,7 +8933,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8747                           ;dc_motor_v1.c: 276:     }
   8748   003CE2  4A1B               	infsnz	rightTURN@j^0,f,c
   8749   003CE4  2A1C               	incf	(rightTURN@j+1)^0,f,c
-  8750   003CE6                     l298:
+  8750   003CE6                     l346:
   8751   003CE6  5018               	movf	rightTURN@rotation_calibration^0,w,c
   8752   003CE8  6E15               	movwf	??_rightTURN^0,c
   8753   003CEA  6A16               	clrf	(??_rightTURN+1)^0,c
@@ -9194,7 +9194,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9003   003E48  6E1C               	movwf	(leftTURN@j+1)^0,c
   9004   003E4A  0E00               	movlw	0
   9005   003E4C  6E1B               	movwf	leftTURN@j^0,c
-  9006   003E4E  EF32  F01F         	goto	l284
+  9006   003E4E  EF32  F01F         	goto	l332
   9007   003E52                     l5704:
   9008                           
   9009                           ;dc_motor_v1.c: 235:         _delay((unsigned long)((10)*(64000000/4000.0)));
@@ -9210,7 +9210,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9019                           ;dc_motor_v1.c: 236:     }
   9020   003E60  4A1B               	infsnz	leftTURN@j^0,f,c
   9021   003E62  2A1C               	incf	(leftTURN@j+1)^0,f,c
-  9022   003E64                     l284:
+  9022   003E64                     l332:
   9023   003E64  5018               	movf	leftTURN@rotation_calibration^0,w,c
   9024   003E66  6E15               	movwf	??_leftTURN^0,c
   9025   003E68  6A16               	clrf	(??_leftTURN+1)^0,c
@@ -9472,7 +9472,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9276   003B4C  6E1C               	movwf	(forward@j+1)^0,c
   9277   003B4E  0E00               	movlw	0
   9278   003B50  6E1B               	movwf	forward@j^0,c
-  9279   003B52  EFB4  F01D         	goto	l256
+  9279   003B52  EFB4  F01D         	goto	l304
   9280   003B56                     l5750:
   9281                           
   9282                           ;dc_motor_v1.c: 148:         _delay((unsigned long)((10)*(64000000/4000.0)));
@@ -9488,7 +9488,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9292                           ;dc_motor_v1.c: 149:     }
   9293   003B64  4A1B               	infsnz	forward@j^0,f,c
   9294   003B66  2A1C               	incf	(forward@j+1)^0,f,c
-  9295   003B68                     l256:
+  9295   003B68                     l304:
   9296   003B68  5018               	movf	forward@Distance_Calibration^0,w,c
   9297   003B6A  6E15               	movwf	??_forward^0,c
   9298   003B6C  6A16               	clrf	(??_forward+1)^0,c
@@ -9748,7 +9748,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9547   003FC4  6E1C               	movwf	(backward@j+1)^0,c
   9548   003FC6  0E00               	movlw	0
   9549   003FC8  6E1B               	movwf	backward@j^0,c
-  9550   003FCA  EFF0  F01F         	goto	l270
+  9550   003FCA  EFF0  F01F         	goto	l318
   9551   003FCE                     l5796:
   9552                           
   9553                           ;dc_motor_v1.c: 193:         _delay((unsigned long)((10)*(64000000/4000.0)));
@@ -9764,7 +9764,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9563                           ;dc_motor_v1.c: 194:     }
   9564   003FDC  4A1B               	infsnz	backward@j^0,f,c
   9565   003FDE  2A1C               	incf	(backward@j+1)^0,f,c
-  9566   003FE0                     l270:
+  9566   003FE0                     l318:
   9567   003FE0  5018               	movf	backward@Distance_Calibration^0,w,c
   9568   003FE2  6E15               	movwf	??_backward^0,c
   9569   003FE4  6A16               	clrf	(??_backward+1)^0,c
@@ -10045,7 +10045,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9837   0042F2  C012  FFDF         	movff	setMotorPWM@negDuty,indf2
   9838                           
   9839                           ;dc_motor_v1.c: 92:     } else {
-  9840   0042F6  EF9B  F021         	goto	l242
+  9840   0042F6  EF9B  F021         	goto	l290
   9841   0042FA                     l5394:
   9842                           
   9843                           ;dc_motor_v1.c: 93:         *(m->posDutyHighByte)=negDuty;
@@ -10071,7 +10071,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9863   00432A  C00F  FFD9         	movff	??_setMotorPWM,fsr2l
   9864   00432E  C010  FFDA         	movff	??_setMotorPWM+1,fsr2h
   9865   004332  C011  FFDF         	movff	setMotorPWM@posDuty,indf2
-  9866   004336                     l242:
+  9866   004336                     l290:
   9867   004336  0012               	return		;funcret
   9868   004338                     __end_of_setMotorPWM:
   9869                           	callstack 0
@@ -10278,7 +10278,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10055                           	callstack 28
  10056   004CF6                     
  10057                           ;dc_motor_v1.c: 69:     while (milliseconds > 0) {
- 10058   004CF6  EF88  F026         	goto	l232
+ 10058   004CF6  EF88  F026         	goto	l280
  10059   004CFA                     l5376:
  10060                           
  10061                           ;dc_motor_v1.c: 70:         _delay((unsigned long)((1)*(64000000/4000.0)));
@@ -10296,7 +10296,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10073   004D0A  0601               	decf	delay_ms_function@milliseconds^0,f,c
  10074   004D0C  A0D8               	btfss	status,0,c
  10075   004D0E  0602               	decf	(delay_ms_function@milliseconds+1)^0,f,c
- 10076   004D10                     l232:
+ 10076   004D10                     l280:
  10077                           
  10078                           ;dc_motor_v1.c: 69:     while (milliseconds > 0) {
  10079   004D10  5001               	movf	delay_ms_function@milliseconds^0,w,c
@@ -10495,7 +10495,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10262                           	callstack 0
  10263   00408E                     _adjust_calibration:
  10264                           	callstack 29
- 10265   00408E                     l137:
+ 10265   00408E                     l185:
  10266                           
  10267                           ;calibration.c: 31:         if(!PORTFbits.RF3 || !PORTFbits.RF2){
  10268   00408E  A68E               	btfss	142,3,c	;volatile
@@ -10508,7 +10508,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10275   00409E  EF53  F020         	goto	u6951
  10276   0040A2  EF55  F020         	goto	u6950
  10277   0040A6                     u6951:
- 10278   0040A6  EF47  F020         	goto	l137
+ 10278   0040A6  EF47  F020         	goto	l185
  10279   0040AA                     u6950:
  10280   0040AA                     l5580:
  10281                           
@@ -10532,13 +10532,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10299   0040C4  EF66  F020         	goto	u6961
  10300   0040C8  EF68  F020         	goto	u6960
  10301   0040CC                     u6961:
- 10302   0040CC  EF81  F020         	goto	l141
+ 10302   0040CC  EF81  F020         	goto	l189
  10303   0040D0                     u6960:
  10304   0040D0  B48E               	btfsc	142,2,c	;volatile
  10305   0040D2  EF6D  F020         	goto	u6971
  10306   0040D6  EF6F  F020         	goto	u6970
  10307   0040DA                     u6971:
- 10308   0040DA  EF81  F020         	goto	l141
+ 10308   0040DA  EF81  F020         	goto	l189
  10309   0040DE                     u6970:
  10310   0040DE                     
  10311                           ;calibration.c: 36:                 LATHbits.LATH3 = 1;
@@ -10569,8 +10569,8 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10336   0040FC  9E7C               	bcf	124,7,c	;volatile
  10337                           
  10338                           ;calibration.c: 41:                 break;
- 10339   0040FE  EFF1  F020         	goto	l147
- 10340   004102                     l141:
+ 10339   0040FE  EFF1  F020         	goto	l195
+ 10340   004102                     l189:
  10341                           
  10342                           ;calibration.c: 44:                 if(!PORTFbits.RF2){
  10343   004102  B48E               	btfsc	142,2,c	;volatile
@@ -10638,7 +10638,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10403   00416E  EFBB  F020         	goto	u6991
  10404   004172  EFBD  F020         	goto	u6990
  10405   004176                     u6991:
- 10406   004176  EFEF  F020         	goto	l138
+ 10406   004176  EFEF  F020         	goto	l186
  10407   00417A                     u6990:
  10408   00417A                     
  10409                           ;calibration.c: 53:                     _delay((unsigned long)((200)*(64000000/4000.0)))
@@ -10694,10 +10694,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10457   0041D8                     
  10458                           ;calibration.c: 57:                     LATHbits.LATH3 = 0;
  10459   0041D8  9680               	bcf	128,3,c	;volatile
- 10460   0041DA  EF47  F020         	goto	l137
- 10461   0041DE                     l138:
- 10462   0041DE  EF47  F020         	goto	l137
- 10463   0041E2                     l147:
+ 10460   0041DA  EF47  F020         	goto	l185
+ 10461   0041DE                     l186:
+ 10462   0041DE  EF47  F020         	goto	l185
+ 10463   0041E2                     l195:
  10464   0041E2  0012               	return		;funcret
  10465   0041E4                     __end_of_adjust_calibration:
  10466                           	callstack 0
@@ -10820,19 +10820,19 @@ Pointer List with Targets:
 		 -> motorL(BANK0[9]), 
 
     backward@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     backward@mL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     backward@mR	PTR struct DC_motor size(1) Largest target is 11
 		 -> motorR(BANK0[9]), 
 
     backward@mR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     backward@mR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     calibration_routine@c	PTR struct calibration_structure size(2) Largest target is 9
 		 -> calibration(BANK1[9]), 
@@ -10847,37 +10847,37 @@ Pointer List with Targets:
 		 -> motorL(BANK0[9]), 
 
     forward@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     forward@mL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     forward@mR	PTR struct DC_motor size(1) Largest target is 11
 		 -> motorR(BANK0[9]), 
 
     forward@mR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     forward@mR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     leftTURN@mL	PTR struct DC_motor size(1) Largest target is 11
 		 -> motorL(BANK0[9]), 
 
     leftTURN@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     leftTURN@mL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     leftTURN@mR	PTR struct DC_motor size(1) Largest target is 11
 		 -> motorR(BANK0[9]), 
 
     leftTURN@mR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     leftTURN@mR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     maze_return@c	PTR struct calibration_structure size(2) Largest target is 9
 		 -> calibration(BANK1[9]), 
@@ -10898,16 +10898,16 @@ Pointer List with Targets:
 		 -> motorR(BANK0[9]), 
 
     motorL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     motorL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     motorR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     motorR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     RGB_to_HSV@H	PTR float  size(1) Largest target is 4
 		 -> color_cardCheck@H(BANK0[4]), 
@@ -10922,46 +10922,46 @@ Pointer List with Targets:
 		 -> motorL(BANK0[9]), 
 
     rightTURN@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     rightTURN@mL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     rightTURN@mR	PTR struct DC_motor size(1) Largest target is 11
 		 -> motorR(BANK0[9]), 
 
     rightTURN@mR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     rightTURN@mR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
-    S340DC_motor$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+    S552DC_motor$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
-    S340DC_motor$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+    S552DC_motor$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     setMotorPWM@m	PTR struct DC_motor size(1) Largest target is 11
 		 -> motorL(BANK0[9]), motorR(BANK0[9]), 
 
     setMotorPWM@m$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     setMotorPWM@m$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     stop@mL$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     stop@mL$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     stop@mR$negDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR2H(BITBIGSFRhhlll[1]), CCPR4H(BITBIGSFRllllhlllll[1]), 
 
     stop@mR$posDutyHighByte	PTR unsigned char  size(2) Largest target is 1
-		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhhhllll[1]), 
+		 -> CCPR1H(BITBIGSFRhhlll[1]), CCPR3H(BITBIGSFRllllhlllll[1]), 
 
     switch_calibration@calibration_index	PTR int  size(2) Largest target is 9
 		 -> calibration(BANK1[9]), 
@@ -11431,28 +11431,28 @@ BITCOMRAM           5F      0       0       0        0.0%
 COMRAM              5F     5F      5F       1      100.0%
 BITBIGSFRllllhh     52      0       0      40        0.0%
 BITBIGSFRhhh        40      0       0      32        0.0%
-BITBIGSFRllllhh     37      0       0      42        0.0%
+BITBIGSFRllllhl     37      0       0      42        0.0%
 BITBIGSFRllllll     2A      0       0      53        0.0%
 BITBIGSFRllllll     26      0       0      57        0.0%
-BITBIGSFRllllhh     20      0       0      45        0.0%
-BITBIGSFRllllhh     1E      0       0      47        0.0%
+BITBIGSFRllllll     20      0       0      45        0.0%
+BITBIGSFRllllll     1E      0       0      47        0.0%
 BITBIGSFRhhlll      17      0       0      36        0.0%
-BITBIGSFRllllhh     11      0       0      48        0.0%
+BITBIGSFRllllll     11      0       0      48        0.0%
 BITBIGSFRllllll      F      0       0      55        0.0%
 BITBIGSFRhhlhh       E      0       0      33        0.0%
-BITBIGSFRllllhh      C      0       0      46        0.0%
+BITBIGSFRllllll      C      0       0      46        0.0%
 BITBIGSFRllllll      9      0       0      54        0.0%
-BITBIGSFRllllhh      8      0       0      43        0.0%
+BITBIGSFRllllhl      8      0       0      43        0.0%
 BITBIGSFRllllll      6      0       0      56        0.0%
 BITBIGSFRllllll      6      0       0      52        0.0%
-BITBIGSFRlllllh      5      0       0      51        0.0%
+BITBIGSFRllllll      5      0       0      51        0.0%
 BITBIGSFRhl          5      0       0      37        0.0%
-BITBIGSFRlllllh      3      0       0      50        0.0%
-BITBIGSFRllllhh      2      0       0      41        0.0%
+BITBIGSFRllllll      3      0       0      50        0.0%
+BITBIGSFRllllhl      2      0       0      41        0.0%
 BITBIGSFRhhllh       2      0       0      35        0.0%
-BITBIGSFRllllhh      1      0       0      44        0.0%
 BITBIGSFRhhlhl       1      0       0      34        0.0%
-BITBIGSFRllllhl      1      0       0      49        0.0%
+BITBIGSFRllllll      1      0       0      49        0.0%
+BITBIGSFRlllllh      1      0       0      44        0.0%
 BITBIGSFRlllhl       1      0       0      39        0.0%
 BITBIGSFRlhl         1      0       0      38        0.0%
 BIGSFR               0      0       0     200        0.0%
@@ -11472,7 +11472,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Fri Mar 15 01:46:45 2024
+Symbol Table                                                                                   Fri Mar 15 05:09:10 2024
 
                      _color_read_Red 4AB8                         ___fldiv@aexp 003A  
                        ___fldiv@bexp 0039                         ___fldiv@sign 0032  
@@ -11488,25 +11488,25 @@ Symbol Table                                                                    
                                  l99 1830                         ___awdiv@sign 0006  
                 ___wmul@multiplicand 0003                     _color_read_Clear 4B58  
                    _color_read_Green 4B08                                  l105 1838  
-                                l130 4A5A                                  l141 4102  
-                                l150 47F6                                  l134 4AB6  
-                                l151 4864                                  l232 4D10  
-                                l137 408E                                  l401 4D4C  
-                                l138 41DE                                  l242 4336  
-                                l306 3D92                                  l170 38E0  
-                                l410 4DDA                                  l147 41E2  
-                                l235 4D22                                  l155 48A6  
-                                l404 4D4E                                  l229 49E4  
-                                l413 4DE4                                  l270 3FE0  
-                                l158 363E                                  l422 4C7E  
-                                l407 4D74                                  l264 3C14  
-                                l256 3B68                                  l416 4DD0  
-                                l419 4DC6                                  l292 3F10  
-                                l284 3E64                                  l278 408C  
-                                l561 24F6                                  l298 3CE6  
-                                l571 29BC                                  l830 47F4  
-                                l568 24FA                                  l586 2E28  
-                                l596 2E78                                  l599 4D9A  
+                                l203 48A6                                  l132 4D4C  
+                                l141 4DDA                                  l206 363E  
+                                l150 4DC6                                  l135 4D4E  
+                                l312 3C14                                  l304 3B68  
+                                l144 4DE4                                  l153 4C7E  
+                                l218 38E0                                  l138 4D74  
+                                l147 4DD0                                  l340 3F10  
+                                l332 3E64                                  l326 408C  
+                                l318 3FE0                                  l502 2E28  
+                                l182 4AB6                                  l280 4D10  
+                                l512 2E78                                  l185 408E  
+                                l186 41DE                                  l290 4336  
+                                l354 3D92                                  l346 3CE6  
+                                l178 4A5A                                  l195 41E2  
+                                l283 4D22                                  l189 4102  
+                                l277 49E4                                  l198 47F6  
+                                l199 4864                                  l484 24FA  
+                                l477 24F6                                  l830 47F4  
+                                l487 29BC                                  l599 4D9A  
                                 l864 4612                                  l858 4950  
                                 l869 4658                                  l896 4554  
                                 wreg 0FE8                         ___flmul@aexp 0048  
@@ -12184,7 +12184,7 @@ Symbol Table                                                                    
                ??_switch_calibration 0003                               _RC0PPS 0E62  
                              _RC4REG 0EE3                               _RE2PPS 0E74  
                              _RD5PPS 0E6F                               _RC7PPS 0E69  
-                             _RD6PPS 0E70                               _RE4PPS 0E76  
+                             _RE4PPS 0E76                               _RD6PPS 0E70  
                              _RG6PPS 0E88                     __end_of_backward 408E  
            __end_of_color_click_init 4CC0                               _RX4PPS 0E15  
                    forward@max_power 001D                               _TX4REG 0EE4  
@@ -12279,7 +12279,7 @@ switch_calibration@calibration_index 0001                          ___fldiv@grs 
                   ?_color_read_Green 0005                          _CCP3CONbits 0F26  
         forward@Distance_Calibration 0018                          _CCP4CONbits 0F22  
                  ??_color_read_Clear 0007                   ??_color_read_Green 0007  
-                 rightTURN@max_power 001D                    maze_return@i_2040 002B  
+                 rightTURN@max_power 001D                    maze_return@i_1876 002B  
                          leftTURN@mL 0013                           leftTURN@mR 0014  
          __end_of_custom_floatmodulo 4450                       __end_of___flge 465A  
                      __end_of___fleq 4952                       __end_of___wmul 4D9C  

@@ -70,7 +70,6 @@ ___param_bank 0 0 ABS 0
 __Hnvrram 0 0 COMRAM 1
 __Lnvrram 0 0 COMRAM 1
 ___intlo_stack_hi 0 0 STACK 2
-maze_return@i_2040 2B 0 COMRAM 1
 ___xxtofl 38E2 0 CODE 0
 ___fleq@ff1 1 0 COMRAM 1
 RGB_to_HSV@H_temp A9 0 BANK0 1
@@ -207,6 +206,7 @@ __LdataBANK0 0 0 ABS 0
 ?___xxtofl C 0 COMRAM 1
 ___flmul@sign 47 0 COMRAM 1
 __pdataBANK0 FD 0 BANK0 1
+maze_return@i_1876 2B 0 COMRAM 1
 end_of_initialization 4CF0 0 CODE 0
 ___fldiv@sign 32 0 COMRAM 1
 ___awdiv@sign 6 0 COMRAM 1
@@ -631,7 +631,7 @@ bssBANK1 100 18C BANK1 100 1
 text6 E02 4DE7 CODE E02 0
 %locals
 dist/default/production\final-project-tomas-thomas.X.production.o
-C:\Users\tjhla\AppData\Local\Temp\xcAs14l8.\driver_tmp_1.s
+C:\Users\thoma\AppData\Local\Temp\xcAsio8.\driver_tmp_1.s
 9557 4CC0 0 CODE 0
 9559 4CC0 0 CODE 0
 9562 4CC0 0 CODE 0
