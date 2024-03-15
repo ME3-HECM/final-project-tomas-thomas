@@ -68,18 +68,21 @@ The following links show all unknown mazes completed as part of the Final Testin
 ### Overview/Instructions for Operation
 <a name="overviewinstructions-for-operation"></a>
 
-
 The following description is a step-by-step guide to the operation of our buggy, outlining how it meets its required specifications:
 
 1. The buggy is programmed and turned on, initialising the buggy's push buttons, LEDs, motors and calibration variables for its movement (turns and movement forwards and backwards).
+
 2. The buggy then begins its executable code, first executing "pause_until_RF2_pressed" function, which awaits a starting press of the RF2 button before beginning the movement calibration process. At this point, the right LED of the clicker2 board flashes continuously until the button is pressed and the next command is executed.
+
 3. Once the RF2 button is pressed, the buggy enters its movement calibration routine, signified by the function "calibration_routine(&calibration, &motorL, &motorR)" in the code below. This function cycles through the movements for Right/Left Turn 90 degrees, 135 degrees, Forward and Back 1 unit, and Forward and Back 1/2 unit, utilising both buttons on the clicker2 board to increase or decrease the magnitude of the movement. A double click (both buttons pressed at the same time) would execute the movement to observe whether it was accurate or not on the surface which the buggy was operating; a left click following this would remain on the same movement and allow right clicks to increase the magnitude and left clicks to decrease the magnitude of the movement; a right click following the motion would signal the calibration routine to save that movement and continue to the next one. This process then continues until all movements are calibrated.
+
 4. On the final movement, a right click will save the final movement calibration and immediately begin execution of the buggy's main maze solving operation, indicated by "maze_search(&calibration, &motorL, &motorR)" in the code below. This function solves the maze by moving the buggy, reading the movement instructions from colored walls using the color sensor, and remembering the operations completed.
+
 5. Once the maze has been completed and the buggy has reached the end point (indicated by a white card), the buggy then executes its final operational command "maze_return(&calibration, &motorL, &motorR)", which takes the saved history of the buggy's movements, reverses them, and performs them to retrace its steps and return back to its starting position at the beginning of the maze.
+
 6. At this point, the buggy's code loops back and it stays stationary until button RF2 is pressed again to re-begin the buggy's executable code and operation. Notably, if the buggy remains turned on, it retains its calibration memory from the first run through, and so after pressing RF2 the calibration routine can be skipped by moving through each movement without further calibration necessary.
 
-//~~~~~~~~~~~~~~~ Executable code for the buggy ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+ #### Found within main.c   
     while(1){ 
         //note that the calibration values are not reset if the buggy is not turned off after it has solved the first maze
         //you will still have to go through the calibration routine but no adjustments will have to be made
