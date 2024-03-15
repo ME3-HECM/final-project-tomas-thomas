@@ -192,9 +192,10 @@ Code below is maze_return [needs more here]
 
 ### Movement Process
 [Explanation of movement process]
-![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/86fc2e45-6e73-4d35-8610-e8326845a10f)
 
-Summary of the 3 key stages in the buggy
+![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/01a83b85-2115-409e-bd3d-6fd1e7023971)
+
+Summary of the 4 key stages in the buggy code
 
 ### Movement Calibration
 
