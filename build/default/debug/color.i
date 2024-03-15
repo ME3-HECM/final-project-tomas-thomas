@@ -24359,7 +24359,16 @@ void color_click_init(void)
     LATGbits.LATG1 = 1;
     LATAbits.LATA4 = 1;
     LATFbits.LATF7 = 1;
-# 43 "color.c"
+
+
+    TRISHbits.TRISH1 = 0;
+    LATHbits.LATH1 = 1;
+
+    TRISDbits.TRISD4 = 0;
+    LATDbits.LATD4 = 1;
+
+    TRISDbits.TRISD3 = 0;
+    LATDbits.LATD3 = 1;
 }
 
 void color_writetoaddr(char address, char value){
@@ -24456,11 +24465,24 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
 
 
 
-    float r = R/C;
-    float g = G/C;
-    float b = B/C;
+    float r = R;
+    float g = G;
+    float b = B;
     float c = C;
-# 155 "color.c"
+
+
+    char senddata[25];
+    sprintf(senddata,"r:%.2f g: %.2f b: %.2f c:%.2f",r,g,b,c);
+    sendStringSerial4(senddata);
+    _delay((unsigned long)((50)*(64000000/4000.0)));
+
+
+
+
+
+    float c_norm = 1.0 /(C/65535.0);
+
+
     float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
     float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b);
     float deltaRGB = maxRGB - minRGB;
@@ -24491,8 +24513,7 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
     }
 
 
-
-    *V = maxRGB * 100.0;
+    *V = maxRGB * 100.0 * c_norm;
 }
 
 unsigned int color_cardCheck(void) {
@@ -24511,7 +24532,7 @@ unsigned int color_cardCheck(void) {
     float V;
 
     RGB_to_HSV(r,g,b,c,&H,&S,&V);
-# 213 "color.c"
+# 214 "color.c"
     unsigned int card_color = 0;
 
 
@@ -24530,14 +24551,6 @@ unsigned int color_cardCheck(void) {
     else if (H>74 && H<85 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
 
     else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;}
-
-
-
-    char senddata[25];
-    sprintf(senddata,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color);
-    sendStringSerial4(senddata);
-    _delay((unsigned long)((50)*(64000000/4000.0)));
-
-
+# 241 "color.c"
     return card_color;
 }

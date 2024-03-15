@@ -24335,106 +24335,51 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
 unsigned int color_cardCheck(void);
 # 13 "main.c" 2
 
+# 1 "./serial.h" 1
+# 13 "./serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
+
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
+
+
+
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
+
+
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
+
+
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 14 "main.c" 2
+
 
 
 
 void main(void){
-    unsigned int PWMperiod = 99;
-    initDCmotorsPWM(PWMperiod);
+
+
+
 
     color_click_init();
+    initUSART4();
+    _delay((unsigned long)((1000)*(64000000/4000.0)));
 
-
-
-
-    motorL.power=0;
-    motorL.direction=1;
-    motorL.brakemode=1;
-    motorL.posDutyHighByte=(unsigned char *)(&CCPR1H);
-    motorL.negDutyHighByte=(unsigned char *)(&CCPR2H);
-    motorL.PWMperiod=PWMperiod;
-
-    motorR.power=0;
-    motorR.direction=1;
-    motorR.brakemode=1;
-    motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);
-    motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
-    motorR.PWMperiod=PWMperiod;
-
-
-
-
-
-    TRISDbits.TRISD7 = 0;
-    LATDbits.LATD7 = 0;
-
-
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 0;
-
-
-    TRISFbits.TRISF2=1;
-    ANSELFbits.ANSELF2=0;
-
-
-    TRISFbits.TRISF3=1;
-    ANSELFbits.ANSELF3=0;
-
-
-
-    calibration.index = 1;
-    calibration.over = 0;
-
-
-
-
-
-    calibration.left_90 = 60;
-    calibration.right_90 = 10;
-    calibration.left_135 = 60;
-    calibration.right_135 = 10;
-    calibration.forward = 10;
-    calibration.forward_motorL = 20;
-    calibration.forward_motorR = 20;
-
-
-
-
-
-
-    while(1){
-
-
-
-        if(calibration.index == 1){
-            adjust_calibration(&calibration.right_90);
-            turnRIGHT(calibration.right_90, &motorL, &motorR);
-            switch_calibration(&calibration.index);
-        }
-
-
-        if(calibration.index == 2){
-            adjust_calibration(&calibration.left_90);
-            turnLEFT(calibration.left_90, &motorL, &motorR);
-            switch_calibration(&calibration.index);
-        }
-
-
-        if(calibration.index == 3){
-            adjust_calibration(&calibration.forward);
-            forward(calibration.forward, &motorL, &motorR);
-            switch_calibration(&calibration.index);
-        }
-
-
-
-
-
-
-        if(calibration.index == 4){
-
-            break;
-        }
-
+    while(1) {
+        unsigned int a = color_cardCheck();
+         _delay((unsigned long)((1000)*(64000000/4000.0)));
     }
+# 124 "main.c"
 }

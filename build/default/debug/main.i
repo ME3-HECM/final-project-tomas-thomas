@@ -1,4 +1,4 @@
-# 1 "color.c"
+# 1 "main.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,16 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "color.c" 2
+# 1 "main.c" 2
+
+#pragma config FEXTOSC = HS
+#pragma config RSTOSC = EXTOSC_4PLL
+
+
+#pragma config WDTCPS = WDTCPS_31
+#pragma config WDTE = OFF
+
+
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24086,7 +24095,66 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 1 "color.c" 2
+# 9 "main.c" 2
+
+# 1 "./dc_motor_v1.h" 1
+
+
+
+
+
+
+
+typedef struct DC_motor {
+    char power;
+    char direction;
+    char brakemode;
+    unsigned int PWMperiod;
+    unsigned char *posDutyHighByte;
+    unsigned char *negDutyHighByte;
+} DC_motor;
+
+struct DC_motor motorL, motorR;
+
+char temp = 7;
+
+void initDCmotorsPWM(unsigned int PWMperiod);
+void setMotorPWM(DC_motor *m);
+void stop(DC_motor *mL, DC_motor *mR);
+void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
+
+
+void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void delay_ms_function(unsigned int milliseconds);
+# 10 "main.c" 2
+
+# 1 "./calibration.h" 1
+
+
+
+
+
+
+
+typedef struct calibration_structure {
+    char index;
+    char over;
+    char left_90;
+    char right_90;
+    char left_135;
+    char right_135;
+    char forward;
+    char forward_motorL;
+    char forward_motorR;
+} calibration_structure;
+
+struct calibration_structure calibration;
+
+void adjust_calibration(int *calibration_label);
+void switch_calibration(int *calibration_index);
+# 11 "main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
@@ -24240,7 +24308,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 2 "color.c" 2
+# 12 "main.c" 2
 
 # 1 "./color.h" 1
 # 12 "./color.h"
@@ -24265,279 +24333,16 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
 
 
 unsigned int color_cardCheck(void);
-# 3 "color.c" 2
+# 13 "main.c" 2
 
-# 1 "./i2c.h" 1
-# 13 "./i2c.h"
-void I2C_2_Master_Init(void);
 
 
 
+void main(void){
 
-void I2C_2_Master_Idle(void);
 
 
-
-
-void I2C_2_Master_Start(void);
-
-
-
-
-void I2C_2_Master_RepStart(void);
-
-
-
-
-void I2C_2_Master_Stop(void);
-
-
-
-
-void I2C_2_Master_Write(unsigned char data_byte);
-
-
-
-
-unsigned char I2C_2_Master_Read(unsigned char ack);
-# 4 "color.c" 2
-
-# 1 "./serial.h" 1
-# 13 "./serial.h"
-volatile char EUSART4RXbuf[20];
-volatile char RxBufWriteCnt=0;
-volatile char RxBufReadCnt=0;
-
-volatile char EUSART4TXbuf[60];
-volatile char TxBufWriteCnt=0;
-volatile char TxBufReadCnt=0;
-
-
-
-void initUSART4(void);
-char getCharSerial4(void);
-void sendCharSerial4(char charToSend);
-void sendStringSerial4(char *string);
-
-
-char getCharFromRxBuf(void);
-void putCharToRxBuf(char byte);
-char isDataInRxBuf (void);
-
-
-char getCharFromTxBuf(void);
-void putCharToTxBuf(char byte);
-char isDataInTxBuf (void);
-void TxBufferedString(char *string);
-void sendTxBuf(void);
-# 5 "color.c" 2
-
-
-void color_click_init(void)
-{
-
-    I2C_2_Master_Init();
-
-
-  color_writetoaddr(0x00, 0x01);
-    _delay((unsigned long)((3)*(64000000/4000.0)));
-
-
- color_writetoaddr(0x00, 0x03);
-
-
- color_writetoaddr(0x01, 0xD5);
-
-
-
-
-    TRISGbits.TRISG1 = 0;
-    TRISAbits.TRISA4 = 0;
-    TRISFbits.TRISF7 = 0;
-
-
-    LATGbits.LATG1 = 1;
-    LATAbits.LATA4 = 1;
-    LATFbits.LATF7 = 1;
-# 43 "color.c"
-}
-
-void color_writetoaddr(char address, char value){
-    I2C_2_Master_Start();
-    I2C_2_Master_Write(0x52 | 0x00);
-    I2C_2_Master_Write(0x80 | address);
-    I2C_2_Master_Write(value);
-    I2C_2_Master_Stop();
-}
-
-
-unsigned int color_read_Red(void)
-{
- unsigned int tmp;
- I2C_2_Master_Start();
- I2C_2_Master_Write(0x52 | 0x00);
- I2C_2_Master_Write(0xA0 | 0x16);
- I2C_2_Master_RepStart();
- I2C_2_Master_Write(0x52 | 0x01);
- tmp=I2C_2_Master_Read(1);
- tmp=tmp | (I2C_2_Master_Read(0)<<8);
- I2C_2_Master_Stop();
- return tmp;
-}
-
-unsigned int color_read_Green(void)
-{
- unsigned int tmp;
- I2C_2_Master_Start();
- I2C_2_Master_Write(0x52 | 0x00);
- I2C_2_Master_Write(0xA0 | 0x18);
- I2C_2_Master_RepStart();
- I2C_2_Master_Write(0x52 | 0x01);
- tmp=I2C_2_Master_Read(1);
- tmp=tmp | (I2C_2_Master_Read(0)<<8);
- I2C_2_Master_Stop();
- return tmp;
-}
-
-unsigned int color_read_Blue(void)
-{
- unsigned int tmp;
- I2C_2_Master_Start();
- I2C_2_Master_Write(0x52 | 0x00);
- I2C_2_Master_Write(0xA0 | 0x1A);
- I2C_2_Master_RepStart();
- I2C_2_Master_Write(0x52 | 0x01);
- tmp=I2C_2_Master_Read(1);
- tmp=tmp | (I2C_2_Master_Read(0)<<8);
- I2C_2_Master_Stop();
- return tmp;
-}
-
-unsigned int color_read_Clear(void)
-
-
-{
- unsigned int tmp;
- I2C_2_Master_Start();
- I2C_2_Master_Write(0x52 | 0x00);
- I2C_2_Master_Write(0xA0 | 0x14);
- I2C_2_Master_RepStart();
- I2C_2_Master_Write(0x52 | 0x01);
- tmp=I2C_2_Master_Read(1);
- tmp=tmp | (I2C_2_Master_Read(0)<<8);
- I2C_2_Master_Stop();
- return tmp;
-}
-
-
-
-float custom_floatmodulo(float x, float y) {
-
-    if (y == 0.0) {
-        return 0.0;
-    }
-
-
-    float quotient = x / y;
-
-
-    int intPart = (int)quotient;
-
-
-    float remainder = x - intPart * y;
-
-    return remainder;
-}
-
-
-void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V) {
-
-
-
-
-
-    float r = R/C;
-    float g = G/C;
-    float b = B/C;
-    float c = C;
-# 155 "color.c"
-    float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
-    float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b);
-    float deltaRGB = maxRGB - minRGB;
-
-
-
-
-    float H_temp;
-
-    if (deltaRGB == 0) {H_temp = 0;}
-
-    else if (maxRGB == r) {H_temp = custom_floatmodulo((g-b)/deltaRGB, 6.0) * 60;}
-
-    else if (maxRGB == g) {H_temp = (((b-r)/deltaRGB) + 2) * 60;}
-
-    else if (maxRGB == b) {H_temp = (((r-g)/deltaRGB) + 4) * 60;}
-
-    if (H_temp < 0) {H_temp = H_temp + 360;}
-
-
-    *H = H_temp;
-
-
-    if (maxRGB == 0) {*S = 0;}
-
-    else {
-        *S = (deltaRGB/maxRGB) * 100.0;
-    }
-
-
-
-    *V = maxRGB * 100.0;
-}
-
-unsigned int color_cardCheck(void) {
-
-
-    float r = color_read_Red();
-    float g = color_read_Green();
-    float b = color_read_Blue();
-
-
-    float c = color_read_Clear();
-
-
-    float H;
-    float S;
-    float V;
-
-    RGB_to_HSV(r,g,b,c,&H,&S,&V);
-# 213 "color.c"
-    unsigned int card_color = 0;
-
-
-    if (H>355 && H<360 && S>85 && S<90 && V>80 && V<85) {card_color = 1;}
-
-    else if (H>67 && H<79 && S>50 && S<57 && V>40 && V<46) {card_color = 2;}
-
-    else if (S<10 && V>30 && V<35) {card_color = 3;}
-
-    else if (H>20 && H<25 && S>65 && S<70 && V>54 && V<57) {card_color = 4;}
-
-    else if (H>13 && H<18 && S>55 && S<60 && V>50 && V<54) {card_color = 5;}
-
-    else if (H>5 && H<10 && S>70 && S<75 && V>62 && V<67) {card_color = 6;}
-
-    else if (H>74 && H<85 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
-
-    else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;}
-
-
-
-    char senddata[25];
-    sprintf(senddata,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color);
-    sendStringSerial4(senddata);
-    _delay((unsigned long)((50)*(64000000/4000.0)));
-
-
-    return card_color;
+    color_click_init();
+    unsigned int a = color_cardCheck();
+# 117 "main.c"
 }
