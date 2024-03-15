@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Fri Mar 15 04:40:23 2024
+                                                                                               Fri Mar 15 05:32:20 2024
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	18F67K40
@@ -1922,7 +1922,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1877   001210  6E37               	movwf	___flge@ff2^0,c
   1878   001212  0E00               	movlw	0
   1879   001214  6E38               	movwf	(___flge@ff2+1)^0,c
-  1880   001216  0E0C               	movlw	12
+  1880   001216  0E20               	movlw	32
   1881   001218  6E39               	movwf	(___flge@ff2+2)^0,c
   1882   00121A  0E42               	movlw	66
   1883   00121C  6E3A               	movwf	(___flge@ff2+3)^0,c
@@ -11418,7 +11418,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Fri Mar 15 04:40:23 2024
+Symbol Table                                                                                   Fri Mar 15 05:32:20 2024
 
                _color_read_Red 45F8                   ___fldiv@aexp 0053                   ___fldiv@bexp 0052  
                  ___fldiv@sign 004B                _color_read_Blue 46E8                             l90 4646  
