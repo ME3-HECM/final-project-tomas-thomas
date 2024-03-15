@@ -24453,14 +24453,11 @@ float custom_floatmodulo(float x, float y) {
 void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V) {
 
 
-
-
-
     float r = R/C;
     float g = G/C;
     float b = B/C;
-    float c = C;
-# 155 "color.c"
+
+
     float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
     float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b);
     float deltaRGB = maxRGB - minRGB;
@@ -24487,12 +24484,11 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
     if (maxRGB == 0) {*S = 0;}
 
     else {
-        *S = (deltaRGB/maxRGB) * 100.0;
+        *S = (deltaRGB/maxRGB) * 100;
     }
 
 
-
-    *V = maxRGB * 100.0;
+    *V = maxRGB * 100;
 }
 
 unsigned int color_cardCheck(void) {
@@ -24511,7 +24507,7 @@ unsigned int color_cardCheck(void) {
     float V;
 
     RGB_to_HSV(r,g,b,c,&H,&S,&V);
-# 213 "color.c"
+# 198 "color.c"
     unsigned int card_color = 0;
 
 

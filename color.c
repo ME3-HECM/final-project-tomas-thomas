@@ -133,30 +133,16 @@ float custom_floatmodulo(float x, float y) {
 void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V) { //function to convert 16bit RGB values to HSV
     
     //Normalise RGB values to be within the range of 0-1, using the Clear Channel value (i.e. brightness (always greater R,G,B values)
-//    float r = R/65535.0; 
-//    float g = G/65535.0; 
-//    float b = B/65535.0;
     float r = R/C; //normalised according to clear channel C
     float g = G/C; 
     float b = B/C;
-    float c = C;
-    //calculating brightness normalisation factor from the Clear Channel output
-    //Term normalises the value according to brightness levels measured(affected by brightness of reflected light, measurement distance from card, and ambient lighting)
-    //This makes readings and comparisons more consistent
-//    float c_norm = 1.0 /(C/65535.0);
-    
-//     char senddata[50]; //Empty char to hold string data
-//    sprintf(senddata,"r:%.2f g: %.2f b: %.2f c:%.2f",r,g,b,c);
-//    sendStringSerial4(senddata);
-//    __delay_ms(50); //required delay
-//    
-//    
+        
     //finding Maximum/Minimum of the RGB values and Difference between them
     float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b); //shorthand conditional statements for finding max/min
     float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b); //? symbol effectively asks condition that precedes it, then continues to either side of colon - if true : if false.
     float deltaRGB = maxRGB - minRGB;
     
-    //using standard conversion equations to convert to HSV
+    //using standard conversion equations to convert RGB to HSV
     
     //calculating Hue (different equations depending on which color intensity is highest)
     float H_temp;
@@ -178,12 +164,11 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
     if (maxRGB == 0) {*S = 0;}
     
     else {
-        *S = (deltaRGB/maxRGB) * 100.0; //Multiplying by 100 converts the value to a percentage. Assigning Saturation value.
+        *S = (deltaRGB/maxRGB) * 100; //Assigning Saturation value. Multiplying by 100 converts the value to a percentage. 
     }
     
     //calculating Value
-//    *V = maxRGB * 100.0 * c_norm; //Assigning Value. Multiplying by 100 converts the value to a percentage, and normalised by brightness normalisation factor.
-    *V = maxRGB * 100.0; //Assigning Value. Multiplying by 100 converts the value to a percentage, and normalised by brightness normalisation factor.
+    *V = maxRGB * 100; //Assigning Value. Multiplying by 100 converts the value to a percentage, and normalised by brightness normalisation factor.
 }   
 
 unsigned int color_cardCheck(void) { //function to check the color of the card on the maze wall. Output is an integer corresponding to color

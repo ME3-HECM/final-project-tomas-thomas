@@ -88,7 +88,7 @@ efgtoa@ou 83 0 BANK0 1
 ?_sprintf AB 0 BANK0 1
 ___intlo_stack_hi 0 0 STACK 2
 _vfprintf 4738 0 CODE 0
-_RGB_to_HSV$2683 80 0 BANK0 1
+_RGB_to_HSV$2683 84 0 BANK0 1
 _fputs 4886 0 CODE 0
 ___xxtofl 3B40 0 CODE 0
 ___fleq@ff1 1 0 COMRAM 1
@@ -176,6 +176,7 @@ __end_of___flsub 47C4 0 CODE 0
 fputs@c C 0 COMRAM 1
 _motorL D8 0 BANK0 1
 __end_of_sendCharSerial4 4A98 0 CODE 0
+_RGB_to_HSV$524 88 0 BANK0 1
 _RxBufReadCnt F9 0 BANK0 1
 _TxBufReadCnt F7 0 BANK0 1
 fputs@i D 0 COMRAM 1
@@ -205,6 +206,7 @@ _color_click_init 4806 0 CODE 0
 __Htemp 0 0 COMRAM 1
 __Ltemp 0 0 COMRAM 1
 stacklo 0 0 ABS 0
+_RGB_to_HSV$527 94 0 BANK0 1
 __Hrbit 0 0 COMRAM 1
 __end_of_color_click_init 4846 0 CODE 0
 __Lrbit 0 0 COMRAM 1
@@ -225,7 +227,6 @@ RGB_to_HSV@H 7A 0 BANK0 1
 _color_cardCheck E26 0 CODE 0
 _memcpy 45A8 0 CODE 0
 _strcpy 48C6 0 CODE 0
-_efgtoa$2310 76 0 BANK0 1
 ___wmul@multiplier 1 0 COMRAM 1
 ___heap_lo 0 0 ABS 0
 __HdataBANK0 0 0 ABS 0
@@ -337,6 +338,7 @@ __pcstackBANK1 1A0 0 BANK1 1
 _vfpfcnvrt 366A 0 CODE 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
+_RGB_to_HSV$2682 80 0 BANK0 1
 _SSP2CLKPPS E1C 0 ABS 0
 _SSP2DATPPS E1D 0 ABS 0
 ?_custom_floatmodulo 54 0 COMRAM 1
@@ -368,7 +370,6 @@ efgtoa@n 96 0 BANK0 1
 floorf@m 60 0 BANK0 1
 _I2C_2_Master_Stop 4AA4 0 CODE 0
 efgtoa@p 72 0 BANK0 1
-_RGB_to_HSV$2685 9C 0 BANK0 1
 __H__absolute__ 0 0 ABS 0
 _I2C_2_Master_Write 4A98 0 CODE 0
 __L__absolute__ 0 0 ABS 0
@@ -431,7 +432,7 @@ __pcinit 493C 0 CODE 0
 __ramtop E00 0 RAM 0
 __mediumconst 0 0 MEDIUMCONST 0
 ___lwdiv 4414 0 CODE 0
-_RGB_to_HSV$525 88 0 BANK0 1
+_RGB_to_HSV$525 8C 0 BANK0 1
 __end_of_fputc 42BC 0 CODE 0
 __Hconst 0 0 CONST 0
 __Lconst 0 0 CONST 0
@@ -443,7 +444,7 @@ ___fltol@exp1 A 0 COMRAM 1
 __HidataBANK0 0 0 ABS 0
 __LidataBANK0 0 0 ABS 0
 __pidataBANK0 4AC4 0 CODE 0
-_RGB_to_HSV$528 94 0 BANK0 1
+_RGB_to_HSV$528 98 0 BANK0 1
 RGB_to_HSV@g B0 0 BANK0 1
 __end_of_sprintf 4886 0 CODE 0
 __end_of_color_cardCheck 18D8 0 CODE 0
@@ -460,6 +461,7 @@ __Lbank10 0 0 ABS 0
 ___flmul@temp 31 0 COMRAM 1
 sprintf@fmt AD 0 BANK0 1
 _SSP2CON2 EDA 0 ABS 0
+_efgtoa$2309 76 0 BANK0 1
 __Hbank11 0 0 ABS 0
 __Lbank11 0 0 ABS 0
 __Hbank12 0 0 ABS 0
@@ -626,7 +628,7 @@ _TxBufWriteCnt F8 0 BANK0 1
 intlevel1 0 0 CODE 0
 _SSP2STAT ED8 0 ABS 0
 vfprintf@cfmt AA 0 BANK0 1
-_RGB_to_HSV$2684 84 0 BANK0 1
+_RGB_to_HSV$2684 9C 0 BANK0 1
 ___xxtofl@val C 0 COMRAM 1
 intlevel2 0 0 CODE 0
 intlevel3 0 0 CODE 0
@@ -655,7 +657,6 @@ RGB_to_HSV@maxRGB A8 0 BANK0 1
 ___fladd@b 1 0 COMRAM 1
 ___flmul@aexp 27 0 COMRAM 1
 ___fldiv@aexp 53 0 COMRAM 1
-_RGB_to_HSV$526 8C 0 BANK0 1
 __initialization 493C 0 CODE 0
 __end_of_initUSART4 4A80 0 CODE 0
 ___flmul@bexp 2C 0 COMRAM 1
@@ -672,7 +673,6 @@ ___lwmod@counter 5 0 COMRAM 1
 ___flmul@a 1E 0 COMRAM 1
 __end_of_color_read_Blue 4738 0 CODE 0
 ?___fpclassifyf 1 0 COMRAM 1
-_RGB_to_HSV$529 98 0 BANK0 1
 ___fldiv@a 3F 0 COMRAM 1
 __end_of_RGB_to_HSV 29E6 0 CODE 0
 ___flmul@b 1A 0 COMRAM 1
@@ -690,7 +690,7 @@ bssBANK1 100 1D6 BANK1 100 1
 text5 E26 4AC4 CODE E26 0
 %locals
 dist/default/production\final-project-tomas-thomas.X.production.o
-C:\Users\thoma\AppData\Local\Temp\xcAs1t6g.\driver_tmp_1.s
+C:\Users\thoma\AppData\Local\Temp\xcAs3oo.\driver_tmp_1.s
 8283 493C 0 CODE 0
 8285 493C 0 CODE 0
 8288 493C 0 CODE 0
@@ -772,26 +772,26 @@ i2c.c
 19 49EE 0 CODE 0
 20 49F2 0 CODE 0
 color.c
-189 E26 0 CODE 0
-192 E26 0 CODE 0
-193 E4C 0 CODE 0
-194 E72 0 CODE 0
-197 E98 0 CODE 0
-204 EBE 0 CODE 0
-213 F1C 0 CODE 0
-216 F26 0 CODE 0
-218 1060 0 CODE 0
-220 119A 0 CODE 0
-222 123E 0 CODE 0
-224 1378 0 CODE 0
-226 14B2 0 CODE 0
-228 15EC 0 CODE 0
-230 1726 0 CODE 0
-235 1860 0 CODE 0
-236 18AA 0 CODE 0
-237 18B6 0 CODE 0
-240 18CE 0 CODE 0
-241 18D6 0 CODE 0
+174 E26 0 CODE 0
+177 E26 0 CODE 0
+178 E4C 0 CODE 0
+179 E72 0 CODE 0
+182 E98 0 CODE 0
+189 EBE 0 CODE 0
+198 F1C 0 CODE 0
+201 F26 0 CODE 0
+203 1060 0 CODE 0
+205 119A 0 CODE 0
+207 123E 0 CODE 0
+209 1378 0 CODE 0
+211 14B2 0 CODE 0
+213 15EC 0 CODE 0
+215 1726 0 CODE 0
+220 1860 0 CODE 0
+221 18AA 0 CODE 0
+222 18B6 0 CODE 0
+225 18CE 0 CODE 0
+226 18D6 0 CODE 0
 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\nf_sprintf.c
 9 4846 0 CODE 0
 15 4846 0 CODE 0
@@ -1212,24 +1212,23 @@ i2c.c
 25 4A1A 0 CODE 0
 color.c
 133 22C0 0 CODE 0
-139 22C0 0 CODE 0
-140 22F4 0 CODE 0
-141 2328 0 CODE 0
-142 235C 0 CODE 0
-155 235C 0 CODE 0
-156 245E 0 CODE 0
-157 2560 0 CODE 0
-164 2594 0 CODE 0
-166 25DC 0 CODE 0
-168 26D2 0 CODE 0
-170 27B8 0 CODE 0
-172 289E 0 CODE 0
-175 28E2 0 CODE 0
-178 28FA 0 CODE 0
-181 2948 0 CODE 0
-182 29A8 0 CODE 0
-186 29A8 0 CODE 0
-187 29E4 0 CODE 0
+136 22C0 0 CODE 0
+137 22F4 0 CODE 0
+138 2328 0 CODE 0
+141 235C 0 CODE 0
+142 245E 0 CODE 0
+143 2560 0 CODE 0
+150 2594 0 CODE 0
+152 25DC 0 CODE 0
+154 26D2 0 CODE 0
+156 27B8 0 CODE 0
+158 289E 0 CODE 0
+161 28E2 0 CODE 0
+164 28FA 0 CODE 0
+167 2948 0 CODE 0
+168 29A8 0 CODE 0
+171 29A8 0 CODE 0
+172 29E4 0 CODE 0
 color.c
 114 3CF4 0 CODE 0
 116 3CF4 0 CODE 0

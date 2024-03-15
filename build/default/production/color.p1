@@ -2409,62 +2409,58 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _S `*f ~T0 @X0 1 r6 ]
 [v _V `*f ~T0 @X0 1 r7 ]
 [f ]
-"139
-[; ;color.c: 139:     float r = R/C;
+"136
+[; ;color.c: 136:     float r = R/C;
 [v _r `f ~T0 @X0 1 a ]
 [e = _r / _R _C ]
-"140
-[; ;color.c: 140:     float g = G/C;
+"137
+[; ;color.c: 137:     float g = G/C;
 [v _g `f ~T0 @X0 1 a ]
 [e = _g / _G _C ]
-"141
-[; ;color.c: 141:     float b = B/C;
+"138
+[; ;color.c: 138:     float b = B/C;
 [v _b `f ~T0 @X0 1 a ]
 [e = _b / _B _C ]
-"142
-[; ;color.c: 142:     float c = C;
-[v _c `f ~T0 @X0 1 a ]
-[e = _c _C ]
-"155
-[; ;color.c: 155:     float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
+"141
+[; ;color.c: 141:     float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
 [v _maxRGB `f ~T0 @X0 1 a ]
 [e = _maxRGB ? > _r _g : ? > _r _b : _r _b ? > _g _b : _g _b ]
-"156
-[; ;color.c: 156:     float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b);
+"142
+[; ;color.c: 142:     float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b);
 [v _minRGB `f ~T0 @X0 1 a ]
 [e = _minRGB ? < _r _g : ? < _r _b : _r _b ? < _g _b : _g _b ]
-"157
-[; ;color.c: 157:     float deltaRGB = maxRGB - minRGB;
+"143
+[; ;color.c: 143:     float deltaRGB = maxRGB - minRGB;
 [v _deltaRGB `f ~T0 @X0 1 a ]
 [e = _deltaRGB - _maxRGB _minRGB ]
-"162
-[; ;color.c: 162:     float H_temp;
+"148
+[; ;color.c: 148:     float H_temp;
 [v _H_temp `f ~T0 @X0 1 a ]
-"164
-[; ;color.c: 164:     if (deltaRGB == 0) {H_temp = 0;}
+"150
+[; ;color.c: 150:     if (deltaRGB == 0) {H_temp = 0;}
 [e $ ! == _deltaRGB -> -> 0 `i `f 2026  ]
 {
 [e = _H_temp -> -> 0 `i `f ]
 }
 [e $U 2027  ]
-"166
-[; ;color.c: 166:     else if (maxRGB == r) {H_temp = custom_floatmodulo((g-b)/deltaRGB, 6.0) * 60;}
+"152
+[; ;color.c: 152:     else if (maxRGB == r) {H_temp = custom_floatmodulo((g-b)/deltaRGB, 6.0) * 60;}
 [e :U 2026 ]
 [e $ ! == _maxRGB _r 2028  ]
 {
 [e = _H_temp * ( _custom_floatmodulo (2 , / - _g _b _deltaRGB -> .6.0 `f -> -> 60 `i `f ]
 }
 [e $U 2029  ]
-"168
-[; ;color.c: 168:     else if (maxRGB == g) {H_temp = (((b-r)/deltaRGB) + 2) * 60;}
+"154
+[; ;color.c: 154:     else if (maxRGB == g) {H_temp = (((b-r)/deltaRGB) + 2) * 60;}
 [e :U 2028 ]
 [e $ ! == _maxRGB _g 2030  ]
 {
 [e = _H_temp * + / - _b _r _deltaRGB -> -> 2 `i `f -> -> 60 `i `f ]
 }
 [e $U 2031  ]
-"170
-[; ;color.c: 170:     else if (maxRGB == b) {H_temp = (((r-g)/deltaRGB) + 4) * 60;}
+"156
+[; ;color.c: 156:     else if (maxRGB == b) {H_temp = (((r-g)/deltaRGB) + 4) * 60;}
 [e :U 2030 ]
 [e $ ! == _maxRGB _b 2032  ]
 {
@@ -2474,136 +2470,136 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2031 ]
 [e :U 2029 ]
 [e :U 2027 ]
-"172
-[; ;color.c: 172:     if (H_temp < 0) {H_temp = H_temp + 360;}
+"158
+[; ;color.c: 158:     if (H_temp < 0) {H_temp = H_temp + 360;}
 [e $ ! < _H_temp -> -> 0 `i `f 2033  ]
 {
 [e = _H_temp + _H_temp -> -> 360 `i `f ]
 }
 [e :U 2033 ]
-"175
-[; ;color.c: 175:     *H = H_temp;
+"161
+[; ;color.c: 161:     *H = H_temp;
 [e = *U _H _H_temp ]
-"178
-[; ;color.c: 178:     if (maxRGB == 0) {*S = 0;}
+"164
+[; ;color.c: 164:     if (maxRGB == 0) {*S = 0;}
 [e $ ! == _maxRGB -> -> 0 `i `f 2034  ]
 {
 [e = *U _S -> -> 0 `i `f ]
 }
 [e $U 2035  ]
-"180
-[; ;color.c: 180:     else {
+"166
+[; ;color.c: 166:     else {
 [e :U 2034 ]
 {
-"181
-[; ;color.c: 181:         *S = (deltaRGB/maxRGB) * 100.0;
-[e = *U _S -> * -> / _deltaRGB _maxRGB `d .100.0 `f ]
-"182
-[; ;color.c: 182:     }
+"167
+[; ;color.c: 167:         *S = (deltaRGB/maxRGB) * 100;
+[e = *U _S * / _deltaRGB _maxRGB -> -> 100 `i `f ]
+"168
+[; ;color.c: 168:     }
 }
 [e :U 2035 ]
-"186
-[; ;color.c: 186:     *V = maxRGB * 100.0;
-[e = *U _V -> * -> _maxRGB `d .100.0 `f ]
-"187
-[; ;color.c: 187: }
+"171
+[; ;color.c: 171:     *V = maxRGB * 100;
+[e = *U _V * _maxRGB -> -> 100 `i `f ]
+"172
+[; ;color.c: 172: }
 [e :UE 2025 ]
 }
-"189
-[; ;color.c: 189: unsigned int color_cardCheck(void) {
+"174
+[; ;color.c: 174: unsigned int color_cardCheck(void) {
 [v _color_cardCheck `(ui ~T0 @X0 1 ef ]
 {
 [e :U _color_cardCheck ]
 [f ]
-"192
-[; ;color.c: 192:     float r = color_read_Red();
+"177
+[; ;color.c: 177:     float r = color_read_Red();
 [v _r `f ~T0 @X0 1 a ]
 [e = _r -> ( _color_read_Red ..  `f ]
-"193
-[; ;color.c: 193:     float g = color_read_Green();
+"178
+[; ;color.c: 178:     float g = color_read_Green();
 [v _g `f ~T0 @X0 1 a ]
 [e = _g -> ( _color_read_Green ..  `f ]
-"194
-[; ;color.c: 194:     float b = color_read_Blue();
+"179
+[; ;color.c: 179:     float b = color_read_Blue();
 [v _b `f ~T0 @X0 1 a ]
 [e = _b -> ( _color_read_Blue ..  `f ]
-"197
-[; ;color.c: 197:     float c = color_read_Clear();
+"182
+[; ;color.c: 182:     float c = color_read_Clear();
 [v _c `f ~T0 @X0 1 a ]
 [e = _c -> ( _color_read_Clear ..  `f ]
-"200
-[; ;color.c: 200:     float H;
+"185
+[; ;color.c: 185:     float H;
 [v _H `f ~T0 @X0 1 a ]
-"201
-[; ;color.c: 201:     float S;
+"186
+[; ;color.c: 186:     float S;
 [v _S `f ~T0 @X0 1 a ]
-"202
-[; ;color.c: 202:     float V;
+"187
+[; ;color.c: 187:     float V;
 [v _V `f ~T0 @X0 1 a ]
-"204
-[; ;color.c: 204:     RGB_to_HSV(r,g,b,c,&H,&S,&V);
+"189
+[; ;color.c: 189:     RGB_to_HSV(r,g,b,c,&H,&S,&V);
 [e ( _RGB_to_HSV (4 , , , , , , _r _g _b _c &U _H &U _S &U _V ]
-"213
-[; ;color.c: 213:     unsigned int card_color = 0;
+"198
+[; ;color.c: 198:     unsigned int card_color = 0;
 [v _card_color `ui ~T0 @X0 1 a ]
 [e = _card_color -> -> 0 `i `ui ]
-"216
-[; ;color.c: 216:     if (H>355 && H<360 && S>85 && S<90 && V>80 && V<85) {card_color = 1;}
+"201
+[; ;color.c: 201:     if (H>355 && H<360 && S>85 && S<90 && V>80 && V<85) {card_color = 1;}
 [e $ ! && && && && && > _H -> -> 355 `i `f < _H -> -> 360 `i `f > _S -> -> 85 `i `f < _S -> -> 90 `i `f > _V -> -> 80 `i `f < _V -> -> 85 `i `f 2037  ]
 {
 [e = _card_color -> -> 1 `i `ui ]
 }
 [e $U 2038  ]
-"218
-[; ;color.c: 218:     else if (H>67 && H<79 && S>50 && S<57 && V>40 && V<46) {card_color = 2;}
+"203
+[; ;color.c: 203:     else if (H>67 && H<79 && S>50 && S<57 && V>40 && V<46) {card_color = 2;}
 [e :U 2037 ]
 [e $ ! && && && && && > _H -> -> 67 `i `f < _H -> -> 79 `i `f > _S -> -> 50 `i `f < _S -> -> 57 `i `f > _V -> -> 40 `i `f < _V -> -> 46 `i `f 2039  ]
 {
 [e = _card_color -> -> 2 `i `ui ]
 }
 [e $U 2040  ]
-"220
-[; ;color.c: 220:     else if (S<10 && V>30 && V<35) {card_color = 3;}
+"205
+[; ;color.c: 205:     else if (S<10 && V>30 && V<35) {card_color = 3;}
 [e :U 2039 ]
 [e $ ! && && < _S -> -> 10 `i `f > _V -> -> 30 `i `f < _V -> -> 35 `i `f 2041  ]
 {
 [e = _card_color -> -> 3 `i `ui ]
 }
 [e $U 2042  ]
-"222
-[; ;color.c: 222:     else if (H>20 && H<25 && S>65 && S<70 && V>54 && V<57) {card_color = 4;}
+"207
+[; ;color.c: 207:     else if (H>20 && H<25 && S>65 && S<70 && V>54 && V<57) {card_color = 4;}
 [e :U 2041 ]
 [e $ ! && && && && && > _H -> -> 20 `i `f < _H -> -> 25 `i `f > _S -> -> 65 `i `f < _S -> -> 70 `i `f > _V -> -> 54 `i `f < _V -> -> 57 `i `f 2043  ]
 {
 [e = _card_color -> -> 4 `i `ui ]
 }
 [e $U 2044  ]
-"224
-[; ;color.c: 224:     else if (H>13 && H<18 && S>55 && S<60 && V>50 && V<54) {card_color = 5;}
+"209
+[; ;color.c: 209:     else if (H>13 && H<18 && S>55 && S<60 && V>50 && V<54) {card_color = 5;}
 [e :U 2043 ]
 [e $ ! && && && && && > _H -> -> 13 `i `f < _H -> -> 18 `i `f > _S -> -> 55 `i `f < _S -> -> 60 `i `f > _V -> -> 50 `i `f < _V -> -> 54 `i `f 2045  ]
 {
 [e = _card_color -> -> 5 `i `ui ]
 }
 [e $U 2046  ]
-"226
-[; ;color.c: 226:     else if (H>5 && H<10 && S>70 && S<75 && V>62 && V<67) {card_color = 6;}
+"211
+[; ;color.c: 211:     else if (H>5 && H<10 && S>70 && S<75 && V>62 && V<67) {card_color = 6;}
 [e :U 2045 ]
 [e $ ! && && && && && > _H -> -> 5 `i `f < _H -> -> 10 `i `f > _S -> -> 70 `i `f < _S -> -> 75 `i `f > _V -> -> 62 `i `f < _V -> -> 67 `i `f 2047  ]
 {
 [e = _card_color -> -> 6 `i `ui ]
 }
 [e $U 2048  ]
-"228
-[; ;color.c: 228:     else if (H>74 && H<85 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
+"213
+[; ;color.c: 213:     else if (H>74 && H<85 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
 [e :U 2047 ]
 [e $ ! && && && && && > _H -> -> 74 `i `f < _H -> -> 85 `i `f > _S -> -> 28 `i `f < _S -> -> 33 `i `f > _V -> -> 37 `i `f < _V -> -> 42 `i `f 2049  ]
 {
 [e = _card_color -> -> 7 `i `ui ]
 }
 [e $U 2050  ]
-"230
-[; ;color.c: 230:     else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;}
+"215
+[; ;color.c: 215:     else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;}
 [e :U 2049 ]
 [e $ ! && && && && && > _H -> -> 22 `i `f < _H -> -> 27 `i `f > _S -> -> 48 `i `f < _S -> -> 53 `i `f > _V -> -> 45 `i `f < _V -> -> 50 `i `f 2051  ]
 {
@@ -2617,24 +2613,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2042 ]
 [e :U 2040 ]
 [e :U 2038 ]
-"234
-[; ;color.c: 234:     char senddata[25];
+"219
+[; ;color.c: 219:     char senddata[25];
 [v _senddata `uc ~T0 @X0 -> 25 `i a ]
-"235
-[; ;color.c: 235:     sprintf(senddata,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color);
+"220
+[; ;color.c: 220:     sprintf(senddata,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color);
 [e ( _sprintf (1 , , , , (. , &U _senddata :s 1C -> _H `d -> _S `d -> _V `d _card_color ]
-"236
-[; ;color.c: 236:     sendStringSerial4(senddata);
+"221
+[; ;color.c: 221:     sendStringSerial4(senddata);
 [e ( _sendStringSerial4 (1 &U _senddata ]
-"237
-[; ;color.c: 237:     _delay((unsigned long)((50)*(64000000/4000.0)));
+"222
+[; ;color.c: 222:     _delay((unsigned long)((50)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"240
-[; ;color.c: 240:     return card_color;
+"225
+[; ;color.c: 225:     return card_color;
 [e ) _card_color ]
 [e $UE 2036  ]
-"241
-[; ;color.c: 241: }
+"226
+[; ;color.c: 226: }
 [e :UE 2036 ]
 }
 [p f _sprintf 8463360 ]
