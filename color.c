@@ -102,7 +102,7 @@ unsigned int color_read_Clear(void) //same function as above but examining the c
 }
 
 
-//custom modulo function for floats to avoid importing math.h and saving memory. % function brings errors with floats, only good with integers
+//custom modulo function for floats to avoid importing math.h and saving memory. % function brings errors with floats, only good with integers, therefore need to use this function
 float custom_floatmodulo(float x, float y) { 
     // Ensure y is not zero to avoid division by zero
     if (y == 0.0) {
@@ -124,22 +124,17 @@ float custom_floatmodulo(float x, float y) {
 
 void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V) { //function to convert 16bit RGB values to HSV
     
-    //Normalise 16bit RGB values to be within the range of 0-1
-    float r = R/65535.0; 
-    float g = G/65535.0; 
-    float b = B/65535.0;
-    
-    //calculating brightness normalisation factor from the Clear Channel output
-    //Term normalises the value according to brightness levels measured(affected by brightness of reflected light, measurement distance from card, and ambient lighting)
-    //This makes readings and comparisons more consistent
-    float c_norm = 1.0 /(C/65535.0);
-    
+    //Normalise RGB values to be within the range of 0-1, using the Clear Channel value (i.e. brightness (always greater R,G,B values)
+    float r = R/C; //normalised according to clear channel C
+    float g = G/C; 
+    float b = B/C;
+        
     //finding Maximum/Minimum of the RGB values and Difference between them
     float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b); //shorthand conditional statements for finding max/min
     float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b); //? symbol effectively asks condition that precedes it, then continues to either side of colon - if true : if false.
     float deltaRGB = maxRGB - minRGB;
     
-    //using standard conversion equations to convert to HSV
+    //using standard conversion equations to convert RGB to HSV
     
     //calculating Hue (different equations depending on which color intensity is highest)
     float H_temp;
@@ -161,11 +156,11 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
     if (maxRGB == 0) {*S = 0;}
     
     else {
-        *S = (deltaRGB/maxRGB) * 100.0; //Multiplying by 100 converts the value to a percentage. Assigning Saturation value.
+        *S = (deltaRGB/maxRGB) * 100; //Assigning Saturation value. Multiplying by 100 converts the value to a percentage. 
     }
     
     //calculating Value
-    *V = maxRGB * 100.0 * c_norm; //Assigning Value. Multiplying by 100 converts the value to a percentage, and normalised by brightness normalisation factor.
+    *V = maxRGB * 100; //Assigning Value. Multiplying by 100 converts the value to a percentage, and normalised by brightness normalisation factor.
 }   
 
 unsigned int color_cardCheck(void) { //function to check the color of the card on the maze wall. Output is an integer corresponding to color
@@ -176,7 +171,7 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     float b = color_read_Blue();
     
     //read 16bit Clear Channel (brightness) value for normalisation
-    float c = color_read_Clear(); //
+    float c = color_read_Clear();
     
     //define HSV variables
     float H;
@@ -185,12 +180,8 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     
     RGB_to_HSV(r,g,b,c,&H,&S,&V); //convert 16bit RGB values to H (0-360), S (0-100), and V(0-100)
     
-    //Now need to use serial to find out specific values and ranges for each color card
-    //Also need to consider changing code to be done without using floats (only integers - saves memory significantly)
-    
-    
     //comparing with predetermined thresholds from testing, to determine which color the card is
-    //Labels - 1.Red 2.Green 3.Blue 4.Yellow 5.Pink 6.Orange 7.Light Blue 8. White 9. Black
+    //Labels - 1.Red 2.Green 3.Blue 4.Yellow 5.Pink 6.Orange 7.Light Blue 8. White (0. Black)
     
     unsigned int card_color = 0;
     
@@ -199,7 +190,7 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     
     else if (H>67 && H<79 && S>50 && S<57 && V>40 && V<46) {card_color = 2;} //2. Green Check
     
-    else if (S<10 && V>30 && V<35) {card_color = 3;} //3. Blue Check - needed expanded bands to work in practice (STILL NEEDS EDITING) H>50 && H<59 &&
+    else if (S<10 && V>30 && V<35) {card_color = 3;} //3. Blue Check - needed expanded bands to work in practice. H value varied too much in tests to be used but S and V were consistent.
     
     else if (H>20 && H<25 && S>65 && S<70 && V>54 && V<57) {card_color = 4;} //4. Yellow Check
     
