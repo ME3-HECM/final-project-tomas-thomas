@@ -64,7 +64,8 @@ void initDCmotorsPWM(unsigned int PWMperiod){
     TRISHbits.TRISH3 = 0;
     LATHbits.LATH3 = 0;
 }
-void delay_ms_function(unsigned int milliseconds) {
+
+void delay_ms_function(unsigned int milliseconds) {     //simple delay command to create a variable that changes delay length
     while (milliseconds > 0) {
         __delay_ms(1);
         milliseconds--;
@@ -96,147 +97,156 @@ void setMotorPWM(DC_motor *m)
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-//function to stop the robot gradually 
-void stop(DC_motor *mL, DC_motor *mR){ //decrement the power slowly
+void stop(DC_motor *mL, DC_motor *mR){ //function to decrease the power of the motor slowly 
     // Car enters brake mode - motors resist forward momentum
     mL->brakemode = 1;
     mR->brakemode = 1;
     
     //now we need to turn the power down to stop the car going forward
-    while(mL->power || mR->power > 0){ //if either motor is on
-        if(mL->power > 0 ){
+    while(mL->power || mR->power > 0){ //if either motor is on (with power))
+        if(mL->power > 0 ){ //decrease power until power level is 0
             mL->power--;
             setMotorPWM(mL);
             
         }
-        if(mR->power > 0 ){
+        if(mR->power > 0 ){ //decrease power until power level is 0
             mR->power--;
             setMotorPWM(mR);
         }
-    __delay_us(800); //controls slow down speed - whats a good slow down time?
+    __delay_us(800); //controls slow down speed of the car 
     }
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
+    //function to move the buggy forward a set distance "distance_calibration"
+    //accelerates in a given time, moves forward for distance_calibration time, deaccelerates
+    
+    //set the motors to move forwards
     mL->direction = 1;
     mR->direction = 1; 
     
-    // The plan 
-        //Get left and right motor to go at the same speed 
-        // making the intital assumption that the controllers might be different
-    
     //Speed control variables
-    int max_power = 40;         //tunable values
-    int acceleration_time = 100;    //[mirco-s]    //check that value is accepted by the delay function
-    int delay_time = acceleration_time/max_power;
+    int max_power = 40;                             //tunable value for higher speed increase
+    int acceleration_time = 100;                    //[mirco-s]    
+    int delay_time = acceleration_time/max_power;   //calculates the delay needed to increase the power in the given acceleration_time
     
     //acceleration period
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ; //can I increase this by more than one
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time); //function to make sure the acceleration for power happens in the correct amount of time 
+    for(int i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
+        mL->power = mL->power + 1;                  //increment right motor power
+        mR->power = mR->power + 1 ;                 //increment left motor power
+        setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
+        setMotorPWM(mL);                            //send new power reading to the setMotorPWM function
+        delay_ms_function(delay_time);              //calls delay function to make sure the acceleration for power happens in the correct amount of time 
     }
         //potential to add a bias correcting function to adjust for motor left and motor right imbalance
-        //Probs best to increase the power of the week side such that the same RPM is achieved
-
-    //constant velocity    
-    for(int j=0; j<Distance_Calibration; j++){
-        __delay_ms(10);            //can be reduced to refine the accuracy of distance travelled
+        //however testing showed that the car drove straight - if an issue increase the power of the weak side to correct for drift
+    
+    //constant velocity period   
+    for(int j=0; j<Distance_Calibration; j++){  //hold the motors at a constant velocity for 10ms * distance calibration time
+        __delay_ms(10);                         //can be reduced to refine the accuracy of distance travelled however 10ms worked for us
     }
     
     //deceleration period
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
+    while(mL->power || mR->power > 0){              //while left or right motor has power
+        if(mR->power > 0 ){                         //if non zero reduce power until it is non zero 
             mR->power--;
         }
-        if(mL->power> 0 ){
+        if(mL->power > 0 ){                         //if non zero reduce power until it is non zero 
             mL->power--;
         }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);    // this could make it more stable if more time?  
+        setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
+        setMotorPWM(mL);                            //send new power reading to the setMotorPWM function
+        delay_ms_function(delay_time);              //calls the delay function to make sure the de-acceleration for the correct amount of time  
     }     
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
+    //function to move the buggy backwards a set distance "distance_calibration"
+    //accelerates in a given time, moves forward for distance_calibration time, deaccelerates
+    //same as forward function except motors are driven in reverse. It still is still seperate in case left or right tunning is necessary to correct drift
+    
+    //set the motors to move backwards
     mL->direction = 0;
     mR->direction = 0; 
     
     //Speed control variables
-    int max_power = 40;         //tunable values
-    int acceleration_time = 100;    //[mirco-s]    //check that value is accepted by the delay function
-    int delay_time = acceleration_time/max_power;
+    int max_power = 40;                             //tunable value for higher speed increase
+    int acceleration_time = 100;                    //[mirco-s]    
+    int delay_time = acceleration_time/max_power;   //calculates the delay needed to increase the power in the given acceleration_time
     
     //acceleration period
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ; //can I increase this by more than one
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time); //function to make sure the acceleration for power happens in the correct amount of time 
+    for(int i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
+        mL->power = mL->power + 1;                  //increment right motor power
+        mR->power = mR->power + 1 ;                 //increment left motor power
+        setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
+        setMotorPWM(mL);                            //send new power reading to the setMotorPWM function
+        delay_ms_function(delay_time);              //calls delay function to make sure the acceleration for power happens in the correct amount of time 
     }
-
-    //constant velocity    
-    for(int j=0; j<Distance_Calibration; j++){
-        __delay_ms(10);            //can be reduced to refine the accuracy of distance travelled
+        //potential to add a bias correcting function to adjust for motor left and motor right imbalance
+        //however testing showed that the car drove straight - if an issue increase the power of the weak side to correct for drift
+    
+    //constant velocity period   
+    for(int j=0; j<Distance_Calibration; j++){  //hold the motors at a constant velocity for 10ms * distance calibration time
+        __delay_ms(10);                         //can be reduced to refine the accuracy of distance travelled however 10ms worked for us
     }
     
     //deceleration period
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
+    while(mL->power || mR->power > 0){              //while left or right motor has power
+        if(mR->power > 0 ){                         //if non zero reduce power until it is non zero 
             mR->power--;
         }
-        if(mL->power> 0 ){
+        if(mL->power > 0 ){                         //if non zero reduce power until it is non zero 
             mL->power--;
         }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);    // this could make it more stable if more time?  
-    }     
+        setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
+        setMotorPWM(mL);                            //send new power reading to the setMotorPWM function
+        delay_ms_function(delay_time);              //calls the delay function to make sure the de-acceleration for the correct amount of time  
+    }   
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-//check max pulse I can deliver to motors - thats the max speed
+
 void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
-    mL->direction = 0;
-    mR->direction = 1; 
+    //motor direction control 
+    mL->direction = 0;  //spin left motors backwards
+    mR->direction = 1;  //spin right motors forwards
     
-    int max_power = 40;         //tunable values
-    int acceleration_time = 100;    //[mirco-s]    //check that value is accepted by the delay function
+    int max_power = 40;                                     //tunable values
+    int acceleration_time = 100;                         //[mirco-s]    //check that value is accepted by the delay function
     int delay_time = acceleration_time/max_power;
     
     //acceleration period
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ; //can I increase this by more than one
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time); //function to make sure the acceleration for power happens in the correct amount of time 
+    for(int i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
+        mL->power = mL->power + 1;                  //increment right motor power
+        mR->power = mR->power + 1 ;                 //increment left motor power
+        setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
+        setMotorPWM(mL);                            //send new power reading to the setMotorPWM function
+        delay_ms_function(delay_time);              //calls delay function to make sure the acceleration for power happens in the correct amount of time 
     }
-        
-    //constant velocity    
-    for(int j=0; j<rotation_calibration; j++){
-        __delay_ms(10);            //can be reduced to refine the accuracy of distance travelled
+        //potential to add a bias correcting function to adjust for motor left and motor right imbalance
+        //however testing showed that the car drove straight - if an issue increase the power of the weak side to correct for drift
+    
+    //constant velocity period   
+    for(int j=0; j<rotation_calibration; j++){  //hold the motors at a constant velocity for 10ms * distance calibration time
+        __delay_ms(10);                         //can be reduced to refine the accuracy of distance travelled however 10ms worked for us
     }
     
     //deceleration period
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
+    while(mL->power || mR->power > 0){              //while left or right motor has power
+        if(mR->power > 0 ){                         //if non zero reduce power until it is non zero 
             mR->power--;
         }
-        if(mL->power> 0 ){
+        if(mL->power > 0 ){                         //if non zero reduce power until it is non zero 
             mL->power--;
         }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);    // this could make it more stable if more time?  
-    }     
+        setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
+        setMotorPWM(mL);                            //send new power reading to the setMotorPWM function
+        delay_ms_function(delay_time);              //calls the delay function to make sure the de-acceleration for the correct amount of time  
+    }  
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -245,35 +255,37 @@ void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 1;
     mR->direction = 0; 
     
-   int max_power = 40;         //tunable values
+    int max_power = 40;         //tunable values
     int acceleration_time = 100;    //[mirco-s]    //check that value is accepted by the delay function
     int delay_time = acceleration_time/max_power;
     
     //acceleration period
-    for(int i=0; i< max_power; i++){
-        mL->power = mL->power + 1;
-        mR->power = mR->power + 1 ; //can I increase this by more than one
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time); //function to make sure the acceleration for power happens in the correct amount of time 
+    for(int i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
+        mL->power = mL->power + 1;                  //increment right motor power
+        mR->power = mR->power + 1 ;                 //increment left motor power
+        setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
+        setMotorPWM(mL);                            //send new power reading to the setMotorPWM function
+        delay_ms_function(delay_time);              //calls delay function to make sure the acceleration for power happens in the correct amount of time 
     }
-        
-    //constant velocity    
-    for(int j=0; j<rotation_calibration; j++){
-        __delay_ms(10);            //can be reduced to refine the accuracy of distance travelled
+        //potential to add a bias correcting function to adjust for motor left and motor right imbalance
+        //however testing showed that the car drove straight - if an issue increase the power of the weak side to correct for drift
+    
+    //constant velocity period   
+    for(int j=0; j<rotation_calibration; j++){  //hold the motors at a constant velocity for 10ms * distance calibration time
+        __delay_ms(10);                         //can be reduced to refine the accuracy of distance travelled however 10ms worked for us
     }
     
     //deceleration period
-    while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
+    while(mL->power || mR->power > 0){              //while left or right motor has power
+        if(mR->power > 0 ){                         //if non zero reduce power until it is non zero 
             mR->power--;
         }
-        if(mL->power> 0 ){
+        if(mL->power > 0 ){                         //if non zero reduce power until it is non zero 
             mL->power--;
         }
-        setMotorPWM(mR);
-        setMotorPWM(mL);
-        delay_ms_function(delay_time);    // this could make it more stable if more time?  
-    }     
+        setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
+        setMotorPWM(mL);                            //send new power reading to the setMotorPWM function
+        delay_ms_function(delay_time);              //calls the delay function to make sure the de-acceleration for the correct amount of time  
+    } 
 }
 

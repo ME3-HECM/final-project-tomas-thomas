@@ -7,18 +7,36 @@
 #pragma config WDTE = OFF        // WDT operating mode (WDT enabled regardless of sleep)
 
 #include <xc.h>
+#include <stdio.h>
+
 #include "dc_motor_v1.h"
 #include "calibration.h"
 #include "color.h"
-#include <stdio.h>
 #include "serial.h"
 #include "pathfinder_file.h"
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 
 void main(void){
+
+//~~~~~~~~~~~~~~~ setting up LEDs, buttons, functions etc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     unsigned int PWMperiod = 99;
     initDCmotorsPWM(PWMperiod);
+   
+    //note: LEFT and right is now from the perspective of the buggy
+        // LED Right clicker board 
+    TRISDbits.TRISD7 = 0;   //set TRIS value for pin (output)
+    LATDbits.LATD7 = 0;     //set output to off
+        // LED left clicker board
+    TRISHbits.TRISH3 = 0;   //set TRIS value for pin (output)
+    LATHbits.LATH3 = 0;     //set output to off
+        // button right clicker board 
+    TRISFbits.TRISF2=1;     //set TRIS value for pin (input)
+    ANSELFbits.ANSELF2=0;   //turn off analogue input on pin  
+        // button left clicker board
+    TRISFbits.TRISF3=1;     //set TRIS value for pin (input)
+    ANSELFbits.ANSELF3=0;   //turn off analogue input on pin 
+    
 //~~~~~~~~~~~~~~~~ Left and Right Motor initial conditions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //fast decay = coast, slow decay=resisting current
     motorL.power=0;                                     //zero power to start
@@ -34,74 +52,38 @@ void main(void){
     motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);  //store address of CCP3 duty high byte
     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);  //store address of CCP4 duty high byte
     motorR.PWMperiod=PWMperiod;                         //store PWMperiod for motor (value of T2PR in this case)
-
-         
-//~~~~~~~~~~~~~~~ setting up LEDs, buttons ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        //note: LEFT and right is now from the perspective of the buggy
-    // LED Right clicker board 
-    TRISDbits.TRISD7 = 0;
-    LATDbits.LATD7 = 0;
-    
-    // LED left clicker board
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 0;
-
-    // button right clicker board 
-    TRISFbits.TRISF2=1; //set TRIS value for pin (input)
-    ANSELFbits.ANSELF2=0; //turn off analogue input on pin  
-    
-    // button left clicker board
-    TRISFbits.TRISF3=1; //set TRIS value for pin (input)
-    ANSELFbits.ANSELF3=0; //turn off analogue input on pin  
-    
+           
  //~~~~~~~~~~~~~~ Calibration variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    
-    calibration.index = 1;  // tracking function set up commands the be 1, 2, 3, 4, 5, 6 etc. and then its reverse to be the negative value of it.
-       
+    calibration.index = 1;  // used to cycle through the calibration routine selecting various motor movements
+       //see "calibration.c" file for index values
+    
     calibration.right_90 = 25;
     calibration.left_90 = 25;
     
     calibration.right_135 = 40;
     calibration.left_135 = 40;
     
-    calibration.forward_one = 100;
+    calibration.forward_one = 100;  //one unit of the maze geometry
     calibration.backward_one = 100;
     
-    calibration.forward_half = 33;
+    calibration.forward_half = 33;  //half a unit of the maze geometry
     calibration.backward_half = 33;
 
   
 //~~~~~~~~~~~~~~~ Executable code for the buggy ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    while(1){ //calibration selecting loop
+    while(1){ 
+        //note that the calibration values are not reset if the buggy is not turned off after it has solved the first maze
+        //you will still have to go through the calibration routine but no adjustments will have to be made
 
         pause_until_RF2_pressed();
 
-        calibration_routine(&calibration, &motorL, &motorR);
+        calibration_routine(&calibration, &motorL, &motorR);    // calibration routine
 
-        maze_search(&calibration, &motorL, &motorR);
-//
-        maze_return(&calibration, &motorL, &motorR);
+        maze_search(&calibration, &motorL, &motorR);            // solve the maze moving using the colours
+        
+        maze_return(&calibration, &motorL, &motorR);            // return to start function
 
     }
 }
-
-
-// if 20 forward 
-// half step back
-// 180 rotation 
-// execute return command
-       
-                    
-
-////            //--------------------- SERIAL COMMUNICATION ------------------------------------------
-////         char senddata[20]; //Empty char to hold string data
-////         
-////         for (int i = 0; i < 10; i++) {
-////            sprintf(senddata, "%u, ", Operation_History[i]);
-////            sendStringSerial4(senddata);
-////            __delay_ms(50); // Required delay
-////        }
-//         
-//        //--------------------------------------
-//

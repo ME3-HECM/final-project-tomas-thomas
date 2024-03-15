@@ -1,29 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "8 ./dc_motor_v1.h
 [; ;./dc_motor_v1.h: 8: typedef struct DC_motor {
-[s S2015 `uc 1 `uc 1 `uc 1 `ui 1 `*uc 1 `*uc 1 ]
-[n S2015 DC_motor power direction brakemode PWMperiod posDutyHighByte negDutyHighByte ]
+[s S2017 `uc 1 `uc 1 `uc 1 `ui 1 `*uc 1 `*uc 1 ]
+[n S2017 DC_motor power direction brakemode PWMperiod posDutyHighByte negDutyHighByte ]
 "9 ./calibration.h
 [; ;./calibration.h: 9: typedef struct calibration_structure {
-[s S2016 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
-[n S2016 calibration_structure index right_90 left_90 right_135 left_135 forward_one backward_one forward_half backward_half ]
+[s S2018 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S2018 calibration_structure index right_90 left_90 right_135 left_135 forward_one backward_one forward_half backward_half ]
 [p mainexit ]
-"21 ./dc_motor_v1.h
-[; ;./dc_motor_v1.h: 21: void initDCmotorsPWM(unsigned int PWMperiod);
+"20 ./dc_motor_v1.h
+[; ;./dc_motor_v1.h: 20: void initDCmotorsPWM(unsigned int PWMperiod);
 [v _initDCmotorsPWM `(v ~T0 @X0 0 ef1`ui ]
-"34097 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 34097: extern volatile unsigned char CCPR1H __attribute__((address(0xFAA)));
-[v _CCPR1H `Vuc ~T0 @X0 0 e@4010 ]
-"33876
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 33876: extern volatile unsigned char CCPR2H __attribute__((address(0xFA6)));
-[v _CCPR2H `Vuc ~T0 @X0 0 e@4006 ]
-"21041
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 21041: extern volatile unsigned char CCPR3H __attribute__((address(0xF25)));
-[v _CCPR3H `Vuc ~T0 @X0 0 e@3877 ]
-"20738
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 20738: extern volatile unsigned char CCPR4H __attribute__((address(0xF21)));
-[v _CCPR4H `Vuc ~T0 @X0 0 e@3873 ]
-"29383
+"29383 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 29383:     struct {
 [s S1380 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S1380 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
@@ -113,18 +101,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12319
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 12319: extern volatile ANSELFbits_t ANSELFbits __attribute__((address(0xEB4)));
 [v _ANSELFbits `VS567 ~T0 @X0 0 e@3764 ]
-"26 ./calibration.h
-[; ;./calibration.h: 26: void pause_until_RF2_pressed();
+"34097
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 34097: extern volatile unsigned char CCPR1H __attribute__((address(0xFAA)));
+[v _CCPR1H `Vuc ~T0 @X0 0 e@4010 ]
+"33876
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 33876: extern volatile unsigned char CCPR2H __attribute__((address(0xFA6)));
+[v _CCPR2H `Vuc ~T0 @X0 0 e@4006 ]
+"21041
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 21041: extern volatile unsigned char CCPR3H __attribute__((address(0xF25)));
+[v _CCPR3H `Vuc ~T0 @X0 0 e@3877 ]
+"20738
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 20738: extern volatile unsigned char CCPR4H __attribute__((address(0xF21)));
+[v _CCPR4H `Vuc ~T0 @X0 0 e@3873 ]
+"24 ./calibration.h
+[; ;./calibration.h: 24: void pause_until_RF2_pressed();
 [v _pause_until_RF2_pressed `(v ~T0 @X0 0 e? ]
-"29
-[; ;./calibration.h: 29: void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
-[v _calibration_routine `(v ~T0 @X0 0 ef3`*S2016`*S2015`*S2015 ]
+"27
+[; ;./calibration.h: 27: void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
+[v _calibration_routine `(v ~T0 @X0 0 ef3`*S2018`*S2017`*S2017 ]
 "12 ./pathfinder_file.h
 [; ;./pathfinder_file.h: 12: void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR);
-[v _maze_search `(v ~T0 @X0 0 ef3`*S2016`*S2015`*S2015 ]
+[v _maze_search `(v ~T0 @X0 0 ef3`*S2018`*S2017`*S2017 ]
 "13
 [; ;./pathfinder_file.h: 13: void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
-[v _maze_return `(v ~T0 @X0 0 ef3`*S2016`*S2015`*S2015 ]
+[v _maze_return `(v ~T0 @X0 0 ef3`*S2018`*S2017`*S2017 ]
 "2 main.c
 [p x FEXTOSC  =  HS      ]
 "3
@@ -2109,17 +2109,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" TOSU equ 0FFFh ;# ">
 "17 ./dc_motor_v1.h
 [; ;./dc_motor_v1.h: 17: struct DC_motor motorL, motorR;
-[v _motorL `S2015 ~T0 @X0 1 e ]
-[v _motorR `S2015 ~T0 @X0 1 e ]
-"19
-[; ;./dc_motor_v1.h: 19: char temp = 7;
-[v _temp `uc ~T0 @X0 1 e ]
-[i _temp
--> -> 7 `i `uc
-]
-"24 ./calibration.h
-[; ;./calibration.h: 24: struct calibration_structure calibration;
-[v _calibration `S2016 ~T0 @X0 1 e ]
+[v _motorL `S2017 ~T0 @X0 1 e ]
+[v _motorR `S2017 ~T0 @X0 1 e ]
+"22 ./calibration.h
+[; ;./calibration.h: 22: struct calibration_structure calibration;
+[v _calibration `S2018 ~T0 @X0 1 e ]
 "13 ./serial.h
 [; ;./serial.h: 13: volatile char EUSART4RXbuf[20];
 [v _EUSART4RXbuf `Vuc ~T0 @X0 -> 20 `i e ]
@@ -2177,90 +2171,90 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "19
-[; ;./pathfinder_file.h: 19: char forward_reset_threshold = 5;
+[; ;./pathfinder_file.h: 19: char forward_reset_threshold = 15;
 [v _forward_reset_threshold `uc ~T0 @X0 1 e ]
 [i _forward_reset_threshold
--> -> 5 `i `uc
+-> -> 15 `i `uc
 ]
 "21
 [; ;./pathfinder_file.h: 21: int Color_Value;
 [v _Color_Value `i ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"19 main.c
-[; ;main.c: 19: void main(void){
+"20 main.c
+[; ;main.c: 20: void main(void){
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"20
-[; ;main.c: 20:     unsigned int PWMperiod = 99;
+"23
+[; ;main.c: 23:     unsigned int PWMperiod = 99;
 [v _PWMperiod `ui ~T0 @X0 1 a ]
 [e = _PWMperiod -> -> 99 `i `ui ]
-"21
-[; ;main.c: 21:     initDCmotorsPWM(PWMperiod);
-[e ( _initDCmotorsPWM (1 _PWMperiod ]
 "24
-[; ;main.c: 24:     motorL.power=0;
-[e = . _motorL 0 -> -> 0 `i `uc ]
-"25
-[; ;main.c: 25:     motorL.direction=1;
-[e = . _motorL 1 -> -> 1 `i `uc ]
-"26
-[; ;main.c: 26:     motorL.brakemode=1;
-[e = . _motorL 2 -> -> 1 `i `uc ]
-"27
-[; ;main.c: 27:     motorL.posDutyHighByte=(unsigned char *)(&CCPR1H);
-[e = . _motorL 4 -> &U _CCPR1H `*uc ]
+[; ;main.c: 24:     initDCmotorsPWM(PWMperiod);
+[e ( _initDCmotorsPWM (1 _PWMperiod ]
 "28
-[; ;main.c: 28:     motorL.negDutyHighByte=(unsigned char *)(&CCPR2H);
-[e = . _motorL 5 -> &U _CCPR2H `*uc ]
-"29
-[; ;main.c: 29:     motorL.PWMperiod=PWMperiod;
-[e = . _motorL 3 _PWMperiod ]
-"31
-[; ;main.c: 31:     motorR.power=0;
-[e = . _motorR 0 -> -> 0 `i `uc ]
-"32
-[; ;main.c: 32:     motorR.direction=1;
-[e = . _motorR 1 -> -> 1 `i `uc ]
-"33
-[; ;main.c: 33:     motorR.brakemode=1;
-[e = . _motorR 2 -> -> 1 `i `uc ]
-"34
-[; ;main.c: 34:     motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);
-[e = . _motorR 4 -> &U _CCPR3H `*uc ]
-"35
-[; ;main.c: 35:     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
-[e = . _motorR 5 -> &U _CCPR4H `*uc ]
-"36
-[; ;main.c: 36:     motorR.PWMperiod=PWMperiod;
-[e = . _motorR 3 _PWMperiod ]
-"42
-[; ;main.c: 42:     TRISDbits.TRISD7 = 0;
+[; ;main.c: 28:     TRISDbits.TRISD7 = 0;
 [e = . . _TRISDbits 0 7 -> -> 0 `i `uc ]
-"43
-[; ;main.c: 43:     LATDbits.LATD7 = 0;
+"29
+[; ;main.c: 29:     LATDbits.LATD7 = 0;
 [e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
-"46
-[; ;main.c: 46:     TRISHbits.TRISH3 = 0;
+"31
+[; ;main.c: 31:     TRISHbits.TRISH3 = 0;
 [e = . . _TRISHbits 0 3 -> -> 0 `i `uc ]
-"47
-[; ;main.c: 47:     LATHbits.LATH3 = 0;
+"32
+[; ;main.c: 32:     LATHbits.LATH3 = 0;
 [e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
-"50
-[; ;main.c: 50:     TRISFbits.TRISF2=1;
+"34
+[; ;main.c: 34:     TRISFbits.TRISF2=1;
 [e = . . _TRISFbits 0 2 -> -> 1 `i `uc ]
-"51
-[; ;main.c: 51:     ANSELFbits.ANSELF2=0;
+"35
+[; ;main.c: 35:     ANSELFbits.ANSELF2=0;
 [e = . . _ANSELFbits 0 2 -> -> 0 `i `uc ]
-"54
-[; ;main.c: 54:     TRISFbits.TRISF3=1;
+"37
+[; ;main.c: 37:     TRISFbits.TRISF3=1;
 [e = . . _TRISFbits 0 3 -> -> 1 `i `uc ]
-"55
-[; ;main.c: 55:     ANSELFbits.ANSELF3=0;
+"38
+[; ;main.c: 38:     ANSELFbits.ANSELF3=0;
 [e = . . _ANSELFbits 0 3 -> -> 0 `i `uc ]
-"59
-[; ;main.c: 59:     calibration.index = 1;
+"42
+[; ;main.c: 42:     motorL.power=0;
+[e = . _motorL 0 -> -> 0 `i `uc ]
+"43
+[; ;main.c: 43:     motorL.direction=1;
+[e = . _motorL 1 -> -> 1 `i `uc ]
+"44
+[; ;main.c: 44:     motorL.brakemode=1;
+[e = . _motorL 2 -> -> 1 `i `uc ]
+"45
+[; ;main.c: 45:     motorL.posDutyHighByte=(unsigned char *)(&CCPR1H);
+[e = . _motorL 4 -> &U _CCPR1H `*uc ]
+"46
+[; ;main.c: 46:     motorL.negDutyHighByte=(unsigned char *)(&CCPR2H);
+[e = . _motorL 5 -> &U _CCPR2H `*uc ]
+"47
+[; ;main.c: 47:     motorL.PWMperiod=PWMperiod;
+[e = . _motorL 3 _PWMperiod ]
+"49
+[; ;main.c: 49:     motorR.power=0;
+[e = . _motorR 0 -> -> 0 `i `uc ]
+"50
+[; ;main.c: 50:     motorR.direction=1;
+[e = . _motorR 1 -> -> 1 `i `uc ]
+"51
+[; ;main.c: 51:     motorR.brakemode=1;
+[e = . _motorR 2 -> -> 1 `i `uc ]
+"52
+[; ;main.c: 52:     motorR.posDutyHighByte=(unsigned char *)(&CCPR3H);
+[e = . _motorR 4 -> &U _CCPR3H `*uc ]
+"53
+[; ;main.c: 53:     motorR.negDutyHighByte=(unsigned char *)(&CCPR4H);
+[e = . _motorR 5 -> &U _CCPR4H `*uc ]
+"54
+[; ;main.c: 54:     motorR.PWMperiod=PWMperiod;
+[e = . _motorR 3 _PWMperiod ]
+"58
+[; ;main.c: 58:     calibration.index = 1;
 [e = . _calibration 0 -> -> 1 `i `uc ]
 "61
 [; ;main.c: 61:     calibration.right_90 = 25;
@@ -2290,25 +2284,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 76:     while(1){
 [e :U 2021 ]
 {
-"78
-[; ;main.c: 78:         pause_until_RF2_pressed();
-[e ( _pause_until_RF2_pressed ..  ]
 "80
-[; ;main.c: 80:         calibration_routine(&calibration, &motorL, &motorR);
-[e ( _calibration_routine (3 , , &U _calibration &U _motorL &U _motorR ]
+[; ;main.c: 80:         pause_until_RF2_pressed();
+[e ( _pause_until_RF2_pressed ..  ]
 "82
-[; ;main.c: 82:         maze_search(&calibration, &motorL, &motorR);
-[e ( _maze_search (3 , , &U _calibration &U _motorL &U _motorR ]
+[; ;main.c: 82:         calibration_routine(&calibration, &motorL, &motorR);
+[e ( _calibration_routine (3 , , &U _calibration &U _motorL &U _motorR ]
 "84
-[; ;main.c: 84:         maze_return(&calibration, &motorL, &motorR);
-[e ( _maze_return (3 , , &U _calibration &U _motorL &U _motorR ]
+[; ;main.c: 84:         maze_search(&calibration, &motorL, &motorR);
+[e ( _maze_search (3 , , &U _calibration &U _motorL &U _motorR ]
 "86
-[; ;main.c: 86:     }
+[; ;main.c: 86:         maze_return(&calibration, &motorL, &motorR);
+[e ( _maze_return (3 , , &U _calibration &U _motorL &U _motorR ]
+"88
+[; ;main.c: 88:     }
 }
 [e :U 2020 ]
 [e $U 2021  ]
 [e :U 2022 ]
-"87
-[; ;main.c: 87: }
+"89
+[; ;main.c: 89: }
 [e :UE 2019 ]
 }

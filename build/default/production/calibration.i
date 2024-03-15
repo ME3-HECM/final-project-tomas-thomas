@@ -24112,18 +24112,17 @@ typedef struct DC_motor {
 
 struct DC_motor motorL, motorR;
 
-char temp = 7;
 
 void initDCmotorsPWM(unsigned int PWMperiod);
 void setMotorPWM(DC_motor *m);
+
 void stop(DC_motor *mL, DC_motor *mR);
+
 void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
-
-
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+
 void delay_ms_function(unsigned int milliseconds);
 # 5 "./calibration.h" 2
 
@@ -24132,12 +24131,10 @@ void delay_ms_function(unsigned int milliseconds);
 
 typedef struct calibration_structure {
     char index;
-
     char right_90;
     char left_90;
     char right_135;
     char left_135;
-
     char forward_one;
     char backward_one;
     char forward_half;
@@ -24157,6 +24154,9 @@ void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
 
 
 void pause_until_RF2_pressed(){
+
+
+
     while(1){
 
         LATDbits.LATD7 = 1;
@@ -24173,6 +24173,7 @@ void pause_until_RF2_pressed(){
 }
 
 void adjust_calibration(int *calibration_label){
+
 
 
     while(1){
@@ -24192,7 +24193,7 @@ void adjust_calibration(int *calibration_label){
             else{
                 if(!PORTFbits.RF2){
                     _delay((unsigned long)((200)*(64000000/4000.0)));
-                    *calibration_label = *calibration_label + 2;
+                    *calibration_label = *calibration_label + 1;
                     LATDbits.LATD7 = 1;
                     _delay((unsigned long)((200)*(64000000/4000.0)));
                     LATDbits.LATD7 = 0;
@@ -24200,7 +24201,7 @@ void adjust_calibration(int *calibration_label){
 
                 if(!PORTFbits.RF3){
                     _delay((unsigned long)((200)*(64000000/4000.0)));
-                    *calibration_label = *calibration_label -2;
+                    *calibration_label = *calibration_label - 1;
                     LATHbits.LATH3 = 1;
                     _delay((unsigned long)((200)*(64000000/4000.0)));
                     LATHbits.LATH3 = 0;
@@ -24211,6 +24212,10 @@ void adjust_calibration(int *calibration_label){
 }
 
 void switch_calibration(int *calibration_index){
+
+
+
+
     while(1){
         if(!PORTFbits.RF2){
             _delay((unsigned long)((200)*(64000000/4000.0)));
@@ -24232,8 +24237,10 @@ void switch_calibration(int *calibration_index){
 }
 
 void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
-    while(1){
 
+
+
+    while(1){
 
         if(c->index == 1){
             adjust_calibration(&(c->right_90));
@@ -24282,7 +24289,7 @@ void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             switch_calibration(&(c->index));
         }
 
-        if(c->index == 9){
+        if(c->index >= 9){
             c->index = 1;
             break;
         }

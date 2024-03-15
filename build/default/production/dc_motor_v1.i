@@ -24107,18 +24107,17 @@ typedef struct DC_motor {
 
 struct DC_motor motorL, motorR;
 
-char temp = 7;
 
 void initDCmotorsPWM(unsigned int PWMperiod);
 void setMotorPWM(DC_motor *m);
+
 void stop(DC_motor *mL, DC_motor *mR);
+
 void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
-
-
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+
 void delay_ms_function(unsigned int milliseconds);
 # 2 "dc_motor_v1.c" 2
 
@@ -24186,6 +24185,7 @@ void initDCmotorsPWM(unsigned int PWMperiod){
     TRISHbits.TRISH3 = 0;
     LATHbits.LATH3 = 0;
 }
+
 void delay_ms_function(unsigned int milliseconds) {
     while (milliseconds > 0) {
         _delay((unsigned long)((1)*(64000000/4000.0)));
@@ -24218,7 +24218,6 @@ void setMotorPWM(DC_motor *m)
 
 
 
-
 void stop(DC_motor *mL, DC_motor *mR){
 
     mL->brakemode = 1;
@@ -24242,12 +24241,12 @@ void stop(DC_motor *mL, DC_motor *mR){
 
 
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
+
+
+
+
     mL->direction = 1;
     mR->direction = 1;
-
-
-
-
 
 
     int max_power = 40;
@@ -24272,10 +24271,10 @@ void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
 
 
     while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
+        if(mR->power > 0 ){
             mR->power--;
         }
-        if(mL->power> 0 ){
+        if(mL->power > 0 ){
             mL->power--;
         }
         setMotorPWM(mR);
@@ -24286,6 +24285,11 @@ void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
 
 
 void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
+
+
+
+
+
     mL->direction = 0;
     mR->direction = 0;
 
@@ -24304,16 +24308,18 @@ void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
     }
 
 
+
+
     for(int j=0; j<Distance_Calibration; j++){
         _delay((unsigned long)((10)*(64000000/4000.0)));
     }
 
 
     while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
+        if(mR->power > 0 ){
             mR->power--;
         }
-        if(mL->power> 0 ){
+        if(mL->power > 0 ){
             mL->power--;
         }
         setMotorPWM(mR);
@@ -24326,6 +24332,7 @@ void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
 
 
 void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
+
     mL->direction = 0;
     mR->direction = 1;
 
@@ -24343,16 +24350,18 @@ void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     }
 
 
+
+
     for(int j=0; j<rotation_calibration; j++){
         _delay((unsigned long)((10)*(64000000/4000.0)));
     }
 
 
     while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
+        if(mR->power > 0 ){
             mR->power--;
         }
-        if(mL->power> 0 ){
+        if(mL->power > 0 ){
             mL->power--;
         }
         setMotorPWM(mR);
@@ -24367,7 +24376,7 @@ void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 1;
     mR->direction = 0;
 
-   int max_power = 40;
+    int max_power = 40;
     int acceleration_time = 100;
     int delay_time = acceleration_time/max_power;
 
@@ -24381,16 +24390,18 @@ void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     }
 
 
+
+
     for(int j=0; j<rotation_calibration; j++){
         _delay((unsigned long)((10)*(64000000/4000.0)));
     }
 
 
     while(mL->power || mR->power > 0){
-        if(mR->power> 0 ){
+        if(mR->power > 0 ){
             mR->power--;
         }
-        if(mL->power> 0 ){
+        if(mL->power > 0 ){
             mL->power--;
         }
         setMotorPWM(mR);

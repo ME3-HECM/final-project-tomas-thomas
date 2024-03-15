@@ -24112,18 +24112,17 @@ typedef struct DC_motor {
 
 struct DC_motor motorL, motorR;
 
-char temp = 7;
 
 void initDCmotorsPWM(unsigned int PWMperiod);
 void setMotorPWM(DC_motor *m);
+
 void stop(DC_motor *mL, DC_motor *mR);
+
 void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
-
-
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
 void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+
 void delay_ms_function(unsigned int milliseconds);
 # 5 "./pathfinder_file.h" 2
 
@@ -24163,12 +24162,10 @@ unsigned int color_cardCheck(void);
 
 typedef struct calibration_structure {
     char index;
-
     char right_90;
     char left_90;
     char right_135;
     char left_135;
-
     char forward_one;
     char backward_one;
     char forward_half;
@@ -24195,7 +24192,7 @@ char Operation_Count = 0;
 char Forward_Count = 0;
 char length = 50;
 char Operation_History[50] = {0};
-char forward_reset_threshold = 5;
+char forward_reset_threshold = 15;
 
 int Color_Value;
 # 2 "pathfinder_file.c" 2
@@ -24203,15 +24200,17 @@ int Color_Value;
 
 
 
-
-
 void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+
+
     color_click_init();
 
     while(1){
+
         _delay((unsigned long)((500)*(64000000/4000.0)));
         LATHbits.LATH3 = 1;
         LATDbits.LATD7 = 1;
+
 
         forward(c->forward_one, mL, mR);
         Forward_Count++;
@@ -24230,6 +24229,7 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             backward(c->backward_one, mL, mR);
             for (int i = 0; i < forward_reset_threshold; i++) {
                  forward(c->forward_one, mL, mR);
+
             }
             backward(c->backward_half, mL, mR);
             break;
@@ -24296,7 +24296,6 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             else if(Color_Value == 8){
 
                 backward(c->backward_half, mL, mR);
-
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
                 backward(c->backward_one, mL, mR);
@@ -24308,10 +24307,11 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
 }
 
 void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+
+
     while(1){
 
         for (int i = length; i >= 0; i--) {
-
 
             if(Operation_History[i] > 10){
                 unsigned char distance_back = Operation_History[i] - 10;
