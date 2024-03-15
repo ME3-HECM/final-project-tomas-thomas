@@ -47,6 +47,12 @@ Final testing will take place in the CAGB 6th Floor Drawing Room and testing are
 ## Introduction
 <a name="introduction"></a>
 [Mention code management using GitHub - working on separate functionalities and then pulling them together]
+This project involved coding a buggy in using a clicker2 board comprising of a PIC18 Advanced microcontroller. The aim of the project was to produce an autonomous buggy, which can navigate its way through an unknown maze using the coloured walls as directions for its operations. It would store these operations, remembering its path through the maze and then return back to the beginning after having completed the maze. In the case of getting lost or hitting a dead end, the buggy would automatically trigger its operation to return back to the beginning of the maze.
+
+This project consisted of 5 key functionalities: Movement, Movement Calibration, Light Sensing, Light Calibration, and Path Memorisation. These are explained in detail in the following sections, along with examples of the code employed and its structure. To complete this task, these key functionalities were split between us and completed in branches on Github and then merged together into our main file. This allowed individual work to be carried out initially, before working together side-by-side on the final functionalities and integration of our work. 
+
+Some hardware modifications were made to the buggy to improve performance. After testing, we found that our specific buggy operated more consistently (moving in straighter lines, turning with less slip) with the rubber wheels removed. We also added a small, black cardboard shield over the Color Click module; this was done to limit ambient light from entering the color click sensing channels and affecting readings. This allowed for more accurate and consistent readings from the color sensor. No further modifications were made.
+
 
 ## Demonstration Video Final Maze
 <a name="demonstration-video-final-maze"></a>
@@ -89,4 +95,14 @@ Final testing will take place in the CAGB 6th Floor Drawing Room and testing are
 <a name="exemptions"></a>
 [Explanation of any exemptions or exceptions]
 
+## Testing Videos (Mechatronics Lab)
+The links in this section contain videos showing a run through of a simple maze, made using the test set-up in the Mechatronics Lab on the 7th Floor, and a run through in the case of an exemption - final destination not found (buggy lost).
+
+1. General Functionality (showing color card interpretation, operation, path memorisation and return-to-start execution):
+
+   https://imperiallondon-my.sharepoint.com/:v:/g/personal/tmy21_ic_ac_uk/Ea9uLu_0IUxFpgJJi82QuJcBaavwkGb7prJe3zGw-A4DUQ?e=4gJrUY
+
+2. Buggy Lost and Returning Home:
+
+  https://imperiallondon-my.sharepoint.com/:v:/g/personal/tmy21_ic_ac_uk/EYyj4Jv2WW9Muw4ifc2q_ocB3cexHHfqAy9je7XQIkOYDA?e=IdKJQv
 
