@@ -82,7 +82,7 @@ The following description is a step-by-step guide to the operation of our buggy,
 
 6. At this point, the buggy's code loops back and it stays stationary until button RF2 is pressed again to re-begin the buggy's executable code and operation. Notably, if the buggy remains turned on, it retains its calibration memory from the first run through, and so after pressing RF2 the calibration routine can be skipped by moving through each movement without further calibration necessary.
 
- #### Found within main.c   
+ #### Found within main.c:   
     while(1){ 
         //note that the calibration values are not reset if the buggy is not turned off after it has solved the first maze
         //you will still have to go through the calibration routine but no adjustments will have to be made
@@ -101,6 +101,92 @@ The following description is a step-by-step guide to the operation of our buggy,
 <a name="in-depth-view-of-code-path"></a>
 [Detailed explanation of the code path]
 
+#### Found in pathfinder_file.c:
+void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+    //Maze searching algorythm
+    //has two exit conditions - white paper, or forward_reset_threshold moves forward conseqeutively (defined in .h file)
+    color_click_init();
+    
+    while(1){
+        //turn LEDs on when the car is moving
+        __delay_ms(500);
+        LATHbits.LATH3 = 1;
+        LATDbits.LATD7 = 1; 
+
+        //moves the car forward, reads the colour value
+        forward(c->forward_one, mL, mR);//move forward for the value set in the calibration.foward_one value set in main
+        Forward_Count++;                //add 1 to the forward counter
+        Color_Value = color_cardCheck(); //reutrns 1 to 8 integer value
+        
+        LATHbits.LATH3 = 0;
+        LATDbits.LATD7 = 0;
+        
+        //Failsafe to ensure the buggy always gets home if lost - assumes hitting a solid wall
+        //if the forward count exceeds a defined threshold then the buggy will exit the maze finding alogrythm from then the maze return command can be called
+        // CAREFUL if the threshold is set too low the buggy will reset in a straight line
+        if(Forward_Count > forward_reset_threshold){
+            backward(c->backward_half, mL, mR); // back off from wall you've just hit
+            rightTURN(c->right_90, mL, mR);     //do a 180* rotation
+            rightTURN(c->right_90, mL, mR);
+            backward(c->backward_one, mL, mR);  //reverse into the wall to allign rotation  
+            for (int i = 0; i < forward_reset_threshold; i++) {
+                 forward(c->forward_one, mL, mR);  //moves forward by forward_reset_threshold units 
+                                                   //this means that if we were going in a straight line without hitting an obstacle we still would reverse the correct steps to get back home
+            }
+            backward(c->backward_half, mL, mR);     //since our car has moved 1 unit * a constant away from the edge of the wall we need to move half a step back to return to centre of the unit square space
+            break;                                  //exit maze finder algorythm
+        }
+        
+        if(Color_Value != 0){   //detects a colour  
+            //save the number of times forward the car went forward in the Operation_History Array
+            Operation_History[Operation_Count] = Forward_Count + 10;    //10 offset for reasons
+            Forward_Count = 0;  //reset the forward counter
+            Operation_Count++;  //increase operation counter 
+                    
+            if(Color_Value == 1){ //detects that it is red - turn right 90
+                Operation_History[Operation_Count] = Color_Value;    //1 = red value 
+                Operation_Count++;
+                backward(c->backward_half, mL, mR);                     //reverse from wall to create alignment 
+                rightTURN(c->right_90, mL, mR);                         //turn right 90 degrees
+            }
+
+This code below shows how if white (end of maze) is read by the color sensor, the buggy will perform a 180 degree turn and end the maze searching function, beginning the maze return home function.
+
+else if(Color_Value == 8){ //detects that it is white - return home            
+                
+                backward(c->backward_half, mL, mR); // half step back off from wall
+                rightTURN(c->right_90, mL, mR);     //180* turn
+                rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR);  //aligns off back wall
+                forward(c->forward_half, mL, mR);   //moves forward half to align to center of unit square
+                break;  //exit the maze finder algorithm
+            }
+
+Code below is maze_return [needs more here]
+
+void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+    //algorithm to recall buggy movement history and reverse moves to get home
+    
+    while(1){
+        
+        for (int i = length; i >= 0; i--) {//read the operation_history array from reverse
+
+            if(Operation_History[i] > 10){  //all values 10 or greater relate to forward movement 
+                unsigned char distance_back = Operation_History[i] - 10;    //remove the offset from the forward movement tracker such that 1 = 1 unit of the square moved
+                for (int j = 0; j < distance_back-1; j++) {                 //move the buggy forward distance_back number of times
+                    forward(c->forward_one, mL, mR);
+                }
+                forward(c->forward_half, mL, mR);
+                // need to have a go back by a half  - not sure why 
+            }
+//
+            else if(Operation_History[i] == 1){  //opposite of right = left
+                leftTURN(c->left_90, mL, mR);
+                backward(c->backward_one, mL, mR);   
+            }
+
+Code below is maze_return [needs more here]
+            
 ## Movement Structure
 <a name="movement-calibration"></a>
 
