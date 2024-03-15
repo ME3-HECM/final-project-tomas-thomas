@@ -16,6 +16,7 @@ char Operation_Count = 0;
 char Forward_Count = 0;
 char length = 50;       //should be changed
 char Operation_History[50] = {0}; //20 slots
+char forward_reset_threshold = 15;  //15 forward moves without function to reset
 
 int Color_Value;
 

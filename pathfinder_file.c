@@ -19,7 +19,21 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
         
         LATHbits.LATH3 = 0;
         LATDbits.LATD7 = 0;
-
+        
+        //UNABLE TO READ A SET COLOUR 
+        //Determines that the buggy is lost in the maze and exist the maze search to then begin return home
+        
+        if(Forward_Count > forward_reset_threshold){
+            backward(c->backward_half, mL, mR); // back off from wall you've just hit
+            rightTURN(c->right_90, mL, mR);     //do a 180* rotation
+            rightTURN(c->right_90, mL, mR);
+            backward(c->backward_one, mL, mR);  //contact the wall to allign rotation  
+            for (int i = 0; i < forward_reset_threshold; i++) {
+                 forward(c->forward_one, mL, mR);  //moves forward by forward_reset_threshold units
+            }
+            backward(c->backward_half, mL, mR);     //return to centre of the unit square space
+            break;
+        }
         
         if(Color_Value != 0){//detects a colour  
             //log the number of times forward
@@ -118,15 +132,12 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 backward(c->backward_one, mL, mR);
             }
 
-            else if(Operation_History[i] == 3){
+            else if(Operation_History[i] == 3){ //opposite of 180 = 180
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
             }
                      
-            else if(Operation_History[i] == 4){
-                Operation_History[Operation_Count] = Color_Value;    
-                Operation_Count++;
-                
+            else if(Operation_History[i] == 4){ 
                 //opposite of yellow
                 rightTURN(c->right_90, mL, mR);
                 forward(c->forward_one, mL, mR);
@@ -165,14 +176,11 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 backward(c->backward_one, mL, mR);  //full backwards
                 forward(c->forward_half, mL, mR);  //half forward
             }
-
-            else if(Operation_History[i] == 8){
-                //opposite of 1
-            }
             
-            else if(Operation_History[i] == 0){
-            }
+  
         }
+        //reseting the device history so that it can complete another run
+        
         Operation_Count = 0;
         for (int i = 0; i < 50; ++i) {
             Operation_History[i] = 0;

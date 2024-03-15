@@ -85,121 +85,15 @@ void main(void){
 
     }
 }
+
+
+// if 20 forward 
+// half step back
+// 180 rotation 
+// execute return command
        
                     
-//~~~~~~~~~~~~~~~~~~~~~~ Maze Finding Code ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//    
-//    
-//    
-//        //look into pointers and arrays if need requires
-//    
-////    __delay_ms(1000); //delay between calibration and operation
-//    
-//    // there's some way to input a calibration struture 
-//    
-//    while(1){
-//        LATHbits.LATH3 = 1;
-//        LATDbits.LATD7 = 1; 
-//
-//        forward(calibration.forward, &motorL, &motorR);
-////        __delay_ms(10);
-//        Forward_Count++;
-//        Color_Value = color_cardCheck(); //reutrns 1 to 8 integer value
-//        
-//        LATHbits.LATH3 = 0;
-//        LATDbits.LATD7 = 0;
-////        __delay_ms(10);
-//        
-//        if(Color_Value != 0){//detects a colour  
-//            Operation_History[Operation_Count] = Forward_Count + 10;    //10 offset for reasons
-//            Forward_Count = 0;
-//            Operation_Count++;
-//                    
-//            if(Color_Value == 1){ //detects that it is red - turn right 90
-//                Operation_History[Operation_Count] = Color_Value;    //1 = red value 
-//                Operation_Count++;
-//                backward(calibration.backward, &motorL, &motorR);
-//                turnRIGHT(calibration.right_90, &motorL, &motorR); 
-//            }
-//            
-//            
-//            else if(Color_Value == 2){ //detects that it is green - turn left 90
-//                Operation_History[Operation_Count] = Color_Value;    //1 = red value 
-//                Operation_Count++;
-//                backward(calibration.backward, &motorL, &motorR);
-//              
-//                turnLEFT(calibration.left_90, &motorL, &motorR); 
-//            }
-//            
-//            
-//            else if(Color_Value == 3){ //detects that it is blue - turn 180                     some calibration issues
-//                Operation_History[Operation_Count] = Color_Value;    //1 = red value 
-//                Operation_Count++;
-//                backward(calibration.backward, &motorL, &motorR);
-//                turnLEFT(calibration.left_90, &motorL, &motorR);
-//                turnLEFT(calibration.left_90, &motorL, &motorR);
-//            }
-//            
-//            else if(Color_Value == 8){ //detects that it is white - return home            
-//                
-//                backward(calibration.backward, &motorL, &motorR);
-//                // 180
-//                turnLEFT(calibration.left_90, &motorL, &motorR);
-//                turnLEFT(calibration.left_90, &motorL, &motorR);
-//                backward(calibration.backward, &motorL, &motorR);
-//                backward(calibration.backward, &motorL, &motorR);
-//                
-//                for (int i = (length-1); i >= 0; i--) {
-//                    if(Operation_History[i] == 1){  //opposite of right = left
-//                        turnLEFT(calibration.left_90, &motorL, &motorR); 
-//                        backward(calibration.backward, &motorL, &motorR);
-//                    }
-//                    else if(Operation_History[i] == 2){ //opposite of left = right
-//                        turnRIGHT(calibration.right_90, &motorL, &motorR);
-//                        backward(calibration.backward, &motorL, &motorR);
-//                    }
-//                    
-//                    else if(Operation_History[i] == 3){
-//                        turnLEFT(calibration.left_90, &motorL, &motorR); 
-//                        turnLEFT(calibration.left_90, &motorL, &motorR); 
-//                    }
-////                        
-////                    }
-////                    else if(Operation_History[i] == 4){
-////                        //opposite of 1
-////                    }
-////                    else if(Operation_History[i] == 5){
-////                        //opposite of 1
-////                    }
-////                    else if(Operation_History[i] == 6){
-////                        //opposite of 1
-////                    }
-////                    else if(Operation_History[i] == 7){
-////                        //opposite of 1
-////                    }
-////                    else if(Operation_History[i] == 8){
-////                        //opposite of 1
-////                    }
-//                    else if(Operation_History[i] > 10){  
-//                        unsigned char distance_back = Operation_History[i] - 10;
-//                        for (int j = 0; j < distance_back-1; j++) {forward(calibration.forward, &motorL, &motorR);}
-//                        
-//                        // need to have a go back by a half
-//                    }
-//                    else if(Operation_History[i] == 1){
-//                        //opposite of 1
-//                    }
-//                 
-//                    
-//                }
-//                
-//                //read reverse of list 
-//                //adding 
-//                
-//                
-//            }
-//        }  
-//    
+
 ////            //--------------------- SERIAL COMMUNICATION ------------------------------------------
 ////         char senddata[20]; //Empty char to hold string data
 ////         

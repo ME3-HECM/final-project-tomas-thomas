@@ -97,7 +97,7 @@
 [v _main main `(v  1 e 1 0 ]
 "8 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\pathfinder_file.c
 [v _maze_search maze_search `(v  1 e 1 0 ]
-"96
+"110
 [v _maze_return maze_return `(v  1 e 1 0 ]
 "34 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\serial.c
 [v _sendCharSerial4 sendCharSerial4 `(v  1 e 1 0 ]
@@ -116,7 +116,7 @@
 [v _Forward_Count Forward_Count `uc  1 e 1 0 ]
 "18
 [v _Operation_History Operation_History `[50]uc  1 e 50 0 ]
-"20
+"21
 [v _Color_Value Color_Value `i  1 e 2 0 ]
 "13 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X/serial.h
 [v _EUSART4RXbuf EUSART4RXbuf `VE[20]uc  1 e 20 0 ]
@@ -136,7 +136,7 @@
 [v _SSP2CLKPPS SSP2CLKPPS `VEuc  1 e 1 @3612 ]
 "3862
 [v _SSP2DATPPS SSP2DATPPS `VEuc  1 e 1 @3613 ]
-[s S1846 . 1 `uc 1 TX3IE 1 0 :1:0 
+[s S1847 . 1 `uc 1 TX3IE 1 0 :1:0 
 `uc 1 RC3IE 1 0 :1:1 
 `uc 1 TX4IE 1 0 :1:2 
 `uc 1 RC4IE 1 0 :1:3 
@@ -144,9 +144,9 @@
 `uc 1 RC5IE 1 0 :1:5 
 ]
 "4819
-[u S1853 . 1 `S1846 1 . 1 0 ]
-[v _PIE4bits PIE4bits `VES1853  1 e 1 @3629 ]
-[s S1827 . 1 `uc 1 TX3IF 1 0 :1:0 
+[u S1854 . 1 `S1847 1 . 1 0 ]
+[v _PIE4bits PIE4bits `VES1854  1 e 1 @3629 ]
+[s S1828 . 1 `uc 1 TX3IF 1 0 :1:0 
 `uc 1 RC3IF 1 0 :1:1 
 `uc 1 TX4IF 1 0 :1:2 
 `uc 1 RC4IF 1 0 :1:3 
@@ -154,8 +154,8 @@
 `uc 1 RC5IF 1 0 :1:5 
 ]
 "5332
-[u S1834 . 1 `S1827 1 . 1 0 ]
-[v _PIR4bits PIR4bits `VES1834  1 e 1 @3639 ]
+[u S1835 . 1 `S1828 1 . 1 0 ]
+[v _PIR4bits PIR4bits `VES1835  1 e 1 @3639 ]
 "7858
 [v _RC0PPS RC0PPS `VEuc  1 e 1 @3682 ]
 "8208
@@ -170,7 +170,7 @@
 [v _RE4PPS RE4PPS `VEuc  1 e 1 @3702 ]
 "9708
 [v _RG6PPS RG6PPS `VEuc  1 e 1 @3720 ]
-[s S1623 . 1 `uc 1 ANSELD0 1 0 :1:0 
+[s S1624 . 1 `uc 1 ANSELD0 1 0 :1:0 
 `uc 1 ANSELD1 1 0 :1:1 
 `uc 1 ANSELD2 1 0 :1:2 
 `uc 1 ANSELD3 1 0 :1:3 
@@ -180,8 +180,8 @@
 `uc 1 ANSELD7 1 0 :1:7 
 ]
 "11513
-[u S1632 . 1 `S1623 1 . 1 0 ]
-[v _ANSELDbits ANSELDbits `VES1632  1 e 1 @3751 ]
+[u S1633 . 1 `S1624 1 . 1 0 ]
+[v _ANSELDbits ANSELDbits `VES1633  1 e 1 @3751 ]
 [s S1488 . 1 `uc 1 ANSELF0 1 0 :1:0 
 `uc 1 ANSELF1 1 0 :1:1 
 `uc 1 ANSELF2 1 0 :1:2 
@@ -200,19 +200,19 @@
 [v _SSP2ADD SSP2ADD `VEuc  1 e 1 @3798 ]
 "14310
 [v _SSP2STAT SSP2STAT `VEuc  1 e 1 @3800 ]
-[s S1565 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S1566 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "14794
-[s S1571 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S1572 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S1576 . 1 `uc 1 SSPM02 1 0 :1:0 
+[s S1577 . 1 `uc 1 SSPM02 1 0 :1:0 
 `uc 1 SSPM12 1 0 :1:1 
 `uc 1 SSPM22 1 0 :1:2 
 `uc 1 SSPM32 1 0 :1:3 
@@ -221,11 +221,11 @@
 `uc 1 SSPOV2 1 0 :1:6 
 `uc 1 WCOL2 1 0 :1:7 
 ]
-[u S1585 . 1 `S1565 1 . 1 0 `S1571 1 . 1 0 `S1576 1 . 1 0 ]
-[v _SSP2CON1bits SSP2CON1bits `VES1585  1 e 1 @3801 ]
+[u S1586 . 1 `S1566 1 . 1 0 `S1572 1 . 1 0 `S1577 1 . 1 0 ]
+[v _SSP2CON1bits SSP2CON1bits `VES1586  1 e 1 @3801 ]
 "14884
 [v _SSP2CON2 SSP2CON2 `VEuc  1 e 1 @3802 ]
-[s S1650 . 1 `uc 1 SEN 1 0 :1:0 
+[s S1651 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -235,17 +235,17 @@
 `uc 1 GCEN 1 0 :1:7 
 ]
 "14931
-[s S1659 . 1 `uc 1 . 1 0 :1:0 
+[s S1660 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK 1 0 :5:1 
 ]
-[s S1662 . 1 `uc 1 . 1 0 :1:0 
+[s S1663 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S1669 . 1 `uc 1 SEN2 1 0 :1:0 
+[s S1670 . 1 `uc 1 SEN2 1 0 :1:0 
 `uc 1 ADMSK12 1 0 :1:1 
 `uc 1 ADMSK22 1 0 :1:2 
 `uc 1 ADMSK32 1 0 :1:3 
@@ -254,15 +254,15 @@
 `uc 1 ACKSTAT2 1 0 :1:6 
 `uc 1 GCEN2 1 0 :1:7 
 ]
-[s S1678 . 1 `uc 1 . 1 0 :1:0 
+[s S1679 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN2 1 0 :1:1 
 `uc 1 PEN2 1 0 :1:2 
 `uc 1 RCEN2 1 0 :1:3 
 `uc 1 ADMSK42 1 0 :1:4 
 `uc 1 ADMSK52 1 0 :1:5 
 ]
-[u S1685 . 1 `S1650 1 . 1 0 `S1659 1 . 1 0 `S1662 1 . 1 0 `S1669 1 . 1 0 `S1678 1 . 1 0 ]
-[v _SSP2CON2bits SSP2CON2bits `VES1685  1 e 1 @3802 ]
+[u S1686 . 1 `S1651 1 . 1 0 `S1660 1 . 1 0 `S1663 1 . 1 0 `S1670 1 . 1 0 `S1679 1 . 1 0 ]
+[v _SSP2CON2bits SSP2CON2bits `VES1686  1 e 1 @3802 ]
 "15686
 [v _RC4REG RC4REG `VEuc  1 e 1 @3811 ]
 "15724
@@ -271,7 +271,7 @@
 [v _SP4BRGL SP4BRGL `VEuc  1 e 1 @3813 ]
 "15807
 [v _SP4BRGH SP4BRGH `VEuc  1 e 1 @3814 ]
-[s S1806 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S1807 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -281,9 +281,9 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "15867
-[u S1815 . 1 `S1806 1 . 1 0 ]
-[v _RC4STAbits RC4STAbits `VES1815  1 e 1 @3815 ]
-[s S1783 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S1816 . 1 `S1807 1 . 1 0 ]
+[v _RC4STAbits RC4STAbits `VES1816  1 e 1 @3815 ]
+[s S1784 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -293,9 +293,9 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "15989
-[u S1792 . 1 `S1783 1 . 1 0 ]
-[v _TX4STAbits TX4STAbits `VES1792  1 e 1 @3816 ]
-[s S1762 . 1 `uc 1 ABDEN 1 0 :1:0 
+[u S1793 . 1 `S1784 1 . 1 0 ]
+[v _TX4STAbits TX4STAbits `VES1793  1 e 1 @3816 ]
+[s S1763 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -305,8 +305,8 @@
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "16115
-[u S1771 . 1 `S1762 1 . 1 0 ]
-[v _BAUD4CONbits BAUD4CONbits `VES1771  1 e 1 @3817 ]
+[u S1772 . 1 `S1763 1 . 1 0 ]
+[v _BAUD4CONbits BAUD4CONbits `VES1772  1 e 1 @3817 ]
 "20738
 [v _CCPR4H CCPR4H `VEuc  1 e 1 @3873 ]
 [s S1022 . 1 `uc 1 MODE 1 0 :4:0 
@@ -766,12 +766,15 @@
 "8 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\pathfinder_file.c
 [v _maze_search maze_search `(v  1 e 1 0 ]
 {
+"31
+[v maze_search@i i `i  1 a 2 132 ]
 [s S347 calibration_structure 9 `uc 1 index 1 0 `uc 1 right_90 1 1 `uc 1 left_90 1 2 `uc 1 right_135 1 3 `uc 1 left_135 1 4 `uc 1 forward_one 1 5 `uc 1 backward_one 1 6 `uc 1 forward_half 1 7 `uc 1 backward_half 1 8 ]
+"8
 [v maze_search@c c `*.39S347  1 p 2 127 ]
 [s S340 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 [v maze_search@mL mL `*.30S340  1 p 1 129 ]
-[v maze_search@mR mR `*.30S340  1 p 1 130 ]
-"94
+[v maze_search@mR mR `*.39S340  1 p 2 130 ]
+"108
 } 0
 "7 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\color.c
 [v _color_click_init color_click_init `(v  1 e 1 0 ]
@@ -976,17 +979,17 @@
 "8 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S2344 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S2347 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S2349 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
-[u S2352 . 4 `l 1 i 4 0 `d 1 f 4 0 `S2344 1 fAsBytes 4 0 `S2349 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S2352  1 a 4 77 ]
+[s S2352 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
+[u S2355 . 4 `l 1 i 4 0 `d 1 f 4 0 `S2347 1 fAsBytes 4 0 `S2352 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S2355  1 a 4 77 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 71 ]
-[s S2420 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S2423 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S2423 . 2 `s 1 i 2 0 `us 1 n 2 0 `S2420 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S2423  1 a 2 81 ]
+[u S2426 . 2 `s 1 i 2 0 `us 1 n 2 0 `S2423 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S2426  1 a 2 81 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 76 ]
 "11
@@ -1032,24 +1035,24 @@
 [v ___flge@ff2 ff2 `d  1 p 4 4 ]
 "19
 } 0
-"96 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\pathfinder_file.c
+"110 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\pathfinder_file.c
 [v _maze_return maze_return `(v  1 e 1 0 ]
 {
-"104
-[v maze_return@j j `i  1 a 2 40 ]
-"103
-[v maze_return@distance_back distance_back `uc  1 a 1 39 ]
-"177
-[v maze_return@i_2041 i `i  1 a 2 42 ]
-"99
-[v maze_return@i i `i  1 a 2 44 ]
+"118
+[v maze_return@j j `i  1 a 2 43 ]
+"117
+[v maze_return@distance_back distance_back `uc  1 a 1 42 ]
+"185
+[v maze_return@i_2044 i `i  1 a 2 45 ]
+"113
+[v maze_return@i i `i  1 a 2 47 ]
 [s S347 calibration_structure 9 `uc 1 index 1 0 `uc 1 right_90 1 1 `uc 1 left_90 1 2 `uc 1 right_135 1 3 `uc 1 left_135 1 4 `uc 1 forward_one 1 5 `uc 1 backward_one 1 6 `uc 1 forward_half 1 7 `uc 1 backward_half 1 8 ]
-"96
-[v maze_return@c c `*.39S347  1 p 2 32 ]
+"110
+[v maze_return@c c `*.39S347  1 p 2 34 ]
 [s S340 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-[v maze_return@mL mL `*.30S340  1 p 1 34 ]
-[v maze_return@mR mR `*.30S340  1 p 1 35 ]
-"183
+[v maze_return@mL mL `*.30S340  1 p 1 36 ]
+[v maze_return@mR mR `*.39S340  1 p 2 37 ]
+"191
 } 0
 "5 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\dc_motor_v1.c
 [v _initDCmotorsPWM initDCmotorsPWM `(v  1 e 1 0 ]
@@ -1061,10 +1064,10 @@
 [v _calibration_routine calibration_routine `(v  1 e 1 0 ]
 {
 [s S347 calibration_structure 9 `uc 1 index 1 0 `uc 1 right_90 1 1 `uc 1 left_90 1 2 `uc 1 right_135 1 3 `uc 1 left_135 1 4 `uc 1 forward_one 1 5 `uc 1 backward_one 1 6 `uc 1 forward_half 1 7 `uc 1 backward_half 1 8 ]
-[v calibration_routine@c c `*.39S347  1 p 2 32 ]
+[v calibration_routine@c c `*.39S347  1 p 2 34 ]
 [s S340 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-[v calibration_routine@mL mL `*.30S340  1 p 1 34 ]
-[v calibration_routine@mR mR `*.30S340  1 p 1 35 ]
+[v calibration_routine@mL mL `*.30S340  1 p 1 36 ]
+[v calibration_routine@mR mR `*.39S340  1 p 2 37 ]
 "137
 } 0
 "60
@@ -1078,19 +1081,19 @@
 {
 [v rightTURN@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
 "262
-[v rightTURN@j j `i  1 a 2 26 ]
+[v rightTURN@j j `i  1 a 2 28 ]
 "253
-[v rightTURN@i i `i  1 a 2 24 ]
+[v rightTURN@i i `i  1 a 2 26 ]
 "250
-[v rightTURN@delay_time delay_time `i  1 a 2 30 ]
+[v rightTURN@delay_time delay_time `i  1 a 2 32 ]
 "248
-[v rightTURN@max_power max_power `i  1 a 2 28 ]
+[v rightTURN@max_power max_power `i  1 a 2 30 ]
 "244
 [v rightTURN@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
 [s S340 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-[v rightTURN@mL mL `*.30S340  1 p 1 18 ]
-[v rightTURN@mR mR `*.30S340  1 p 1 19 ]
-[v rightTURN@rotation_calibration rotation_calibration `uc  1 a 1 23 ]
+[v rightTURN@mL mL `*.30S340  1 p 1 19 ]
+[v rightTURN@mR mR `*.39S340  1 p 2 20 ]
+[v rightTURN@rotation_calibration rotation_calibration `uc  1 a 1 25 ]
 "278
 } 0
 "206
@@ -1098,19 +1101,19 @@
 {
 [v leftTURN@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
 "224
-[v leftTURN@j j `i  1 a 2 26 ]
+[v leftTURN@j j `i  1 a 2 28 ]
 "215
-[v leftTURN@i i `i  1 a 2 24 ]
+[v leftTURN@i i `i  1 a 2 26 ]
 "212
-[v leftTURN@delay_time delay_time `i  1 a 2 30 ]
+[v leftTURN@delay_time delay_time `i  1 a 2 32 ]
 "210
-[v leftTURN@max_power max_power `i  1 a 2 28 ]
+[v leftTURN@max_power max_power `i  1 a 2 30 ]
 "206
 [v leftTURN@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
 [s S340 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-[v leftTURN@mL mL `*.30S340  1 p 1 18 ]
-[v leftTURN@mR mR `*.30S340  1 p 1 19 ]
-[v leftTURN@rotation_calibration rotation_calibration `uc  1 a 1 23 ]
+[v leftTURN@mL mL `*.30S340  1 p 1 19 ]
+[v leftTURN@mR mR `*.39S340  1 p 2 20 ]
+[v leftTURN@rotation_calibration rotation_calibration `uc  1 a 1 25 ]
 "240
 } 0
 "122
@@ -1118,19 +1121,19 @@
 {
 [v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 wreg ]
 "147
-[v forward@j j `i  1 a 2 26 ]
+[v forward@j j `i  1 a 2 28 ]
 "136
-[v forward@i i `i  1 a 2 24 ]
+[v forward@i i `i  1 a 2 26 ]
 "133
-[v forward@delay_time delay_time `i  1 a 2 30 ]
+[v forward@delay_time delay_time `i  1 a 2 32 ]
 "131
-[v forward@max_power max_power `i  1 a 2 28 ]
+[v forward@max_power max_power `i  1 a 2 30 ]
 "122
 [v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 wreg ]
 [s S340 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-[v forward@mL mL `*.30S340  1 p 1 18 ]
-[v forward@mR mR `*.30S340  1 p 1 19 ]
-[v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 23 ]
+[v forward@mL mL `*.30S340  1 p 1 19 ]
+[v forward@mR mR `*.39S340  1 p 2 20 ]
+[v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 25 ]
 "163
 } 0
 "166
@@ -1138,30 +1141,30 @@
 {
 [v backward@Distance_Calibration Distance_Calibration `uc  1 a 1 wreg ]
 "185
-[v backward@j j `i  1 a 2 26 ]
+[v backward@j j `i  1 a 2 28 ]
 "176
-[v backward@i i `i  1 a 2 24 ]
+[v backward@i i `i  1 a 2 26 ]
 "173
-[v backward@delay_time delay_time `i  1 a 2 30 ]
+[v backward@delay_time delay_time `i  1 a 2 32 ]
 "171
-[v backward@max_power max_power `i  1 a 2 28 ]
+[v backward@max_power max_power `i  1 a 2 30 ]
 "166
 [v backward@Distance_Calibration Distance_Calibration `uc  1 a 1 wreg ]
 [s S340 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-[v backward@mL mL `*.30S340  1 p 1 18 ]
-[v backward@mR mR `*.30S340  1 p 1 19 ]
-[v backward@Distance_Calibration Distance_Calibration `uc  1 a 1 23 ]
+[v backward@mL mL `*.30S340  1 p 1 19 ]
+[v backward@mR mR `*.39S340  1 p 2 20 ]
+[v backward@Distance_Calibration Distance_Calibration `uc  1 a 1 25 ]
 "201
 } 0
 "75
 [v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
 {
 "77
-[v setMotorPWM@negDuty negDuty `uc  1 a 1 17 ]
-[v setMotorPWM@posDuty posDuty `uc  1 a 1 16 ]
+[v setMotorPWM@negDuty negDuty `uc  1 a 1 18 ]
+[v setMotorPWM@posDuty posDuty `uc  1 a 1 17 ]
 [s S340 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 "75
-[v setMotorPWM@m m `*.30S340  1 p 1 13 ]
+[v setMotorPWM@m m `*.39S340  1 p 2 13 ]
 "95
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul16.c

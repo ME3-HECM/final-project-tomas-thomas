@@ -24195,6 +24195,7 @@ char Operation_Count = 0;
 char Forward_Count = 0;
 char length = 50;
 char Operation_History[50] = {0};
+char forward_reset_threshold = 5;
 
 int Color_Value;
 # 2 "pathfinder_file.c" 2
@@ -24219,6 +24220,20 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
         LATHbits.LATH3 = 0;
         LATDbits.LATD7 = 0;
 
+
+
+
+        if(Forward_Count > forward_reset_threshold){
+            backward(c->backward_half, mL, mR);
+            rightTURN(c->right_90, mL, mR);
+            rightTURN(c->right_90, mL, mR);
+            backward(c->backward_one, mL, mR);
+            for (int i = 0; i < forward_reset_threshold; i++) {
+                 forward(c->forward_one, mL, mR);
+            }
+            backward(c->backward_half, mL, mR);
+            break;
+        }
 
         if(Color_Value != 0){
 
@@ -24323,9 +24338,6 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             }
 
             else if(Operation_History[i] == 4){
-                Operation_History[Operation_Count] = Color_Value;
-                Operation_Count++;
-
 
                 rightTURN(c->right_90, mL, mR);
                 forward(c->forward_one, mL, mR);
@@ -24365,13 +24377,10 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 forward(c->forward_half, mL, mR);
             }
 
-            else if(Operation_History[i] == 8){
 
-            }
-
-            else if(Operation_History[i] == 0){
-            }
         }
+
+
         Operation_Count = 0;
         for (int i = 0; i < 50; ++i) {
             Operation_History[i] = 0;

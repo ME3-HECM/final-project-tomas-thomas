@@ -24381,6 +24381,7 @@ char Operation_Count = 0;
 char Forward_Count = 0;
 char length = 50;
 char Operation_History[50] = {0};
+char forward_reset_threshold = 5;
 
 int Color_Value;
 # 15 "main.c" 2
@@ -24439,8 +24440,8 @@ void main(void){
     calibration.forward_one = 100;
     calibration.backward_one = 100;
 
-    calibration.forward_half = 20;
-    calibration.backward_half = 20;
+    calibration.forward_half = 33;
+    calibration.backward_half = 33;
 
 
 

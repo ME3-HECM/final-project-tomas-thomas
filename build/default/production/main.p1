@@ -2176,8 +2176,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ..
 ]
-"20
-[; ;./pathfinder_file.h: 20: int Color_Value;
+"19
+[; ;./pathfinder_file.h: 19: char forward_reset_threshold = 5;
+[v _forward_reset_threshold `uc ~T0 @X0 1 e ]
+[i _forward_reset_threshold
+-> -> 5 `i `uc
+]
+"21
+[; ;./pathfinder_file.h: 21: int Color_Value;
 [v _Color_Value `i ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "19 main.c
@@ -2275,11 +2281,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 68:     calibration.backward_one = 100;
 [e = . _calibration 6 -> -> 100 `i `uc ]
 "70
-[; ;main.c: 70:     calibration.forward_half = 20;
-[e = . _calibration 7 -> -> 20 `i `uc ]
+[; ;main.c: 70:     calibration.forward_half = 33;
+[e = . _calibration 7 -> -> 33 `i `uc ]
 "71
-[; ;main.c: 71:     calibration.backward_half = 20;
-[e = . _calibration 8 -> -> 20 `i `uc ]
+[; ;main.c: 71:     calibration.backward_half = 33;
+[e = . _calibration 8 -> -> 33 `i `uc ]
 "76
 [; ;main.c: 76:     while(1){
 [e :U 2021 ]
