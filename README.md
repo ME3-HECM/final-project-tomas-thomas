@@ -192,8 +192,20 @@ Code below is maze_return [needs more here]
 
 ### Movement Process
 [Explanation of movement process]
+![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/86fc2e45-6e73-4d35-8610-e8326845a10f)
+
+Summary of the 3 key stages in the buggy
 
 ### Movement Calibration
+
+![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/238bdf45-08f7-42ca-aadb-4db6b7b23573)
+
+Buttons to adjust the calibration value 
+When both buttons are pressed together it will save the calibration value and show you the movemnet
+
+![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/e259588b-ef60-41f9-a08e-5fa1c0100360)
+
+Buttons to stay on the currrent calibration, and move to the next calibration
 
 ## Colour Sensing Structure
 <a name="colour-calibration"></a>
