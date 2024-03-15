@@ -21,10 +21,10 @@
       <itemPath>dc_motor_v1.c</itemPath>
       <itemPath>dc_motor_v1.h</itemPath>
       <itemPath>main.c</itemPath>
-      <itemPath>pathfinder_file.c</itemPath>
-      <itemPath>pathfinder_file.h</itemPath>
       <itemPath>serial.c</itemPath>
       <itemPath>serial.h</itemPath>
+      <itemPath>pathfinder.c</itemPath>
+      <itemPath>pathfinder.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

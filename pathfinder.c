@@ -1,5 +1,5 @@
 #include <xc.h>
-#include "pathfinder_file.h"
+#include "pathfinder.h"
 #include "color.h"
 #include "dc_motor_v1.h"
 

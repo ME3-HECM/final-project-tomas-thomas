@@ -24159,6 +24159,7 @@ void pause_until_RF2_pressed(){
 
     while(1){
 
+
         LATDbits.LATD7 = 1;
         _delay((unsigned long)((100)*(64000000/4000.0)));
         LATDbits.LATD7 = 0;

@@ -8,6 +8,7 @@ void pause_until_RF2_pressed(){
     //in the code this is used to enter the calibration state
     
     while(1){ //continous loop unless broken by if statement
+        //potential to use a sleep function here to save battery
         // flashing LED D7 to indicate this is the button to press
         LATDbits.LATD7 = 1;
         __delay_ms(100);

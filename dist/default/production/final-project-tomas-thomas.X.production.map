@@ -7,11 +7,10 @@ Linker command line:
   -cn \
   -h+dist/default/production\final-project-tomas-thomas.X.production.sym \
   --cmf=dist/default/production\final-project-tomas-thomas.X.production.cmf \
-  -z -Q18F67K40 \
-  -oC:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_3.o \
+  -z -Q18F67K40 -oC:\Users\tjhla\AppData\Local\Temp\xcAstb8.\driver_tmp_3.o \
   --defsym=__MPLAB_BUILD=1 --fixupoverflow=error \
   -Mdist/default/production/final-project-tomas-thomas.X.production.map \
-  --md=C:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_0.dat -E1 \
+  --md=C:\Users\tjhla\AppData\Local\Temp\xcAstb8.\driver_tmp_0.dat -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ACODE=00h-01FFFFh -ACONST=00h-01FFFFh \
   -ASMALLCONST=0E00h-0EFFhx498 -AMEDIUMCONST=0E00h-0FFFFh,010E00h-01FFFFh \
   -ACOMRAM=01h-05Fh -AABS1=00h-0DE9h -ABIGRAM=01h-0DE9h \
@@ -31,7 +30,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_9.o \
+  C:\Users\tjhla\AppData\Local\Temp\xcAstb8.\driver_tmp_9.o \
   dist/default/production\final-project-tomas-thomas.X.production.o 
 
 Object code version is 3.11
@@ -41,7 +40,7 @@ Machine type is 18F67K40
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\thoma\AppData\Local\Temp\xcBsio8.1\driver_tmp_9.o
+C:\Users\tjhla\AppData\Local\Temp\xcAstb8.\driver_tmp_9.o
                 config                           300000   300000        6        0       4
                 init                                  0        0        4        0       0
 dist/default/production\final-project-tomas-thomas.X.production.o
@@ -851,7 +850,7 @@ leftTURN@rotation_calibration        cstackCOMRAM 000018
 maze_return@c                        cstackCOMRAM 000021
 maze_return@distance_back            cstackCOMRAM 000029
 maze_return@i                        cstackCOMRAM 00002C
-maze_return@i_1875                   cstackCOMRAM 00002A
+maze_return@i_2039                   cstackCOMRAM 00002A
 maze_return@j                        cstackCOMRAM 000027
 maze_return@mL                       cstackCOMRAM 000022
 maze_return@mR                       cstackCOMRAM 000023
@@ -902,6 +901,12 @@ C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\fleq.c
 
 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\fleq.c estimated size: 170
 
+pathfinder.c
+		_maze_return   		CODE           	28E2	0000	1154
+		_maze_search   		CODE           	1F60	0000	1218
+
+pathfinder.c estimated size: 2372
+
 i2c.c
 		_I2C_2_Master_Start		CODE           	4C2C	0000	10
 		_I2C_2_Master_Read		CODE           	4A98	0000	66
@@ -945,12 +950,6 @@ C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\xxtofl.c
 		___xxtofl      		CODE           	3756	0000	436
 
 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\xxtofl.c estimated size: 436
-
-pathfinder_file.c
-		_maze_return   		CODE           	28E2	0000	1154
-		_maze_search   		CODE           	1F60	0000	1218
-
-pathfinder_file.c estimated size: 2372
 
 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcadd.c
 		___flsub       		CODE           	4A52	0000	70

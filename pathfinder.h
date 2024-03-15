@@ -1,5 +1,5 @@
-#ifndef _pathfinder_file_H
-#define _pathfinder_file_H
+#ifndef _pathfinder_H
+#define _pathfinder_H
 
 #include <xc.h>
 #include "dc_motor_v1.h"

@@ -119,11 +119,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27
 [; ;./calibration.h: 27: void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
 [v _calibration_routine `(v ~T0 @X0 0 ef3`*S2018`*S2017`*S2017 ]
-"12 ./pathfinder_file.h
-[; ;./pathfinder_file.h: 12: void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR);
+"12 ./pathfinder.h
+[; ;./pathfinder.h: 12: void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR);
 [v _maze_search `(v ~T0 @X0 0 ef3`*S2018`*S2017`*S2017 ]
 "13
-[; ;./pathfinder_file.h: 13: void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
+[; ;./pathfinder.h: 13: void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
 [v _maze_return `(v ~T0 @X0 0 ef3`*S2018`*S2017`*S2017 ]
 "2 main.c
 [p x FEXTOSC  =  HS      ]
@@ -2144,26 +2144,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _TxBufReadCnt
 -> -> 0 `i `uc
 ]
-"15 ./pathfinder_file.h
-[; ;./pathfinder_file.h: 15: char Operation_Count = 0;
+"15 ./pathfinder.h
+[; ;./pathfinder.h: 15: char Operation_Count = 0;
 [v _Operation_Count `uc ~T0 @X0 1 e ]
 [i _Operation_Count
 -> -> 0 `i `uc
 ]
 "16
-[; ;./pathfinder_file.h: 16: char Forward_Count = 0;
+[; ;./pathfinder.h: 16: char Forward_Count = 0;
 [v _Forward_Count `uc ~T0 @X0 1 e ]
 [i _Forward_Count
 -> -> 0 `i `uc
 ]
 "17
-[; ;./pathfinder_file.h: 17: char length = 50;
+[; ;./pathfinder.h: 17: char length = 50;
 [v _length `uc ~T0 @X0 1 e ]
 [i _length
 -> -> 50 `i `uc
 ]
 "18
-[; ;./pathfinder_file.h: 18: char Operation_History[50] = {0};
+[; ;./pathfinder.h: 18: char Operation_History[50] = {0};
 [v _Operation_History `uc ~T0 @X0 -> 50 `i e ]
 [i _Operation_History
 :U ..
@@ -2171,13 +2171,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "19
-[; ;./pathfinder_file.h: 19: char forward_reset_threshold = 15;
+[; ;./pathfinder.h: 19: char forward_reset_threshold = 15;
 [v _forward_reset_threshold `uc ~T0 @X0 1 e ]
 [i _forward_reset_threshold
 -> -> 15 `i `uc
 ]
 "21
-[; ;./pathfinder_file.h: 21: int Color_Value;
+[; ;./pathfinder.h: 21: int Color_Value;
 [v _Color_Value `i ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "20 main.c
@@ -2284,25 +2284,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 76:     while(1){
 [e :U 2021 ]
 {
-"80
-[; ;main.c: 80:         pause_until_RF2_pressed();
+"79
+[; ;main.c: 79:         pause_until_RF2_pressed();
 [e ( _pause_until_RF2_pressed ..  ]
-"82
-[; ;main.c: 82:         calibration_routine(&calibration, &motorL, &motorR);
+"81
+[; ;main.c: 81:         calibration_routine(&calibration, &motorL, &motorR);
 [e ( _calibration_routine (3 , , &U _calibration &U _motorL &U _motorR ]
-"84
-[; ;main.c: 84:         maze_search(&calibration, &motorL, &motorR);
+"83
+[; ;main.c: 83:         maze_search(&calibration, &motorL, &motorR);
 [e ( _maze_search (3 , , &U _calibration &U _motorL &U _motorR ]
-"86
-[; ;main.c: 86:         maze_return(&calibration, &motorL, &motorR);
+"85
+[; ;main.c: 85:         maze_return(&calibration, &motorL, &motorR);
 [e ( _maze_return (3 , , &U _calibration &U _motorL &U _motorR ]
-"88
-[; ;main.c: 88:     }
+"87
+[; ;main.c: 87:     }
 }
 [e :U 2020 ]
 [e $U 2021  ]
 [e :U 2022 ]
-"89
-[; ;main.c: 89: }
+"88
+[; ;main.c: 88: }
 [e :UE 2019 ]
 }

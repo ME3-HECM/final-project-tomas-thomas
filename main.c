@@ -13,7 +13,7 @@
 #include "calibration.h"
 #include "color.h"
 #include "serial.h"
-#include "pathfinder_file.h"
+#include "pathfinder.h"
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 
@@ -75,8 +75,7 @@ void main(void){
     
     while(1){ 
         //note that the calibration values are not reset if the buggy is not turned off after it has solved the first maze
-        //you will still have to go through the calibration routine but no adjustments will have to be made
-
+        // you will still have to go through the calibration routine but no adjustments will have to be made
         pause_until_RF2_pressed();
 
         calibration_routine(&calibration, &motorL, &motorR);    // calibration routine

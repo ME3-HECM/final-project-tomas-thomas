@@ -1,77 +1,80 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"7858 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 7858: extern volatile unsigned char RC0PPS __attribute__((address(0xE62)));
-[v _RC0PPS `Vuc ~T0 @X0 0 e@3682 ]
-"3182
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 3182: extern volatile unsigned char RX4PPS __attribute__((address(0xE15)));
-[v _RX4PPS `Vuc ~T0 @X0 0 e@3605 ]
-"16104
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 16104:     struct {
-[s S759 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S759 . ABDEN WUE . BRG16 SCKP . RCIDL ABDOVF ]
-"16103
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 16103: typedef union {
-[u S758 `S759 1 ]
-[n S758 . . ]
-"16115
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 16115: extern volatile BAUD4CONbits_t BAUD4CONbits __attribute__((address(0xEE9)));
-[v _BAUD4CONbits `VS758 ~T0 @X0 0 e@3817 ]
-"15978
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 15978:     struct {
-[s S755 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S755 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
-"15977
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 15977: typedef union {
-[u S754 `S755 1 ]
-[n S754 . . ]
-"15989
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 15989: extern volatile TX4STAbits_t TX4STAbits __attribute__((address(0xEE8)));
-[v _TX4STAbits `VS754 ~T0 @X0 0 e@3816 ]
-"15769
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 15769: extern volatile unsigned char SP4BRGL __attribute__((address(0xEE5)));
-[v _SP4BRGL `Vuc ~T0 @X0 0 e@3813 ]
-"15807
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 15807: extern volatile unsigned char SP4BRGH __attribute__((address(0xEE6)));
-[v _SP4BRGH `Vuc ~T0 @X0 0 e@3814 ]
-"15856
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 15856:     struct {
-[s S751 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S751 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
-"15855
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 15855: typedef union {
-[u S750 `S751 1 ]
-[n S750 . . ]
-"15867
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 15867: extern volatile RC4STAbits_t RC4STAbits __attribute__((address(0xEE7)));
-[v _RC4STAbits `VS750 ~T0 @X0 0 e@3815 ]
-"5323
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 5323:     struct {
-[s S297 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S297 . TX3IF RC3IF TX4IF RC4IF TX5IF RC5IF ]
-"5322
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 5322: typedef union {
-[u S296 `S297 1 ]
-[n S296 . . ]
-"5332
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 5332: extern volatile PIR4bits_t PIR4bits __attribute__((address(0xE37)));
-[v _PIR4bits `VS296 ~T0 @X0 0 e@3639 ]
-"15686
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 15686: extern volatile unsigned char RC4REG __attribute__((address(0xEE3)));
-[v _RC4REG `Vuc ~T0 @X0 0 e@3811 ]
-"15724
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 15724: extern volatile unsigned char TX4REG __attribute__((address(0xEE4)));
-[v _TX4REG `Vuc ~T0 @X0 0 e@3812 ]
-"4810
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 4810:     struct {
-[s S274 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S274 . TX3IE RC3IE TX4IE RC4IE TX5IE RC5IE ]
-"4809
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 4809: typedef union {
-[u S273 `S274 1 ]
-[n S273 . . ]
-"4819
-[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 4819: extern volatile PIE4bits_t PIE4bits __attribute__((address(0xE2D)));
-[v _PIE4bits `VS273 ~T0 @X0 0 e@3629 ]
+"8 ./dc_motor_v1.h
+[; ;./dc_motor_v1.h: 8: typedef struct DC_motor {
+[s S2015 `uc 1 `uc 1 `uc 1 `ui 1 `*uc 1 `*uc 1 ]
+[n S2015 DC_motor power direction brakemode PWMperiod posDutyHighByte negDutyHighByte ]
+"9 ./calibration.h
+[; ;./calibration.h: 9: typedef struct calibration_structure {
+[s S2016 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S2016 calibration_structure index right_90 left_90 right_135 left_135 forward_one backward_one forward_half backward_half ]
+"12 ./color.h
+[; ;./color.h: 12: void color_click_init(void);
+[v _color_click_init `(v ~T0 @X0 0 ef ]
+[v F205 `(v ~T0 @X0 1 tf1`ul ]
+"20 C:\Program Files\Microchip\xc8\v2.45\pic\include\builtins.h
+[v __delay `JF205 ~T0 @X0 0 e ]
+[p i __delay ]
+"28912 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28912:     struct {
+[s S1361 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1361 . LATH0 LATH1 LATH2 LATH3 ]
+"28918
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28918:     struct {
+[s S1362 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1362 . LH0 LH1 LH2 LH3 ]
+"28924
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28924:     struct {
+[s S1363 :4 `uc 1 :1 `uc 1 ]
+[n S1363 . . LH4 ]
+"28928
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28928:     struct {
+[s S1364 :5 `uc 1 :1 `uc 1 ]
+[n S1364 . . LH5 ]
+"28932
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28932:     struct {
+[s S1365 :6 `uc 1 :1 `uc 1 ]
+[n S1365 . . LH6 ]
+"28936
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28936:     struct {
+[s S1366 :7 `uc 1 :1 `uc 1 ]
+[n S1366 . . LH7 ]
+"28911
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28911: typedef union {
+[u S1360 `S1361 1 `S1362 1 `S1363 1 `S1364 1 `S1365 1 `S1366 1 ]
+[n S1360 . . . . . . . ]
+"28941
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28941: extern volatile LATHbits_t LATHbits __attribute__((address(0xF80)));
+[v _LATHbits `VS1360 ~T0 @X0 0 e@3968 ]
+"28487
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28487:     struct {
+[s S1349 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1349 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"28497
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28497:     struct {
+[s S1350 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1350 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
+"28486
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28486: typedef union {
+[u S1348 `S1349 1 `S1350 1 ]
+[n S1348 . . . ]
+"28508
+[; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 28508: extern volatile LATDbits_t LATDbits __attribute__((address(0xF7C)));
+[v _LATDbits `VS1348 ~T0 @X0 0 e@3964 ]
+"27 ./dc_motor_v1.h
+[; ;./dc_motor_v1.h: 27: void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+[v _forward `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
+"38 ./color.h
+[; ;./color.h: 38: unsigned int color_cardCheck(void);
+[v _color_cardCheck `(ui ~T0 @X0 0 ef ]
+"28 ./dc_motor_v1.h
+[; ;./dc_motor_v1.h: 28: void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+[v _backward `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
+"25
+[; ;./dc_motor_v1.h: 25: void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+[v _rightTURN `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
+"26
+[; ;./dc_motor_v1.h: 26: void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+[v _leftTURN `(v ~T0 @X0 0 ef3`uc`*S2015`*S2015 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 54: __asm("PPSLOCK equ 0DEFh");
 [; <" PPSLOCK equ 0DEFh ;# ">
@@ -2046,279 +2049,598 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40592
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 40592: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"13 ./serial.h
-[; ;./serial.h: 13: volatile char EUSART4RXbuf[20];
-[v _EUSART4RXbuf `Vuc ~T0 @X0 -> 20 `i e ]
-"14
-[; ;./serial.h: 14: volatile char RxBufWriteCnt=0;
-[v _RxBufWriteCnt `Vuc ~T0 @X0 1 e ]
-[i _RxBufWriteCnt
+"17 ./dc_motor_v1.h
+[; ;./dc_motor_v1.h: 17: struct DC_motor motorL, motorR;
+[v _motorL `S2015 ~T0 @X0 1 e ]
+[v _motorR `S2015 ~T0 @X0 1 e ]
+"22 ./calibration.h
+[; ;./calibration.h: 22: struct calibration_structure calibration;
+[v _calibration `S2016 ~T0 @X0 1 e ]
+"15 ./pathfinder.h
+[; ;./pathfinder.h: 15: char Operation_Count = 0;
+[v _Operation_Count `uc ~T0 @X0 1 e ]
+[i _Operation_Count
 -> -> 0 `i `uc
 ]
-"15
-[; ;./serial.h: 15: volatile char RxBufReadCnt=0;
-[v _RxBufReadCnt `Vuc ~T0 @X0 1 e ]
-[i _RxBufReadCnt
+"16
+[; ;./pathfinder.h: 16: char Forward_Count = 0;
+[v _Forward_Count `uc ~T0 @X0 1 e ]
+[i _Forward_Count
 -> -> 0 `i `uc
 ]
 "17
-[; ;./serial.h: 17: volatile char EUSART4TXbuf[60];
-[v _EUSART4TXbuf `Vuc ~T0 @X0 -> 60 `i e ]
+[; ;./pathfinder.h: 17: char length = 50;
+[v _length `uc ~T0 @X0 1 e ]
+[i _length
+-> -> 50 `i `uc
+]
 "18
-[; ;./serial.h: 18: volatile char TxBufWriteCnt=0;
-[v _TxBufWriteCnt `Vuc ~T0 @X0 1 e ]
-[i _TxBufWriteCnt
+[; ;./pathfinder.h: 18: char Operation_History[50] = {0};
+[v _Operation_History `uc ~T0 @X0 -> 50 `i e ]
+[i _Operation_History
+:U ..
 -> -> 0 `i `uc
+..
 ]
 "19
-[; ;./serial.h: 19: volatile char TxBufReadCnt=0;
-[v _TxBufReadCnt `Vuc ~T0 @X0 1 e ]
-[i _TxBufReadCnt
--> -> 0 `i `uc
+[; ;./pathfinder.h: 19: char forward_reset_threshold = 15;
+[v _forward_reset_threshold `uc ~T0 @X0 1 e ]
+[i _forward_reset_threshold
+-> -> 15 `i `uc
 ]
-"4 serial.c
-[; ;serial.c: 4: void initUSART4(void) {
-[v _initUSART4 `(v ~T0 @X0 1 ef ]
-{
-[e :U _initUSART4 ]
-[f ]
-"5
-[; ;serial.c: 5:     RC0PPS = 0x12;
-[e = _RC0PPS -> -> 18 `i `uc ]
-"6
-[; ;serial.c: 6:     RX4PPS = 0x11;
-[e = _RX4PPS -> -> 17 `i `uc ]
-"8
-[; ;serial.c: 8:     BAUD4CONbits.BRG16 = 0;
-[e = . . _BAUD4CONbits 0 3 -> -> 0 `i `uc ]
-"9
-[; ;serial.c: 9:     TX4STAbits.BRGH = 0;
-[e = . . _TX4STAbits 0 2 -> -> 0 `i `uc ]
-"11
-[; ;serial.c: 11:     SP4BRGL = 51;
-[e = _SP4BRGL -> -> 51 `i `uc ]
-"12
-[; ;serial.c: 12:     SP4BRGH = 0;
-[e = _SP4BRGH -> -> 0 `i `uc ]
-"20
-[; ;serial.c: 20:     RC4STAbits.CREN = 1;
-[e = . . _RC4STAbits 0 4 -> -> 1 `i `uc ]
 "21
-[; ;serial.c: 21:     TX4STAbits.TXEN = 1;
-[e = . . _TX4STAbits 0 5 -> -> 1 `i `uc ]
-"22
-[; ;serial.c: 22:     RC4STAbits.SPEN = 1;
-[e = . . _RC4STAbits 0 7 -> -> 1 `i `uc ]
-"25
-[; ;serial.c: 25: }
-[e :UE 2015 ]
-}
-"28
-[; ;serial.c: 28: char getCharSerial4(void) {
-[v _getCharSerial4 `(uc ~T0 @X0 1 ef ]
+[; ;./pathfinder.h: 21: int Color_Value;
+[v _Color_Value `i ~T0 @X0 1 e ]
+"6 pathfinder.c
+[; ;pathfinder.c: 6: void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+[v _maze_search `(v ~T0 @X0 1 ef3`*S2016`*S2015`*S2015 ]
 {
-[e :U _getCharSerial4 ]
+[e :U _maze_search ]
+[v _c `*S2016 ~T0 @X0 1 r1 ]
+[v _mL `*S2015 ~T0 @X0 1 r2 ]
+[v _mR `*S2015 ~T0 @X0 1 r3 ]
 [f ]
-"29
-[; ;serial.c: 29:     while (!PIR4bits.RC4IF);
-[e $U 2017  ]
-[e :U 2018 ]
-[e :U 2017 ]
-[e $ ! != -> . . _PIR4bits 0 3 `i -> 0 `i 2018  ]
+"9
+[; ;pathfinder.c: 9:     color_click_init();
+[e ( _color_click_init ..  ]
+"11
+[; ;pathfinder.c: 11:     while(1){
 [e :U 2019 ]
+{
+"13
+[; ;pathfinder.c: 13:         _delay((unsigned long)((500)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"14
+[; ;pathfinder.c: 14:         LATHbits.LATH3 = 1;
+[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
+"15
+[; ;pathfinder.c: 15:         LATDbits.LATD7 = 1;
+[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+"18
+[; ;pathfinder.c: 18:         forward(c->forward_one, mL, mR);
+[e ( _forward (3 , , . *U _c 5 _mL _mR ]
+"19
+[; ;pathfinder.c: 19:         Forward_Count++;
+[e ++ _Forward_Count -> -> 1 `i `uc ]
+"20
+[; ;pathfinder.c: 20:         Color_Value = color_cardCheck();
+[e = _Color_Value -> ( _color_cardCheck ..  `i ]
+"22
+[; ;pathfinder.c: 22:         LATHbits.LATH3 = 0;
+[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
+"23
+[; ;pathfinder.c: 23:         LATDbits.LATD7 = 0;
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
+"28
+[; ;pathfinder.c: 28:         if(Forward_Count > forward_reset_threshold){
+[e $ ! > -> _Forward_Count `i -> _forward_reset_threshold `i 2021  ]
+{
+"29
+[; ;pathfinder.c: 29:             backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "30
-[; ;serial.c: 30:     return RC4REG;
-[e ) -> _RC4REG `uc ]
-[e $UE 2016  ]
+[; ;pathfinder.c: 30:             rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "31
-[; ;serial.c: 31: }
-[e :UE 2016 ]
-}
-"34
-[; ;serial.c: 34: void sendCharSerial4(char charToSend) {
-[v _sendCharSerial4 `(v ~T0 @X0 1 ef1`uc ]
+[; ;pathfinder.c: 31:             rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"32
+[; ;pathfinder.c: 32:             backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"33
+[; ;pathfinder.c: 33:             for (int i = 0; i < forward_reset_threshold; i++) {
 {
-[e :U _sendCharSerial4 ]
-[v _charToSend `uc ~T0 @X0 1 r1 ]
-[f ]
-"35
-[; ;serial.c: 35:     while (!PIR4bits.TX4IF);
-[e $U 2021  ]
-[e :U 2022 ]
-[e :U 2021 ]
-[e $ ! != -> . . _PIR4bits 0 2 `i -> 0 `i 2022  ]
-[e :U 2023 ]
-"36
-[; ;serial.c: 36:     TX4REG = charToSend;
-[e = _TX4REG -> _charToSend `uc ]
-"37
-[; ;serial.c: 37: }
-[e :UE 2020 ]
-}
-"41
-[; ;serial.c: 41: void sendStringSerial4(char *string){
-[v _sendStringSerial4 `(v ~T0 @X0 1 ef1`*uc ]
-{
-[e :U _sendStringSerial4 ]
-[v _string `*uc ~T0 @X0 1 r1 ]
-[f ]
-"43
-[; ;serial.c: 43:     while(*string != 0){
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
 [e $U 2025  ]
-[e :U 2026 ]
+[e :U 2022 ]
 {
-"44
-[; ;serial.c: 44:   sendCharSerial4(*string++);
-[e ( _sendCharSerial4 (1 *U ++ _string * -> -> 1 `i `x -> -> # *U _string `i `x ]
-"45
-[; ;serial.c: 45:  }
+"34
+[; ;pathfinder.c: 34:                  forward(c->forward_one, mL, mR);
+[e ( _forward (3 , , . *U _c 5 _mL _mR ]
+"36
+[; ;pathfinder.c: 36:             }
 }
+[e ++ _i -> 1 `i ]
 [e :U 2025 ]
+[e $ < _i -> _forward_reset_threshold `i 2022  ]
+[e :U 2023 ]
+}
+"37
+[; ;pathfinder.c: 37:             backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"38
+[; ;pathfinder.c: 38:             break;
+[e $U 2020  ]
+"39
+[; ;pathfinder.c: 39:         }
+}
+[e :U 2021 ]
+"41
+[; ;pathfinder.c: 41:         if(Color_Value != 0){
+[e $ ! != _Color_Value -> 0 `i 2026  ]
+{
 "43
-[; ;serial.c: 43:     while(*string != 0){
-[e $ != -> *U _string `i -> 0 `i 2026  ]
-[e :U 2027 ]
-"46
-[; ;serial.c: 46: }
-[e :UE 2024 ]
-}
-"53
-[; ;serial.c: 53: char getCharFromRxBuf(void){
-[v _getCharFromRxBuf `(uc ~T0 @X0 1 ef ]
+[; ;pathfinder.c: 43:             Operation_History[Operation_Count] = Forward_Count + 10;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> + -> _Forward_Count `i -> 10 `i `uc ]
+"44
+[; ;pathfinder.c: 44:             Forward_Count = 0;
+[e = _Forward_Count -> -> 0 `i `uc ]
+"45
+[; ;pathfinder.c: 45:             Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"47
+[; ;pathfinder.c: 47:             if(Color_Value == 1){
+[e $ ! == _Color_Value -> 1 `i 2027  ]
 {
-[e :U _getCharFromRxBuf ]
-[f ]
+"48
+[; ;pathfinder.c: 48:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
+"49
+[; ;pathfinder.c: 49:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"50
+[; ;pathfinder.c: 50:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"51
+[; ;pathfinder.c: 51:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"52
+[; ;pathfinder.c: 52:             }
+}
+[e $U 2028  ]
 "54
-[; ;serial.c: 54:     if (RxBufReadCnt>=20) {RxBufReadCnt=0;}
-[e $ ! >= -> _RxBufReadCnt `i -> 20 `i 2029  ]
+[; ;pathfinder.c: 54:             else if(Color_Value == 2){
+[e :U 2027 ]
+[e $ ! == _Color_Value -> 2 `i 2029  ]
 {
-[e = _RxBufReadCnt -> -> 0 `i `uc ]
-}
-[e :U 2029 ]
 "55
-[; ;serial.c: 55:     return EUSART4RXbuf[RxBufReadCnt++];
-[e ) *U + &U _EUSART4RXbuf * -> ++ _RxBufReadCnt -> -> 1 `i `Vuc `ux -> -> # *U &U _EUSART4RXbuf `ui `ux ]
-[e $UE 2028  ]
+[; ;pathfinder.c: 55:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
 "56
-[; ;serial.c: 56: }
-[e :UE 2028 ]
-}
+[; ;pathfinder.c: 56:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"57
+[; ;pathfinder.c: 57:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"58
+[; ;pathfinder.c: 58:                 leftTURN(c->left_90, mL, mR);
+[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
 "59
-[; ;serial.c: 59: void putCharToRxBuf(char byte){
-[v _putCharToRxBuf `(v ~T0 @X0 1 ef1`uc ]
-{
-[e :U _putCharToRxBuf ]
-[v _byte `uc ~T0 @X0 1 r1 ]
-[f ]
-"60
-[; ;serial.c: 60:     if (RxBufWriteCnt>=20) {RxBufWriteCnt=0;}
-[e $ ! >= -> _RxBufWriteCnt `i -> 20 `i 2031  ]
-{
-[e = _RxBufWriteCnt -> -> 0 `i `uc ]
+[; ;pathfinder.c: 59:             }
 }
-[e :U 2031 ]
+[e $U 2030  ]
 "61
-[; ;serial.c: 61:     EUSART4RXbuf[RxBufWriteCnt++]=byte;
-[e = *U + &U _EUSART4RXbuf * -> ++ _RxBufWriteCnt -> -> 1 `i `Vuc `ux -> -> # *U &U _EUSART4RXbuf `ui `ux _byte ]
+[; ;pathfinder.c: 61:             else if(Color_Value == 3){
+[e :U 2029 ]
+[e $ ! == _Color_Value -> 3 `i 2031  ]
+{
 "62
-[; ;serial.c: 62: }
-[e :UE 2030 ]
-}
+[; ;pathfinder.c: 62:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
+"63
+[; ;pathfinder.c: 63:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"64
+[; ;pathfinder.c: 64:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"65
+[; ;pathfinder.c: 65:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"66
+[; ;pathfinder.c: 66:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "67
-[; ;serial.c: 67: char isDataInRxBuf (void){
-[v _isDataInRxBuf `(uc ~T0 @X0 1 ef ]
-{
-[e :U _isDataInRxBuf ]
-[f ]
-"68
-[; ;serial.c: 68:     return (RxBufWriteCnt!=RxBufReadCnt);
-[e ) -> -> != -> _RxBufWriteCnt `i -> _RxBufReadCnt `i `i `uc ]
-[e $UE 2032  ]
+[; ;pathfinder.c: 67:             }
+}
+[e $U 2032  ]
 "69
-[; ;serial.c: 69: }
-[e :UE 2032 ]
-}
+[; ;pathfinder.c: 69:             else if(Color_Value == 4){
+[e :U 2031 ]
+[e $ ! == _Color_Value -> 4 `i 2033  ]
+{
+"70
+[; ;pathfinder.c: 70:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
+"71
+[; ;pathfinder.c: 71:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"72
+[; ;pathfinder.c: 72:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "73
-[; ;serial.c: 73: char getCharFromTxBuf(void){
-[v _getCharFromTxBuf `(uc ~T0 @X0 1 ef ]
-{
-[e :U _getCharFromTxBuf ]
-[f ]
+[; ;pathfinder.c: 73:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "74
-[; ;serial.c: 74:     if (TxBufReadCnt>=60) {TxBufReadCnt=0;}
-[e $ ! >= -> _TxBufReadCnt `i -> 60 `i 2034  ]
-{
-[e = _TxBufReadCnt -> -> 0 `i `uc ]
-}
-[e :U 2034 ]
+[; ;pathfinder.c: 74:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "75
-[; ;serial.c: 75:     return EUSART4TXbuf[TxBufReadCnt++];
-[e ) *U + &U _EUSART4TXbuf * -> ++ _TxBufReadCnt -> -> 1 `i `Vuc `ux -> -> # *U &U _EUSART4TXbuf `ui `ux ]
-[e $UE 2033  ]
-"76
-[; ;serial.c: 76: }
-[e :UE 2033 ]
+[; ;pathfinder.c: 75:             }
 }
+[e $U 2034  ]
+"77
+[; ;pathfinder.c: 77:             else if(Color_Value == 5){
+[e :U 2033 ]
+[e $ ! == _Color_Value -> 5 `i 2035  ]
+{
+"78
+[; ;pathfinder.c: 78:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
 "79
-[; ;serial.c: 79: void putCharToTxBuf(char byte){
-[v _putCharToTxBuf `(v ~T0 @X0 1 ef1`uc ]
-{
-[e :U _putCharToTxBuf ]
-[v _byte `uc ~T0 @X0 1 r1 ]
-[f ]
+[; ;pathfinder.c: 79:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
 "80
-[; ;serial.c: 80:     if (TxBufWriteCnt>=60) {TxBufWriteCnt=0;}
-[e $ ! >= -> _TxBufWriteCnt `i -> 60 `i 2036  ]
-{
-[e = _TxBufWriteCnt -> -> 0 `i `uc ]
-}
-[e :U 2036 ]
+[; ;pathfinder.c: 80:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "81
-[; ;serial.c: 81:     EUSART4TXbuf[TxBufWriteCnt++]=byte;
-[e = *U + &U _EUSART4TXbuf * -> ++ _TxBufWriteCnt -> -> 1 `i `Vuc `ux -> -> # *U &U _EUSART4TXbuf `ui `ux _byte ]
+[; ;pathfinder.c: 81:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
 "82
-[; ;serial.c: 82: }
-[e :UE 2035 ]
+[; ;pathfinder.c: 82:                 leftTURN(c->left_90, mL, mR);
+[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
+"83
+[; ;pathfinder.c: 83:             }
 }
+[e $U 2036  ]
+"85
+[; ;pathfinder.c: 85:             else if(Color_Value == 6){
+[e :U 2035 ]
+[e $ ! == _Color_Value -> 6 `i 2037  ]
+{
+"86
+[; ;pathfinder.c: 86:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
 "87
-[; ;serial.c: 87: char isDataInTxBuf (void){
-[v _isDataInTxBuf `(uc ~T0 @X0 1 ef ]
-{
-[e :U _isDataInTxBuf ]
-[f ]
+[; ;pathfinder.c: 87:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
 "88
-[; ;serial.c: 88:     return (TxBufWriteCnt!=TxBufReadCnt);
-[e ) -> -> != -> _TxBufWriteCnt `i -> _TxBufReadCnt `i `i `uc ]
-[e $UE 2037  ]
+[; ;pathfinder.c: 88:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "89
-[; ;serial.c: 89: }
-[e :UE 2037 ]
+[; ;pathfinder.c: 89:                 rightTURN(c->right_135, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
+"90
+[; ;pathfinder.c: 90:             }
 }
+[e $U 2038  ]
 "92
-[; ;serial.c: 92: void TxBufferedString(char *string){
-[v _TxBufferedString `(v ~T0 @X0 1 ef1`*uc ]
+[; ;pathfinder.c: 92:             else if(Color_Value == 7){
+[e :U 2037 ]
+[e $ ! == _Color_Value -> 7 `i 2039  ]
 {
-[e :U _TxBufferedString ]
-[v _string `*uc ~T0 @X0 1 r1 ]
-[f ]
+"93
+[; ;pathfinder.c: 93:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
 "94
-[; ;serial.c: 94: }
-[e :UE 2038 ]
+[; ;pathfinder.c: 94:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"95
+[; ;pathfinder.c: 95:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"96
+[; ;pathfinder.c: 96:                 leftTURN(c->left_135, mL, mR);
+[e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
+"97
+[; ;pathfinder.c: 97:             }
 }
-"98
-[; ;serial.c: 98: void sendTxBuf(void){
-[v _sendTxBuf `(v ~T0 @X0 1 ef ]
-{
-[e :U _sendTxBuf ]
-[f ]
+[e $U 2040  ]
 "99
-[; ;serial.c: 99:     if (isDataInTxBuf()) {PIE4bits.TX4IE=1;}
-[e $ ! != -> ( _isDataInTxBuf ..  `i -> 0 `i 2040  ]
+[; ;pathfinder.c: 99:             else if(Color_Value == 8){
+[e :U 2039 ]
+[e $ ! == _Color_Value -> 8 `i 2041  ]
 {
-[e = . . _PIE4bits 0 2 -> -> 1 `i `uc ]
+"101
+[; ;pathfinder.c: 101:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"102
+[; ;pathfinder.c: 102:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"103
+[; ;pathfinder.c: 103:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"104
+[; ;pathfinder.c: 104:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"105
+[; ;pathfinder.c: 105:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"106
+[; ;pathfinder.c: 106:                 break;
+[e $U 2020  ]
+"107
+[; ;pathfinder.c: 107:             }
 }
+[e :U 2041 ]
 [e :U 2040 ]
-"100
-[; ;serial.c: 100: }
-[e :UE 2039 ]
+[e :U 2038 ]
+[e :U 2036 ]
+[e :U 2034 ]
+[e :U 2032 ]
+[e :U 2030 ]
+[e :U 2028 ]
+"108
+[; ;pathfinder.c: 108:         }
+}
+[e :U 2026 ]
+"109
+[; ;pathfinder.c: 109:     }
+}
+[e :U 2018 ]
+[e $U 2019  ]
+[e :U 2020 ]
+"110
+[; ;pathfinder.c: 110: }
+[e :UE 2017 ]
+}
+"112
+[; ;pathfinder.c: 112: void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+[v _maze_return `(v ~T0 @X0 1 ef3`*S2016`*S2015`*S2015 ]
+{
+[e :U _maze_return ]
+[v _c `*S2016 ~T0 @X0 1 r1 ]
+[v _mL `*S2015 ~T0 @X0 1 r2 ]
+[v _mR `*S2015 ~T0 @X0 1 r3 ]
+[f ]
+"115
+[; ;pathfinder.c: 115:     while(1){
+[e :U 2044 ]
+{
+"117
+[; ;pathfinder.c: 117:         for (int i = length; i >= 0; i--) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> _length `i ]
+[e $ >= _i -> 0 `i 2046  ]
+[e $U 2047  ]
+[e :U 2046 ]
+{
+"119
+[; ;pathfinder.c: 119:             if(Operation_History[i] > 10){
+[e $ ! > -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 10 `i 2049  ]
+{
+"120
+[; ;pathfinder.c: 120:                 unsigned char distance_back = Operation_History[i] - 10;
+[v _distance_back `uc ~T0 @X0 1 a ]
+[e = _distance_back -> - -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 10 `i `uc ]
+"121
+[; ;pathfinder.c: 121:                 for (int j = 0; j < distance_back-1; j++) {
+{
+[v _j `i ~T0 @X0 1 a ]
+[e = _j -> 0 `i ]
+[e $U 2053  ]
+[e :U 2050 ]
+{
+"122
+[; ;pathfinder.c: 122:                     forward(c->forward_one, mL, mR);
+[e ( _forward (3 , , . *U _c 5 _mL _mR ]
+"123
+[; ;pathfinder.c: 123:                 }
+}
+[e ++ _j -> 1 `i ]
+[e :U 2053 ]
+[e $ < _j - -> _distance_back `i -> 1 `i 2050  ]
+[e :U 2051 ]
+}
+"124
+[; ;pathfinder.c: 124:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"126
+[; ;pathfinder.c: 126:             }
+}
+[e $U 2054  ]
+"128
+[; ;pathfinder.c: 128:             else if(Operation_History[i] == 1){
+[e :U 2049 ]
+[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 1 `i 2055  ]
+{
+"129
+[; ;pathfinder.c: 129:                 leftTURN(c->left_90, mL, mR);
+[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
+"130
+[; ;pathfinder.c: 130:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"131
+[; ;pathfinder.c: 131:             }
+}
+[e $U 2056  ]
+"133
+[; ;pathfinder.c: 133:             else if(Operation_History[i] == 2){
+[e :U 2055 ]
+[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 2 `i 2057  ]
+{
+"134
+[; ;pathfinder.c: 134:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"135
+[; ;pathfinder.c: 135:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"136
+[; ;pathfinder.c: 136:             }
+}
+[e $U 2058  ]
+"138
+[; ;pathfinder.c: 138:             else if(Operation_History[i] == 3){
+[e :U 2057 ]
+[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 3 `i 2059  ]
+{
+"139
+[; ;pathfinder.c: 139:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"140
+[; ;pathfinder.c: 140:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"141
+[; ;pathfinder.c: 141:             }
+}
+[e $U 2060  ]
+"143
+[; ;pathfinder.c: 143:             else if(Operation_History[i] == 4){
+[e :U 2059 ]
+[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 4 `i 2061  ]
+{
+"145
+[; ;pathfinder.c: 145:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"146
+[; ;pathfinder.c: 146:                 forward(c->forward_one, mL, mR);
+[e ( _forward (3 , , . *U _c 5 _mL _mR ]
+"149
+[; ;pathfinder.c: 149:                 forward(c->forward_one, mL, mR);
+[e ( _forward (3 , , . *U _c 5 _mL _mR ]
+"150
+[; ;pathfinder.c: 150:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"151
+[; ;pathfinder.c: 151:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"152
+[; ;pathfinder.c: 152:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"153
+[; ;pathfinder.c: 153:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"154
+[; ;pathfinder.c: 154:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"155
+[; ;pathfinder.c: 155:             }
+}
+[e $U 2062  ]
+"157
+[; ;pathfinder.c: 157:             else if(Operation_History[i] == 5){
+[e :U 2061 ]
+[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 5 `i 2063  ]
+{
+"158
+[; ;pathfinder.c: 158:                 leftTURN(c->right_90, mL, mR);
+[e ( _leftTURN (3 , , . *U _c 1 _mL _mR ]
+"159
+[; ;pathfinder.c: 159:                 forward(c->forward_one, mL, mR);
+[e ( _forward (3 , , . *U _c 5 _mL _mR ]
+"162
+[; ;pathfinder.c: 162:                 forward(c->forward_one, mL, mR);
+[e ( _forward (3 , , . *U _c 5 _mL _mR ]
+"163
+[; ;pathfinder.c: 163:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"164
+[; ;pathfinder.c: 164:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"165
+[; ;pathfinder.c: 165:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"166
+[; ;pathfinder.c: 166:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"167
+[; ;pathfinder.c: 167:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"169
+[; ;pathfinder.c: 169:             }
+}
+[e $U 2064  ]
+"171
+[; ;pathfinder.c: 171:             else if(Operation_History[i] == 6){
+[e :U 2063 ]
+[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 6 `i 2065  ]
+{
+"172
+[; ;pathfinder.c: 172:                 leftTURN(c->left_135, mL, mR);
+[e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
+"173
+[; ;pathfinder.c: 173:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"174
+[; ;pathfinder.c: 174:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"175
+[; ;pathfinder.c: 175:             }
+}
+[e $U 2066  ]
+"177
+[; ;pathfinder.c: 177:             else if(Operation_History[i] == 7){
+[e :U 2065 ]
+[e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 7 `i 2067  ]
+{
+"178
+[; ;pathfinder.c: 178:                 rightTURN(c->right_135, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
+"179
+[; ;pathfinder.c: 179:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"180
+[; ;pathfinder.c: 180:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"181
+[; ;pathfinder.c: 181:             }
+}
+[e :U 2067 ]
+[e :U 2066 ]
+[e :U 2064 ]
+[e :U 2062 ]
+[e :U 2060 ]
+[e :U 2058 ]
+[e :U 2056 ]
+[e :U 2054 ]
+"184
+[; ;pathfinder.c: 184:         }
+}
+[e -- _i -> 1 `i ]
+[e $ >= _i -> 0 `i 2046  ]
+[e :U 2047 ]
+}
+"187
+[; ;pathfinder.c: 187:         Operation_Count = 0;
+[e = _Operation_Count -> -> 0 `i `uc ]
+"188
+[; ;pathfinder.c: 188:         for (int i = 0; i < 50; ++i) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 50 `i 2068  ]
+[e $U 2069  ]
+[e :U 2068 ]
+{
+"189
+[; ;pathfinder.c: 189:             Operation_History[i] = 0;
+[e = *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux -> -> 0 `i `uc ]
+"190
+[; ;pathfinder.c: 190:         }
+}
+[e =+ _i -> 1 `i ]
+[e $ < _i -> 50 `i 2068  ]
+[e :U 2069 ]
+}
+"192
+[; ;pathfinder.c: 192:         break;
+[e $U 2045  ]
+"193
+[; ;pathfinder.c: 193:     }
+}
+[e :U 2043 ]
+[e $U 2044  ]
+[e :U 2045 ]
+"194
+[; ;pathfinder.c: 194: }
+[e :UE 2042 ]
 }

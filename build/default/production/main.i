@@ -24376,8 +24376,8 @@ void TxBufferedString(char *string);
 void sendTxBuf(void);
 # 15 "main.c" 2
 
-# 1 "./pathfinder_file.h" 1
-# 12 "./pathfinder_file.h"
+# 1 "./pathfinder.h" 1
+# 12 "./pathfinder.h"
 void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR);
 void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
 
@@ -24450,7 +24450,6 @@ void main(void){
 
 
     while(1){
-
 
 
         pause_until_RF2_pressed();

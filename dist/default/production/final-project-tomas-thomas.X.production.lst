@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Fri Mar 15 05:17:33 2024
+                                                                                               Fri Mar 15 09:53:19 2024
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	18F67K40
@@ -780,7 +780,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
    766                           ; 1 bytes @ 0x28
    767   000029                     	ds	1
    768   00002A                     ??___fldiv:
-   769   00002A                     maze_return@i_1875:
+   769   00002A                     maze_return@i_2039:
    770                           	callstack 0
    771                           
    772                           ; 2 bytes @ 0x29
@@ -1089,10 +1089,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1070   004550  6FE8               	movwf	(_calibration+8)& (0+255),b
   1071   004552                     l4540:
   1072                           
-  1073                           ;main.c: 80:         pause_until_RF2_pressed();
+  1073                           ;main.c: 79:         pause_until_RF2_pressed();
   1074   004552  EC5A  F024         	call	_pause_until_RF2_pressed	;wreg free
   1075   004556                     
-  1076                           ;main.c: 82:         calibration_routine(&calibration, &motorL, &motorR);
+  1076                           ;main.c: 81:         calibration_routine(&calibration, &motorL, &motorR);
   1077   004556  0EE0               	movlw	low _calibration
   1078   004558  6E21               	movwf	calibration_routine@c^0,c
   1079   00455A  0EF2               	movlw	low _motorL
@@ -1101,7 +1101,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1082   004560  6E23               	movwf	calibration_routine@mR^0,c
   1083   004562  EC94  F01A         	call	_calibration_routine	;wreg free
   1084   004566                     
-  1085                           ;main.c: 84:         maze_search(&calibration, &motorL, &motorR);
+  1085                           ;main.c: 83:         maze_search(&calibration, &motorL, &motorR);
   1086   004566  0EE0               	movlw	low _calibration
   1087   004568  0100               	movlb	0	; () banked
   1088   00456A  6FD3               	movwf	maze_search@c& (0+255),b
@@ -1111,7 +1111,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1092   004572  6FD5               	movwf	maze_search@mR& (0+255),b
   1093   004574  ECB0  F00F         	call	_maze_search	;wreg free
   1094   004578                     
-  1095                           ;main.c: 86:         maze_return(&calibration, &motorL, &motorR);
+  1095                           ;main.c: 85:         maze_return(&calibration, &motorL, &motorR);
   1096   004578  0EE0               	movlw	low _calibration
   1097   00457A  6E21               	movwf	maze_return@c^0,c
   1098   00457C  0EF2               	movlw	low _motorL
@@ -1165,10 +1165,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1141                           	callstack 30
   1142   0048B4                     l178:
   1143                           
-  1144                           ;calibration.c: 12:         LATDbits.LATD7 = 1;
+  1144                           ;calibration.c: 13:         LATDbits.LATD7 = 1;
   1145   0048B4  8E7C               	bsf	124,7,c	;volatile
   1146   0048B6                     
-  1147                           ;calibration.c: 13:         _delay((unsigned long)((100)*(64000000/4000.0)));
+  1147                           ;calibration.c: 14:         _delay((unsigned long)((100)*(64000000/4000.0)));
   1148   0048B6  0E09               	movlw	9
   1149   0048B8  6E02               	movwf	(??_pause_until_RF2_pressed+1)^0,c
   1150   0048BA  0E1E               	movlw	30
@@ -1183,10 +1183,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1159   0048CA  D7FA               	bra	u5147
   1160   0048CC  D000               	nop2	
   1161   0048CE                     
-  1162                           ;calibration.c: 14:         LATDbits.LATD7 = 0;
+  1162                           ;calibration.c: 15:         LATDbits.LATD7 = 0;
   1163   0048CE  9E7C               	bcf	124,7,c	;volatile
   1164                           
-  1165                           ;calibration.c: 15:         _delay((unsigned long)((100)*(64000000/4000.0)));
+  1165                           ;calibration.c: 16:         _delay((unsigned long)((100)*(64000000/4000.0)));
   1166   0048D0  0E09               	movlw	9
   1167   0048D2  6E02               	movwf	(??_pause_until_RF2_pressed+1)^0,c
   1168   0048D4  0E1E               	movlw	30
@@ -1201,7 +1201,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1177   0048E4  D7FA               	bra	u5157
   1178   0048E6  D000               	nop2	
   1179   0048E8                     
-  1180                           ;calibration.c: 17:         if(!PORTFbits.RF2){
+  1180                           ;calibration.c: 18:         if(!PORTFbits.RF2){
   1181   0048E8  B48E               	btfsc	142,2,c	;volatile
   1182   0048EA  EF79  F024         	goto	u4711
   1183   0048EE  EF7B  F024         	goto	u4710
@@ -1209,7 +1209,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1185   0048F2  EF5A  F024         	goto	l178
   1186   0048F6                     u4710:
   1187   0048F6                     
-  1188                           ;calibration.c: 18:         _delay((unsigned long)((200)*(64000000/4000.0)));
+  1188                           ;calibration.c: 19:         _delay((unsigned long)((200)*(64000000/4000.0)));
   1189   0048F6  0E11               	movlw	17
   1190   0048F8  6E02               	movwf	(??_pause_until_RF2_pressed+1)^0,c
   1191   0048FA  0E3C               	movlw	60
@@ -1224,7 +1224,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1200   00490A  D7FA               	bra	u5167
   1201   00490C  0000               	nop	
   1202   00490E                     
-  1203                           ;calibration.c: 19:         LATDbits.LATD7 = 0;
+  1203                           ;calibration.c: 20:         LATDbits.LATD7 = 0;
   1204   00490E  9E7C               	bcf	124,7,c	;volatile
   1205   004910  0012               	return		;funcret
   1206   004912                     __end_of_pause_until_RF2_pressed:
@@ -1232,7 +1232,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1208                           
   1209 ;; *************** function _maze_search *****************
   1210 ;; Defined at:
-  1211 ;;		line 6 in file "pathfinder_file.c"
+  1211 ;;		line 6 in file "pathfinder.c"
   1212 ;; Parameters:    Size  Location     Type
   1213 ;;  c               1  115[BANK0 ] PTR struct calibration_s
   1214 ;;		 -> calibration(9), 
@@ -1281,11 +1281,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1252   001F60                     _maze_search:
   1253                           	callstack 25
   1254   001F60                     
-  1255                           ;pathfinder_file.c: 9:     color_click_init();
+  1255                           ;pathfinder.c: 9:     color_click_init();
   1256   001F60  EC6D  F025         	call	_color_click_init	;wreg free
   1257   001F64                     l4272:
   1258                           
-  1259                           ;pathfinder_file.c: 13:         _delay((unsigned long)((500)*(64000000/4000.0)));
+  1259                           ;pathfinder.c: 13:         _delay((unsigned long)((500)*(64000000/4000.0)));
   1260   001F64  0E29               	movlw	41
   1261   001F66  6E5F               	movwf	(??_maze_search+1)^0,c
   1262   001F68  0E96               	movlw	150
@@ -1300,13 +1300,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1271   001F78  D7FA               	bra	u5177
   1272   001F7A  0000               	nop	
   1273   001F7C                     
-  1274                           ;pathfinder_file.c: 14:         LATHbits.LATH3 = 1;
+  1274                           ;pathfinder.c: 14:         LATHbits.LATH3 = 1;
   1275   001F7C  8680               	bsf	128,3,c	;volatile
   1276   001F7E                     
-  1277                           ;pathfinder_file.c: 15:         LATDbits.LATD7 = 1;
+  1277                           ;pathfinder.c: 15:         LATDbits.LATD7 = 1;
   1278   001F7E  8E7C               	bsf	124,7,c	;volatile
   1279   001F80                     
-  1280                           ;pathfinder_file.c: 18:         forward(c->forward_one, mL, mR);
+  1280                           ;pathfinder.c: 18:         forward(c->forward_one, mL, mR);
   1281   001F80  C0D4  F013         	movff	maze_search@mL,forward@mL
   1282   001F84  C0D5  F014         	movff	maze_search@mR,forward@mR
   1283   001F88  0100               	movlb	0	; () banked
@@ -1318,20 +1318,20 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1289   001F94  50DF               	movf	indf2,w,c
   1290   001F96  EC85  F01C         	call	_forward
   1291   001F9A                     
-  1292                           ;pathfinder_file.c: 19:         Forward_Count++;
+  1292                           ;pathfinder.c: 19:         Forward_Count++;
   1293   001F9A  0100               	movlb	0	; () banked
   1294   001F9C  2BDA               	incf	_Forward_Count& (0+255),f,b
   1295   001F9E                     
   1296                           ; BSR set to: 0
-  1297                           ;pathfinder_file.c: 20:         Color_Value = color_cardCheck();
+  1297                           ;pathfinder.c: 20:         Color_Value = color_cardCheck();
   1298   001F9E  EC01  F007         	call	_color_cardCheck	;wreg free
   1299   001FA2  C05C  F0D8         	movff	?_color_cardCheck,_Color_Value
   1300   001FA6  C05D  F0D9         	movff	?_color_cardCheck+1,_Color_Value+1
   1301   001FAA                     
-  1302                           ;pathfinder_file.c: 22:         LATHbits.LATH3 = 0;
+  1302                           ;pathfinder.c: 22:         LATHbits.LATH3 = 0;
   1303   001FAA  9680               	bcf	128,3,c	;volatile
   1304   001FAC                     
-  1305                           ;pathfinder_file.c: 23:         LATDbits.LATD7 = 0;
+  1305                           ;pathfinder.c: 23:         LATDbits.LATD7 = 0;
   1306   001FAC  9E7C               	bcf	124,7,c	;volatile
   1307   001FAE  0E0F               	movlw	15
   1308   001FB0  0100               	movlb	0	; () banked
@@ -1343,7 +1343,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1314   001FC0                     u4810:
   1315   001FC0                     
   1316                           ; BSR set to: 0
-  1317                           ;pathfinder_file.c: 29:             backward(c->backward_half, mL, mR);
+  1317                           ;pathfinder.c: 29:             backward(c->backward_half, mL, mR);
   1318   001FC0  C0D4  F013         	movff	maze_search@mL,backward@mL
   1319   001FC4  C0D5  F014         	movff	maze_search@mR,backward@mR
   1320   001FC8  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1354,7 +1354,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1325   001FD2  50DF               	movf	indf2,w,c
   1326   001FD4  ECC3  F01E         	call	_backward
   1327                           
-  1328                           ;pathfinder_file.c: 30:             rightTURN(c->right_90, mL, mR);
+  1328                           ;pathfinder.c: 30:             rightTURN(c->right_90, mL, mR);
   1329   001FD8  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1330   001FDC  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1331   001FE0  0100               	movlb	0	; () banked
@@ -1366,7 +1366,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1337   001FEC  50DF               	movf	indf2,w,c
   1338   001FEE  EC45  F01D         	call	_rightTURN
   1339                           
-  1340                           ;pathfinder_file.c: 31:             rightTURN(c->right_90, mL, mR);
+  1340                           ;pathfinder.c: 31:             rightTURN(c->right_90, mL, mR);
   1341   001FF2  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1342   001FF6  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1343   001FFA  0100               	movlb	0	; () banked
@@ -1378,7 +1378,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1349   002006  50DF               	movf	indf2,w,c
   1350   002008  EC45  F01D         	call	_rightTURN
   1351                           
-  1352                           ;pathfinder_file.c: 32:             backward(c->backward_one, mL, mR);
+  1352                           ;pathfinder.c: 32:             backward(c->backward_one, mL, mR);
   1353   00200C  C0D4  F013         	movff	maze_search@mL,backward@mL
   1354   002010  C0D5  F014         	movff	maze_search@mR,backward@mR
   1355   002014  0100               	movlb	0	; () banked
@@ -1390,7 +1390,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1361   002020  50DF               	movf	indf2,w,c
   1362   002022  ECC3  F01E         	call	_backward
   1363   002026                     
-  1364                           ;pathfinder_file.c: 33:             for (int i = 0; i < forward_reset_threshold; i++) {
+  1364                           ;pathfinder.c: 33:             for (int i = 0; i < forward_reset_threshold; i++) {
   1365   002026  0E00               	movlw	0
   1366   002028  0100               	movlb	0	; () banked
   1367   00202A  6FD7               	movwf	(maze_search@i+1)& (0+255),b
@@ -1400,7 +1400,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1371   002034                     l4294:
   1372                           
   1373                           ; BSR set to: 0
-  1374                           ;pathfinder_file.c: 34:                  forward(c->forward_one, mL, mR);
+  1374                           ;pathfinder.c: 34:                  forward(c->forward_one, mL, mR);
   1375   002034  C0D4  F013         	movff	maze_search@mL,forward@mL
   1376   002038  C0D5  F014         	movff	maze_search@mR,forward@mR
   1377   00203C  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1411,7 +1411,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1382   002046  50DF               	movf	indf2,w,c
   1383   002048  EC85  F01C         	call	_forward
   1384   00204C                     
-  1385                           ;pathfinder_file.c: 36:             }
+  1385                           ;pathfinder.c: 36:             }
   1386   00204C  0100               	movlb	0	; () banked
   1387   00204E  4BD6               	infsnz	maze_search@i& (0+255),f,b
   1388   002050  2BD7               	incf	(maze_search@i+1)& (0+255),f,b
@@ -1432,7 +1432,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1403   00206E                     u4820:
   1404   00206E                     
   1405                           ; BSR set to: 0
-  1406                           ;pathfinder_file.c: 37:             backward(c->backward_half, mL, mR);
+  1406                           ;pathfinder.c: 37:             backward(c->backward_half, mL, mR);
   1407   00206E  C0D4  F013         	movff	maze_search@mL,backward@mL
   1408   002072  C0D5  F014         	movff	maze_search@mR,backward@mR
   1409   002076  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1443,12 +1443,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1414   002080  50DF               	movf	indf2,w,c
   1415   002082  ECC3  F01E         	call	_backward
   1416                           
-  1417                           ;pathfinder_file.c: 38:             break;
-  1418   002086  EF10  F012         	goto	l484
+  1417                           ;pathfinder.c: 38:             break;
+  1418   002086  EF10  F012         	goto	l568
   1419   00208A                     l4302:
   1420                           
   1421                           ; BSR set to: 0
-  1422                           ;pathfinder_file.c: 41:         if(Color_Value != 0){
+  1422                           ;pathfinder.c: 41:         if(Color_Value != 0){
   1423   00208A  51D8               	movf	_Color_Value& (0+255),w,b
   1424   00208C  11D9               	iorwf	(_Color_Value+1)& (0+255),w,b
   1425   00208E  B4D8               	btfsc	status,2,c
@@ -1459,8 +1459,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1430   00209C                     u4830:
   1431   00209C                     
   1432                           ; BSR set to: 0
-  1433                           ;pathfinder_file.c: 43:             Operation_History[Operation_Count] = Forward_Count +
-      +                           10;
+  1433                           ;pathfinder.c: 43:             Operation_History[Operation_Count] = Forward_Count + 10;
   1434   00209C  0E3C               	movlw	low _Operation_History
   1435   00209E  25DB               	addwf	_Operation_Count& (0+255),w,b
   1436   0020A0  6ED9               	movwf	fsr2l,c
@@ -1472,16 +1471,16 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1442   0020AC  6EDF               	movwf	indf2,c
   1443   0020AE                     
   1444                           ; BSR set to: 0
-  1445                           ;pathfinder_file.c: 44:             Forward_Count = 0;
+  1445                           ;pathfinder.c: 44:             Forward_Count = 0;
   1446   0020AE  0E00               	movlw	0
   1447   0020B0  6FDA               	movwf	_Forward_Count& (0+255),b
   1448   0020B2                     
   1449                           ; BSR set to: 0
-  1450                           ;pathfinder_file.c: 45:             Operation_Count++;
+  1450                           ;pathfinder.c: 45:             Operation_Count++;
   1451   0020B2  2BDB               	incf	_Operation_Count& (0+255),f,b
   1452   0020B4                     
   1453                           ; BSR set to: 0
-  1454                           ;pathfinder_file.c: 47:             if(Color_Value == 1){
+  1454                           ;pathfinder.c: 47:             if(Color_Value == 1){
   1455   0020B4  05D8               	decf	_Color_Value& (0+255),w,b
   1456   0020B6  11D9               	iorwf	(_Color_Value+1)& (0+255),w,b
   1457   0020B8  A4D8               	btfss	status,2,c
@@ -1492,8 +1491,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1462   0020C6                     u4840:
   1463   0020C6                     
   1464                           ; BSR set to: 0
-  1465                           ;pathfinder_file.c: 48:                 Operation_History[Operation_Count] = Color_Value
-      +                          ;
+  1465                           ;pathfinder.c: 48:                 Operation_History[Operation_Count] = Color_Value;
   1466   0020C6  0E3C               	movlw	low _Operation_History
   1467   0020C8  25DB               	addwf	_Operation_Count& (0+255),w,b
   1468   0020CA  6ED9               	movwf	fsr2l,c
@@ -1503,11 +1501,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1472   0020D2  C0D8  FFDF         	movff	_Color_Value,indf2
   1473   0020D6                     
   1474                           ; BSR set to: 0
-  1475                           ;pathfinder_file.c: 49:                 Operation_Count++;
+  1475                           ;pathfinder.c: 49:                 Operation_Count++;
   1476   0020D6  2BDB               	incf	_Operation_Count& (0+255),f,b
   1477   0020D8                     
   1478                           ; BSR set to: 0
-  1479                           ;pathfinder_file.c: 50:                 backward(c->backward_half, mL, mR);
+  1479                           ;pathfinder.c: 50:                 backward(c->backward_half, mL, mR);
   1480   0020D8  C0D4  F013         	movff	maze_search@mL,backward@mL
   1481   0020DC  C0D5  F014         	movff	maze_search@mR,backward@mR
   1482   0020E0  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1518,7 +1516,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1487   0020EA  50DF               	movf	indf2,w,c
   1488   0020EC  ECC3  F01E         	call	_backward
   1489   0020F0                     
-  1490                           ;pathfinder_file.c: 51:                 rightTURN(c->right_90, mL, mR);
+  1490                           ;pathfinder.c: 51:                 rightTURN(c->right_90, mL, mR);
   1491   0020F0  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1492   0020F4  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1493   0020F8  0100               	movlb	0	; () banked
@@ -1530,7 +1528,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1499   002104  50DF               	movf	indf2,w,c
   1500   002106  EC45  F01D         	call	_rightTURN
   1501                           
-  1502                           ;pathfinder_file.c: 52:             }
+  1502                           ;pathfinder.c: 52:             }
   1503   00210A  EFB2  F00F         	goto	l4272
   1504   00210E                     l4320:
   1505                           
@@ -1546,8 +1544,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1515   002122                     u4850:
   1516   002122                     
   1517                           ; BSR set to: 0
-  1518                           ;pathfinder_file.c: 55:                 Operation_History[Operation_Count] = Color_Value
-      +                          ;
+  1518                           ;pathfinder.c: 55:                 Operation_History[Operation_Count] = Color_Value;
   1519   002122  0E3C               	movlw	low _Operation_History
   1520   002124  25DB               	addwf	_Operation_Count& (0+255),w,b
   1521   002126  6ED9               	movwf	fsr2l,c
@@ -1557,11 +1554,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1525   00212E  C0D8  FFDF         	movff	_Color_Value,indf2
   1526   002132                     
   1527                           ; BSR set to: 0
-  1528                           ;pathfinder_file.c: 56:                 Operation_Count++;
+  1528                           ;pathfinder.c: 56:                 Operation_Count++;
   1529   002132  2BDB               	incf	_Operation_Count& (0+255),f,b
   1530   002134                     
   1531                           ; BSR set to: 0
-  1532                           ;pathfinder_file.c: 57:                 backward(c->backward_half, mL, mR);
+  1532                           ;pathfinder.c: 57:                 backward(c->backward_half, mL, mR);
   1533   002134  C0D4  F013         	movff	maze_search@mL,backward@mL
   1534   002138  C0D5  F014         	movff	maze_search@mR,backward@mR
   1535   00213C  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1572,7 +1569,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1540   002146  50DF               	movf	indf2,w,c
   1541   002148  ECC3  F01E         	call	_backward
   1542   00214C                     
-  1543                           ;pathfinder_file.c: 58:                 leftTURN(c->left_90, mL, mR);
+  1543                           ;pathfinder.c: 58:                 leftTURN(c->left_90, mL, mR);
   1544   00214C  C0D4  F013         	movff	maze_search@mL,leftTURN@mL
   1545   002150  C0D5  F014         	movff	maze_search@mR,leftTURN@mR
   1546   002154  0100               	movlb	0	; () banked
@@ -1584,7 +1581,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1552   002160  50DF               	movf	indf2,w,c
   1553   002162  EC04  F01E         	call	_leftTURN
   1554                           
-  1555                           ;pathfinder_file.c: 59:             }
+  1555                           ;pathfinder.c: 59:             }
   1556   002166  EFB2  F00F         	goto	l4272
   1557   00216A                     l4330:
   1558                           
@@ -1600,8 +1597,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1568   00217E                     u4860:
   1569   00217E                     
   1570                           ; BSR set to: 0
-  1571                           ;pathfinder_file.c: 62:                 Operation_History[Operation_Count] = Color_Value
-      +                          ;
+  1571                           ;pathfinder.c: 62:                 Operation_History[Operation_Count] = Color_Value;
   1572   00217E  0E3C               	movlw	low _Operation_History
   1573   002180  25DB               	addwf	_Operation_Count& (0+255),w,b
   1574   002182  6ED9               	movwf	fsr2l,c
@@ -1611,11 +1607,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1578   00218A  C0D8  FFDF         	movff	_Color_Value,indf2
   1579   00218E                     
   1580                           ; BSR set to: 0
-  1581                           ;pathfinder_file.c: 63:                 Operation_Count++;
+  1581                           ;pathfinder.c: 63:                 Operation_Count++;
   1582   00218E  2BDB               	incf	_Operation_Count& (0+255),f,b
   1583   002190                     
   1584                           ; BSR set to: 0
-  1585                           ;pathfinder_file.c: 64:                 backward(c->backward_half, mL, mR);
+  1585                           ;pathfinder.c: 64:                 backward(c->backward_half, mL, mR);
   1586   002190  C0D4  F013         	movff	maze_search@mL,backward@mL
   1587   002194  C0D5  F014         	movff	maze_search@mR,backward@mR
   1588   002198  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1626,7 +1622,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1593   0021A2  50DF               	movf	indf2,w,c
   1594   0021A4  ECC3  F01E         	call	_backward
   1595   0021A8                     
-  1596                           ;pathfinder_file.c: 65:                 rightTURN(c->right_90, mL, mR);
+  1596                           ;pathfinder.c: 65:                 rightTURN(c->right_90, mL, mR);
   1597   0021A8  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1598   0021AC  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1599   0021B0  0100               	movlb	0	; () banked
@@ -1638,7 +1634,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1605   0021BC  50DF               	movf	indf2,w,c
   1606   0021BE  EC45  F01D         	call	_rightTURN
   1607   0021C2                     
-  1608                           ;pathfinder_file.c: 66:                 rightTURN(c->right_90, mL, mR);
+  1608                           ;pathfinder.c: 66:                 rightTURN(c->right_90, mL, mR);
   1609   0021C2  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1610   0021C6  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1611   0021CA  0100               	movlb	0	; () banked
@@ -1650,7 +1646,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1617   0021D6  50DF               	movf	indf2,w,c
   1618   0021D8  EC45  F01D         	call	_rightTURN
   1619                           
-  1620                           ;pathfinder_file.c: 67:             }
+  1620                           ;pathfinder.c: 67:             }
   1621   0021DC  EFB2  F00F         	goto	l4272
   1622   0021E0                     l4342:
   1623                           
@@ -1666,8 +1662,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1633   0021F4                     u4870:
   1634   0021F4                     
   1635                           ; BSR set to: 0
-  1636                           ;pathfinder_file.c: 70:                 Operation_History[Operation_Count] = Color_Value
-      +                          ;
+  1636                           ;pathfinder.c: 70:                 Operation_History[Operation_Count] = Color_Value;
   1637   0021F4  0E3C               	movlw	low _Operation_History
   1638   0021F6  25DB               	addwf	_Operation_Count& (0+255),w,b
   1639   0021F8  6ED9               	movwf	fsr2l,c
@@ -1677,11 +1672,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1643   002200  C0D8  FFDF         	movff	_Color_Value,indf2
   1644   002204                     
   1645                           ; BSR set to: 0
-  1646                           ;pathfinder_file.c: 71:                 Operation_Count++;
+  1646                           ;pathfinder.c: 71:                 Operation_Count++;
   1647   002204  2BDB               	incf	_Operation_Count& (0+255),f,b
   1648   002206                     
   1649                           ; BSR set to: 0
-  1650                           ;pathfinder_file.c: 72:                 backward(c->backward_half, mL, mR);
+  1650                           ;pathfinder.c: 72:                 backward(c->backward_half, mL, mR);
   1651   002206  C0D4  F013         	movff	maze_search@mL,backward@mL
   1652   00220A  C0D5  F014         	movff	maze_search@mR,backward@mR
   1653   00220E  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1692,7 +1687,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1658   002218  50DF               	movf	indf2,w,c
   1659   00221A  ECC3  F01E         	call	_backward
   1660   00221E                     
-  1661                           ;pathfinder_file.c: 73:                 backward(c->backward_one, mL, mR);
+  1661                           ;pathfinder.c: 73:                 backward(c->backward_one, mL, mR);
   1662   00221E  C0D4  F013         	movff	maze_search@mL,backward@mL
   1663   002222  C0D5  F014         	movff	maze_search@mR,backward@mR
   1664   002226  0100               	movlb	0	; () banked
@@ -1704,7 +1699,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1670   002232  50DF               	movf	indf2,w,c
   1671   002234  ECC3  F01E         	call	_backward
   1672   002238                     
-  1673                           ;pathfinder_file.c: 74:                 rightTURN(c->right_90, mL, mR);
+  1673                           ;pathfinder.c: 74:                 rightTURN(c->right_90, mL, mR);
   1674   002238  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1675   00223C  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1676   002240  0100               	movlb	0	; () banked
@@ -1716,7 +1711,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1682   00224C  50DF               	movf	indf2,w,c
   1683   00224E  EC45  F01D         	call	_rightTURN
   1684                           
-  1685                           ;pathfinder_file.c: 75:             }
+  1685                           ;pathfinder.c: 75:             }
   1686   002252  EFB2  F00F         	goto	l4272
   1687   002256                     l4354:
   1688                           
@@ -1732,8 +1727,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1698   00226A                     u4880:
   1699   00226A                     
   1700                           ; BSR set to: 0
-  1701                           ;pathfinder_file.c: 78:                 Operation_History[Operation_Count] = Color_Value
-      +                          ;
+  1701                           ;pathfinder.c: 78:                 Operation_History[Operation_Count] = Color_Value;
   1702   00226A  0E3C               	movlw	low _Operation_History
   1703   00226C  25DB               	addwf	_Operation_Count& (0+255),w,b
   1704   00226E  6ED9               	movwf	fsr2l,c
@@ -1743,11 +1737,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1708   002276  C0D8  FFDF         	movff	_Color_Value,indf2
   1709   00227A                     
   1710                           ; BSR set to: 0
-  1711                           ;pathfinder_file.c: 79:                 Operation_Count++;
+  1711                           ;pathfinder.c: 79:                 Operation_Count++;
   1712   00227A  2BDB               	incf	_Operation_Count& (0+255),f,b
   1713   00227C                     
   1714                           ; BSR set to: 0
-  1715                           ;pathfinder_file.c: 80:                 backward(c->backward_half, mL, mR);
+  1715                           ;pathfinder.c: 80:                 backward(c->backward_half, mL, mR);
   1716   00227C  C0D4  F013         	movff	maze_search@mL,backward@mL
   1717   002280  C0D5  F014         	movff	maze_search@mR,backward@mR
   1718   002284  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1758,7 +1752,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1723   00228E  50DF               	movf	indf2,w,c
   1724   002290  ECC3  F01E         	call	_backward
   1725   002294                     
-  1726                           ;pathfinder_file.c: 81:                 backward(c->backward_one, mL, mR);
+  1726                           ;pathfinder.c: 81:                 backward(c->backward_one, mL, mR);
   1727   002294  C0D4  F013         	movff	maze_search@mL,backward@mL
   1728   002298  C0D5  F014         	movff	maze_search@mR,backward@mR
   1729   00229C  0100               	movlb	0	; () banked
@@ -1770,7 +1764,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1735   0022A8  50DF               	movf	indf2,w,c
   1736   0022AA  ECC3  F01E         	call	_backward
   1737   0022AE                     
-  1738                           ;pathfinder_file.c: 82:                 leftTURN(c->left_90, mL, mR);
+  1738                           ;pathfinder.c: 82:                 leftTURN(c->left_90, mL, mR);
   1739   0022AE  C0D4  F013         	movff	maze_search@mL,leftTURN@mL
   1740   0022B2  C0D5  F014         	movff	maze_search@mR,leftTURN@mR
   1741   0022B6  0100               	movlb	0	; () banked
@@ -1782,7 +1776,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1747   0022C2  50DF               	movf	indf2,w,c
   1748   0022C4  EC04  F01E         	call	_leftTURN
   1749                           
-  1750                           ;pathfinder_file.c: 83:             }
+  1750                           ;pathfinder.c: 83:             }
   1751   0022C8  EFB2  F00F         	goto	l4272
   1752   0022CC                     l4366:
   1753                           
@@ -1798,8 +1792,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1763   0022E0                     u4890:
   1764   0022E0                     
   1765                           ; BSR set to: 0
-  1766                           ;pathfinder_file.c: 86:                 Operation_History[Operation_Count] = Color_Value
-      +                          ;
+  1766                           ;pathfinder.c: 86:                 Operation_History[Operation_Count] = Color_Value;
   1767   0022E0  0E3C               	movlw	low _Operation_History
   1768   0022E2  25DB               	addwf	_Operation_Count& (0+255),w,b
   1769   0022E4  6ED9               	movwf	fsr2l,c
@@ -1809,11 +1802,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1773   0022EC  C0D8  FFDF         	movff	_Color_Value,indf2
   1774   0022F0                     
   1775                           ; BSR set to: 0
-  1776                           ;pathfinder_file.c: 87:                 Operation_Count++;
+  1776                           ;pathfinder.c: 87:                 Operation_Count++;
   1777   0022F0  2BDB               	incf	_Operation_Count& (0+255),f,b
   1778   0022F2                     
   1779                           ; BSR set to: 0
-  1780                           ;pathfinder_file.c: 88:                 backward(c->backward_half, mL, mR);
+  1780                           ;pathfinder.c: 88:                 backward(c->backward_half, mL, mR);
   1781   0022F2  C0D4  F013         	movff	maze_search@mL,backward@mL
   1782   0022F6  C0D5  F014         	movff	maze_search@mR,backward@mR
   1783   0022FA  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1824,7 +1817,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1788   002304  50DF               	movf	indf2,w,c
   1789   002306  ECC3  F01E         	call	_backward
   1790   00230A                     
-  1791                           ;pathfinder_file.c: 89:                 rightTURN(c->right_135, mL, mR);
+  1791                           ;pathfinder.c: 89:                 rightTURN(c->right_135, mL, mR);
   1792   00230A  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1793   00230E  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1794   002312  0100               	movlb	0	; () banked
@@ -1836,7 +1829,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1800   00231E  50DF               	movf	indf2,w,c
   1801   002320  EC45  F01D         	call	_rightTURN
   1802                           
-  1803                           ;pathfinder_file.c: 90:             }
+  1803                           ;pathfinder.c: 90:             }
   1804   002324  EFB2  F00F         	goto	l4272
   1805   002328                     l4376:
   1806                           
@@ -1852,8 +1845,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1816   00233C                     u4900:
   1817   00233C                     
   1818                           ; BSR set to: 0
-  1819                           ;pathfinder_file.c: 93:                 Operation_History[Operation_Count] = Color_Value
-      +                          ;
+  1819                           ;pathfinder.c: 93:                 Operation_History[Operation_Count] = Color_Value;
   1820   00233C  0E3C               	movlw	low _Operation_History
   1821   00233E  25DB               	addwf	_Operation_Count& (0+255),w,b
   1822   002340  6ED9               	movwf	fsr2l,c
@@ -1863,11 +1855,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1826   002348  C0D8  FFDF         	movff	_Color_Value,indf2
   1827   00234C                     
   1828                           ; BSR set to: 0
-  1829                           ;pathfinder_file.c: 94:                 Operation_Count++;
+  1829                           ;pathfinder.c: 94:                 Operation_Count++;
   1830   00234C  2BDB               	incf	_Operation_Count& (0+255),f,b
   1831   00234E                     
   1832                           ; BSR set to: 0
-  1833                           ;pathfinder_file.c: 95:                 backward(c->backward_half, mL, mR);
+  1833                           ;pathfinder.c: 95:                 backward(c->backward_half, mL, mR);
   1834   00234E  C0D4  F013         	movff	maze_search@mL,backward@mL
   1835   002352  C0D5  F014         	movff	maze_search@mR,backward@mR
   1836   002356  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1878,7 +1870,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1841   002360  50DF               	movf	indf2,w,c
   1842   002362  ECC3  F01E         	call	_backward
   1843   002366                     
-  1844                           ;pathfinder_file.c: 96:                 leftTURN(c->left_135, mL, mR);
+  1844                           ;pathfinder.c: 96:                 leftTURN(c->left_135, mL, mR);
   1845   002366  C0D4  F013         	movff	maze_search@mL,leftTURN@mL
   1846   00236A  C0D5  F014         	movff	maze_search@mR,leftTURN@mR
   1847   00236E  0100               	movlb	0	; () banked
@@ -1890,7 +1882,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1853   00237A  50DF               	movf	indf2,w,c
   1854   00237C  EC04  F01E         	call	_leftTURN
   1855                           
-  1856                           ;pathfinder_file.c: 97:             }
+  1856                           ;pathfinder.c: 97:             }
   1857   002380  EFB2  F00F         	goto	l4272
   1858   002384                     l4386:
   1859                           
@@ -1902,11 +1894,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1865   00238C  EFCA  F011         	goto	u4911
   1866   002390  EFCC  F011         	goto	u4910
   1867   002394                     u4911:
-  1868   002394  EF0E  F012         	goto	l477
+  1868   002394  EF0E  F012         	goto	l561
   1869   002398                     u4910:
   1870   002398                     
   1871                           ; BSR set to: 0
-  1872                           ;pathfinder_file.c: 101:                 backward(c->backward_half, mL, mR);
+  1872                           ;pathfinder.c: 101:                 backward(c->backward_half, mL, mR);
   1873   002398  C0D4  F013         	movff	maze_search@mL,backward@mL
   1874   00239C  C0D5  F014         	movff	maze_search@mR,backward@mR
   1875   0023A0  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1917,7 +1909,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1880   0023AA  50DF               	movf	indf2,w,c
   1881   0023AC  ECC3  F01E         	call	_backward
   1882                           
-  1883                           ;pathfinder_file.c: 102:                 rightTURN(c->right_90, mL, mR);
+  1883                           ;pathfinder.c: 102:                 rightTURN(c->right_90, mL, mR);
   1884   0023B0  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1885   0023B4  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1886   0023B8  0100               	movlb	0	; () banked
@@ -1929,7 +1921,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1892   0023C4  50DF               	movf	indf2,w,c
   1893   0023C6  EC45  F01D         	call	_rightTURN
   1894                           
-  1895                           ;pathfinder_file.c: 103:                 rightTURN(c->right_90, mL, mR);
+  1895                           ;pathfinder.c: 103:                 rightTURN(c->right_90, mL, mR);
   1896   0023CA  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1897   0023CE  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1898   0023D2  0100               	movlb	0	; () banked
@@ -1941,7 +1933,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1904   0023DE  50DF               	movf	indf2,w,c
   1905   0023E0  EC45  F01D         	call	_rightTURN
   1906                           
-  1907                           ;pathfinder_file.c: 104:                 backward(c->backward_one, mL, mR);
+  1907                           ;pathfinder.c: 104:                 backward(c->backward_one, mL, mR);
   1908   0023E4  C0D4  F013         	movff	maze_search@mL,backward@mL
   1909   0023E8  C0D5  F014         	movff	maze_search@mR,backward@mR
   1910   0023EC  0100               	movlb	0	; () banked
@@ -1953,7 +1945,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1916   0023F8  50DF               	movf	indf2,w,c
   1917   0023FA  ECC3  F01E         	call	_backward
   1918                           
-  1919                           ;pathfinder_file.c: 105:                 forward(c->forward_half, mL, mR);
+  1919                           ;pathfinder.c: 105:                 forward(c->forward_half, mL, mR);
   1920   0023FE  C0D4  F013         	movff	maze_search@mL,forward@mL
   1921   002402  C0D5  F014         	movff	maze_search@mR,forward@mR
   1922   002406  0100               	movlb	0	; () banked
@@ -1965,13 +1957,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1928   002412  50DF               	movf	indf2,w,c
   1929   002414  EC85  F01C         	call	_forward
   1930                           
-  1931                           ;pathfinder_file.c: 106:                 break;
-  1932   002418  EF10  F012         	goto	l484
-  1933   00241C                     l477:
+  1931                           ;pathfinder.c: 106:                 break;
+  1932   002418  EF10  F012         	goto	l568
+  1933   00241C                     l561:
   1934                           
   1935                           ; BSR set to: 0
   1936   00241C  EFB2  F00F         	goto	l4272
-  1937   002420                     l484:
+  1937   002420                     l568:
   1938   002420  0012               	return		;funcret
   1939   002422                     __end_of_maze_search:
   1940                           	callstack 0
@@ -2663,7 +2655,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2605   0011E0  6E05               	movwf	___flge@ff2^0,c
   2606   0011E2  0E00               	movlw	0
   2607   0011E4  6E06               	movwf	(___flge@ff2+1)^0,c
-  2608   0011E6  0E0C               	movlw	12
+  2608   0011E6  0E20               	movlw	32
   2609   0011E8  6E07               	movwf	(___flge@ff2+2)^0,c
   2610   0011EA  0E42               	movlw	66
   2611   0011EC  6E08               	movwf	(___flge@ff2+3)^0,c
@@ -7295,7 +7287,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7135                           
   7136 ;; *************** function _maze_return *****************
   7137 ;; Defined at:
-  7138 ;;		line 112 in file "pathfinder_file.c"
+  7138 ;;		line 112 in file "pathfinder.c"
   7139 ;; Parameters:    Size  Location     Type
   7140 ;;  c               1   32[COMRAM] PTR struct calibration_s
   7141 ;;		 -> calibration(9), 
@@ -7350,7 +7342,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7185   0028E8  6E2C               	movwf	maze_return@i^0,c
   7186   0028EA                     l4396:
   7187                           
-  7188                           ;pathfinder_file.c: 119:             if(Operation_History[i] > 10){
+  7188                           ;pathfinder.c: 119:             if(Operation_History[i] > 10){
   7189   0028EA  0E3C               	movlw	low _Operation_History
   7190   0028EC  242C               	addwf	maze_return@i^0,w,c
   7191   0028EE  6ED9               	movwf	fsr2l,c
@@ -7365,8 +7357,8 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7200   002902  EFC3  F014         	goto	l4410
   7201   002906                     u4920:
   7202   002906                     
-  7203                           ;pathfinder_file.c: 120:                 unsigned char distance_back = Operation_History
-      +                          [i] - 10;
+  7203                           ;pathfinder.c: 120:                 unsigned char distance_back = Operation_History[i] -
+      +                           10;
   7204   002906  0E3C               	movlw	low _Operation_History
   7205   002908  242C               	addwf	maze_return@i^0,w,c
   7206   00290A  6ED9               	movwf	fsr2l,c
@@ -7377,7 +7369,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7211   002914  0FF6               	addlw	246
   7212   002916  6E29               	movwf	maze_return@distance_back^0,c
   7213   002918                     
-  7214                           ;pathfinder_file.c: 121:                 for (int j = 0; j < distance_back-1; j++) {
+  7214                           ;pathfinder.c: 121:                 for (int j = 0; j < distance_back-1; j++) {
   7215   002918  0E00               	movlw	0
   7216   00291A  6E28               	movwf	(maze_return@j+1)^0,c
   7217   00291C  0E00               	movlw	0
@@ -7385,7 +7377,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7219   002920  EFA0  F014         	goto	l4406
   7220   002924                     l4402:
   7221                           
-  7222                           ;pathfinder_file.c: 122:                     forward(c->forward_one, mL, mR);
+  7222                           ;pathfinder.c: 122:                     forward(c->forward_one, mL, mR);
   7223   002924  C022  F013         	movff	maze_return@mL,forward@mL
   7224   002928  C023  F014         	movff	maze_return@mR,forward@mR
   7225   00292C  5021               	movf	maze_return@c^0,w,c
@@ -7396,7 +7388,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7230   002936  50DF               	movf	indf2,w,c
   7231   002938  EC85  F01C         	call	_forward
   7232   00293C                     
-  7233                           ;pathfinder_file.c: 123:                 }
+  7233                           ;pathfinder.c: 123:                 }
   7234   00293C  4A27               	infsnz	maze_return@j^0,f,c
   7235   00293E  2A28               	incf	(maze_return@j+1)^0,f,c
   7236   002940                     l4406:
@@ -7421,7 +7413,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7255   002966  EF92  F014         	goto	l4402
   7256   00296A                     u4930:
   7257   00296A                     
-  7258                           ;pathfinder_file.c: 124:                 forward(c->forward_half, mL, mR);
+  7258                           ;pathfinder.c: 124:                 forward(c->forward_half, mL, mR);
   7259   00296A  C022  F013         	movff	maze_return@mL,forward@mL
   7260   00296E  C023  F014         	movff	maze_return@mR,forward@mR
   7261   002972  5021               	movf	maze_return@c^0,w,c
@@ -7432,7 +7424,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7266   00297C  50DF               	movf	indf2,w,c
   7267   00297E  EC85  F01C         	call	_forward
   7268                           
-  7269                           ;pathfinder_file.c: 126:             }
+  7269                           ;pathfinder.c: 126:             }
   7270   002982  EF89  F016         	goto	l4438
   7271   002986                     l4410:
   7272   002986  0E3C               	movlw	low _Operation_History
@@ -7449,7 +7441,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7283   00299E  EFEB  F014         	goto	l4414
   7284   0029A2                     u4940:
   7285   0029A2                     
-  7286                           ;pathfinder_file.c: 129:                 leftTURN(c->left_90, mL, mR);
+  7286                           ;pathfinder.c: 129:                 leftTURN(c->left_90, mL, mR);
   7287   0029A2  C022  F013         	movff	maze_return@mL,leftTURN@mL
   7288   0029A6  C023  F014         	movff	maze_return@mR,leftTURN@mR
   7289   0029AA  5021               	movf	maze_return@c^0,w,c
@@ -7460,7 +7452,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7294   0029B4  50DF               	movf	indf2,w,c
   7295   0029B6  EC04  F01E         	call	_leftTURN
   7296                           
-  7297                           ;pathfinder_file.c: 130:                 backward(c->backward_one, mL, mR);
+  7297                           ;pathfinder.c: 130:                 backward(c->backward_one, mL, mR);
   7298   0029BA  C022  F013         	movff	maze_return@mL,backward@mL
   7299   0029BE  C023  F014         	movff	maze_return@mR,backward@mR
   7300   0029C2  5021               	movf	maze_return@c^0,w,c
@@ -7471,7 +7463,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7305   0029CC  50DF               	movf	indf2,w,c
   7306   0029CE  ECC3  F01E         	call	_backward
   7307                           
-  7308                           ;pathfinder_file.c: 131:             }
+  7308                           ;pathfinder.c: 131:             }
   7309   0029D2  EF89  F016         	goto	l4438
   7310   0029D6                     l4414:
   7311   0029D6  0E3C               	movlw	low _Operation_History
@@ -7489,7 +7481,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7323   0029F0  EF14  F015         	goto	l4418
   7324   0029F4                     u4950:
   7325   0029F4                     
-  7326                           ;pathfinder_file.c: 134:                 rightTURN(c->right_90, mL, mR);
+  7326                           ;pathfinder.c: 134:                 rightTURN(c->right_90, mL, mR);
   7327   0029F4  C022  F013         	movff	maze_return@mL,rightTURN@mL
   7328   0029F8  C023  F014         	movff	maze_return@mR,rightTURN@mR
   7329   0029FC  5021               	movf	maze_return@c^0,w,c
@@ -7500,7 +7492,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7334   002A06  50DF               	movf	indf2,w,c
   7335   002A08  EC45  F01D         	call	_rightTURN
   7336                           
-  7337                           ;pathfinder_file.c: 135:                 backward(c->backward_one, mL, mR);
+  7337                           ;pathfinder.c: 135:                 backward(c->backward_one, mL, mR);
   7338   002A0C  C022  F013         	movff	maze_return@mL,backward@mL
   7339   002A10  C023  F014         	movff	maze_return@mR,backward@mR
   7340   002A14  5021               	movf	maze_return@c^0,w,c
@@ -7511,7 +7503,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7345   002A1E  50DF               	movf	indf2,w,c
   7346   002A20  ECC3  F01E         	call	_backward
   7347                           
-  7348                           ;pathfinder_file.c: 136:             }
+  7348                           ;pathfinder.c: 136:             }
   7349   002A24  EF89  F016         	goto	l4438
   7350   002A28                     l4418:
   7351   002A28  0E3C               	movlw	low _Operation_History
@@ -7529,7 +7521,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7363   002A42  EF3D  F015         	goto	l4422
   7364   002A46                     u4960:
   7365   002A46                     
-  7366                           ;pathfinder_file.c: 139:                 rightTURN(c->right_90, mL, mR);
+  7366                           ;pathfinder.c: 139:                 rightTURN(c->right_90, mL, mR);
   7367   002A46  C022  F013         	movff	maze_return@mL,rightTURN@mL
   7368   002A4A  C023  F014         	movff	maze_return@mR,rightTURN@mR
   7369   002A4E  5021               	movf	maze_return@c^0,w,c
@@ -7540,7 +7532,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7374   002A58  50DF               	movf	indf2,w,c
   7375   002A5A  EC45  F01D         	call	_rightTURN
   7376                           
-  7377                           ;pathfinder_file.c: 140:                 rightTURN(c->right_90, mL, mR);
+  7377                           ;pathfinder.c: 140:                 rightTURN(c->right_90, mL, mR);
   7378   002A5E  C022  F013         	movff	maze_return@mL,rightTURN@mL
   7379   002A62  C023  F014         	movff	maze_return@mR,rightTURN@mR
   7380   002A66  5021               	movf	maze_return@c^0,w,c
@@ -7551,7 +7543,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7385   002A70  50DF               	movf	indf2,w,c
   7386   002A72  EC45  F01D         	call	_rightTURN
   7387                           
-  7388                           ;pathfinder_file.c: 141:             }
+  7388                           ;pathfinder.c: 141:             }
   7389   002A76  EF89  F016         	goto	l4438
   7390   002A7A                     l4422:
   7391   002A7A  0E3C               	movlw	low _Operation_History
@@ -7569,7 +7561,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7403   002A94  EFAE  F015         	goto	l4426
   7404   002A98                     u4970:
   7405   002A98                     
-  7406                           ;pathfinder_file.c: 145:                 rightTURN(c->right_90, mL, mR);
+  7406                           ;pathfinder.c: 145:                 rightTURN(c->right_90, mL, mR);
   7407   002A98  C022  F013         	movff	maze_return@mL,rightTURN@mL
   7408   002A9C  C023  F014         	movff	maze_return@mR,rightTURN@mR
   7409   002AA0  5021               	movf	maze_return@c^0,w,c
@@ -7580,7 +7572,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7414   002AAA  50DF               	movf	indf2,w,c
   7415   002AAC  EC45  F01D         	call	_rightTURN
   7416                           
-  7417                           ;pathfinder_file.c: 146:                 forward(c->forward_one, mL, mR);
+  7417                           ;pathfinder.c: 146:                 forward(c->forward_one, mL, mR);
   7418   002AB0  C022  F013         	movff	maze_return@mL,forward@mL
   7419   002AB4  C023  F014         	movff	maze_return@mR,forward@mR
   7420   002AB8  5021               	movf	maze_return@c^0,w,c
@@ -7591,7 +7583,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7425   002AC2  50DF               	movf	indf2,w,c
   7426   002AC4  EC85  F01C         	call	_forward
   7427                           
-  7428                           ;pathfinder_file.c: 149:                 forward(c->forward_one, mL, mR);
+  7428                           ;pathfinder.c: 149:                 forward(c->forward_one, mL, mR);
   7429   002AC8  C022  F013         	movff	maze_return@mL,forward@mL
   7430   002ACC  C023  F014         	movff	maze_return@mR,forward@mR
   7431   002AD0  5021               	movf	maze_return@c^0,w,c
@@ -7602,7 +7594,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7436   002ADA  50DF               	movf	indf2,w,c
   7437   002ADC  EC85  F01C         	call	_forward
   7438                           
-  7439                           ;pathfinder_file.c: 150:                 backward(c->backward_half, mL, mR);
+  7439                           ;pathfinder.c: 150:                 backward(c->backward_half, mL, mR);
   7440   002AE0  C022  F013         	movff	maze_return@mL,backward@mL
   7441   002AE4  C023  F014         	movff	maze_return@mR,backward@mR
   7442   002AE8  5021               	movf	maze_return@c^0,w,c
@@ -7613,7 +7605,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7447   002AF2  50DF               	movf	indf2,w,c
   7448   002AF4  ECC3  F01E         	call	_backward
   7449                           
-  7450                           ;pathfinder_file.c: 151:                 rightTURN(c->right_90, mL, mR);
+  7450                           ;pathfinder.c: 151:                 rightTURN(c->right_90, mL, mR);
   7451   002AF8  C022  F013         	movff	maze_return@mL,rightTURN@mL
   7452   002AFC  C023  F014         	movff	maze_return@mR,rightTURN@mR
   7453   002B00  5021               	movf	maze_return@c^0,w,c
@@ -7624,7 +7616,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7458   002B0A  50DF               	movf	indf2,w,c
   7459   002B0C  EC45  F01D         	call	_rightTURN
   7460                           
-  7461                           ;pathfinder_file.c: 152:                 rightTURN(c->right_90, mL, mR);
+  7461                           ;pathfinder.c: 152:                 rightTURN(c->right_90, mL, mR);
   7462   002B10  C022  F013         	movff	maze_return@mL,rightTURN@mL
   7463   002B14  C023  F014         	movff	maze_return@mR,rightTURN@mR
   7464   002B18  5021               	movf	maze_return@c^0,w,c
@@ -7635,7 +7627,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7469   002B22  50DF               	movf	indf2,w,c
   7470   002B24  EC45  F01D         	call	_rightTURN
   7471                           
-  7472                           ;pathfinder_file.c: 153:                 backward(c->backward_one, mL, mR);
+  7472                           ;pathfinder.c: 153:                 backward(c->backward_one, mL, mR);
   7473   002B28  C022  F013         	movff	maze_return@mL,backward@mL
   7474   002B2C  C023  F014         	movff	maze_return@mR,backward@mR
   7475   002B30  5021               	movf	maze_return@c^0,w,c
@@ -7646,7 +7638,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7480   002B3A  50DF               	movf	indf2,w,c
   7481   002B3C  ECC3  F01E         	call	_backward
   7482                           
-  7483                           ;pathfinder_file.c: 154:                 forward(c->forward_half, mL, mR);
+  7483                           ;pathfinder.c: 154:                 forward(c->forward_half, mL, mR);
   7484   002B40  C022  F013         	movff	maze_return@mL,forward@mL
   7485   002B44  C023  F014         	movff	maze_return@mR,forward@mR
   7486   002B48  5021               	movf	maze_return@c^0,w,c
@@ -7657,7 +7649,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7491   002B52  50DF               	movf	indf2,w,c
   7492   002B54  EC85  F01C         	call	_forward
   7493                           
-  7494                           ;pathfinder_file.c: 155:             }
+  7494                           ;pathfinder.c: 155:             }
   7495   002B58  EF89  F016         	goto	l4438
   7496   002B5C                     l4426:
   7497   002B5C  0E3C               	movlw	low _Operation_History
@@ -7675,7 +7667,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7509   002B76  EF1F  F016         	goto	l4430
   7510   002B7A                     u4980:
   7511   002B7A                     
-  7512                           ;pathfinder_file.c: 158:                 leftTURN(c->right_90, mL, mR);
+  7512                           ;pathfinder.c: 158:                 leftTURN(c->right_90, mL, mR);
   7513   002B7A  C022  F013         	movff	maze_return@mL,leftTURN@mL
   7514   002B7E  C023  F014         	movff	maze_return@mR,leftTURN@mR
   7515   002B82  5021               	movf	maze_return@c^0,w,c
@@ -7686,7 +7678,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7520   002B8C  50DF               	movf	indf2,w,c
   7521   002B8E  EC04  F01E         	call	_leftTURN
   7522                           
-  7523                           ;pathfinder_file.c: 159:                 forward(c->forward_one, mL, mR);
+  7523                           ;pathfinder.c: 159:                 forward(c->forward_one, mL, mR);
   7524   002B92  C022  F013         	movff	maze_return@mL,forward@mL
   7525   002B96  C023  F014         	movff	maze_return@mR,forward@mR
   7526   002B9A  5021               	movf	maze_return@c^0,w,c
@@ -7697,7 +7689,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7531   002BA4  50DF               	movf	indf2,w,c
   7532   002BA6  EC85  F01C         	call	_forward
   7533                           
-  7534                           ;pathfinder_file.c: 162:                 forward(c->forward_one, mL, mR);
+  7534                           ;pathfinder.c: 162:                 forward(c->forward_one, mL, mR);
   7535   002BAA  C022  F013         	movff	maze_return@mL,forward@mL
   7536   002BAE  C023  F014         	movff	maze_return@mR,forward@mR
   7537   002BB2  5021               	movf	maze_return@c^0,w,c
@@ -7708,7 +7700,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7542   002BBC  50DF               	movf	indf2,w,c
   7543   002BBE  EC85  F01C         	call	_forward
   7544                           
-  7545                           ;pathfinder_file.c: 163:                 backward(c->backward_half, mL, mR);
+  7545                           ;pathfinder.c: 163:                 backward(c->backward_half, mL, mR);
   7546   002BC2  C022  F013         	movff	maze_return@mL,backward@mL
   7547   002BC6  C023  F014         	movff	maze_return@mR,backward@mR
   7548   002BCA  5021               	movf	maze_return@c^0,w,c
@@ -7719,7 +7711,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7553   002BD4  50DF               	movf	indf2,w,c
   7554   002BD6  ECC3  F01E         	call	_backward
   7555                           
-  7556                           ;pathfinder_file.c: 164:                 rightTURN(c->right_90, mL, mR);
+  7556                           ;pathfinder.c: 164:                 rightTURN(c->right_90, mL, mR);
   7557   002BDA  C022  F013         	movff	maze_return@mL,rightTURN@mL
   7558   002BDE  C023  F014         	movff	maze_return@mR,rightTURN@mR
   7559   002BE2  5021               	movf	maze_return@c^0,w,c
@@ -7730,7 +7722,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7564   002BEC  50DF               	movf	indf2,w,c
   7565   002BEE  EC45  F01D         	call	_rightTURN
   7566                           
-  7567                           ;pathfinder_file.c: 165:                 rightTURN(c->right_90, mL, mR);
+  7567                           ;pathfinder.c: 165:                 rightTURN(c->right_90, mL, mR);
   7568   002BF2  C022  F013         	movff	maze_return@mL,rightTURN@mL
   7569   002BF6  C023  F014         	movff	maze_return@mR,rightTURN@mR
   7570   002BFA  5021               	movf	maze_return@c^0,w,c
@@ -7741,7 +7733,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7575   002C04  50DF               	movf	indf2,w,c
   7576   002C06  EC45  F01D         	call	_rightTURN
   7577                           
-  7578                           ;pathfinder_file.c: 166:                 backward(c->backward_one, mL, mR);
+  7578                           ;pathfinder.c: 166:                 backward(c->backward_one, mL, mR);
   7579   002C0A  C022  F013         	movff	maze_return@mL,backward@mL
   7580   002C0E  C023  F014         	movff	maze_return@mR,backward@mR
   7581   002C12  5021               	movf	maze_return@c^0,w,c
@@ -7752,7 +7744,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7586   002C1C  50DF               	movf	indf2,w,c
   7587   002C1E  ECC3  F01E         	call	_backward
   7588                           
-  7589                           ;pathfinder_file.c: 167:                 forward(c->forward_half, mL, mR);
+  7589                           ;pathfinder.c: 167:                 forward(c->forward_half, mL, mR);
   7590   002C22  C022  F013         	movff	maze_return@mL,forward@mL
   7591   002C26  C023  F014         	movff	maze_return@mR,forward@mR
   7592   002C2A  5021               	movf	maze_return@c^0,w,c
@@ -7763,7 +7755,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7597   002C34  50DF               	movf	indf2,w,c
   7598   002C36  EC85  F01C         	call	_forward
   7599                           
-  7600                           ;pathfinder_file.c: 169:             }
+  7600                           ;pathfinder.c: 169:             }
   7601   002C3A  EF89  F016         	goto	l4438
   7602   002C3E                     l4430:
   7603   002C3E  0E3C               	movlw	low _Operation_History
@@ -7781,7 +7773,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7615   002C58  EF54  F016         	goto	l4434
   7616   002C5C                     u4990:
   7617   002C5C                     
-  7618                           ;pathfinder_file.c: 172:                 leftTURN(c->left_135, mL, mR);
+  7618                           ;pathfinder.c: 172:                 leftTURN(c->left_135, mL, mR);
   7619   002C5C  C022  F013         	movff	maze_return@mL,leftTURN@mL
   7620   002C60  C023  F014         	movff	maze_return@mR,leftTURN@mR
   7621   002C64  5021               	movf	maze_return@c^0,w,c
@@ -7792,7 +7784,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7626   002C6E  50DF               	movf	indf2,w,c
   7627   002C70  EC04  F01E         	call	_leftTURN
   7628                           
-  7629                           ;pathfinder_file.c: 173:                 backward(c->backward_one, mL, mR);
+  7629                           ;pathfinder.c: 173:                 backward(c->backward_one, mL, mR);
   7630   002C74  C022  F013         	movff	maze_return@mL,backward@mL
   7631   002C78  C023  F014         	movff	maze_return@mR,backward@mR
   7632   002C7C  5021               	movf	maze_return@c^0,w,c
@@ -7803,7 +7795,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7637   002C86  50DF               	movf	indf2,w,c
   7638   002C88  ECC3  F01E         	call	_backward
   7639                           
-  7640                           ;pathfinder_file.c: 174:                 forward(c->forward_half, mL, mR);
+  7640                           ;pathfinder.c: 174:                 forward(c->forward_half, mL, mR);
   7641   002C8C  C022  F013         	movff	maze_return@mL,forward@mL
   7642   002C90  C023  F014         	movff	maze_return@mR,forward@mR
   7643   002C94  5021               	movf	maze_return@c^0,w,c
@@ -7814,7 +7806,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7648   002C9E  50DF               	movf	indf2,w,c
   7649   002CA0  EC85  F01C         	call	_forward
   7650                           
-  7651                           ;pathfinder_file.c: 175:             }
+  7651                           ;pathfinder.c: 175:             }
   7652   002CA4  EF89  F016         	goto	l4438
   7653   002CA8                     l4434:
   7654   002CA8  0E3C               	movlw	low _Operation_History
@@ -7829,10 +7821,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7663   002CBA  EF61  F016         	goto	u5001
   7664   002CBE  EF63  F016         	goto	u5000
   7665   002CC2                     u5001:
-  7666   002CC2  EF89  F016         	goto	l502
+  7666   002CC2  EF89  F016         	goto	l586
   7667   002CC6                     u5000:
   7668   002CC6                     
-  7669                           ;pathfinder_file.c: 178:                 rightTURN(c->right_135, mL, mR);
+  7669                           ;pathfinder.c: 178:                 rightTURN(c->right_135, mL, mR);
   7670   002CC6  C022  F013         	movff	maze_return@mL,rightTURN@mL
   7671   002CCA  C023  F014         	movff	maze_return@mR,rightTURN@mR
   7672   002CCE  5021               	movf	maze_return@c^0,w,c
@@ -7843,7 +7835,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7677   002CD8  50DF               	movf	indf2,w,c
   7678   002CDA  EC45  F01D         	call	_rightTURN
   7679                           
-  7680                           ;pathfinder_file.c: 179:                 backward(c->backward_one, mL, mR);
+  7680                           ;pathfinder.c: 179:                 backward(c->backward_one, mL, mR);
   7681   002CDE  C022  F013         	movff	maze_return@mL,backward@mL
   7682   002CE2  C023  F014         	movff	maze_return@mR,backward@mR
   7683   002CE6  5021               	movf	maze_return@c^0,w,c
@@ -7854,7 +7846,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7688   002CF0  50DF               	movf	indf2,w,c
   7689   002CF2  ECC3  F01E         	call	_backward
   7690                           
-  7691                           ;pathfinder_file.c: 180:                 forward(c->forward_half, mL, mR);
+  7691                           ;pathfinder.c: 180:                 forward(c->forward_half, mL, mR);
   7692   002CF6  C022  F013         	movff	maze_return@mL,forward@mL
   7693   002CFA  C023  F014         	movff	maze_return@mR,forward@mR
   7694   002CFE  5021               	movf	maze_return@c^0,w,c
@@ -7865,10 +7857,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7699   002D08  50DF               	movf	indf2,w,c
   7700   002D0A  EC85  F01C         	call	_forward
   7701   002D0E  EF89  F016         	goto	l4438
-  7702   002D12                     l502:
+  7702   002D12                     l586:
   7703   002D12                     l4438:
   7704                           
-  7705                           ;pathfinder_file.c: 184:         }
+  7705                           ;pathfinder.c: 184:         }
   7706   002D12  062C               	decf	maze_return@i^0,f,c
   7707   002D14  A0D8               	btfss	status,0,c
   7708   002D16  062D               	decf	(maze_return@i+1)^0,f,c
@@ -7879,36 +7871,36 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7713   002D22  EF75  F014         	goto	l4396
   7714   002D26                     u5010:
   7715   002D26                     
-  7716                           ;pathfinder_file.c: 187:         Operation_Count = 0;
+  7716                           ;pathfinder.c: 187:         Operation_Count = 0;
   7717   002D26  0E00               	movlw	0
   7718   002D28  0100               	movlb	0	; () banked
   7719   002D2A  6FDB               	movwf	_Operation_Count& (0+255),b
   7720                           
-  7721                           ;pathfinder_file.c: 188:         for (int i = 0; i < 50; ++i) {
+  7721                           ;pathfinder.c: 188:         for (int i = 0; i < 50; ++i) {
   7722   002D2C  0E00               	movlw	0
-  7723   002D2E  6E2B               	movwf	(maze_return@i_1875+1)^0,c
+  7723   002D2E  6E2B               	movwf	(maze_return@i_2039+1)^0,c
   7724   002D30  0E00               	movlw	0
-  7725   002D32  6E2A               	movwf	maze_return@i_1875^0,c
+  7725   002D32  6E2A               	movwf	maze_return@i_2039^0,c
   7726   002D34                     l4448:
   7727                           
-  7728                           ;pathfinder_file.c: 189:             Operation_History[i] = 0;
+  7728                           ;pathfinder.c: 189:             Operation_History[i] = 0;
   7729   002D34  0E3C               	movlw	low _Operation_History
-  7730   002D36  242A               	addwf	maze_return@i_1875^0,w,c
+  7730   002D36  242A               	addwf	maze_return@i_2039^0,w,c
   7731   002D38  6ED9               	movwf	fsr2l,c
   7732   002D3A  0E01               	movlw	high _Operation_History
-  7733   002D3C  202B               	addwfc	(maze_return@i_1875+1)^0,w,c
+  7733   002D3C  202B               	addwfc	(maze_return@i_2039+1)^0,w,c
   7734   002D3E  6EDA               	movwf	fsr2h,c
   7735   002D40  6ADF               	clrf	indf2,c
   7736   002D42                     
-  7737                           ;pathfinder_file.c: 190:         }
-  7738   002D42  4A2A               	infsnz	maze_return@i_1875^0,f,c
-  7739   002D44  2A2B               	incf	(maze_return@i_1875+1)^0,f,c
-  7740   002D46  BE2B               	btfsc	(maze_return@i_1875+1)^0,7,c
+  7737                           ;pathfinder.c: 190:         }
+  7738   002D42  4A2A               	infsnz	maze_return@i_2039^0,f,c
+  7739   002D44  2A2B               	incf	(maze_return@i_2039+1)^0,f,c
+  7740   002D46  BE2B               	btfsc	(maze_return@i_2039+1)^0,7,c
   7741   002D48  EFAF  F016         	goto	u5021
-  7742   002D4C  502B               	movf	(maze_return@i_1875+1)^0,w,c
+  7742   002D4C  502B               	movf	(maze_return@i_2039+1)^0,w,c
   7743   002D4E  E109               	bnz	u5020
   7744   002D50  0E32               	movlw	50
-  7745   002D52  5C2A               	subwf	maze_return@i_1875^0,w,c
+  7745   002D52  5C2A               	subwf	maze_return@i_2039^0,w,c
   7746   002D54  A0D8               	btfss	status,0,c
   7747   002D56  EFAF  F016         	goto	u5021
   7748   002D5A  EFB1  F016         	goto	u5020
@@ -8128,7 +8120,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7957                           
   7958 ;; *************** function _calibration_routine *****************
   7959 ;; Defined at:
-  7960 ;;		line 89 in file "calibration.c"
+  7960 ;;		line 90 in file "calibration.c"
   7961 ;; Parameters:    Size  Location     Type
   7962 ;;  c               1   32[COMRAM] PTR struct calibration_s
   7963 ;;		 -> calibration(9), 
@@ -8178,7 +8170,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8002                           	callstack 27
   8003   003528                     l206:
   8004   003528                     
-  8005                           ;calibration.c: 95:         if(c->index == 1){
+  8005                           ;calibration.c: 96:         if(c->index == 1){
   8006   003528  5021               	movf	calibration_routine@c^0,w,c
   8007   00352A  6ED9               	movwf	fsr2l,c
   8008   00352C  6ADA               	clrf	fsr2h,c
@@ -8190,12 +8182,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8014   00353A  EFB3  F01A         	goto	l4182
   8015   00353E                     u4720:
   8016   00353E                     
-  8017                           ;calibration.c: 96:             adjust_calibration(&(c->right_90));
+  8017                           ;calibration.c: 97:             adjust_calibration(&(c->right_90));
   8018   00353E  2821               	incf	calibration_routine@c^0,w,c
   8019   003540  6E01               	movwf	adjust_calibration@calibration_label^0,c
   8020   003542  EC2B  F020         	call	_adjust_calibration	;wreg free
   8021   003546                     
-  8022                           ;calibration.c: 97:             rightTURN(c->right_90, mL, mR);
+  8022                           ;calibration.c: 98:             rightTURN(c->right_90, mL, mR);
   8023   003546  C022  F013         	movff	calibration_routine@mL,rightTURN@mL
   8024   00354A  C023  F014         	movff	calibration_routine@mR,rightTURN@mR
   8025   00354E  5021               	movf	calibration_routine@c^0,w,c
@@ -8206,12 +8198,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8030   003558  50DF               	movf	indf2,w,c
   8031   00355A  EC45  F01D         	call	_rightTURN
   8032   00355E                     
-  8033                           ;calibration.c: 98:             switch_calibration(&(c->index));
+  8033                           ;calibration.c: 99:             switch_calibration(&(c->index));
   8034   00355E  C021  F001         	movff	calibration_routine@c,switch_calibration@calibration_index
   8035   003562  EC2A  F023         	call	_switch_calibration	;wreg free
   8036   003566                     l4182:
   8037                           
-  8038                           ;calibration.c: 101:         if(c->index == 2){
+  8038                           ;calibration.c: 102:         if(c->index == 2){
   8039   003566  5021               	movf	calibration_routine@c^0,w,c
   8040   003568  6ED9               	movwf	fsr2l,c
   8041   00356A  6ADA               	clrf	fsr2h,c
@@ -8224,13 +8216,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8048   00357A  EFD4  F01A         	goto	l4190
   8049   00357E                     u4730:
   8050   00357E                     
-  8051                           ;calibration.c: 102:             adjust_calibration(&(c->left_90));
+  8051                           ;calibration.c: 103:             adjust_calibration(&(c->left_90));
   8052   00357E  5021               	movf	calibration_routine@c^0,w,c
   8053   003580  0F02               	addlw	2
   8054   003582  6E01               	movwf	adjust_calibration@calibration_label^0,c
   8055   003584  EC2B  F020         	call	_adjust_calibration	;wreg free
   8056   003588                     
-  8057                           ;calibration.c: 103:             leftTURN(c->left_90, mL, mR);
+  8057                           ;calibration.c: 104:             leftTURN(c->left_90, mL, mR);
   8058   003588  C022  F013         	movff	calibration_routine@mL,leftTURN@mL
   8059   00358C  C023  F014         	movff	calibration_routine@mR,leftTURN@mR
   8060   003590  5021               	movf	calibration_routine@c^0,w,c
@@ -8241,12 +8233,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8065   00359A  50DF               	movf	indf2,w,c
   8066   00359C  EC04  F01E         	call	_leftTURN
   8067   0035A0                     
-  8068                           ;calibration.c: 104:             switch_calibration(&(c->index));
+  8068                           ;calibration.c: 105:             switch_calibration(&(c->index));
   8069   0035A0  C021  F001         	movff	calibration_routine@c,switch_calibration@calibration_index
   8070   0035A4  EC2A  F023         	call	_switch_calibration	;wreg free
   8071   0035A8                     l4190:
   8072                           
-  8073                           ;calibration.c: 107:         if(c->index == 3){
+  8073                           ;calibration.c: 108:         if(c->index == 3){
   8074   0035A8  5021               	movf	calibration_routine@c^0,w,c
   8075   0035AA  6ED9               	movwf	fsr2l,c
   8076   0035AC  6ADA               	clrf	fsr2h,c
@@ -8259,13 +8251,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8083   0035BC  EFF5  F01A         	goto	l4198
   8084   0035C0                     u4740:
   8085   0035C0                     
-  8086                           ;calibration.c: 108:             adjust_calibration(&(c->right_135));
+  8086                           ;calibration.c: 109:             adjust_calibration(&(c->right_135));
   8087   0035C0  5021               	movf	calibration_routine@c^0,w,c
   8088   0035C2  0F03               	addlw	3
   8089   0035C4  6E01               	movwf	adjust_calibration@calibration_label^0,c
   8090   0035C6  EC2B  F020         	call	_adjust_calibration	;wreg free
   8091   0035CA                     
-  8092                           ;calibration.c: 109:             rightTURN(c->right_135, mL, mR);
+  8092                           ;calibration.c: 110:             rightTURN(c->right_135, mL, mR);
   8093   0035CA  C022  F013         	movff	calibration_routine@mL,rightTURN@mL
   8094   0035CE  C023  F014         	movff	calibration_routine@mR,rightTURN@mR
   8095   0035D2  5021               	movf	calibration_routine@c^0,w,c
@@ -8276,12 +8268,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8100   0035DC  50DF               	movf	indf2,w,c
   8101   0035DE  EC45  F01D         	call	_rightTURN
   8102   0035E2                     
-  8103                           ;calibration.c: 110:             switch_calibration(&(c->index));
+  8103                           ;calibration.c: 111:             switch_calibration(&(c->index));
   8104   0035E2  C021  F001         	movff	calibration_routine@c,switch_calibration@calibration_index
   8105   0035E6  EC2A  F023         	call	_switch_calibration	;wreg free
   8106   0035EA                     l4198:
   8107                           
-  8108                           ;calibration.c: 112:         if(c->index == 4){
+  8108                           ;calibration.c: 113:         if(c->index == 4){
   8109   0035EA  5021               	movf	calibration_routine@c^0,w,c
   8110   0035EC  6ED9               	movwf	fsr2l,c
   8111   0035EE  6ADA               	clrf	fsr2h,c
@@ -8294,13 +8286,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8118   0035FE  EF16  F01B         	goto	l4206
   8119   003602                     u4750:
   8120   003602                     
-  8121                           ;calibration.c: 113:             adjust_calibration(&(c->left_135));
+  8121                           ;calibration.c: 114:             adjust_calibration(&(c->left_135));
   8122   003602  5021               	movf	calibration_routine@c^0,w,c
   8123   003604  0F04               	addlw	4
   8124   003606  6E01               	movwf	adjust_calibration@calibration_label^0,c
   8125   003608  EC2B  F020         	call	_adjust_calibration	;wreg free
   8126   00360C                     
-  8127                           ;calibration.c: 114:             leftTURN(c->left_135, mL, mR);
+  8127                           ;calibration.c: 115:             leftTURN(c->left_135, mL, mR);
   8128   00360C  C022  F013         	movff	calibration_routine@mL,leftTURN@mL
   8129   003610  C023  F014         	movff	calibration_routine@mR,leftTURN@mR
   8130   003614  5021               	movf	calibration_routine@c^0,w,c
@@ -8311,12 +8303,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8135   00361E  50DF               	movf	indf2,w,c
   8136   003620  EC04  F01E         	call	_leftTURN
   8137   003624                     
-  8138                           ;calibration.c: 115:             switch_calibration(&(c->index));
+  8138                           ;calibration.c: 116:             switch_calibration(&(c->index));
   8139   003624  C021  F001         	movff	calibration_routine@c,switch_calibration@calibration_index
   8140   003628  EC2A  F023         	call	_switch_calibration	;wreg free
   8141   00362C                     l4206:
   8142                           
-  8143                           ;calibration.c: 118:         if(c->index == 5 ){
+  8143                           ;calibration.c: 119:         if(c->index == 5 ){
   8144   00362C  5021               	movf	calibration_routine@c^0,w,c
   8145   00362E  6ED9               	movwf	fsr2l,c
   8146   003630  6ADA               	clrf	fsr2h,c
@@ -8329,13 +8321,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8153   003640  EF37  F01B         	goto	l4214
   8154   003644                     u4760:
   8155   003644                     
-  8156                           ;calibration.c: 119:             adjust_calibration(&(c->forward_one));
+  8156                           ;calibration.c: 120:             adjust_calibration(&(c->forward_one));
   8157   003644  5021               	movf	calibration_routine@c^0,w,c
   8158   003646  0F05               	addlw	5
   8159   003648  6E01               	movwf	adjust_calibration@calibration_label^0,c
   8160   00364A  EC2B  F020         	call	_adjust_calibration	;wreg free
   8161   00364E                     
-  8162                           ;calibration.c: 120:             forward(c->forward_one, mL, mR);
+  8162                           ;calibration.c: 121:             forward(c->forward_one, mL, mR);
   8163   00364E  C022  F013         	movff	calibration_routine@mL,forward@mL
   8164   003652  C023  F014         	movff	calibration_routine@mR,forward@mR
   8165   003656  5021               	movf	calibration_routine@c^0,w,c
@@ -8346,12 +8338,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8170   003660  50DF               	movf	indf2,w,c
   8171   003662  EC85  F01C         	call	_forward
   8172   003666                     
-  8173                           ;calibration.c: 121:             switch_calibration(&(c->index));
+  8173                           ;calibration.c: 122:             switch_calibration(&(c->index));
   8174   003666  C021  F001         	movff	calibration_routine@c,switch_calibration@calibration_index
   8175   00366A  EC2A  F023         	call	_switch_calibration	;wreg free
   8176   00366E                     l4214:
   8177                           
-  8178                           ;calibration.c: 124:         if(c->index == 6){
+  8178                           ;calibration.c: 125:         if(c->index == 6){
   8179   00366E  5021               	movf	calibration_routine@c^0,w,c
   8180   003670  6ED9               	movwf	fsr2l,c
   8181   003672  6ADA               	clrf	fsr2h,c
@@ -8364,13 +8356,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8188   003682  EF58  F01B         	goto	l4222
   8189   003686                     u4770:
   8190   003686                     
-  8191                           ;calibration.c: 125:             adjust_calibration(&(c->backward_one));
+  8191                           ;calibration.c: 126:             adjust_calibration(&(c->backward_one));
   8192   003686  5021               	movf	calibration_routine@c^0,w,c
   8193   003688  0F06               	addlw	6
   8194   00368A  6E01               	movwf	adjust_calibration@calibration_label^0,c
   8195   00368C  EC2B  F020         	call	_adjust_calibration	;wreg free
   8196   003690                     
-  8197                           ;calibration.c: 126:             backward(c->backward_one, mL, mR);
+  8197                           ;calibration.c: 127:             backward(c->backward_one, mL, mR);
   8198   003690  C022  F013         	movff	calibration_routine@mL,backward@mL
   8199   003694  C023  F014         	movff	calibration_routine@mR,backward@mR
   8200   003698  5021               	movf	calibration_routine@c^0,w,c
@@ -8381,12 +8373,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8205   0036A2  50DF               	movf	indf2,w,c
   8206   0036A4  ECC3  F01E         	call	_backward
   8207   0036A8                     
-  8208                           ;calibration.c: 127:             switch_calibration(&(c->index));
+  8208                           ;calibration.c: 128:             switch_calibration(&(c->index));
   8209   0036A8  C021  F001         	movff	calibration_routine@c,switch_calibration@calibration_index
   8210   0036AC  EC2A  F023         	call	_switch_calibration	;wreg free
   8211   0036B0                     l4222:
   8212                           
-  8213                           ;calibration.c: 130:         if(c->index == 7 ){
+  8213                           ;calibration.c: 131:         if(c->index == 7 ){
   8214   0036B0  5021               	movf	calibration_routine@c^0,w,c
   8215   0036B2  6ED9               	movwf	fsr2l,c
   8216   0036B4  6ADA               	clrf	fsr2h,c
@@ -8399,13 +8391,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8223   0036C4  EF79  F01B         	goto	l4230
   8224   0036C8                     u4780:
   8225   0036C8                     
-  8226                           ;calibration.c: 131:             adjust_calibration(&(c->forward_half));
+  8226                           ;calibration.c: 132:             adjust_calibration(&(c->forward_half));
   8227   0036C8  5021               	movf	calibration_routine@c^0,w,c
   8228   0036CA  0F07               	addlw	7
   8229   0036CC  6E01               	movwf	adjust_calibration@calibration_label^0,c
   8230   0036CE  EC2B  F020         	call	_adjust_calibration	;wreg free
   8231   0036D2                     
-  8232                           ;calibration.c: 132:             forward(c->forward_half, mL, mR);
+  8232                           ;calibration.c: 133:             forward(c->forward_half, mL, mR);
   8233   0036D2  C022  F013         	movff	calibration_routine@mL,forward@mL
   8234   0036D6  C023  F014         	movff	calibration_routine@mR,forward@mR
   8235   0036DA  5021               	movf	calibration_routine@c^0,w,c
@@ -8416,12 +8408,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8240   0036E4  50DF               	movf	indf2,w,c
   8241   0036E6  EC85  F01C         	call	_forward
   8242   0036EA                     
-  8243                           ;calibration.c: 133:             switch_calibration(&(c->index));
+  8243                           ;calibration.c: 134:             switch_calibration(&(c->index));
   8244   0036EA  C021  F001         	movff	calibration_routine@c,switch_calibration@calibration_index
   8245   0036EE  EC2A  F023         	call	_switch_calibration	;wreg free
   8246   0036F2                     l4230:
   8247                           
-  8248                           ;calibration.c: 136:         if(c->index == 8){
+  8248                           ;calibration.c: 137:         if(c->index == 8){
   8249   0036F2  5021               	movf	calibration_routine@c^0,w,c
   8250   0036F4  6ED9               	movwf	fsr2l,c
   8251   0036F6  6ADA               	clrf	fsr2h,c
@@ -8434,13 +8426,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8258   003706  EF9A  F01B         	goto	l4238
   8259   00370A                     u4790:
   8260   00370A                     
-  8261                           ;calibration.c: 137:             adjust_calibration(&(c->backward_half));
+  8261                           ;calibration.c: 138:             adjust_calibration(&(c->backward_half));
   8262   00370A  5021               	movf	calibration_routine@c^0,w,c
   8263   00370C  0F08               	addlw	8
   8264   00370E  6E01               	movwf	adjust_calibration@calibration_label^0,c
   8265   003710  EC2B  F020         	call	_adjust_calibration	;wreg free
   8266   003714                     
-  8267                           ;calibration.c: 138:             backward(c->backward_half, mL, mR);
+  8267                           ;calibration.c: 139:             backward(c->backward_half, mL, mR);
   8268   003714  C022  F013         	movff	calibration_routine@mL,backward@mL
   8269   003718  C023  F014         	movff	calibration_routine@mR,backward@mR
   8270   00371C  5021               	movf	calibration_routine@c^0,w,c
@@ -8451,12 +8443,12 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8275   003726  50DF               	movf	indf2,w,c
   8276   003728  ECC3  F01E         	call	_backward
   8277   00372C                     
-  8278                           ;calibration.c: 139:             switch_calibration(&(c->index));
+  8278                           ;calibration.c: 140:             switch_calibration(&(c->index));
   8279   00372C  C021  F001         	movff	calibration_routine@c,switch_calibration@calibration_index
   8280   003730  EC2A  F023         	call	_switch_calibration	;wreg free
   8281   003734                     l4238:
   8282                           
-  8283                           ;calibration.c: 142:         if(c->index >= 9){
+  8283                           ;calibration.c: 143:         if(c->index >= 9){
   8284   003734  5021               	movf	calibration_routine@c^0,w,c
   8285   003736  6ED9               	movwf	fsr2l,c
   8286   003738  6ADA               	clrf	fsr2h,c
@@ -8468,7 +8460,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8292   003746  EF94  F01A         	goto	l206
   8293   00374A                     u4800:
   8294   00374A                     
-  8295                           ;calibration.c: 143:             c->index = 1;
+  8295                           ;calibration.c: 144:             c->index = 1;
   8296   00374A  5021               	movf	calibration_routine@c^0,w,c
   8297   00374C  6ED9               	movwf	fsr2l,c
   8298   00374E  6ADA               	clrf	fsr2h,c
@@ -8480,7 +8472,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8304                           
   8305 ;; *************** function _switch_calibration *****************
   8306 ;; Defined at:
-  8307 ;;		line 64 in file "calibration.c"
+  8307 ;;		line 65 in file "calibration.c"
   8308 ;; Parameters:    Size  Location     Type
   8309 ;;  calibration_    1    0[COMRAM] PTR int 
   8310 ;;		 -> calibration(9), 
@@ -8520,7 +8512,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8339                           	callstack 29
   8340   004654                     l198:
   8341                           
-  8342                           ;calibration.c: 70:         if(!PORTFbits.RF2){
+  8342                           ;calibration.c: 71:         if(!PORTFbits.RF2){
   8343   004654  B48E               	btfsc	142,2,c	;volatile
   8344   004656  EF2F  F023         	goto	u4451
   8345   00465A  EF31  F023         	goto	u4450
@@ -8528,7 +8520,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8347   00465E  EF5F  F023         	goto	l199
   8348   004662                     u4450:
   8349   004662                     
-  8350                           ;calibration.c: 71:             _delay((unsigned long)((200)*(64000000/4000.0)));
+  8350                           ;calibration.c: 72:             _delay((unsigned long)((200)*(64000000/4000.0)));
   8351   004662  0E11               	movlw	17
   8352   004664  6E03               	movwf	(??_switch_calibration+1)^0,c
   8353   004666  0E3C               	movlw	60
@@ -8543,7 +8535,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8362   004676  D7FA               	bra	u5197
   8363   004678  0000               	nop	
   8364   00467A                     
-  8365                           ;calibration.c: 72:             *calibration_index = *calibration_index + 1;
+  8365                           ;calibration.c: 73:             *calibration_index = *calibration_index + 1;
   8366   00467A  5001               	movf	switch_calibration@calibration_index^0,w,c
   8367   00467C  6ED9               	movwf	fsr2l,c
   8368   00467E  6ADA               	clrf	fsr2h,c
@@ -8559,10 +8551,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8378   004696  C002  FFDE         	movff	??_switch_calibration,postinc2
   8379   00469A  C003  FFDD         	movff	??_switch_calibration+1,postdec2
   8380   00469E                     
-  8381                           ;calibration.c: 73:             LATDbits.LATD7 = 1;
+  8381                           ;calibration.c: 74:             LATDbits.LATD7 = 1;
   8382   00469E  8E7C               	bsf	124,7,c	;volatile
   8383   0046A0                     
-  8384                           ;calibration.c: 74:             _delay((unsigned long)((200)*(64000000/4000.0)));
+  8384                           ;calibration.c: 75:             _delay((unsigned long)((200)*(64000000/4000.0)));
   8385   0046A0  0E11               	movlw	17
   8386   0046A2  6E03               	movwf	(??_switch_calibration+1)^0,c
   8387   0046A4  0E3C               	movlw	60
@@ -8577,14 +8569,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8396   0046B4  D7FA               	bra	u5207
   8397   0046B6  0000               	nop	
   8398   0046B8                     
-  8399                           ;calibration.c: 75:             LATDbits.LATD7 = 0;
+  8399                           ;calibration.c: 76:             LATDbits.LATD7 = 0;
   8400   0046B8  9E7C               	bcf	124,7,c	;volatile
   8401                           
-  8402                           ;calibration.c: 76:             break;
+  8402                           ;calibration.c: 77:             break;
   8403   0046BA  EF80  F023         	goto	l203
   8404   0046BE                     l199:
   8405                           
-  8406                           ;calibration.c: 79:         if(!PORTFbits.RF3){
+  8406                           ;calibration.c: 80:         if(!PORTFbits.RF3){
   8407   0046BE  B68E               	btfsc	142,3,c	;volatile
   8408   0046C0  EF64  F023         	goto	u4461
   8409   0046C4  EF66  F023         	goto	u4460
@@ -8592,7 +8584,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8411   0046C8  EF2A  F023         	goto	l198
   8412   0046CC                     u4460:
   8413   0046CC                     
-  8414                           ;calibration.c: 80:             _delay((unsigned long)((200)*(64000000/4000.0)));
+  8414                           ;calibration.c: 81:             _delay((unsigned long)((200)*(64000000/4000.0)));
   8415   0046CC  0E11               	movlw	17
   8416   0046CE  6E03               	movwf	(??_switch_calibration+1)^0,c
   8417   0046D0  0E3C               	movlw	60
@@ -8607,10 +8599,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8426   0046E0  D7FA               	bra	u5217
   8427   0046E2  0000               	nop	
   8428   0046E4                     
-  8429                           ;calibration.c: 81:             LATHbits.LATH3 = 1;
+  8429                           ;calibration.c: 82:             LATHbits.LATH3 = 1;
   8430   0046E4  8680               	bsf	128,3,c	;volatile
   8431                           
-  8432                           ;calibration.c: 82:             _delay((unsigned long)((200)*(64000000/4000.0)));
+  8432                           ;calibration.c: 83:             _delay((unsigned long)((200)*(64000000/4000.0)));
   8433   0046E6  0E11               	movlw	17
   8434   0046E8  6E03               	movwf	(??_switch_calibration+1)^0,c
   8435   0046EA  0E3C               	movlw	60
@@ -8625,7 +8617,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8444   0046FA  D7FA               	bra	u5227
   8445   0046FC  0000               	nop	
   8446   0046FE                     
-  8447                           ;calibration.c: 83:             LATHbits.LATH3 = 0;
+  8447                           ;calibration.c: 84:             LATHbits.LATH3 = 0;
   8448   0046FE  9680               	bcf	128,3,c	;volatile
   8449   004700                     l203:
   8450   004700  0012               	return		;funcret
@@ -10335,7 +10327,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10107                           
  10108 ;; *************** function _adjust_calibration *****************
  10109 ;; Defined at:
- 10110 ;;		line 25 in file "calibration.c"
+ 10110 ;;		line 26 in file "calibration.c"
  10111 ;; Parameters:    Size  Location     Type
  10112 ;;  calibration_    1    0[COMRAM] PTR int 
  10113 ;;		 -> calibration(9), 
@@ -10375,7 +10367,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10142                           	callstack 29
  10143   004056                     l185:
  10144                           
- 10145                           ;calibration.c: 31:         if(!PORTFbits.RF3 || !PORTFbits.RF2){
+ 10145                           ;calibration.c: 32:         if(!PORTFbits.RF3 || !PORTFbits.RF2){
  10146   004056  A68E               	btfss	142,3,c	;volatile
  10147   004058  EF30  F020         	goto	u4391
  10148   00405C  EF32  F020         	goto	u4390
@@ -10390,7 +10382,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10157   004072                     u4400:
  10158   004072                     l3926:
  10159                           
- 10160                           ;calibration.c: 32:             _delay((unsigned long)((100)*(64000000/4000.0)));
+ 10160                           ;calibration.c: 33:             _delay((unsigned long)((100)*(64000000/4000.0)));
  10161   004072  0E09               	movlw	9
  10162   004074  6E03               	movwf	(??_adjust_calibration+1)^0,c
  10163   004076  0E1E               	movlw	30
@@ -10405,7 +10397,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10172   004086  D7FA               	bra	u5287
  10173   004088  D000               	nop2	
  10174   00408A                     
- 10175                           ;calibration.c: 34:             if(!PORTFbits.RF3 && !PORTFbits.RF2 ){
+ 10175                           ;calibration.c: 35:             if(!PORTFbits.RF3 && !PORTFbits.RF2 ){
  10176   00408A  B68E               	btfsc	142,3,c	;volatile
  10177   00408C  EF4A  F020         	goto	u4411
  10178   004090  EF4C  F020         	goto	u4410
@@ -10419,13 +10411,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10186   0040A2  EF65  F020         	goto	l189
  10187   0040A6                     u4420:
  10188   0040A6                     
- 10189                           ;calibration.c: 36:                 LATHbits.LATH3 = 1;
+ 10189                           ;calibration.c: 37:                 LATHbits.LATH3 = 1;
  10190   0040A6  8680               	bsf	128,3,c	;volatile
  10191                           
- 10192                           ;calibration.c: 37:                 LATDbits.LATD7 = 1;
+ 10192                           ;calibration.c: 38:                 LATDbits.LATD7 = 1;
  10193   0040A8  8E7C               	bsf	124,7,c	;volatile
  10194   0040AA                     
- 10195                           ;calibration.c: 38:                 _delay((unsigned long)((1000)*(64000000/4000.0)));
+ 10195                           ;calibration.c: 39:                 _delay((unsigned long)((1000)*(64000000/4000.0)));
  10196   0040AA  0E52               	movlw	82
  10197   0040AC  6E03               	movwf	(??_adjust_calibration+1)^0,c
  10198   0040AE  0E2B               	movlw	43
@@ -10440,17 +10432,17 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10207   0040BE  D7FA               	bra	u5297
  10208   0040C0  D000               	nop2	
  10209   0040C2                     
- 10210                           ;calibration.c: 39:                 LATHbits.LATH3 = 0;
+ 10210                           ;calibration.c: 40:                 LATHbits.LATH3 = 0;
  10211   0040C2  9680               	bcf	128,3,c	;volatile
  10212   0040C4                     
- 10213                           ;calibration.c: 40:                 LATDbits.LATD7 = 0;
+ 10213                           ;calibration.c: 41:                 LATDbits.LATD7 = 0;
  10214   0040C4  9E7C               	bcf	124,7,c	;volatile
  10215                           
- 10216                           ;calibration.c: 41:                 break;
+ 10216                           ;calibration.c: 42:                 break;
  10217   0040C6  EFD1  F020         	goto	l195
  10218   0040CA                     l189:
  10219                           
- 10220                           ;calibration.c: 44:                 if(!PORTFbits.RF2){
+ 10220                           ;calibration.c: 45:                 if(!PORTFbits.RF2){
  10221   0040CA  B48E               	btfsc	142,2,c	;volatile
  10222   0040CC  EF6A  F020         	goto	u4431
  10223   0040D0  EF6C  F020         	goto	u4430
@@ -10458,7 +10450,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10225   0040D4  EF98  F020         	goto	l3952
  10226   0040D8                     u4430:
  10227   0040D8                     
- 10228                           ;calibration.c: 45:                     _delay((unsigned long)((200)*(64000000/4000.0)))
+ 10228                           ;calibration.c: 46:                     _delay((unsigned long)((200)*(64000000/4000.0)))
       +                          ;
  10229   0040D8  0E11               	movlw	17
  10230   0040DA  6E03               	movwf	(??_adjust_calibration+1)^0,c
@@ -10474,7 +10466,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10240   0040EC  D7FA               	bra	u5307
  10241   0040EE  0000               	nop	
  10242   0040F0                     
- 10243                           ;calibration.c: 46:                     *calibration_label = *calibration_label + 1;
+ 10243                           ;calibration.c: 47:                     *calibration_label = *calibration_label + 1;
  10244   0040F0  5001               	movf	adjust_calibration@calibration_label^0,w,c
  10245   0040F2  6ED9               	movwf	fsr2l,c
  10246   0040F4  6ADA               	clrf	fsr2h,c
@@ -10490,10 +10482,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10256   00410C  C002  FFDE         	movff	??_adjust_calibration,postinc2
  10257   004110  C003  FFDD         	movff	??_adjust_calibration+1,postdec2
  10258   004114                     
- 10259                           ;calibration.c: 47:                     LATDbits.LATD7 = 1;
+ 10259                           ;calibration.c: 48:                     LATDbits.LATD7 = 1;
  10260   004114  8E7C               	bsf	124,7,c	;volatile
  10261   004116                     
- 10262                           ;calibration.c: 48:                     _delay((unsigned long)((200)*(64000000/4000.0)))
+ 10262                           ;calibration.c: 49:                     _delay((unsigned long)((200)*(64000000/4000.0)))
       +                          ;
  10263   004116  0E11               	movlw	17
  10264   004118  6E03               	movwf	(??_adjust_calibration+1)^0,c
@@ -10509,11 +10501,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10274   00412A  D7FA               	bra	u5317
  10275   00412C  0000               	nop	
  10276   00412E                     
- 10277                           ;calibration.c: 49:                     LATDbits.LATD7 = 0;
+ 10277                           ;calibration.c: 50:                     LATDbits.LATD7 = 0;
  10278   00412E  9E7C               	bcf	124,7,c	;volatile
  10279   004130                     l3952:
  10280                           
- 10281                           ;calibration.c: 52:                 if(!PORTFbits.RF3){
+ 10281                           ;calibration.c: 53:                 if(!PORTFbits.RF3){
  10282   004130  B68E               	btfsc	142,3,c	;volatile
  10283   004132  EF9D  F020         	goto	u4441
  10284   004136  EF9F  F020         	goto	u4440
@@ -10521,7 +10513,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10286   00413A  EFCF  F020         	goto	l186
  10287   00413E                     u4440:
  10288   00413E                     
- 10289                           ;calibration.c: 53:                     _delay((unsigned long)((200)*(64000000/4000.0)))
+ 10289                           ;calibration.c: 54:                     _delay((unsigned long)((200)*(64000000/4000.0)))
       +                          ;
  10290   00413E  0E11               	movlw	17
  10291   004140  6E03               	movwf	(??_adjust_calibration+1)^0,c
@@ -10537,7 +10529,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10301   004152  D7FA               	bra	u5327
  10302   004154  0000               	nop	
  10303   004156                     
- 10304                           ;calibration.c: 54:                     *calibration_label = *calibration_label - 1;
+ 10304                           ;calibration.c: 55:                     *calibration_label = *calibration_label - 1;
  10305   004156  5001               	movf	adjust_calibration@calibration_label^0,w,c
  10306   004158  6ED9               	movwf	fsr2l,c
  10307   00415A  6ADA               	clrf	fsr2h,c
@@ -10555,10 +10547,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10319   004176  C004  FFDE         	movff	??_adjust_calibration+2,postinc2
  10320   00417A  C005  FFDD         	movff	??_adjust_calibration+3,postdec2
  10321   00417E                     
- 10322                           ;calibration.c: 55:                     LATHbits.LATH3 = 1;
+ 10322                           ;calibration.c: 56:                     LATHbits.LATH3 = 1;
  10323   00417E  8680               	bsf	128,3,c	;volatile
  10324   004180                     
- 10325                           ;calibration.c: 56:                     _delay((unsigned long)((200)*(64000000/4000.0)))
+ 10325                           ;calibration.c: 57:                     _delay((unsigned long)((200)*(64000000/4000.0)))
       +                          ;
  10326   004180  0E11               	movlw	17
  10327   004182  6E03               	movwf	(??_adjust_calibration+1)^0,c
@@ -10574,7 +10566,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
  10337   004194  D7FA               	bra	u5337
  10338   004196  0000               	nop	
  10339   004198                     
- 10340                           ;calibration.c: 57:                     LATHbits.LATH3 = 0;
+ 10340                           ;calibration.c: 58:                     LATHbits.LATH3 = 0;
  10341   004198  9680               	bcf	128,3,c	;volatile
  10342   00419A  EF2B  F020         	goto	l185
  10343   00419E                     l186:
@@ -11353,7 +11345,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Fri Mar 15 05:17:33 2024
+Symbol Table                                                                                   Fri Mar 15 09:53:19 2024
 
                      _color_read_Red 4912                         ___fldiv@aexp 003A  
                        ___fldiv@bexp 0039                         ___fldiv@sign 0032  
@@ -11378,16 +11370,16 @@ Symbol Table                                                                    
                                 l138 4BCE                                  l147 4C2A  
                                 l340 3D84                                  l332 3CD8  
                                 l326 3F00                                  l318 3E54  
-                                l502 2D12                                  l182 4910  
-                                l280 4B6A                                  l512 2D62  
+                                l182 4910                                  l280 4B6A  
                                 l185 4056                                  l186 419E  
                                 l290 4054                                  l354 3C06  
                                 l346 3B5A                                  l178 48B4  
                                 l195 41A2                                  l283 4B7C  
                                 l189 40CA                                  l277 483E  
                                 l198 4654                                  l199 46BE  
-                                l484 2420                                  l477 241C  
-                                l830 4652                                  l487 28E2  
+                                l561 241C                                  l571 28E2  
+                                l830 4652                                  l568 2420  
+                                l586 2D12                                  l596 2D62  
                                 l599 4BF4                                  l864 447E  
                                 l858 47AA                                  l869 44C4  
                                 l896 43C0                                  wreg 0FE8  
@@ -12160,7 +12152,7 @@ adjust_calibration@calibration_label 0001  switch_calibration@calibration_index 
                         _CCP3CONbits 0F26          forward@Distance_Calibration 0018  
                         _CCP4CONbits 0F22                   ??_color_read_Clear 0007  
                  ??_color_read_Green 0007                   rightTURN@max_power 001D  
-                  maze_return@i_1875 002A                           leftTURN@mL 0013  
+                  maze_return@i_2039 002A                           leftTURN@mL 0013  
                          leftTURN@mR 0014           __end_of_custom_floatmodulo 42BC  
                      __end_of___flge 44C6                       __end_of___fleq 47AC  
                      __end_of___wmul 4BF6            color_cardCheck@card_color 00C5  
