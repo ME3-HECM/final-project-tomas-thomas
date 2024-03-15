@@ -2083,10 +2083,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "19
-[; ;./pathfinder.h: 19: char forward_reset_threshold = 15;
+[; ;./pathfinder.h: 19: char forward_reset_threshold = 10;
 [v _forward_reset_threshold `uc ~T0 @X0 1 e ]
 [i _forward_reset_threshold
--> -> 15 `i `uc
+-> -> 10 `i `uc
 ]
 "21
 [; ;./pathfinder.h: 21: int Color_Value;
@@ -2251,124 +2251,130 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;pathfinder.c: 66:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "67
-[; ;pathfinder.c: 67:             }
+[; ;pathfinder.c: 67:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"68
+[; ;pathfinder.c: 68:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"70
+[; ;pathfinder.c: 70:             }
 }
 [e $U 2032  ]
-"69
-[; ;pathfinder.c: 69:             else if(Color_Value == 4){
+"72
+[; ;pathfinder.c: 72:             else if(Color_Value == 4){
 [e :U 2031 ]
 [e $ ! == _Color_Value -> 4 `i 2033  ]
 {
-"70
-[; ;pathfinder.c: 70:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"71
-[; ;pathfinder.c: 71:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"72
-[; ;pathfinder.c: 72:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "73
-[; ;pathfinder.c: 73:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+[; ;pathfinder.c: 73:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
 "74
-[; ;pathfinder.c: 74:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+[; ;pathfinder.c: 74:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
 "75
-[; ;pathfinder.c: 75:             }
+[; ;pathfinder.c: 75:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"76
+[; ;pathfinder.c: 76:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"77
+[; ;pathfinder.c: 77:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
+"78
+[; ;pathfinder.c: 78:             }
 }
 [e $U 2034  ]
-"77
-[; ;pathfinder.c: 77:             else if(Color_Value == 5){
+"80
+[; ;pathfinder.c: 80:             else if(Color_Value == 5){
 [e :U 2033 ]
 [e $ ! == _Color_Value -> 5 `i 2035  ]
 {
-"78
-[; ;pathfinder.c: 78:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"79
-[; ;pathfinder.c: 79:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"80
-[; ;pathfinder.c: 80:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "81
-[; ;pathfinder.c: 81:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+[; ;pathfinder.c: 81:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
 "82
-[; ;pathfinder.c: 82:                 leftTURN(c->left_90, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
+[; ;pathfinder.c: 82:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
 "83
-[; ;pathfinder.c: 83:             }
+[; ;pathfinder.c: 83:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"84
+[; ;pathfinder.c: 84:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"85
+[; ;pathfinder.c: 85:                 leftTURN(c->left_90, mL, mR);
+[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
+"86
+[; ;pathfinder.c: 86:             }
 }
 [e $U 2036  ]
-"85
-[; ;pathfinder.c: 85:             else if(Color_Value == 6){
+"88
+[; ;pathfinder.c: 88:             else if(Color_Value == 6){
 [e :U 2035 ]
 [e $ ! == _Color_Value -> 6 `i 2037  ]
 {
-"86
-[; ;pathfinder.c: 86:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"87
-[; ;pathfinder.c: 87:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"88
-[; ;pathfinder.c: 88:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "89
-[; ;pathfinder.c: 89:                 rightTURN(c->right_135, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
+[; ;pathfinder.c: 89:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
 "90
-[; ;pathfinder.c: 90:             }
+[; ;pathfinder.c: 90:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"91
+[; ;pathfinder.c: 91:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"92
+[; ;pathfinder.c: 92:                 rightTURN(c->right_135, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
+"93
+[; ;pathfinder.c: 93:             }
 }
 [e $U 2038  ]
-"92
-[; ;pathfinder.c: 92:             else if(Color_Value == 7){
+"95
+[; ;pathfinder.c: 95:             else if(Color_Value == 7){
 [e :U 2037 ]
 [e $ ! == _Color_Value -> 7 `i 2039  ]
 {
-"93
-[; ;pathfinder.c: 93:                 Operation_History[Operation_Count] = Color_Value;
-[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
-"94
-[; ;pathfinder.c: 94:                 Operation_Count++;
-[e ++ _Operation_Count -> -> 1 `i `uc ]
-"95
-[; ;pathfinder.c: 95:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "96
-[; ;pathfinder.c: 96:                 leftTURN(c->left_135, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
+[; ;pathfinder.c: 96:                 Operation_History[Operation_Count] = Color_Value;
+[e = *U + &U _Operation_History * -> _Operation_Count `ux -> -> # *U &U _Operation_History `ui `ux -> _Color_Value `uc ]
 "97
-[; ;pathfinder.c: 97:             }
+[; ;pathfinder.c: 97:                 Operation_Count++;
+[e ++ _Operation_Count -> -> 1 `i `uc ]
+"98
+[; ;pathfinder.c: 98:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
+"99
+[; ;pathfinder.c: 99:                 leftTURN(c->left_135, mL, mR);
+[e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
+"100
+[; ;pathfinder.c: 100:             }
 }
 [e $U 2040  ]
-"99
-[; ;pathfinder.c: 99:             else if(Color_Value == 8){
+"102
+[; ;pathfinder.c: 102:             else if(Color_Value == 8){
 [e :U 2039 ]
 [e $ ! == _Color_Value -> 8 `i 2041  ]
 {
-"101
-[; ;pathfinder.c: 101:                 backward(c->backward_half, mL, mR);
-[e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"102
-[; ;pathfinder.c: 102:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"103
-[; ;pathfinder.c: 103:                 rightTURN(c->right_90, mL, mR);
-[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "104
-[; ;pathfinder.c: 104:                 backward(c->backward_one, mL, mR);
-[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+[; ;pathfinder.c: 104:                 backward(c->backward_half, mL, mR);
+[e ( _backward (3 , , . *U _c 8 _mL _mR ]
 "105
-[; ;pathfinder.c: 105:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+[; ;pathfinder.c: 105:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "106
-[; ;pathfinder.c: 106:                 break;
-[e $U 2020  ]
+[; ;pathfinder.c: 106:                 rightTURN(c->right_90, mL, mR);
+[e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
 "107
-[; ;pathfinder.c: 107:             }
+[; ;pathfinder.c: 107:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"108
+[; ;pathfinder.c: 108:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"109
+[; ;pathfinder.c: 109:                 break;
+[e $U 2020  ]
+"110
+[; ;pathfinder.c: 110:             }
 }
 [e :U 2041 ]
 [e :U 2040 ]
@@ -2378,22 +2384,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2032 ]
 [e :U 2030 ]
 [e :U 2028 ]
-"108
-[; ;pathfinder.c: 108:         }
+"111
+[; ;pathfinder.c: 111:         }
 }
 [e :U 2026 ]
-"109
-[; ;pathfinder.c: 109:     }
+"112
+[; ;pathfinder.c: 112:     }
 }
 [e :U 2018 ]
 [e $U 2019  ]
 [e :U 2020 ]
-"110
-[; ;pathfinder.c: 110: }
+"113
+[; ;pathfinder.c: 113: }
 [e :UE 2017 ]
 }
-"112
-[; ;pathfinder.c: 112: void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+"126
+[; ;pathfinder.c: 126: void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
 [v _maze_return `(v ~T0 @X0 1 ef3`*S2016`*S2015`*S2015 ]
 {
 [e :U _maze_return ]
@@ -2401,12 +2407,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _mL `*S2015 ~T0 @X0 1 r2 ]
 [v _mR `*S2015 ~T0 @X0 1 r3 ]
 [f ]
-"115
-[; ;pathfinder.c: 115:     while(1){
+"129
+[; ;pathfinder.c: 129:     while(1){
 [e :U 2044 ]
 {
-"117
-[; ;pathfinder.c: 117:         for (int i = length; i >= 0; i--) {
+"131
+[; ;pathfinder.c: 131:         for (int i = length; i >= 0; i--) {
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> _length `i ]
@@ -2414,185 +2420,194 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 2047  ]
 [e :U 2046 ]
 {
-"119
-[; ;pathfinder.c: 119:             if(Operation_History[i] > 10){
+"133
+[; ;pathfinder.c: 133:             if(Operation_History[i] > 10){
 [e $ ! > -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 10 `i 2049  ]
 {
-"120
-[; ;pathfinder.c: 120:                 unsigned char distance_back = Operation_History[i] - 10;
+"134
+[; ;pathfinder.c: 134:                 unsigned char distance_back = Operation_History[i] - 10;
 [v _distance_back `uc ~T0 @X0 1 a ]
 [e = _distance_back -> - -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 10 `i `uc ]
-"121
-[; ;pathfinder.c: 121:                 for (int j = 0; j < distance_back-1; j++) {
+"135
+[; ;pathfinder.c: 135:                 for (int j = 0; j < distance_back-1; j++) {
 {
 [v _j `i ~T0 @X0 1 a ]
 [e = _j -> 0 `i ]
 [e $U 2053  ]
 [e :U 2050 ]
 {
-"122
-[; ;pathfinder.c: 122:                     forward(c->forward_one, mL, mR);
+"136
+[; ;pathfinder.c: 136:                     forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"123
-[; ;pathfinder.c: 123:                 }
+"137
+[; ;pathfinder.c: 137:                 }
 }
 [e ++ _j -> 1 `i ]
 [e :U 2053 ]
 [e $ < _j - -> _distance_back `i -> 1 `i 2050  ]
 [e :U 2051 ]
 }
-"124
-[; ;pathfinder.c: 124:                 forward(c->forward_half, mL, mR);
-[e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"126
-[; ;pathfinder.c: 126:             }
+"140
+[; ;pathfinder.c: 140:             }
 }
 [e $U 2054  ]
-"128
-[; ;pathfinder.c: 128:             else if(Operation_History[i] == 1){
+"142
+[; ;pathfinder.c: 142:             else if(Operation_History[i] == 1){
 [e :U 2049 ]
 [e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 1 `i 2055  ]
 {
-"129
-[; ;pathfinder.c: 129:                 leftTURN(c->left_90, mL, mR);
+"143
+[; ;pathfinder.c: 143:                 leftTURN(c->left_90, mL, mR);
 [e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
-"130
-[; ;pathfinder.c: 130:                 backward(c->backward_one, mL, mR);
+"144
+[; ;pathfinder.c: 144:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"131
-[; ;pathfinder.c: 131:             }
+"145
+[; ;pathfinder.c: 145:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"146
+[; ;pathfinder.c: 146:             }
 }
 [e $U 2056  ]
-"133
-[; ;pathfinder.c: 133:             else if(Operation_History[i] == 2){
+"148
+[; ;pathfinder.c: 148:             else if(Operation_History[i] == 2){
 [e :U 2055 ]
 [e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 2 `i 2057  ]
 {
-"134
-[; ;pathfinder.c: 134:                 rightTURN(c->right_90, mL, mR);
+"149
+[; ;pathfinder.c: 149:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"135
-[; ;pathfinder.c: 135:                 backward(c->backward_one, mL, mR);
+"150
+[; ;pathfinder.c: 150:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"136
-[; ;pathfinder.c: 136:             }
+"151
+[; ;pathfinder.c: 151:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"152
+[; ;pathfinder.c: 152:             }
 }
 [e $U 2058  ]
-"138
-[; ;pathfinder.c: 138:             else if(Operation_History[i] == 3){
+"154
+[; ;pathfinder.c: 154:             else if(Operation_History[i] == 3){
 [e :U 2057 ]
 [e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 3 `i 2059  ]
 {
-"139
-[; ;pathfinder.c: 139:                 rightTURN(c->right_90, mL, mR);
+"155
+[; ;pathfinder.c: 155:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"140
-[; ;pathfinder.c: 140:                 rightTURN(c->right_90, mL, mR);
+"156
+[; ;pathfinder.c: 156:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"141
-[; ;pathfinder.c: 141:             }
+"157
+[; ;pathfinder.c: 157:                 backward(c->backward_one, mL, mR);
+[e ( _backward (3 , , . *U _c 6 _mL _mR ]
+"158
+[; ;pathfinder.c: 158:                 forward(c->forward_half, mL, mR);
+[e ( _forward (3 , , . *U _c 7 _mL _mR ]
+"159
+[; ;pathfinder.c: 159:             }
 }
 [e $U 2060  ]
-"143
-[; ;pathfinder.c: 143:             else if(Operation_History[i] == 4){
+"161
+[; ;pathfinder.c: 161:             else if(Operation_History[i] == 4){
 [e :U 2059 ]
 [e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 4 `i 2061  ]
 {
-"145
-[; ;pathfinder.c: 145:                 rightTURN(c->right_90, mL, mR);
+"163
+[; ;pathfinder.c: 163:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"146
-[; ;pathfinder.c: 146:                 forward(c->forward_one, mL, mR);
+"164
+[; ;pathfinder.c: 164:                 forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"149
-[; ;pathfinder.c: 149:                 forward(c->forward_one, mL, mR);
+"167
+[; ;pathfinder.c: 167:                 forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"150
-[; ;pathfinder.c: 150:                 backward(c->backward_half, mL, mR);
+"168
+[; ;pathfinder.c: 168:                 backward(c->backward_half, mL, mR);
 [e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"151
-[; ;pathfinder.c: 151:                 rightTURN(c->right_90, mL, mR);
+"169
+[; ;pathfinder.c: 169:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"152
-[; ;pathfinder.c: 152:                 rightTURN(c->right_90, mL, mR);
+"170
+[; ;pathfinder.c: 170:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"153
-[; ;pathfinder.c: 153:                 backward(c->backward_one, mL, mR);
+"171
+[; ;pathfinder.c: 171:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"154
-[; ;pathfinder.c: 154:                 forward(c->forward_half, mL, mR);
+"172
+[; ;pathfinder.c: 172:                 forward(c->forward_half, mL, mR);
 [e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"155
-[; ;pathfinder.c: 155:             }
+"173
+[; ;pathfinder.c: 173:             }
 }
 [e $U 2062  ]
-"157
-[; ;pathfinder.c: 157:             else if(Operation_History[i] == 5){
+"175
+[; ;pathfinder.c: 175:             else if(Operation_History[i] == 5){
 [e :U 2061 ]
 [e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 5 `i 2063  ]
 {
-"158
-[; ;pathfinder.c: 158:                 leftTURN(c->right_90, mL, mR);
-[e ( _leftTURN (3 , , . *U _c 1 _mL _mR ]
-"159
-[; ;pathfinder.c: 159:                 forward(c->forward_one, mL, mR);
+"176
+[; ;pathfinder.c: 176:                 leftTURN(c->left_90, mL, mR);
+[e ( _leftTURN (3 , , . *U _c 2 _mL _mR ]
+"177
+[; ;pathfinder.c: 177:                 forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"162
-[; ;pathfinder.c: 162:                 forward(c->forward_one, mL, mR);
+"180
+[; ;pathfinder.c: 180:                 forward(c->forward_one, mL, mR);
 [e ( _forward (3 , , . *U _c 5 _mL _mR ]
-"163
-[; ;pathfinder.c: 163:                 backward(c->backward_half, mL, mR);
+"181
+[; ;pathfinder.c: 181:                 backward(c->backward_half, mL, mR);
 [e ( _backward (3 , , . *U _c 8 _mL _mR ]
-"164
-[; ;pathfinder.c: 164:                 rightTURN(c->right_90, mL, mR);
+"182
+[; ;pathfinder.c: 182:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"165
-[; ;pathfinder.c: 165:                 rightTURN(c->right_90, mL, mR);
+"183
+[; ;pathfinder.c: 183:                 rightTURN(c->right_90, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 1 _mL _mR ]
-"166
-[; ;pathfinder.c: 166:                 backward(c->backward_one, mL, mR);
+"184
+[; ;pathfinder.c: 184:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"167
-[; ;pathfinder.c: 167:                 forward(c->forward_half, mL, mR);
+"185
+[; ;pathfinder.c: 185:                 forward(c->forward_half, mL, mR);
 [e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"169
-[; ;pathfinder.c: 169:             }
+"187
+[; ;pathfinder.c: 187:             }
 }
 [e $U 2064  ]
-"171
-[; ;pathfinder.c: 171:             else if(Operation_History[i] == 6){
+"189
+[; ;pathfinder.c: 189:             else if(Operation_History[i] == 6){
 [e :U 2063 ]
 [e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 6 `i 2065  ]
 {
-"172
-[; ;pathfinder.c: 172:                 leftTURN(c->left_135, mL, mR);
+"190
+[; ;pathfinder.c: 190:                 leftTURN(c->left_135, mL, mR);
 [e ( _leftTURN (3 , , . *U _c 4 _mL _mR ]
-"173
-[; ;pathfinder.c: 173:                 backward(c->backward_one, mL, mR);
+"191
+[; ;pathfinder.c: 191:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"174
-[; ;pathfinder.c: 174:                 forward(c->forward_half, mL, mR);
+"192
+[; ;pathfinder.c: 192:                 forward(c->forward_half, mL, mR);
 [e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"175
-[; ;pathfinder.c: 175:             }
+"193
+[; ;pathfinder.c: 193:             }
 }
 [e $U 2066  ]
-"177
-[; ;pathfinder.c: 177:             else if(Operation_History[i] == 7){
+"195
+[; ;pathfinder.c: 195:             else if(Operation_History[i] == 7){
 [e :U 2065 ]
 [e $ ! == -> *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux `i -> 7 `i 2067  ]
 {
-"178
-[; ;pathfinder.c: 178:                 rightTURN(c->right_135, mL, mR);
+"196
+[; ;pathfinder.c: 196:                 rightTURN(c->right_135, mL, mR);
 [e ( _rightTURN (3 , , . *U _c 3 _mL _mR ]
-"179
-[; ;pathfinder.c: 179:                 backward(c->backward_one, mL, mR);
+"197
+[; ;pathfinder.c: 197:                 backward(c->backward_one, mL, mR);
 [e ( _backward (3 , , . *U _c 6 _mL _mR ]
-"180
-[; ;pathfinder.c: 180:                 forward(c->forward_half, mL, mR);
+"198
+[; ;pathfinder.c: 198:                 forward(c->forward_half, mL, mR);
 [e ( _forward (3 , , . *U _c 7 _mL _mR ]
-"181
-[; ;pathfinder.c: 181:             }
+"199
+[; ;pathfinder.c: 199:             }
 }
 [e :U 2067 ]
 [e :U 2066 ]
@@ -2602,18 +2617,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 2058 ]
 [e :U 2056 ]
 [e :U 2054 ]
-"184
-[; ;pathfinder.c: 184:         }
+"200
+[; ;pathfinder.c: 200:         }
 }
 [e -- _i -> 1 `i ]
 [e $ >= _i -> 0 `i 2046  ]
 [e :U 2047 ]
 }
-"187
-[; ;pathfinder.c: 187:         Operation_Count = 0;
+"203
+[; ;pathfinder.c: 203:         Operation_Count = 0;
 [e = _Operation_Count -> -> 0 `i `uc ]
-"188
-[; ;pathfinder.c: 188:         for (int i = 0; i < 50; ++i) {
+"204
+[; ;pathfinder.c: 204:         for (int i = 0; i < 50; ++i) {
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2621,26 +2636,26 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 2069  ]
 [e :U 2068 ]
 {
-"189
-[; ;pathfinder.c: 189:             Operation_History[i] = 0;
+"205
+[; ;pathfinder.c: 205:             Operation_History[i] = 0;
 [e = *U + &U _Operation_History * -> -> _i `ui `ux -> -> # *U &U _Operation_History `ui `ux -> -> 0 `i `uc ]
-"190
-[; ;pathfinder.c: 190:         }
+"206
+[; ;pathfinder.c: 206:         }
 }
 [e =+ _i -> 1 `i ]
 [e $ < _i -> 50 `i 2068  ]
 [e :U 2069 ]
 }
-"192
-[; ;pathfinder.c: 192:         break;
+"207
+[; ;pathfinder.c: 207:         break;
 [e $U 2045  ]
-"193
-[; ;pathfinder.c: 193:     }
+"208
+[; ;pathfinder.c: 208:     }
 }
 [e :U 2043 ]
 [e $U 2044  ]
 [e :U 2045 ]
-"194
-[; ;pathfinder.c: 194: }
+"209
+[; ;pathfinder.c: 209: }
 [e :UE 2042 ]
 }

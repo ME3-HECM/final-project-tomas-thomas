@@ -64,6 +64,9 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 backward(c->backward_half, mL, mR);
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR); //reverse for 1 square
+                forward(c->forward_half, mL, mR);
+                
             }
             
             else if(Color_Value == 4){ //detects that it is yellow - reverse 1 square turn right 90                   
@@ -109,6 +112,17 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
 void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
     //alogrythm to recall buggy movement history and reverse moves to get home
     
@@ -118,26 +132,30 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
 
             if(Operation_History[i] > 10){  //all values 10 or greater relate to forward movement 
                 unsigned char distance_back = Operation_History[i] - 10;    //remove the offset from the forward movement tracker such that 1 = 1 unit of the square moved
-                for (int j = 0; j < distance_back-1; j++) {                 //move the buggy forward distance_back number of times
+                for (int j = 0; j < distance_back-1; j++) {                 //move the buggy forward distance_back number of times minus 1 to adjust for calibrating agaisnt the wall
                     forward(c->forward_one, mL, mR);
                 }
-                forward(c->forward_half, mL, mR);
+//                forward(c->forward_half, mL, mR);
                 // need to have a go back by a half  - not sure why @@@@@@@@@@@@@@@@@@@@@@@@@
             }
 //
             else if(Operation_History[i] == 1){  //opposite of right = left
                 leftTURN(c->left_90, mL, mR);
-                backward(c->backward_one, mL, mR);   
+                backward(c->backward_one, mL, mR); 
+                forward(c->forward_half, mL, mR);
             }
 
             else if(Operation_History[i] == 2){ //opposite of left = right
                 rightTURN(c->right_90, mL, mR);
                 backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
             }
 
             else if(Operation_History[i] == 3){ //opposite of 180 = 180
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR); //reverse for 1 square
+                forward(c->forward_half, mL, mR);
             }
                      
             else if(Operation_History[i] == 4){ 
@@ -155,7 +173,7 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             }
 
             else if(Operation_History[i] == 5){
-                leftTURN(c->right_90, mL, mR);
+                leftTURN(c->left_90, mL, mR);
                 forward(c->forward_one, mL, mR);
                 
                 //reallignement to wall
@@ -179,8 +197,6 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 backward(c->backward_one, mL, mR);  //full backwards
                 forward(c->forward_half, mL, mR);  //half forward
             }
-            
-  
         }
         
         //reseting the device history so that it can complete another run
@@ -188,7 +204,6 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
         for (int i = 0; i < 50; ++i) {
             Operation_History[i] = 0;
         }
-
         break; //quits the return home function when the history is complete
     }
 }

@@ -2171,10 +2171,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "19
-[; ;./pathfinder.h: 19: char forward_reset_threshold = 15;
+[; ;./pathfinder.h: 19: char forward_reset_threshold = 10;
 [v _forward_reset_threshold `uc ~T0 @X0 1 e ]
 [i _forward_reset_threshold
--> -> 15 `i `uc
+-> -> 10 `i `uc
 ]
 "21
 [; ;./pathfinder.h: 21: int Color_Value;

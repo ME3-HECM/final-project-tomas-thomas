@@ -24385,7 +24385,7 @@ char Operation_Count = 0;
 char Forward_Count = 0;
 char length = 50;
 char Operation_History[50] = {0};
-char forward_reset_threshold = 15;
+char forward_reset_threshold = 10;
 
 int Color_Value;
 # 16 "main.c" 2

@@ -24198,7 +24198,7 @@ char Operation_Count = 0;
 char Forward_Count = 0;
 char length = 50;
 char Operation_History[50] = {0};
-char forward_reset_threshold = 15;
+char forward_reset_threshold = 10;
 
 int Color_Value;
 # 2 "pathfinder.c" 2
@@ -24267,6 +24267,9 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 backward(c->backward_half, mL, mR);
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
+
             }
 
             else if(Color_Value == 4){
@@ -24311,7 +24314,7 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
         }
     }
 }
-
+# 126 "pathfinder.c"
 void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
 
 
@@ -24324,23 +24327,27 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 for (int j = 0; j < distance_back-1; j++) {
                     forward(c->forward_one, mL, mR);
                 }
-                forward(c->forward_half, mL, mR);
+
 
             }
 
             else if(Operation_History[i] == 1){
                 leftTURN(c->left_90, mL, mR);
                 backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
             }
 
             else if(Operation_History[i] == 2){
                 rightTURN(c->right_90, mL, mR);
                 backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
             }
 
             else if(Operation_History[i] == 3){
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
             }
 
             else if(Operation_History[i] == 4){
@@ -24358,7 +24365,7 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             }
 
             else if(Operation_History[i] == 5){
-                leftTURN(c->right_90, mL, mR);
+                leftTURN(c->left_90, mL, mR);
                 forward(c->forward_one, mL, mR);
 
 
@@ -24382,8 +24389,6 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 backward(c->backward_one, mL, mR);
                 forward(c->forward_half, mL, mR);
             }
-
-
         }
 
 
@@ -24391,7 +24396,6 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
         for (int i = 0; i < 50; ++i) {
             Operation_History[i] = 0;
         }
-
         break;
     }
 }
