@@ -55,7 +55,11 @@ Some hardware modifications were made to the buggy to improve performance. After
 ## Demonstration Video Final Maze
 <a name="demonstration-video-final-maze"></a>
 
-here it goes 
+https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/72a4541f-bc0b-4615-bdca-3fec4af7d9b5
+Video of the robot solving the final maze in 2 minutes 16 seconsd with only 1 external adjustment
+
+Sharepoint for a higher quality video
+https://imperiallondon-my.sharepoint.com/:v:/g/personal/tl2121_ic_ac_uk/EXhYaJbaIzdMlHfeNb4KDAUB8b3JEIibTt1xOKkrldDfHw?e=usuL9M
 
 [Link to demonstration video showcasing the final maze]
 The following links show all unknown mazes completed as part of the Final Testing Lab Session:
