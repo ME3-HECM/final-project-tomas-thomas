@@ -54,6 +54,9 @@ Some hardware modifications were made to the buggy to improve performance. After
 
 ## Demonstration Video Final Maze
 <a name="demonstration-video-final-maze"></a>
+
+here it goes 
+
 [Link to demonstration video showcasing the final maze]
 The following links show all unknown mazes completed as part of the Final Testing Lab Session:
 1.
