@@ -24252,12 +24252,6 @@ void color_click_init(void);
 
 
 
-void color_TRILED_ON(void);
-
-
-
-
-
 void color_writetoaddr(char address, char value);
 
 
@@ -24314,35 +24308,6 @@ void I2C_2_Master_Write(unsigned char data_byte);
 unsigned char I2C_2_Master_Read(unsigned char ack);
 # 4 "color.c" 2
 
-# 1 "./serial.h" 1
-# 13 "./serial.h"
-volatile char EUSART4RXbuf[20];
-volatile char RxBufWriteCnt=0;
-volatile char RxBufReadCnt=0;
-
-volatile char EUSART4TXbuf[60];
-volatile char TxBufWriteCnt=0;
-volatile char TxBufReadCnt=0;
-
-
-
-void initUSART4(void);
-char getCharSerial4(void);
-void sendCharSerial4(char charToSend);
-void sendStringSerial4(char *string);
-
-
-char getCharFromRxBuf(void);
-void putCharToRxBuf(char byte);
-char isDataInRxBuf (void);
-
-
-char getCharFromTxBuf(void);
-void putCharToTxBuf(char byte);
-char isDataInTxBuf (void);
-void TxBufferedString(char *string);
-void sendTxBuf(void);
-# 5 "color.c" 2
 
 
 void color_click_init(void)
@@ -24466,14 +24431,9 @@ float custom_floatmodulo(float x, float y) {
 void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V) {
 
 
-    float r = R/65535.0;
-    float g = G/65535.0;
-    float b = B/65535.0;
-
-
-
-
-    float c_norm = 1.0 /(C/65535.0);
+    float r = R/C;
+    float g = G/C;
+    float b = B/C;
 
 
     float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
@@ -24502,11 +24462,11 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
     if (maxRGB == 0) {*S = 0;}
 
     else {
-        *S = (deltaRGB/maxRGB) * 100.0;
+        *S = (deltaRGB/maxRGB) * 100;
     }
 
 
-    *V = maxRGB * 100.0 * c_norm;
+    *V = maxRGB * 100;
 }
 
 unsigned int color_cardCheck(void) {
@@ -24525,7 +24485,10 @@ unsigned int color_cardCheck(void) {
     float V;
 
     RGB_to_HSV(r,g,b,c,&H,&S,&V);
-# 195 "color.c"
+
+
+
+
     unsigned int card_color = 0;
 
 
@@ -24533,7 +24496,7 @@ unsigned int color_cardCheck(void) {
 
     else if (H>67 && H<79 && S>50 && S<57 && V>40 && V<46) {card_color = 2;}
 
-    else if (S<10 && V>30 && V<35) {card_color = 3;}
+    else if (S<10 && V>30 && V<40) {card_color = 3;}
 
     else if (H>20 && H<25 && S>65 && S<70 && V>54 && V<57) {card_color = 4;}
 
@@ -24544,14 +24507,6 @@ unsigned int color_cardCheck(void) {
     else if (H>74 && H<85 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
 
     else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;}
-
-
-
-    char senddata[25];
-    sprintf(senddata,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color);
-    sendStringSerial4(senddata);
-    _delay((unsigned long)((50)*(64000000/4000.0)));
-
-
+# 213 "color.c"
     return card_color;
 }

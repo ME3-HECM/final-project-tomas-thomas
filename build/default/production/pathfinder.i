@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "pathfinder.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,16 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-
-#pragma config FEXTOSC = HS
-#pragma config RSTOSC = EXTOSC_4PLL
-
-
-#pragma config WDTCPS = WDTCPS_31
-#pragma config WDTE = OFF
-
-
+# 1 "pathfinder.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24095,19 +24086,51 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
-# 9 "main.c" 2
+# 1 "pathfinder.c" 2
+
+# 1 "./pathfinder.h" 1
+
+
+
+
+# 1 "./dc_motor_v1.h" 1
+
+
+
+
+
+
+
+typedef struct DC_motor {
+    char power;
+    char direction;
+    char brakemode;
+    unsigned int PWMperiod;
+    unsigned char *posDutyHighByte;
+    unsigned char *negDutyHighByte;
+} DC_motor;
+
+struct DC_motor motorL, motorR;
+
+
+void initDCmotorsPWM(unsigned int PWMperiod);
+void setMotorPWM(DC_motor *m);
+
+void stop(DC_motor *mL, DC_motor *mR);
+
+void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+
+void delay_ms_function(unsigned int milliseconds);
+# 5 "./pathfinder.h" 2
 
 # 1 "./color.h" 1
 # 12 "./color.h"
 void color_click_init(void);
 
 
-
-
-
-
-
-void color_TRILED_ON(void);
 
 
 
@@ -24132,51 +24155,247 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
 
 
 unsigned int color_cardCheck(void);
-# 10 "main.c" 2
+# 6 "./pathfinder.h" 2
 
-# 1 "./serial.h" 1
-# 13 "./serial.h"
-volatile char EUSART4RXbuf[20];
-volatile char RxBufWriteCnt=0;
-volatile char RxBufReadCnt=0;
-
-volatile char EUSART4TXbuf[60];
-volatile char TxBufWriteCnt=0;
-volatile char TxBufReadCnt=0;
-
-
-
-void initUSART4(void);
-char getCharSerial4(void);
-void sendCharSerial4(char charToSend);
-void sendStringSerial4(char *string);
-
-
-char getCharFromRxBuf(void);
-void putCharToRxBuf(char byte);
-char isDataInRxBuf (void);
-
-
-char getCharFromTxBuf(void);
-void putCharToTxBuf(char byte);
-char isDataInTxBuf (void);
-void TxBufferedString(char *string);
-void sendTxBuf(void);
-# 11 "main.c" 2
+# 1 "./calibration.h" 1
 
 
 
 
-void main(void) {
+
+
+
+
+typedef struct calibration_structure {
+    char index;
+    char right_90;
+    char left_90;
+    char right_135;
+    char left_135;
+    char forward_one;
+    char backward_one;
+    char forward_half;
+    char backward_half;
+
+} calibration_structure;
+
+struct calibration_structure calibration;
+
+void pause_until_RF2_pressed();
+void adjust_calibration(int *calibration_label);
+void switch_calibration(int *calibration_index);
+void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
+# 7 "./pathfinder.h" 2
+
+
+
+
+
+void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR);
+void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
+
+char Operation_Count = 0;
+char Forward_Count = 0;
+char length = 50;
+char Operation_History[50] = {0};
+char forward_reset_threshold = 10;
+
+int Color_Value;
+# 2 "pathfinder.c" 2
+
+
+
+
+void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
+
 
     color_click_init();
-    initUSART4();
-    _delay((unsigned long)((1000)*(64000000/4000.0)));
 
-    while (1) {
+    while(1){
 
-        unsigned int a = color_cardCheck();
-        _delay((unsigned long)((1000)*(64000000/4000.0)));
+        _delay((unsigned long)((500)*(64000000/4000.0)));
+        LATHbits.LATH3 = 1;
+        LATDbits.LATD7 = 1;
+
+
+        forward(c->forward_one, mL, mR);
+        Forward_Count++;
+        Color_Value = color_cardCheck();
+
+        LATHbits.LATH3 = 0;
+        LATDbits.LATD7 = 0;
+
+
+
+
+        if(Forward_Count > forward_reset_threshold){
+            backward(c->backward_half, mL, mR);
+            rightTURN(c->right_90, mL, mR);
+            rightTURN(c->right_90, mL, mR);
+            backward(c->backward_one, mL, mR);
+            for (int i = 0; i < forward_reset_threshold; i++) {
+                 forward(c->forward_one, mL, mR);
+
+            }
+            backward(c->backward_half, mL, mR);
+            break;
+        }
+
+        if(Color_Value != 0){
+
+            Operation_History[Operation_Count] = Forward_Count + 10;
+            Forward_Count = 0;
+            Operation_Count++;
+
+            if(Color_Value == 1){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                backward(c->backward_half, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+            }
+
+            else if(Color_Value == 2){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                backward(c->backward_half, mL, mR);
+                leftTURN(c->left_90, mL, mR);
+            }
+
+            else if(Color_Value == 3){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                backward(c->backward_half, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
+
+            }
+
+            else if(Color_Value == 4){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                backward(c->backward_half, mL, mR);
+                backward(c->backward_one, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+            }
+
+            else if(Color_Value == 5){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                backward(c->backward_half, mL, mR);
+                backward(c->backward_one, mL, mR);
+                leftTURN(c->left_90, mL, mR);
+            }
+
+            else if(Color_Value == 6){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                backward(c->backward_half, mL, mR);
+                rightTURN(c->right_135, mL, mR);
+            }
+
+            else if(Color_Value == 7){
+                Operation_History[Operation_Count] = Color_Value;
+                Operation_Count++;
+                backward(c->backward_half, mL, mR);
+                leftTURN(c->left_135, mL, mR);
+            }
+
+            else if(Color_Value == 8){
+
+                backward(c->backward_half, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
+                break;
+            }
+        }
     }
+}
+# 126 "pathfinder.c"
+void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
 
+
+    while(1){
+
+        for (int i = length; i >= 0; i--) {
+
+            if(Operation_History[i] > 10){
+                unsigned char distance_back = Operation_History[i] - 10;
+                for (int j = 0; j < distance_back-1; j++) {
+                    forward(c->forward_one, mL, mR);
+                }
+
+
+            }
+
+            else if(Operation_History[i] == 1){
+                leftTURN(c->left_90, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
+            }
+
+            else if(Operation_History[i] == 2){
+                rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
+            }
+
+            else if(Operation_History[i] == 3){
+                rightTURN(c->right_90, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
+            }
+
+            else if(Operation_History[i] == 4){
+
+                rightTURN(c->right_90, mL, mR);
+                forward(c->forward_one, mL, mR);
+
+
+                forward(c->forward_one, mL, mR);
+                backward(c->backward_half, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
+            }
+
+            else if(Operation_History[i] == 5){
+                leftTURN(c->left_90, mL, mR);
+                forward(c->forward_one, mL, mR);
+
+
+                forward(c->forward_one, mL, mR);
+                backward(c->backward_half, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+                rightTURN(c->right_90, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
+
+            }
+
+            else if(Operation_History[i] == 6){
+                leftTURN(c->left_135, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
+            }
+
+            else if(Operation_History[i] == 7){
+                rightTURN(c->right_135, mL, mR);
+                backward(c->backward_one, mL, mR);
+                forward(c->forward_half, mL, mR);
+            }
+        }
+
+
+        Operation_Count = 0;
+        for (int i = 0; i < 50; ++i) {
+            Operation_History[i] = 0;
+        }
+        break;
+    }
 }

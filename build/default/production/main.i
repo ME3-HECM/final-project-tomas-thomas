@@ -24097,65 +24097,6 @@ unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\xc.h" 2 3
 # 9 "main.c" 2
 
-# 1 "./dc_motor_v1.h" 1
-
-
-
-
-
-
-
-typedef struct DC_motor {
-    char power;
-    char direction;
-    char brakemode;
-    unsigned int PWMperiod;
-    unsigned char *posDutyHighByte;
-    unsigned char *negDutyHighByte;
-} DC_motor;
-
-struct DC_motor motorL, motorR;
-
-char temp = 7;
-
-void initDCmotorsPWM(unsigned int PWMperiod);
-void setMotorPWM(DC_motor *m);
-void stop(DC_motor *mL, DC_motor *mR);
-void turnRIGHT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void turnLEFT(char rotation_calibration, DC_motor *mL, DC_motor *mR);
-void fullSpeedAhead(DC_motor *mL, DC_motor *mR);
-
-
-void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
-void delay_ms_function(unsigned int milliseconds);
-# 10 "main.c" 2
-
-# 1 "./calibration.h" 1
-
-
-
-
-
-
-
-typedef struct calibration_structure {
-    char index;
-    char over;
-    char left_90;
-    char right_90;
-    char left_135;
-    char right_135;
-    char forward;
-    char forward_motorL;
-    char forward_motorR;
-} calibration_structure;
-
-struct calibration_structure calibration;
-
-void adjust_calibration(int *calibration_label);
-void switch_calibration(int *calibration_index);
-# 11 "main.c" 2
-
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -24308,14 +24249,169 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
+# 10 "main.c" 2
+
+
+# 1 "./dc_motor_v1.h" 1
+
+
+
+
+
+
+
+typedef struct DC_motor {
+    char power;
+    char direction;
+    char brakemode;
+    unsigned int PWMperiod;
+    unsigned char *posDutyHighByte;
+    unsigned char *negDutyHighByte;
+} DC_motor;
+
+struct DC_motor motorL, motorR;
+
+
+void initDCmotorsPWM(unsigned int PWMperiod);
+void setMotorPWM(DC_motor *m);
+
+void stop(DC_motor *mL, DC_motor *mR);
+
+void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
+void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
+
+void delay_ms_function(unsigned int milliseconds);
 # 12 "main.c" 2
+
+# 1 "./calibration.h" 1
+
+
+
+
+
+
+
+
+typedef struct calibration_structure {
+    char index;
+    char right_90;
+    char left_90;
+    char right_135;
+    char left_135;
+    char forward_one;
+    char backward_one;
+    char forward_half;
+    char backward_half;
+
+} calibration_structure;
+
+struct calibration_structure calibration;
+
+void pause_until_RF2_pressed();
+void adjust_calibration(int *calibration_label);
+void switch_calibration(int *calibration_index);
+void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
+# 13 "main.c" 2
+
+# 1 "./color.h" 1
+# 12 "./color.h"
+void color_click_init(void);
+
+
+
+
+
+
+
+void color_writetoaddr(char address, char value);
+
+
+
+
+
+unsigned int color_read_Red(void);
+unsigned int color_read_Green(void);
+unsigned int color_read_Blue(void);
+unsigned int color_read_Clear(void);
+
+
+float custom_floatmodulo(float x, float y);
+
+
+void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V);
+
+
+unsigned int color_cardCheck(void);
+# 14 "main.c" 2
+
+# 1 "./serial.h" 1
+# 13 "./serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
+
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
+
+
+
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
+
+
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
+
+
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 15 "main.c" 2
+
+# 1 "./pathfinder.h" 1
+# 12 "./pathfinder.h"
+void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR);
+void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
+
+char Operation_Count = 0;
+char Forward_Count = 0;
+char length = 50;
+char Operation_History[50] = {0};
+char forward_reset_threshold = 10;
+
+int Color_Value;
+# 16 "main.c" 2
 
 
 
 
 void main(void){
+
+
     unsigned int PWMperiod = 99;
     initDCmotorsPWM(PWMperiod);
+
+
+
+    TRISDbits.TRISD7 = 0;
+    LATDbits.LATD7 = 0;
+
+    TRISHbits.TRISH3 = 0;
+    LATHbits.LATH3 = 0;
+
+    TRISFbits.TRISF2=1;
+    ANSELFbits.ANSELF2=0;
+
+    TRISFbits.TRISF3=1;
+    ANSELFbits.ANSELF3=0;
 
 
 
@@ -24335,41 +24431,20 @@ void main(void){
 
 
 
-
-
-    TRISDbits.TRISD7 = 0;
-    LATDbits.LATD7 = 0;
-
-
-    TRISHbits.TRISH3 = 0;
-    LATHbits.LATH3 = 0;
-
-
-    TRISFbits.TRISF2=1;
-    ANSELFbits.ANSELF2=0;
-
-
-    TRISFbits.TRISF3=1;
-    ANSELFbits.ANSELF3=0;
-
-
-
     calibration.index = 1;
-    calibration.over = 0;
 
 
+    calibration.right_90 = 25;
+    calibration.left_90 = 25;
 
+    calibration.right_135 = 40;
+    calibration.left_135 = 40;
 
+    calibration.forward_one = 100;
+    calibration.backward_one = 100;
 
-    calibration.left_90 = 60;
-    calibration.right_90 = 10;
-    calibration.left_135 = 60;
-    calibration.right_135 = 10;
-    calibration.forward = 10;
-    calibration.forward_motorL = 20;
-    calibration.forward_motorR = 20;
-
-
+    calibration.forward_half = 33;
+    calibration.backward_half = 33;
 
 
 
@@ -24377,31 +24452,13 @@ void main(void){
     while(1){
 
 
+        pause_until_RF2_pressed();
 
-        if(calibration.index == 1){
-            adjust_calibration(&calibration.right_90);
-            turnRIGHT(calibration.right_90, &motorL, &motorR);
-            switch_calibration(&calibration.index);
-        }
+        calibration_routine(&calibration, &motorL, &motorR);
 
+        maze_search(&calibration, &motorL, &motorR);
 
-        if(calibration.index == 2){
-            adjust_calibration(&calibration.left_90);
-            turnLEFT(calibration.left_90, &motorL, &motorR);
-            switch_calibration(&calibration.index);
-        }
-
-
-        if(calibration.index == 3){
-            adjust_calibration(&calibration.forward);
-            forward(calibration.forward, &motorL, &motorR);
-            switch_calibration(&calibration.index);
-        }
-# 118 "main.c"
-        if(calibration.index == 5){
-            calibration.index = 1;
-            break;
-        }
+        maze_return(&calibration, &motorL, &motorR);
 
     }
 }
