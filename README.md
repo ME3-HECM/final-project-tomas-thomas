@@ -109,6 +109,12 @@ The following description is a step-by-step guide to the operation of our buggy,
 <a name="in-depth-view-of-code-path"></a>
 [Detailed explanation of the code path]
 
+
+
+    
+
+//
+
 #### Found in pathfinder_file.c:
 void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
     //Maze searching algorythm
@@ -194,9 +200,48 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             }
 
 Code below is maze_return [needs more here]
-            
+
+## Calibration Structure - needs adding to TOC
+The calibration code has 4 functions 
+```
+pause_until_RF2_pressed()
+```
+This function does not directly control the calibration values but is used to prevent a while(1) loop from running until button RF2 is pressed.
+```
+adjust_calibration(int *calibration_label)
+```
+```
+switch_calibration(int *calibration_index)
+```
+```
+calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR)
+```
+
+// calibration section
+### calibration_routine Function
+This function combines the 2 previous functions together to calibrate the 8 movements in a single callable callable function. It takes the inputs of left motor, right motor, calibration values.
+#### adjustment 
+```ruby
+    if(c->index == 1){ //calibrate right 90 turn
+        adjust_calibration(&(c->right_90));         //use the left and right buttons to increase or decrease the calibration angle (turn value)
+        rightTURN(c->right_90, mL, mR);             //calls the right turn at 90 degrees for the user to determine if the calibration was correct
+        switch_calibration(&(c->index));            //press left button to re-calibrate turn angle or press right button to increase index and move to next movement
+    }
+```
+This step is then repeated 7 more times to cycle through the 8 total movements that we use whilst solving the maze 
+
+#### Ending the Calibration cycle
+```ruby
+    if(c->index >= 9){                             //when index has completed all 8 functions reset back to 1 so user can make adjustments on the next run
+        c->index = 1;                              //set index to beginning (1)
+        break;                                     //quits us out of the calibration routine
+    }
+    
+```
 ## Movement Structure
 <a name="movement-calibration"></a>
+
+
 
 ### Movement Process
 [Explanation of movement process]

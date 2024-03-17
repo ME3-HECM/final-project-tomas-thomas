@@ -1,4 +1,3 @@
-
 #include "calibration.h"
 #include "dc_motor_v1.h"
 #include <xc.h>
@@ -24,15 +23,15 @@ void pause_until_RF2_pressed(){
 }
 
 void adjust_calibration(int *calibration_label){ 
-    //take the calibration variable and if right button pressed increases, if left pressed decreases,
+    //take the any calibration variable - if right button pressed increases, if left pressed decreases
     // if both pressed at same time then exits calibration loop  
     
-    while(1){ //calibration adjustment loop          
+    while(1){ //calibration adjustment loop to calibrate desired number of times       
         
-        if(!PORTFbits.RF3 || !PORTFbits.RF2){   //check to see if user has pressed a button
-            __delay_ms(100);                    //wait 100ms to account for user input delay between pressing both buttons
+        if(!PORTFbits.RF3 || !PORTFbits.RF2){   //check to see if user has pressed a button left or right
+            __delay_ms(100);                    //wait 100ms to account for user input delay between pressing both buttons - without this step the double press was unreliable
                     
-            if(!PORTFbits.RF3 && !PORTFbits.RF2 ){ //if both buttons were pressed together within 100ms then exit the calibration lop
+            if(!PORTFbits.RF3 && !PORTFbits.RF2 ){ //if both buttons were pressed together within 100ms then exit the calibration loop
                 //flash lights to signal that loop has been broken
                 LATHbits.LATH3 = 1;
                 LATDbits.LATD7 = 1; 
@@ -44,7 +43,7 @@ void adjust_calibration(int *calibration_label){
             else{
                 if(!PORTFbits.RF2){     //if Right button is pressed
                     __delay_ms(200);                                //delay to prevent accidental double click
-                    *calibration_label = *calibration_label + 1;    //add 1 to the calibration value input to the function
+                    *calibration_label = *calibration_label + 1;    //add 1 to the calibration value input (the +1 can be increased if larger steps are desired )
                     LATDbits.LATD7 = 1;                             //LED flash to indicate the the button has been pressed
                     __delay_ms(200);
                     LATDbits.LATD7 = 0;
@@ -52,7 +51,7 @@ void adjust_calibration(int *calibration_label){
 
                 if(!PORTFbits.RF3){ //if Left button is pressed
                     __delay_ms(200);                                //delay to prevent accidental double click
-                    *calibration_label = *calibration_label - 1;    //subtract 1 to the calibration value input to the function
+                    *calibration_label = *calibration_label - 1;    //subtract 1 to the calibration value
                     LATHbits.LATH3 = 1;                             //LED flash to indicate the the button has been pressed
                     __delay_ms(200);
                     LATHbits.LATH3 = 0;
@@ -63,7 +62,7 @@ void adjust_calibration(int *calibration_label){
 }
 
 void switch_calibration(int *calibration_index){    
-    //function switch between the calibration index to move onto the next motor function
+    //function to switch between the calibration index to move onto the next motor function
     //right button moves on to the next calibration 
     //left button remains on the current calibration 
     
@@ -88,20 +87,20 @@ void switch_calibration(int *calibration_index){
 }
 
 void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
-    //combination of the previous functions to calibrate the 8 movements in a single callable function
+    //combination of the previous functions to calibrate the 8 movements in a single callable callable function
     //takes inputs of left motor, right motor, calibration values
     
     while(1){
   
         if(c->index == 1){ //calibrate right 90 turn
             adjust_calibration(&(c->right_90));         //use the left and right buttons to increase or decrease the calibration angle (turn value)
-            rightTURN(c->right_90, mL, mR);             //check the turn angle
-            switch_calibration(&(c->index));            //use left button to recalibrate turn angle or right button to increase index and move to next movement
+            rightTURN(c->right_90, mL, mR);             //calls the right turn at 90 degrees for the user to determine if the calibration was correct
+            switch_calibration(&(c->index));            //press left button to re-calibrate turn angle or press right button to increase index and move to next movement
         }
         
         if(c->index == 2){ //left 90
             adjust_calibration(&(c->left_90));          //adjust left 90 turn angle
-            leftTURN(c->left_90, mL, mR);  
+            leftTURN(c->left_90, mL, mR);               
             switch_calibration(&(c->index));
         }
     
@@ -140,8 +139,8 @@ void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             switch_calibration(&(c->index));
         }
         
-        if(c->index >= 9){                             //when index has completed all 8 functions reset back to 1 to recalibrate back from start
-            c->index = 1;                              //set index to 1
+        if(c->index >= 9){                             //when index has completed all 8 functions reset back to 1 so user can make adjustments on the next run
+            c->index = 1;                              //set index to beginning (1)
             break;                                     //quits us out of the calibration routine
         }
     }
