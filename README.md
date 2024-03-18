@@ -1,5 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/c8ng1gdc)
-# Course project - Mine Navigation Search and Rescue (Tomas and Thomas)
+# Course Final Project - Mine Navigation Search and Rescue (Tomas and Thomas)
 ## Table of Contents
 - [Project Challenge and Instructions](#project-challenge-and-instructions)
 - [Introduction](#introduction)
@@ -9,8 +9,8 @@
   - [Overview of Code Path](#Overview-of-Code-Path)
 - [Calibration Structure](#calibration-structure)
 - [Colour Sensing Structure](#colour-sensing-structure)
-- [Path Finding Structure] (#path-finding-structure)
-- [Potential Future Improvements?](#exemptions)
+- [Path Finding Structure](#path-finding-structure)
+- [Potential Future Improvements](#potential-future-improvements)
 - [Testing Videos (Mechatronics Lab)](#testing-videos-(mechatronics-lab))
 
 ## Project Challenge and Instructions
@@ -525,10 +525,14 @@ Operation_Count = 0;
         break; //quits the return home function when the history is complete
 ```
 
-## Potential Future Improvements?
-<a name="exemptions"></a>
+## Potential Future Improvements
+<a name="potential-future-improvements"></a>
 
-Currently there is no adjustment made for affect the buggy's battery level has on the motors. We saw that in testing over extended periods of time the buggy's turn radius was affected by the battery level without changing the calibration value. In the future this feature would ensure the buggy would be more consistent over extended operation - however this would be beyond what is required to solve our mazes.
+Currently, there is no adjustment made for the effect that the buggy's battery level has on the motors. We saw that in testing over extended periods of time the buggy's turn radius was affected by the decreasing battery level, without changing the calibration value. In the future, this feature would ensure the buggy would be more consistent over extended operation - however this would be beyond what is required to solve our mazes.
+
+Another potential improvement would be to have continuous smooth movement of the buggy. This could allow for faster maze solving times and could be completed by adding an interrupt sequence off the color click clear channel to indicate when the buggy has approached a wall/colour card. 
+
+Our color detection worked very well and identified all colours in various operating conditions, but potentially another more robust method and improvement for color detection would be to include an additional calibration sequence to calibrate for the specific, individual colour cards used in each maze. This would be automatic and would read the color values/information from the cards and store it within its color detection ranges, ready for use in solving the maze. This would ensure that all colour cards would be correctly identified, regardless of operating conditions (ambient light, wear-and-tear on the cards, etc.).
 
 ## Testing Videos (Mechatronics Lab)
 <a name="testing-videos-(mechatronics-lab)"></a>
