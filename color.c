@@ -30,8 +30,6 @@ void color_click_init(void)
     LATGbits.LATG1 = 1; //Set red LED on
     LATAbits.LATA4 = 1; //Set green LED on
     LATFbits.LATF7 = 1; //Set blue LED on
-    
-    //what other lights should we have on? Ask TOM!
 }
 
 void color_writetoaddr(char address, char value){
