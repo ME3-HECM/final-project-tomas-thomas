@@ -60,7 +60,6 @@ void initDCmotorsPWM(unsigned int PWMperiod){
     CCP4CONbits.CCP4MODE=0b1100; //PWM mode  
     CCP4CONbits.EN=1; //turn on
     
-    
     TRISHbits.TRISH3 = 0;
     LATHbits.LATH3 = 0;
 }

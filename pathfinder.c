@@ -99,7 +99,6 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             }
             
             else if(Color_Value == 8){ //detects that it is white - return home            
-                
                 backward(c->backward_half, mL, mR); // half back off from wall
                 rightTURN(c->right_90, mL, mR);     //180* turn
                 rightTURN(c->right_90, mL, mR);

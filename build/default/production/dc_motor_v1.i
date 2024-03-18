@@ -24179,7 +24179,6 @@ void initDCmotorsPWM(unsigned int PWMperiod){
     CCP4CONbits.CCP4MODE=0b1100;
     CCP4CONbits.EN=1;
 
-
     TRISHbits.TRISH3 = 0;
     LATHbits.LATH3 = 0;
 }

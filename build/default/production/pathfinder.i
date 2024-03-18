@@ -24302,7 +24302,6 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
             }
 
             else if(Color_Value == 8){
-
                 backward(c->backward_half, mL, mR);
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);

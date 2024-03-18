@@ -24507,6 +24507,6 @@ unsigned int color_cardCheck(void) {
     else if (H>74 && H<85 && S>28 && S<33 && V>37 && V<42) {card_color = 7;}
 
     else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;}
-# 213 "color.c"
+# 212 "color.c"
     return card_color;
 }

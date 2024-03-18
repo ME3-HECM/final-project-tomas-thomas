@@ -203,11 +203,11 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;} //8. White Check
     
     //---------------------USE FOR TESTING WITH SERIAL AND LAPTOP - DETERMINE CARD HSV VALUES------------------------------------------
-//    char colortest[30]; //Empty char array to contain HSV values and Color determined for color testing
-//    sprintf(colortest,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color); //Constructing the string with HSV values and determined color
-//    sendStringSerial4(colortest); // Sending the string through serial communication
-//    __delay_ms(50); //Delay needed for buffering, etc.
-//---------------------------------------------------------------------------------------------------------------------------------
+    //    char colortest[30]; //Empty char array to contain HSV values and Color determined for color testing
+    //    sprintf(colortest,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color); //Constructing the string with HSV values and determined color
+    //    sendStringSerial4(colortest); // Sending the string through serial communication
+    //    __delay_ms(50); //Delay needed for buffering, etc.
+    //---------------------------------------------------------------------------------------------------------------------------------
     
     return card_color; //output the determined color from the function
 }

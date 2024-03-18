@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Mon Mar 18 02:23:52 2024
+                                                                                               Mon Mar 18 04:52:06 2024
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	18F67K40
@@ -1918,7 +1918,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1889   0023CC                     u4850:
   1890   0023CC                     
   1891                           ; BSR set to: 0
-  1892                           ;pathfinder.c: 103:                 backward(c->backward_half, mL, mR);
+  1892                           ;pathfinder.c: 102:                 backward(c->backward_half, mL, mR);
   1893   0023CC  C0D4  F013         	movff	maze_search@mL,backward@mL
   1894   0023D0  C0D5  F014         	movff	maze_search@mR,backward@mR
   1895   0023D4  51D3               	movf	maze_search@c& (0+255),w,b
@@ -1929,7 +1929,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1900   0023DE  50DF               	movf	indf2,w,c
   1901   0023E0  ECBC  F01C         	call	_backward
   1902                           
-  1903                           ;pathfinder.c: 104:                 rightTURN(c->right_90, mL, mR);
+  1903                           ;pathfinder.c: 103:                 rightTURN(c->right_90, mL, mR);
   1904   0023E4  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1905   0023E8  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1906   0023EC  0100               	movlb	0	; () banked
@@ -1941,7 +1941,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1912   0023F8  50DF               	movf	indf2,w,c
   1913   0023FA  EC61  F01F         	call	_rightTURN
   1914                           
-  1915                           ;pathfinder.c: 105:                 rightTURN(c->right_90, mL, mR);
+  1915                           ;pathfinder.c: 104:                 rightTURN(c->right_90, mL, mR);
   1916   0023FE  C0D4  F013         	movff	maze_search@mL,rightTURN@mL
   1917   002402  C0D5  F014         	movff	maze_search@mR,rightTURN@mR
   1918   002406  0100               	movlb	0	; () banked
@@ -1953,7 +1953,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1924   002412  50DF               	movf	indf2,w,c
   1925   002414  EC61  F01F         	call	_rightTURN
   1926                           
-  1927                           ;pathfinder.c: 106:                 backward(c->backward_one, mL, mR);
+  1927                           ;pathfinder.c: 105:                 backward(c->backward_one, mL, mR);
   1928   002418  C0D4  F013         	movff	maze_search@mL,backward@mL
   1929   00241C  C0D5  F014         	movff	maze_search@mR,backward@mR
   1930   002420  0100               	movlb	0	; () banked
@@ -1965,7 +1965,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1936   00242C  50DF               	movf	indf2,w,c
   1937   00242E  ECBC  F01C         	call	_backward
   1938                           
-  1939                           ;pathfinder.c: 107:                 forward(c->forward_half, mL, mR);
+  1939                           ;pathfinder.c: 106:                 forward(c->forward_half, mL, mR);
   1940   002432  C0D4  F013         	movff	maze_search@mL,forward@mL
   1941   002436  C0D5  F014         	movff	maze_search@mR,forward@mR
   1942   00243A  0100               	movlb	0	; () banked
@@ -1977,7 +1977,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   1948   002446  50DF               	movf	indf2,w,c
   1949   002448  ECC2  F01E         	call	_forward
   1950                           
-  1951                           ;pathfinder.c: 108:                 break;
+  1951                           ;pathfinder.c: 107:                 break;
   1952   00244C  EF2A  F012         	goto	l568
   1953   002450                     l561:
   1954                           
@@ -3300,7 +3300,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3250   001830                     l99:
   3251   001830                     l3883:
   3252                           
-  3253                           ;color.c: 213:     return card_color;
+  3253                           ;color.c: 212:     return card_color;
   3254   001830  C0C5  F05C         	movff	color_cardCheck@card_color,?_color_cardCheck
   3255   001834  C0C6  F05D         	movff	color_cardCheck@card_color+1,?_color_cardCheck+1
   3256   001838  0012               	return		;funcret
@@ -7307,7 +7307,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7155                           
   7156 ;; *************** function _maze_return *****************
   7157 ;; Defined at:
-  7158 ;;		line 116 in file "pathfinder.c"
+  7158 ;;		line 115 in file "pathfinder.c"
   7159 ;; Parameters:    Size  Location     Type
   7160 ;;  c               1   30[COMRAM] PTR struct calibration_s
   7161 ;;		 -> calibration(9), 
@@ -7362,7 +7362,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7205   00291C  6E29               	movwf	maze_return@i^0,c
   7206   00291E                     l4363:
   7207                           
-  7208                           ;pathfinder.c: 123:             if(Operation_History[i] > 10){
+  7208                           ;pathfinder.c: 122:             if(Operation_History[i] > 10){
   7209   00291E  0E3C               	movlw	low _Operation_History
   7210   002920  2429               	addwf	maze_return@i^0,w,c
   7211   002922  6ED9               	movwf	fsr2l,c
@@ -7377,7 +7377,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7220   002936  EFD3  F014         	goto	l4375
   7221   00293A                     u4860:
   7222   00293A                     
-  7223                           ;pathfinder.c: 124:                 unsigned char distance_back = Operation_History[i] -
+  7223                           ;pathfinder.c: 123:                 unsigned char distance_back = Operation_History[i] -
       +                           10;
   7224   00293A  0E3C               	movlw	low _Operation_History
   7225   00293C  2429               	addwf	maze_return@i^0,w,c
@@ -7389,7 +7389,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7231   002948  0FF6               	addlw	246
   7232   00294A  6E27               	movwf	maze_return@distance_back^0,c
   7233   00294C                     
-  7234                           ;pathfinder.c: 125:                 for (int j = 0; j < distance_back-1; j++) {
+  7234                           ;pathfinder.c: 124:                 for (int j = 0; j < distance_back-1; j++) {
   7235   00294C  0E00               	movlw	0
   7236   00294E  6E26               	movwf	(maze_return@j+1)^0,c
   7237   002950  0E00               	movlw	0
@@ -7397,7 +7397,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7239   002954  EFBA  F014         	goto	l4373
   7240   002958                     l4369:
   7241                           
-  7242                           ;pathfinder.c: 126:                     forward(c->forward_one, mL, mR);
+  7242                           ;pathfinder.c: 125:                     forward(c->forward_one, mL, mR);
   7243   002958  C020  F013         	movff	maze_return@mL,forward@mL
   7244   00295C  C021  F014         	movff	maze_return@mR,forward@mR
   7245   002960  501F               	movf	maze_return@c^0,w,c
@@ -7408,7 +7408,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7250   00296A  50DF               	movf	indf2,w,c
   7251   00296C  ECC2  F01E         	call	_forward
   7252   002970                     
-  7253                           ;pathfinder.c: 127:                 }
+  7253                           ;pathfinder.c: 126:                 }
   7254   002970  4A25               	infsnz	maze_return@j^0,f,c
   7255   002972  2A26               	incf	(maze_return@j+1)^0,f,c
   7256   002974                     l4373:
@@ -7435,7 +7435,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7277   00299E  EFC7  F016         	goto	l4403
   7278   0029A2                     l577:
   7279                           
-  7280                           ;pathfinder.c: 128:             }
+  7280                           ;pathfinder.c: 127:             }
   7281   0029A2  EFC7  F016         	goto	l4403
   7282   0029A6                     l4375:
   7283   0029A6  0E3C               	movlw	low _Operation_History
@@ -7452,7 +7452,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7294   0029BE  EF07  F015         	goto	l4379
   7295   0029C2                     u4880:
   7296   0029C2                     
-  7297                           ;pathfinder.c: 131:                 leftTURN(c->left_90, mL, mR);
+  7297                           ;pathfinder.c: 130:                 leftTURN(c->left_90, mL, mR);
   7298   0029C2  C020  F013         	movff	maze_return@mL,leftTURN@mL
   7299   0029C6  C021  F014         	movff	maze_return@mR,leftTURN@mR
   7300   0029CA  501F               	movf	maze_return@c^0,w,c
@@ -7463,7 +7463,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7305   0029D4  50DF               	movf	indf2,w,c
   7306   0029D6  ECFF  F01F         	call	_leftTURN
   7307                           
-  7308                           ;pathfinder.c: 132:                 backward(c->backward_one, mL, mR);
+  7308                           ;pathfinder.c: 131:                 backward(c->backward_one, mL, mR);
   7309   0029DA  C020  F013         	movff	maze_return@mL,backward@mL
   7310   0029DE  C021  F014         	movff	maze_return@mR,backward@mR
   7311   0029E2  501F               	movf	maze_return@c^0,w,c
@@ -7474,7 +7474,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7316   0029EC  50DF               	movf	indf2,w,c
   7317   0029EE  ECBC  F01C         	call	_backward
   7318                           
-  7319                           ;pathfinder.c: 133:                 forward(c->forward_half, mL, mR);
+  7319                           ;pathfinder.c: 132:                 forward(c->forward_half, mL, mR);
   7320   0029F2  C020  F013         	movff	maze_return@mL,forward@mL
   7321   0029F6  C021  F014         	movff	maze_return@mR,forward@mR
   7322   0029FA  501F               	movf	maze_return@c^0,w,c
@@ -7485,7 +7485,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7327   002A04  50DF               	movf	indf2,w,c
   7328   002A06  ECC2  F01E         	call	_forward
   7329                           
-  7330                           ;pathfinder.c: 134:             }
+  7330                           ;pathfinder.c: 133:             }
   7331   002A0A  EFC7  F016         	goto	l4403
   7332   002A0E                     l4379:
   7333   002A0E  0E3C               	movlw	low _Operation_History
@@ -7503,7 +7503,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7345   002A28  EF3C  F015         	goto	l4383
   7346   002A2C                     u4890:
   7347   002A2C                     
-  7348                           ;pathfinder.c: 137:                 rightTURN(c->right_90, mL, mR);
+  7348                           ;pathfinder.c: 136:                 rightTURN(c->right_90, mL, mR);
   7349   002A2C  C020  F013         	movff	maze_return@mL,rightTURN@mL
   7350   002A30  C021  F014         	movff	maze_return@mR,rightTURN@mR
   7351   002A34  501F               	movf	maze_return@c^0,w,c
@@ -7514,7 +7514,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7356   002A3E  50DF               	movf	indf2,w,c
   7357   002A40  EC61  F01F         	call	_rightTURN
   7358                           
-  7359                           ;pathfinder.c: 138:                 backward(c->backward_one, mL, mR);
+  7359                           ;pathfinder.c: 137:                 backward(c->backward_one, mL, mR);
   7360   002A44  C020  F013         	movff	maze_return@mL,backward@mL
   7361   002A48  C021  F014         	movff	maze_return@mR,backward@mR
   7362   002A4C  501F               	movf	maze_return@c^0,w,c
@@ -7525,7 +7525,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7367   002A56  50DF               	movf	indf2,w,c
   7368   002A58  ECBC  F01C         	call	_backward
   7369                           
-  7370                           ;pathfinder.c: 139:                 forward(c->forward_half, mL, mR);
+  7370                           ;pathfinder.c: 138:                 forward(c->forward_half, mL, mR);
   7371   002A5C  C020  F013         	movff	maze_return@mL,forward@mL
   7372   002A60  C021  F014         	movff	maze_return@mR,forward@mR
   7373   002A64  501F               	movf	maze_return@c^0,w,c
@@ -7536,7 +7536,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7378   002A6E  50DF               	movf	indf2,w,c
   7379   002A70  ECC2  F01E         	call	_forward
   7380                           
-  7381                           ;pathfinder.c: 140:             }
+  7381                           ;pathfinder.c: 139:             }
   7382   002A74  EFC7  F016         	goto	l4403
   7383   002A78                     l4383:
   7384   002A78  0E3C               	movlw	low _Operation_History
@@ -7554,7 +7554,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7396   002A92  EF7D  F015         	goto	l4387
   7397   002A96                     u4900:
   7398   002A96                     
-  7399                           ;pathfinder.c: 143:                 rightTURN(c->right_90, mL, mR);
+  7399                           ;pathfinder.c: 142:                 rightTURN(c->right_90, mL, mR);
   7400   002A96  C020  F013         	movff	maze_return@mL,rightTURN@mL
   7401   002A9A  C021  F014         	movff	maze_return@mR,rightTURN@mR
   7402   002A9E  501F               	movf	maze_return@c^0,w,c
@@ -7565,7 +7565,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7407   002AA8  50DF               	movf	indf2,w,c
   7408   002AAA  EC61  F01F         	call	_rightTURN
   7409                           
-  7410                           ;pathfinder.c: 144:                 rightTURN(c->right_90, mL, mR);
+  7410                           ;pathfinder.c: 143:                 rightTURN(c->right_90, mL, mR);
   7411   002AAE  C020  F013         	movff	maze_return@mL,rightTURN@mL
   7412   002AB2  C021  F014         	movff	maze_return@mR,rightTURN@mR
   7413   002AB6  501F               	movf	maze_return@c^0,w,c
@@ -7576,7 +7576,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7418   002AC0  50DF               	movf	indf2,w,c
   7419   002AC2  EC61  F01F         	call	_rightTURN
   7420                           
-  7421                           ;pathfinder.c: 145:                 backward(c->backward_one, mL, mR);
+  7421                           ;pathfinder.c: 144:                 backward(c->backward_one, mL, mR);
   7422   002AC6  C020  F013         	movff	maze_return@mL,backward@mL
   7423   002ACA  C021  F014         	movff	maze_return@mR,backward@mR
   7424   002ACE  501F               	movf	maze_return@c^0,w,c
@@ -7587,7 +7587,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7429   002AD8  50DF               	movf	indf2,w,c
   7430   002ADA  ECBC  F01C         	call	_backward
   7431                           
-  7432                           ;pathfinder.c: 146:                 forward(c->forward_half, mL, mR);
+  7432                           ;pathfinder.c: 145:                 forward(c->forward_half, mL, mR);
   7433   002ADE  C020  F013         	movff	maze_return@mL,forward@mL
   7434   002AE2  C021  F014         	movff	maze_return@mR,forward@mR
   7435   002AE6  501F               	movf	maze_return@c^0,w,c
@@ -7598,7 +7598,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7440   002AF0  50DF               	movf	indf2,w,c
   7441   002AF2  ECC2  F01E         	call	_forward
   7442                           
-  7443                           ;pathfinder.c: 147:             }
+  7443                           ;pathfinder.c: 146:             }
   7444   002AF6  EFC7  F016         	goto	l4403
   7445   002AFA                     l4387:
   7446   002AFA  0E3C               	movlw	low _Operation_History
@@ -7616,7 +7616,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7458   002B14  EFEE  F015         	goto	l4391
   7459   002B18                     u4910:
   7460   002B18                     
-  7461                           ;pathfinder.c: 151:                 rightTURN(c->right_90, mL, mR);
+  7461                           ;pathfinder.c: 150:                 rightTURN(c->right_90, mL, mR);
   7462   002B18  C020  F013         	movff	maze_return@mL,rightTURN@mL
   7463   002B1C  C021  F014         	movff	maze_return@mR,rightTURN@mR
   7464   002B20  501F               	movf	maze_return@c^0,w,c
@@ -7627,7 +7627,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7469   002B2A  50DF               	movf	indf2,w,c
   7470   002B2C  EC61  F01F         	call	_rightTURN
   7471                           
-  7472                           ;pathfinder.c: 152:                 forward(c->forward_one, mL, mR);
+  7472                           ;pathfinder.c: 151:                 forward(c->forward_one, mL, mR);
   7473   002B30  C020  F013         	movff	maze_return@mL,forward@mL
   7474   002B34  C021  F014         	movff	maze_return@mR,forward@mR
   7475   002B38  501F               	movf	maze_return@c^0,w,c
@@ -7638,7 +7638,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7480   002B42  50DF               	movf	indf2,w,c
   7481   002B44  ECC2  F01E         	call	_forward
   7482                           
-  7483                           ;pathfinder.c: 155:                 forward(c->forward_one, mL, mR);
+  7483                           ;pathfinder.c: 154:                 forward(c->forward_one, mL, mR);
   7484   002B48  C020  F013         	movff	maze_return@mL,forward@mL
   7485   002B4C  C021  F014         	movff	maze_return@mR,forward@mR
   7486   002B50  501F               	movf	maze_return@c^0,w,c
@@ -7649,7 +7649,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7491   002B5A  50DF               	movf	indf2,w,c
   7492   002B5C  ECC2  F01E         	call	_forward
   7493                           
-  7494                           ;pathfinder.c: 156:                 backward(c->backward_half, mL, mR);
+  7494                           ;pathfinder.c: 155:                 backward(c->backward_half, mL, mR);
   7495   002B60  C020  F013         	movff	maze_return@mL,backward@mL
   7496   002B64  C021  F014         	movff	maze_return@mR,backward@mR
   7497   002B68  501F               	movf	maze_return@c^0,w,c
@@ -7660,7 +7660,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7502   002B72  50DF               	movf	indf2,w,c
   7503   002B74  ECBC  F01C         	call	_backward
   7504                           
-  7505                           ;pathfinder.c: 157:                 rightTURN(c->right_90, mL, mR);
+  7505                           ;pathfinder.c: 156:                 rightTURN(c->right_90, mL, mR);
   7506   002B78  C020  F013         	movff	maze_return@mL,rightTURN@mL
   7507   002B7C  C021  F014         	movff	maze_return@mR,rightTURN@mR
   7508   002B80  501F               	movf	maze_return@c^0,w,c
@@ -7671,7 +7671,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7513   002B8A  50DF               	movf	indf2,w,c
   7514   002B8C  EC61  F01F         	call	_rightTURN
   7515                           
-  7516                           ;pathfinder.c: 158:                 rightTURN(c->right_90, mL, mR);
+  7516                           ;pathfinder.c: 157:                 rightTURN(c->right_90, mL, mR);
   7517   002B90  C020  F013         	movff	maze_return@mL,rightTURN@mL
   7518   002B94  C021  F014         	movff	maze_return@mR,rightTURN@mR
   7519   002B98  501F               	movf	maze_return@c^0,w,c
@@ -7682,7 +7682,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7524   002BA2  50DF               	movf	indf2,w,c
   7525   002BA4  EC61  F01F         	call	_rightTURN
   7526                           
-  7527                           ;pathfinder.c: 159:                 backward(c->backward_one, mL, mR);
+  7527                           ;pathfinder.c: 158:                 backward(c->backward_one, mL, mR);
   7528   002BA8  C020  F013         	movff	maze_return@mL,backward@mL
   7529   002BAC  C021  F014         	movff	maze_return@mR,backward@mR
   7530   002BB0  501F               	movf	maze_return@c^0,w,c
@@ -7693,7 +7693,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7535   002BBA  50DF               	movf	indf2,w,c
   7536   002BBC  ECBC  F01C         	call	_backward
   7537                           
-  7538                           ;pathfinder.c: 160:                 forward(c->forward_half, mL, mR);
+  7538                           ;pathfinder.c: 159:                 forward(c->forward_half, mL, mR);
   7539   002BC0  C020  F013         	movff	maze_return@mL,forward@mL
   7540   002BC4  C021  F014         	movff	maze_return@mR,forward@mR
   7541   002BC8  501F               	movf	maze_return@c^0,w,c
@@ -7704,7 +7704,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7546   002BD2  50DF               	movf	indf2,w,c
   7547   002BD4  ECC2  F01E         	call	_forward
   7548                           
-  7549                           ;pathfinder.c: 161:             }
+  7549                           ;pathfinder.c: 160:             }
   7550   002BD8  EFC7  F016         	goto	l4403
   7551   002BDC                     l4391:
   7552   002BDC  0E3C               	movlw	low _Operation_History
@@ -7722,7 +7722,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7564   002BF6  EF5F  F016         	goto	l4395
   7565   002BFA                     u4920:
   7566   002BFA                     
-  7567                           ;pathfinder.c: 164:                 leftTURN(c->left_90, mL, mR);
+  7567                           ;pathfinder.c: 163:                 leftTURN(c->left_90, mL, mR);
   7568   002BFA  C020  F013         	movff	maze_return@mL,leftTURN@mL
   7569   002BFE  C021  F014         	movff	maze_return@mR,leftTURN@mR
   7570   002C02  501F               	movf	maze_return@c^0,w,c
@@ -7733,7 +7733,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7575   002C0C  50DF               	movf	indf2,w,c
   7576   002C0E  ECFF  F01F         	call	_leftTURN
   7577                           
-  7578                           ;pathfinder.c: 165:                 forward(c->forward_one, mL, mR);
+  7578                           ;pathfinder.c: 164:                 forward(c->forward_one, mL, mR);
   7579   002C12  C020  F013         	movff	maze_return@mL,forward@mL
   7580   002C16  C021  F014         	movff	maze_return@mR,forward@mR
   7581   002C1A  501F               	movf	maze_return@c^0,w,c
@@ -7744,7 +7744,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7586   002C24  50DF               	movf	indf2,w,c
   7587   002C26  ECC2  F01E         	call	_forward
   7588                           
-  7589                           ;pathfinder.c: 168:                 forward(c->forward_one, mL, mR);
+  7589                           ;pathfinder.c: 167:                 forward(c->forward_one, mL, mR);
   7590   002C2A  C020  F013         	movff	maze_return@mL,forward@mL
   7591   002C2E  C021  F014         	movff	maze_return@mR,forward@mR
   7592   002C32  501F               	movf	maze_return@c^0,w,c
@@ -7755,7 +7755,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7597   002C3C  50DF               	movf	indf2,w,c
   7598   002C3E  ECC2  F01E         	call	_forward
   7599                           
-  7600                           ;pathfinder.c: 169:                 backward(c->backward_half, mL, mR);
+  7600                           ;pathfinder.c: 168:                 backward(c->backward_half, mL, mR);
   7601   002C42  C020  F013         	movff	maze_return@mL,backward@mL
   7602   002C46  C021  F014         	movff	maze_return@mR,backward@mR
   7603   002C4A  501F               	movf	maze_return@c^0,w,c
@@ -7766,7 +7766,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7608   002C54  50DF               	movf	indf2,w,c
   7609   002C56  ECBC  F01C         	call	_backward
   7610                           
-  7611                           ;pathfinder.c: 170:                 rightTURN(c->right_90, mL, mR);
+  7611                           ;pathfinder.c: 169:                 rightTURN(c->right_90, mL, mR);
   7612   002C5A  C020  F013         	movff	maze_return@mL,rightTURN@mL
   7613   002C5E  C021  F014         	movff	maze_return@mR,rightTURN@mR
   7614   002C62  501F               	movf	maze_return@c^0,w,c
@@ -7777,7 +7777,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7619   002C6C  50DF               	movf	indf2,w,c
   7620   002C6E  EC61  F01F         	call	_rightTURN
   7621                           
-  7622                           ;pathfinder.c: 171:                 rightTURN(c->right_90, mL, mR);
+  7622                           ;pathfinder.c: 170:                 rightTURN(c->right_90, mL, mR);
   7623   002C72  C020  F013         	movff	maze_return@mL,rightTURN@mL
   7624   002C76  C021  F014         	movff	maze_return@mR,rightTURN@mR
   7625   002C7A  501F               	movf	maze_return@c^0,w,c
@@ -7788,7 +7788,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7630   002C84  50DF               	movf	indf2,w,c
   7631   002C86  EC61  F01F         	call	_rightTURN
   7632                           
-  7633                           ;pathfinder.c: 172:                 backward(c->backward_one, mL, mR);
+  7633                           ;pathfinder.c: 171:                 backward(c->backward_one, mL, mR);
   7634   002C8A  C020  F013         	movff	maze_return@mL,backward@mL
   7635   002C8E  C021  F014         	movff	maze_return@mR,backward@mR
   7636   002C92  501F               	movf	maze_return@c^0,w,c
@@ -7799,7 +7799,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7641   002C9C  50DF               	movf	indf2,w,c
   7642   002C9E  ECBC  F01C         	call	_backward
   7643                           
-  7644                           ;pathfinder.c: 173:                 forward(c->forward_half, mL, mR);
+  7644                           ;pathfinder.c: 172:                 forward(c->forward_half, mL, mR);
   7645   002CA2  C020  F013         	movff	maze_return@mL,forward@mL
   7646   002CA6  C021  F014         	movff	maze_return@mR,forward@mR
   7647   002CAA  501F               	movf	maze_return@c^0,w,c
@@ -7810,7 +7810,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7652   002CB4  50DF               	movf	indf2,w,c
   7653   002CB6  ECC2  F01E         	call	_forward
   7654                           
-  7655                           ;pathfinder.c: 175:             }
+  7655                           ;pathfinder.c: 174:             }
   7656   002CBA  EFC7  F016         	goto	l4403
   7657   002CBE                     l4395:
   7658   002CBE  0E3C               	movlw	low _Operation_History
@@ -7828,7 +7828,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7670   002CD8  EF94  F016         	goto	l4399
   7671   002CDC                     u4930:
   7672   002CDC                     
-  7673                           ;pathfinder.c: 178:                 leftTURN(c->left_135, mL, mR);
+  7673                           ;pathfinder.c: 177:                 leftTURN(c->left_135, mL, mR);
   7674   002CDC  C020  F013         	movff	maze_return@mL,leftTURN@mL
   7675   002CE0  C021  F014         	movff	maze_return@mR,leftTURN@mR
   7676   002CE4  501F               	movf	maze_return@c^0,w,c
@@ -7839,7 +7839,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7681   002CEE  50DF               	movf	indf2,w,c
   7682   002CF0  ECFF  F01F         	call	_leftTURN
   7683                           
-  7684                           ;pathfinder.c: 179:                 backward(c->backward_one, mL, mR);
+  7684                           ;pathfinder.c: 178:                 backward(c->backward_one, mL, mR);
   7685   002CF4  C020  F013         	movff	maze_return@mL,backward@mL
   7686   002CF8  C021  F014         	movff	maze_return@mR,backward@mR
   7687   002CFC  501F               	movf	maze_return@c^0,w,c
@@ -7850,7 +7850,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7692   002D06  50DF               	movf	indf2,w,c
   7693   002D08  ECBC  F01C         	call	_backward
   7694                           
-  7695                           ;pathfinder.c: 180:                 forward(c->forward_half, mL, mR);
+  7695                           ;pathfinder.c: 179:                 forward(c->forward_half, mL, mR);
   7696   002D0C  C020  F013         	movff	maze_return@mL,forward@mL
   7697   002D10  C021  F014         	movff	maze_return@mR,forward@mR
   7698   002D14  501F               	movf	maze_return@c^0,w,c
@@ -7861,7 +7861,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7703   002D1E  50DF               	movf	indf2,w,c
   7704   002D20  ECC2  F01E         	call	_forward
   7705                           
-  7706                           ;pathfinder.c: 181:             }
+  7706                           ;pathfinder.c: 180:             }
   7707   002D24  EFC7  F016         	goto	l4403
   7708   002D28                     l4399:
   7709   002D28  0E3C               	movlw	low _Operation_History
@@ -7879,7 +7879,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7721   002D42  EFD1  F014         	goto	l577
   7722   002D46                     u4940:
   7723   002D46                     
-  7724                           ;pathfinder.c: 184:                 rightTURN(c->right_135, mL, mR);
+  7724                           ;pathfinder.c: 183:                 rightTURN(c->right_135, mL, mR);
   7725   002D46  C020  F013         	movff	maze_return@mL,rightTURN@mL
   7726   002D4A  C021  F014         	movff	maze_return@mR,rightTURN@mR
   7727   002D4E  501F               	movf	maze_return@c^0,w,c
@@ -7890,7 +7890,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7732   002D58  50DF               	movf	indf2,w,c
   7733   002D5A  EC61  F01F         	call	_rightTURN
   7734                           
-  7735                           ;pathfinder.c: 185:                 backward(c->backward_one, mL, mR);
+  7735                           ;pathfinder.c: 184:                 backward(c->backward_one, mL, mR);
   7736   002D5E  C020  F013         	movff	maze_return@mL,backward@mL
   7737   002D62  C021  F014         	movff	maze_return@mR,backward@mR
   7738   002D66  501F               	movf	maze_return@c^0,w,c
@@ -7901,7 +7901,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7743   002D70  50DF               	movf	indf2,w,c
   7744   002D72  ECBC  F01C         	call	_backward
   7745                           
-  7746                           ;pathfinder.c: 186:                 forward(c->forward_half, mL, mR);
+  7746                           ;pathfinder.c: 185:                 forward(c->forward_half, mL, mR);
   7747   002D76  C020  F013         	movff	maze_return@mL,forward@mL
   7748   002D7A  C021  F014         	movff	maze_return@mR,forward@mR
   7749   002D7E  501F               	movf	maze_return@c^0,w,c
@@ -7913,7 +7913,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7755   002D8A  ECC2  F01E         	call	_forward
   7756   002D8E                     l4403:
   7757                           
-  7758                           ;pathfinder.c: 188:         }
+  7758                           ;pathfinder.c: 187:         }
   7759   002D8E  0629               	decf	maze_return@i^0,f,c
   7760   002D90  A0D8               	btfss	status,0,c
   7761   002D92  062A               	decf	(maze_return@i+1)^0,f,c
@@ -7924,18 +7924,18 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7766   002D9E  EF8F  F014         	goto	l4363
   7767   002DA2                     u4950:
   7768   002DA2                     
-  7769                           ;pathfinder.c: 191:         Operation_Count = 0;
+  7769                           ;pathfinder.c: 190:         Operation_Count = 0;
   7770   002DA2  0E00               	movlw	0
   7771   002DA4  0100               	movlb	0	; () banked
   7772   002DA6  6FDB               	movwf	_Operation_Count& (0+255),b
   7773                           
-  7774                           ;pathfinder.c: 192:         for (char i = 0; i < length; ++i) {
+  7774                           ;pathfinder.c: 191:         for (char i = 0; i < length; ++i) {
   7775   002DA8  0E00               	movlw	0
   7776   002DAA  6E28               	movwf	maze_return@i_2039^0,c
   7777   002DAC  EFE0  F016         	goto	l4413
   7778   002DB0                     l4409:
   7779                           
-  7780                           ;pathfinder.c: 193:             Operation_History[i] = 0;
+  7780                           ;pathfinder.c: 192:             Operation_History[i] = 0;
   7781   002DB0  0E3C               	movlw	low _Operation_History
   7782   002DB2  2428               	addwf	maze_return@i_2039^0,w,c
   7783   002DB4  6ED9               	movwf	fsr2l,c
@@ -7944,7 +7944,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7786   002DBA  22DA               	addwfc	fsr2h,f,c
   7787   002DBC  6ADF               	clrf	indf2,c
   7788   002DBE                     
-  7789                           ;pathfinder.c: 194:         }
+  7789                           ;pathfinder.c: 193:         }
   7790   002DBE  2A28               	incf	maze_return@i_2039^0,f,c
   7791   002DC0                     l4413:
   7792   002DC0  0E31               	movlw	49
@@ -8153,11 +8153,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   7990   00470A  8F22               	bsf	34,7,b	;volatile
   7991   00470C                     
   7992                           ; BSR set to: 15
-  7993                           ;dc_motor_v1.c: 64:     TRISHbits.TRISH3 = 0;
+  7993                           ;dc_motor_v1.c: 63:     TRISHbits.TRISH3 = 0;
   7994   00470C  9688               	bcf	136,3,c	;volatile
   7995   00470E                     
   7996                           ; BSR set to: 15
-  7997                           ;dc_motor_v1.c: 65:     LATHbits.LATH3 = 0;
+  7997                           ;dc_motor_v1.c: 64:     LATHbits.LATH3 = 0;
   7998   00470E  9680               	bcf	128,3,c	;volatile
   7999   004710                     
   8000                           ; BSR set to: 15
@@ -8673,7 +8673,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8500                           
   8501 ;; *************** function _rightTURN *****************
   8502 ;; Defined at:
-  8503 ;;		line 255 in file "dc_motor_v1.c"
+  8503 ;;		line 254 in file "dc_motor_v1.c"
   8504 ;; Parameters:    Size  Location     Type
   8505 ;;  rotation_cal    1    wreg     unsigned char 
   8506 ;;  mL              1   18[COMRAM] PTR struct DC_motor
@@ -8729,7 +8729,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8551                           ;rightTURN@rotation_calibration stored from wreg
   8552   003EC2  6E16               	movwf	rightTURN@rotation_calibration^0,c
   8553   003EC4                     
-  8554                           ;dc_motor_v1.c: 256:     mL->direction = 1;
+  8554                           ;dc_motor_v1.c: 255:     mL->direction = 1;
   8555   003EC4  5013               	movf	rightTURN@mL^0,w,c
   8556   003EC6  6ED9               	movwf	fsr2l,c
   8557   003EC8  6ADA               	clrf	fsr2h,c
@@ -8738,7 +8738,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8560   003ECE  0E01               	movlw	1
   8561   003ED0  6EDF               	movwf	indf2,c
   8562                           
-  8563                           ;dc_motor_v1.c: 257:     mR->direction = 0;
+  8563                           ;dc_motor_v1.c: 256:     mR->direction = 0;
   8564   003ED2  5014               	movf	rightTURN@mR^0,w,c
   8565   003ED4  6ED9               	movwf	fsr2l,c
   8566   003ED6  6ADA               	clrf	fsr2h,c
@@ -8746,24 +8746,24 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8568   003EDA  26D9               	addwf	fsr2l,f,c
   8569   003EDC  6ADF               	clrf	indf2,c
   8570   003EDE                     
-  8571                           ;dc_motor_v1.c: 259:     char max_power = 40;
+  8571                           ;dc_motor_v1.c: 258:     char max_power = 40;
   8572   003EDE  0E28               	movlw	40
   8573   003EE0  6E19               	movwf	rightTURN@max_power^0,c
   8574   003EE2                     
-  8575                           ;dc_motor_v1.c: 261:     char delay_time = acceleration_time/max_power;
+  8575                           ;dc_motor_v1.c: 260:     char delay_time = acceleration_time/max_power;
   8576   003EE2  0E28               	movlw	40
   8577   003EE4  6E01               	movwf	___lbdiv@divisor^0,c
   8578   003EE6  0E64               	movlw	100
   8579   003EE8  ECF2  F023         	call	___lbdiv
   8580   003EEC  6E1A               	movwf	rightTURN@delay_time^0,c
   8581   003EEE                     
-  8582                           ;dc_motor_v1.c: 264:     for(char i=0; i< max_power; i++){
+  8582                           ;dc_motor_v1.c: 263:     for(char i=0; i< max_power; i++){
   8583   003EEE  0E00               	movlw	0
   8584   003EF0  6E17               	movwf	rightTURN@i^0,c
   8585   003EF2  EF9D  F01F         	goto	l3963
   8586   003EF6                     l3953:
   8587                           
-  8588                           ;dc_motor_v1.c: 265:         mL->power = mL->power + 1;
+  8588                           ;dc_motor_v1.c: 264:         mL->power = mL->power + 1;
   8589   003EF6  5013               	movf	rightTURN@mL^0,w,c
   8590   003EF8  6ED9               	movwf	fsr2l,c
   8591   003EFA  6ADA               	clrf	fsr2h,c
@@ -8775,7 +8775,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8597   003F06  2815               	incf	??_rightTURN^0,w,c
   8598   003F08  6EDF               	movwf	indf2,c
   8599                           
-  8600                           ;dc_motor_v1.c: 266:         mR->power = mR->power + 1 ;
+  8600                           ;dc_motor_v1.c: 265:         mR->power = mR->power + 1 ;
   8601   003F0A  5014               	movf	rightTURN@mR^0,w,c
   8602   003F0C  6ED9               	movwf	fsr2l,c
   8603   003F0E  6ADA               	clrf	fsr2h,c
@@ -8787,20 +8787,20 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8609   003F1A  2815               	incf	??_rightTURN^0,w,c
   8610   003F1C  6EDF               	movwf	indf2,c
   8611   003F1E                     
-  8612                           ;dc_motor_v1.c: 267:         setMotorPWM(mR);
+  8612                           ;dc_motor_v1.c: 266:         setMotorPWM(mR);
   8613   003F1E  C014  F00E         	movff	rightTURN@mR,setMotorPWM@m
   8614   003F22  EC71  F01D         	call	_setMotorPWM	;wreg free
   8615   003F26                     
-  8616                           ;dc_motor_v1.c: 268:         setMotorPWM(mL);
+  8616                           ;dc_motor_v1.c: 267:         setMotorPWM(mL);
   8617   003F26  C013  F00E         	movff	rightTURN@mL,setMotorPWM@m
   8618   003F2A  EC71  F01D         	call	_setMotorPWM	;wreg free
   8619   003F2E                     
-  8620                           ;dc_motor_v1.c: 269:         delay_ms_function(delay_time);
+  8620                           ;dc_motor_v1.c: 268:         delay_ms_function(delay_time);
   8621   003F2E  C01A  F001         	movff	rightTURN@delay_time,delay_ms_function@milliseconds
   8622   003F32  6A02               	clrf	(delay_ms_function@milliseconds+1)^0,c
   8623   003F34  EC3F  F025         	call	_delay_ms_function	;wreg free
   8624   003F38                     
-  8625                           ;dc_motor_v1.c: 270:     }
+  8625                           ;dc_motor_v1.c: 269:     }
   8626   003F38  2A17               	incf	rightTURN@i^0,f,c
   8627   003F3A                     l3963:
   8628   003F3A  5019               	movf	rightTURN@max_power^0,w,c
@@ -8812,13 +8812,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8634   003F48  EF7B  F01F         	goto	l3953
   8635   003F4C                     u4410:
   8636   003F4C                     
-  8637                           ;dc_motor_v1.c: 275:     for(char j=0; j<rotation_calibration; j++){
+  8637                           ;dc_motor_v1.c: 274:     for(char j=0; j<rotation_calibration; j++){
   8638   003F4C  0E00               	movlw	0
   8639   003F4E  6E18               	movwf	rightTURN@j^0,c
   8640   003F50  EFB2  F01F         	goto	l346
   8641   003F54                     l3967:
   8642                           
-  8643                           ;dc_motor_v1.c: 276:         _delay((unsigned long)((10)*(64000000/4000.0)));
+  8643                           ;dc_motor_v1.c: 275:         _delay((unsigned long)((10)*(64000000/4000.0)));
   8644   003F54  0ED0               	movlw	208
   8645   003F56  6E15               	movwf	??_rightTURN^0,c
   8646   003F58  0ECA               	movlw	202
@@ -8828,7 +8828,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8650   003F5E  2E15               	decfsz	??_rightTURN^0,f,c
   8651   003F60  D7FC               	bra	u5177
   8652   003F62                     
-  8653                           ;dc_motor_v1.c: 277:     }
+  8653                           ;dc_motor_v1.c: 276:     }
   8654   003F62  2A18               	incf	rightTURN@j^0,f,c
   8655   003F64                     l346:
   8656   003F64  5016               	movf	rightTURN@rotation_calibration^0,w,c
@@ -8842,7 +8842,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8664   003F76  EFE8  F01F         	goto	l3985
   8665   003F7A                     l3971:
   8666                           
-  8667                           ;dc_motor_v1.c: 281:         if(mR->power > 0 ){
+  8667                           ;dc_motor_v1.c: 280:         if(mR->power > 0 ){
   8668   003F7A  5014               	movf	rightTURN@mR^0,w,c
   8669   003F7C  6ED9               	movwf	fsr2l,c
   8670   003F7E  6ADA               	clrf	fsr2h,c
@@ -8854,14 +8854,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8676   003F8C  EFCC  F01F         	goto	l3975
   8677   003F90                     u4430:
   8678   003F90                     
-  8679                           ;dc_motor_v1.c: 282:             mR->power--;
+  8679                           ;dc_motor_v1.c: 281:             mR->power--;
   8680   003F90  5014               	movf	rightTURN@mR^0,w,c
   8681   003F92  6ED9               	movwf	fsr2l,c
   8682   003F94  6ADA               	clrf	fsr2h,c
   8683   003F96  06DF               	decf	indf2,f,c
   8684   003F98                     l3975:
   8685                           
-  8686                           ;dc_motor_v1.c: 284:         if(mL->power > 0 ){
+  8686                           ;dc_motor_v1.c: 283:         if(mL->power > 0 ){
   8687   003F98  5013               	movf	rightTURN@mL^0,w,c
   8688   003F9A  6ED9               	movwf	fsr2l,c
   8689   003F9C  6ADA               	clrf	fsr2h,c
@@ -8873,28 +8873,28 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8695   003FAA  EFDB  F01F         	goto	l3979
   8696   003FAE                     u4440:
   8697   003FAE                     
-  8698                           ;dc_motor_v1.c: 285:             mL->power--;
+  8698                           ;dc_motor_v1.c: 284:             mL->power--;
   8699   003FAE  5013               	movf	rightTURN@mL^0,w,c
   8700   003FB0  6ED9               	movwf	fsr2l,c
   8701   003FB2  6ADA               	clrf	fsr2h,c
   8702   003FB4  06DF               	decf	indf2,f,c
   8703   003FB6                     l3979:
   8704                           
-  8705                           ;dc_motor_v1.c: 287:         setMotorPWM(mR);
+  8705                           ;dc_motor_v1.c: 286:         setMotorPWM(mR);
   8706   003FB6  C014  F00E         	movff	rightTURN@mR,setMotorPWM@m
   8707   003FBA  EC71  F01D         	call	_setMotorPWM	;wreg free
   8708   003FBE                     
-  8709                           ;dc_motor_v1.c: 288:         setMotorPWM(mL);
+  8709                           ;dc_motor_v1.c: 287:         setMotorPWM(mL);
   8710   003FBE  C013  F00E         	movff	rightTURN@mL,setMotorPWM@m
   8711   003FC2  EC71  F01D         	call	_setMotorPWM	;wreg free
   8712   003FC6                     
-  8713                           ;dc_motor_v1.c: 289:         delay_ms_function(delay_time);
+  8713                           ;dc_motor_v1.c: 288:         delay_ms_function(delay_time);
   8714   003FC6  C01A  F001         	movff	rightTURN@delay_time,delay_ms_function@milliseconds
   8715   003FCA  6A02               	clrf	(delay_ms_function@milliseconds+1)^0,c
   8716   003FCC  EC3F  F025         	call	_delay_ms_function	;wreg free
   8717   003FD0                     l3985:
   8718                           
-  8719                           ;dc_motor_v1.c: 280:     while(mL->power || mR->power > 0){
+  8719                           ;dc_motor_v1.c: 279:     while(mL->power || mR->power > 0){
   8720   003FD0  5013               	movf	rightTURN@mL^0,w,c
   8721   003FD2  6ED9               	movwf	fsr2l,c
   8722   003FD4  6ADA               	clrf	fsr2h,c
@@ -8921,7 +8921,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8743                           
   8744 ;; *************** function _leftTURN *****************
   8745 ;; Defined at:
-  8746 ;;		line 214 in file "dc_motor_v1.c"
+  8746 ;;		line 213 in file "dc_motor_v1.c"
   8747 ;; Parameters:    Size  Location     Type
   8748 ;;  rotation_cal    1    wreg     unsigned char 
   8749 ;;  mL              1   18[COMRAM] PTR struct DC_motor
@@ -8977,7 +8977,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8794                           ;leftTURN@rotation_calibration stored from wreg
   8795   003FFE  6E16               	movwf	leftTURN@rotation_calibration^0,c
   8796   004000                     
-  8797                           ;dc_motor_v1.c: 216:     mL->direction = 0;
+  8797                           ;dc_motor_v1.c: 215:     mL->direction = 0;
   8798   004000  5013               	movf	leftTURN@mL^0,w,c
   8799   004002  6ED9               	movwf	fsr2l,c
   8800   004004  6ADA               	clrf	fsr2h,c
@@ -8985,7 +8985,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8802   004008  26D9               	addwf	fsr2l,f,c
   8803   00400A  6ADF               	clrf	indf2,c
   8804                           
-  8805                           ;dc_motor_v1.c: 217:     mR->direction = 1;
+  8805                           ;dc_motor_v1.c: 216:     mR->direction = 1;
   8806   00400C  5014               	movf	leftTURN@mR^0,w,c
   8807   00400E  6ED9               	movwf	fsr2l,c
   8808   004010  6ADA               	clrf	fsr2h,c
@@ -8994,24 +8994,24 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8811   004016  0E01               	movlw	1
   8812   004018  6EDF               	movwf	indf2,c
   8813   00401A                     
-  8814                           ;dc_motor_v1.c: 219:     char max_power = 40;
+  8814                           ;dc_motor_v1.c: 218:     char max_power = 40;
   8815   00401A  0E28               	movlw	40
   8816   00401C  6E19               	movwf	leftTURN@max_power^0,c
   8817   00401E                     
-  8818                           ;dc_motor_v1.c: 221:     char delay_time = acceleration_time/max_power;
+  8818                           ;dc_motor_v1.c: 220:     char delay_time = acceleration_time/max_power;
   8819   00401E  0E28               	movlw	40
   8820   004020  6E01               	movwf	___lbdiv@divisor^0,c
   8821   004022  0E64               	movlw	100
   8822   004024  ECF2  F023         	call	___lbdiv
   8823   004028  6E1A               	movwf	leftTURN@delay_time^0,c
   8824   00402A                     
-  8825                           ;dc_motor_v1.c: 224:     for(char i=0; i< max_power; i++){
+  8825                           ;dc_motor_v1.c: 223:     for(char i=0; i< max_power; i++){
   8826   00402A  0E00               	movlw	0
   8827   00402C  6E17               	movwf	leftTURN@i^0,c
   8828   00402E  EF3B  F020         	goto	l4009
   8829   004032                     l3999:
   8830                           
-  8831                           ;dc_motor_v1.c: 225:         mL->power = mL->power + 1;
+  8831                           ;dc_motor_v1.c: 224:         mL->power = mL->power + 1;
   8832   004032  5013               	movf	leftTURN@mL^0,w,c
   8833   004034  6ED9               	movwf	fsr2l,c
   8834   004036  6ADA               	clrf	fsr2h,c
@@ -9023,7 +9023,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8840   004042  2815               	incf	??_leftTURN^0,w,c
   8841   004044  6EDF               	movwf	indf2,c
   8842                           
-  8843                           ;dc_motor_v1.c: 226:         mR->power = mR->power + 1 ;
+  8843                           ;dc_motor_v1.c: 225:         mR->power = mR->power + 1 ;
   8844   004046  5014               	movf	leftTURN@mR^0,w,c
   8845   004048  6ED9               	movwf	fsr2l,c
   8846   00404A  6ADA               	clrf	fsr2h,c
@@ -9035,20 +9035,20 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8852   004056  2815               	incf	??_leftTURN^0,w,c
   8853   004058  6EDF               	movwf	indf2,c
   8854   00405A                     
-  8855                           ;dc_motor_v1.c: 227:         setMotorPWM(mR);
+  8855                           ;dc_motor_v1.c: 226:         setMotorPWM(mR);
   8856   00405A  C014  F00E         	movff	leftTURN@mR,setMotorPWM@m
   8857   00405E  EC71  F01D         	call	_setMotorPWM	;wreg free
   8858   004062                     
-  8859                           ;dc_motor_v1.c: 228:         setMotorPWM(mL);
+  8859                           ;dc_motor_v1.c: 227:         setMotorPWM(mL);
   8860   004062  C013  F00E         	movff	leftTURN@mL,setMotorPWM@m
   8861   004066  EC71  F01D         	call	_setMotorPWM	;wreg free
   8862   00406A                     
-  8863                           ;dc_motor_v1.c: 229:         delay_ms_function(delay_time);
+  8863                           ;dc_motor_v1.c: 228:         delay_ms_function(delay_time);
   8864   00406A  C01A  F001         	movff	leftTURN@delay_time,delay_ms_function@milliseconds
   8865   00406E  6A02               	clrf	(delay_ms_function@milliseconds+1)^0,c
   8866   004070  EC3F  F025         	call	_delay_ms_function	;wreg free
   8867   004074                     
-  8868                           ;dc_motor_v1.c: 230:     }
+  8868                           ;dc_motor_v1.c: 229:     }
   8869   004074  2A17               	incf	leftTURN@i^0,f,c
   8870   004076                     l4009:
   8871   004076  5019               	movf	leftTURN@max_power^0,w,c
@@ -9060,13 +9060,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8877   004084  EF19  F020         	goto	l3999
   8878   004088                     u4470:
   8879   004088                     
-  8880                           ;dc_motor_v1.c: 235:     for(char j=0; j<rotation_calibration; j++){
+  8880                           ;dc_motor_v1.c: 234:     for(char j=0; j<rotation_calibration; j++){
   8881   004088  0E00               	movlw	0
   8882   00408A  6E18               	movwf	leftTURN@j^0,c
   8883   00408C  EF50  F020         	goto	l332
   8884   004090                     l4013:
   8885                           
-  8886                           ;dc_motor_v1.c: 236:         _delay((unsigned long)((10)*(64000000/4000.0)));
+  8886                           ;dc_motor_v1.c: 235:         _delay((unsigned long)((10)*(64000000/4000.0)));
   8887   004090  0ED0               	movlw	208
   8888   004092  6E15               	movwf	??_leftTURN^0,c
   8889   004094  0ECA               	movlw	202
@@ -9076,7 +9076,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8893   00409A  2E15               	decfsz	??_leftTURN^0,f,c
   8894   00409C  D7FC               	bra	u5187
   8895   00409E                     
-  8896                           ;dc_motor_v1.c: 237:     }
+  8896                           ;dc_motor_v1.c: 236:     }
   8897   00409E  2A18               	incf	leftTURN@j^0,f,c
   8898   0040A0                     l332:
   8899   0040A0  5016               	movf	leftTURN@rotation_calibration^0,w,c
@@ -9090,7 +9090,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8907   0040B2  EF86  F020         	goto	l4031
   8908   0040B6                     l4017:
   8909                           
-  8910                           ;dc_motor_v1.c: 241:         if(mR->power > 0 ){
+  8910                           ;dc_motor_v1.c: 240:         if(mR->power > 0 ){
   8911   0040B6  5014               	movf	leftTURN@mR^0,w,c
   8912   0040B8  6ED9               	movwf	fsr2l,c
   8913   0040BA  6ADA               	clrf	fsr2h,c
@@ -9102,14 +9102,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8919   0040C8  EF6A  F020         	goto	l4021
   8920   0040CC                     u4490:
   8921   0040CC                     
-  8922                           ;dc_motor_v1.c: 242:             mR->power--;
+  8922                           ;dc_motor_v1.c: 241:             mR->power--;
   8923   0040CC  5014               	movf	leftTURN@mR^0,w,c
   8924   0040CE  6ED9               	movwf	fsr2l,c
   8925   0040D0  6ADA               	clrf	fsr2h,c
   8926   0040D2  06DF               	decf	indf2,f,c
   8927   0040D4                     l4021:
   8928                           
-  8929                           ;dc_motor_v1.c: 244:         if(mL->power > 0 ){
+  8929                           ;dc_motor_v1.c: 243:         if(mL->power > 0 ){
   8930   0040D4  5013               	movf	leftTURN@mL^0,w,c
   8931   0040D6  6ED9               	movwf	fsr2l,c
   8932   0040D8  6ADA               	clrf	fsr2h,c
@@ -9121,28 +9121,28 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8938   0040E6  EF79  F020         	goto	l4025
   8939   0040EA                     u4500:
   8940   0040EA                     
-  8941                           ;dc_motor_v1.c: 245:             mL->power--;
+  8941                           ;dc_motor_v1.c: 244:             mL->power--;
   8942   0040EA  5013               	movf	leftTURN@mL^0,w,c
   8943   0040EC  6ED9               	movwf	fsr2l,c
   8944   0040EE  6ADA               	clrf	fsr2h,c
   8945   0040F0  06DF               	decf	indf2,f,c
   8946   0040F2                     l4025:
   8947                           
-  8948                           ;dc_motor_v1.c: 247:         setMotorPWM(mR);
+  8948                           ;dc_motor_v1.c: 246:         setMotorPWM(mR);
   8949   0040F2  C014  F00E         	movff	leftTURN@mR,setMotorPWM@m
   8950   0040F6  EC71  F01D         	call	_setMotorPWM	;wreg free
   8951   0040FA                     
-  8952                           ;dc_motor_v1.c: 248:         setMotorPWM(mL);
+  8952                           ;dc_motor_v1.c: 247:         setMotorPWM(mL);
   8953   0040FA  C013  F00E         	movff	leftTURN@mL,setMotorPWM@m
   8954   0040FE  EC71  F01D         	call	_setMotorPWM	;wreg free
   8955   004102                     
-  8956                           ;dc_motor_v1.c: 249:         delay_ms_function(delay_time);
+  8956                           ;dc_motor_v1.c: 248:         delay_ms_function(delay_time);
   8957   004102  C01A  F001         	movff	leftTURN@delay_time,delay_ms_function@milliseconds
   8958   004106  6A02               	clrf	(delay_ms_function@milliseconds+1)^0,c
   8959   004108  EC3F  F025         	call	_delay_ms_function	;wreg free
   8960   00410C                     l4031:
   8961                           
-  8962                           ;dc_motor_v1.c: 240:     while(mL->power || mR->power > 0){
+  8962                           ;dc_motor_v1.c: 239:     while(mL->power || mR->power > 0){
   8963   00410C  5013               	movf	leftTURN@mL^0,w,c
   8964   00410E  6ED9               	movwf	fsr2l,c
   8965   004110  6ADA               	clrf	fsr2h,c
@@ -9169,7 +9169,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   8986                           
   8987 ;; *************** function _forward *****************
   8988 ;; Defined at:
-  8989 ;;		line 122 in file "dc_motor_v1.c"
+  8989 ;;		line 121 in file "dc_motor_v1.c"
   8990 ;; Parameters:    Size  Location     Type
   8991 ;;  Distance_Cal    1    wreg     unsigned char 
   8992 ;;  mL              1   18[COMRAM] PTR struct DC_motor
@@ -9225,7 +9225,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9037                           ;forward@Distance_Calibration stored from wreg
   9038   003D84  6E16               	movwf	forward@Distance_Calibration^0,c
   9039   003D86                     
-  9040                           ;dc_motor_v1.c: 127:     mL->direction = 1;
+  9040                           ;dc_motor_v1.c: 126:     mL->direction = 1;
   9041   003D86  5013               	movf	forward@mL^0,w,c
   9042   003D88  6ED9               	movwf	fsr2l,c
   9043   003D8A  6ADA               	clrf	fsr2h,c
@@ -9234,7 +9234,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9046   003D90  0E01               	movlw	1
   9047   003D92  6EDF               	movwf	indf2,c
   9048                           
-  9049                           ;dc_motor_v1.c: 128:     mR->direction = 1;
+  9049                           ;dc_motor_v1.c: 127:     mR->direction = 1;
   9050   003D94  5014               	movf	forward@mR^0,w,c
   9051   003D96  6ED9               	movwf	fsr2l,c
   9052   003D98  6ADA               	clrf	fsr2h,c
@@ -9243,24 +9243,24 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9055   003D9E  0E01               	movlw	1
   9056   003DA0  6EDF               	movwf	indf2,c
   9057   003DA2                     
-  9058                           ;dc_motor_v1.c: 131:     char max_power = 40;
+  9058                           ;dc_motor_v1.c: 130:     char max_power = 40;
   9059   003DA2  0E28               	movlw	40
   9060   003DA4  6E19               	movwf	forward@max_power^0,c
   9061   003DA6                     
-  9062                           ;dc_motor_v1.c: 133:     char delay_time = acceleration_time/max_power;
+  9062                           ;dc_motor_v1.c: 132:     char delay_time = acceleration_time/max_power;
   9063   003DA6  0E28               	movlw	40
   9064   003DA8  6E01               	movwf	___lbdiv@divisor^0,c
   9065   003DAA  0E64               	movlw	100
   9066   003DAC  ECF2  F023         	call	___lbdiv
   9067   003DB0  6E1A               	movwf	forward@delay_time^0,c
   9068   003DB2                     
-  9069                           ;dc_motor_v1.c: 137:     for(char i=0; i< max_power; i++){
+  9069                           ;dc_motor_v1.c: 136:     for(char i=0; i< max_power; i++){
   9070   003DB2  0E00               	movlw	0
   9071   003DB4  6E17               	movwf	forward@i^0,c
   9072   003DB6  EFFF  F01E         	goto	l4055
   9073   003DBA                     l4045:
   9074                           
-  9075                           ;dc_motor_v1.c: 138:         mL->power = mL->power + 1;
+  9075                           ;dc_motor_v1.c: 137:         mL->power = mL->power + 1;
   9076   003DBA  5013               	movf	forward@mL^0,w,c
   9077   003DBC  6ED9               	movwf	fsr2l,c
   9078   003DBE  6ADA               	clrf	fsr2h,c
@@ -9272,7 +9272,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9084   003DCA  2815               	incf	??_forward^0,w,c
   9085   003DCC  6EDF               	movwf	indf2,c
   9086                           
-  9087                           ;dc_motor_v1.c: 139:         mR->power = mR->power + 1 ;
+  9087                           ;dc_motor_v1.c: 138:         mR->power = mR->power + 1 ;
   9088   003DCE  5014               	movf	forward@mR^0,w,c
   9089   003DD0  6ED9               	movwf	fsr2l,c
   9090   003DD2  6ADA               	clrf	fsr2h,c
@@ -9284,20 +9284,20 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9096   003DDE  2815               	incf	??_forward^0,w,c
   9097   003DE0  6EDF               	movwf	indf2,c
   9098   003DE2                     
-  9099                           ;dc_motor_v1.c: 140:         setMotorPWM(mR);
+  9099                           ;dc_motor_v1.c: 139:         setMotorPWM(mR);
   9100   003DE2  C014  F00E         	movff	forward@mR,setMotorPWM@m
   9101   003DE6  EC71  F01D         	call	_setMotorPWM	;wreg free
   9102   003DEA                     
-  9103                           ;dc_motor_v1.c: 141:         setMotorPWM(mL);
+  9103                           ;dc_motor_v1.c: 140:         setMotorPWM(mL);
   9104   003DEA  C013  F00E         	movff	forward@mL,setMotorPWM@m
   9105   003DEE  EC71  F01D         	call	_setMotorPWM	;wreg free
   9106   003DF2                     
-  9107                           ;dc_motor_v1.c: 142:         delay_ms_function(delay_time);
+  9107                           ;dc_motor_v1.c: 141:         delay_ms_function(delay_time);
   9108   003DF2  C01A  F001         	movff	forward@delay_time,delay_ms_function@milliseconds
   9109   003DF6  6A02               	clrf	(delay_ms_function@milliseconds+1)^0,c
   9110   003DF8  EC3F  F025         	call	_delay_ms_function	;wreg free
   9111   003DFC                     
-  9112                           ;dc_motor_v1.c: 143:     }
+  9112                           ;dc_motor_v1.c: 142:     }
   9113   003DFC  2A17               	incf	forward@i^0,f,c
   9114   003DFE                     l4055:
   9115   003DFE  5019               	movf	forward@max_power^0,w,c
@@ -9309,13 +9309,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9121   003E0C  EFDD  F01E         	goto	l4045
   9122   003E10                     u4530:
   9123   003E10                     
-  9124                           ;dc_motor_v1.c: 148:     for(char j=0; j<Distance_Calibration; j++){
+  9124                           ;dc_motor_v1.c: 147:     for(char j=0; j<Distance_Calibration; j++){
   9125   003E10  0E00               	movlw	0
   9126   003E12  6E18               	movwf	forward@j^0,c
   9127   003E14  EF14  F01F         	goto	l304
   9128   003E18                     l4059:
   9129                           
-  9130                           ;dc_motor_v1.c: 149:         _delay((unsigned long)((10)*(64000000/4000.0)));
+  9130                           ;dc_motor_v1.c: 148:         _delay((unsigned long)((10)*(64000000/4000.0)));
   9131   003E18  0ED0               	movlw	208
   9132   003E1A  6E15               	movwf	??_forward^0,c
   9133   003E1C  0ECA               	movlw	202
@@ -9325,7 +9325,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9137   003E22  2E15               	decfsz	??_forward^0,f,c
   9138   003E24  D7FC               	bra	u5197
   9139   003E26                     
-  9140                           ;dc_motor_v1.c: 150:     }
+  9140                           ;dc_motor_v1.c: 149:     }
   9141   003E26  2A18               	incf	forward@j^0,f,c
   9142   003E28                     l304:
   9143   003E28  5016               	movf	forward@Distance_Calibration^0,w,c
@@ -9339,7 +9339,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9151   003E3A  EF4A  F01F         	goto	l4077
   9152   003E3E                     l4063:
   9153                           
-  9154                           ;dc_motor_v1.c: 154:         if(mR->power > 0 ){
+  9154                           ;dc_motor_v1.c: 153:         if(mR->power > 0 ){
   9155   003E3E  5014               	movf	forward@mR^0,w,c
   9156   003E40  6ED9               	movwf	fsr2l,c
   9157   003E42  6ADA               	clrf	fsr2h,c
@@ -9351,14 +9351,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9163   003E50  EF2E  F01F         	goto	l4067
   9164   003E54                     u4550:
   9165   003E54                     
-  9166                           ;dc_motor_v1.c: 155:             mR->power--;
+  9166                           ;dc_motor_v1.c: 154:             mR->power--;
   9167   003E54  5014               	movf	forward@mR^0,w,c
   9168   003E56  6ED9               	movwf	fsr2l,c
   9169   003E58  6ADA               	clrf	fsr2h,c
   9170   003E5A  06DF               	decf	indf2,f,c
   9171   003E5C                     l4067:
   9172                           
-  9173                           ;dc_motor_v1.c: 157:         if(mL->power > 0 ){
+  9173                           ;dc_motor_v1.c: 156:         if(mL->power > 0 ){
   9174   003E5C  5013               	movf	forward@mL^0,w,c
   9175   003E5E  6ED9               	movwf	fsr2l,c
   9176   003E60  6ADA               	clrf	fsr2h,c
@@ -9370,28 +9370,28 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9182   003E6E  EF3D  F01F         	goto	l4071
   9183   003E72                     u4560:
   9184   003E72                     
-  9185                           ;dc_motor_v1.c: 158:             mL->power--;
+  9185                           ;dc_motor_v1.c: 157:             mL->power--;
   9186   003E72  5013               	movf	forward@mL^0,w,c
   9187   003E74  6ED9               	movwf	fsr2l,c
   9188   003E76  6ADA               	clrf	fsr2h,c
   9189   003E78  06DF               	decf	indf2,f,c
   9190   003E7A                     l4071:
   9191                           
-  9192                           ;dc_motor_v1.c: 160:         setMotorPWM(mR);
+  9192                           ;dc_motor_v1.c: 159:         setMotorPWM(mR);
   9193   003E7A  C014  F00E         	movff	forward@mR,setMotorPWM@m
   9194   003E7E  EC71  F01D         	call	_setMotorPWM	;wreg free
   9195   003E82                     
-  9196                           ;dc_motor_v1.c: 161:         setMotorPWM(mL);
+  9196                           ;dc_motor_v1.c: 160:         setMotorPWM(mL);
   9197   003E82  C013  F00E         	movff	forward@mL,setMotorPWM@m
   9198   003E86  EC71  F01D         	call	_setMotorPWM	;wreg free
   9199   003E8A                     
-  9200                           ;dc_motor_v1.c: 162:         delay_ms_function(delay_time);
+  9200                           ;dc_motor_v1.c: 161:         delay_ms_function(delay_time);
   9201   003E8A  C01A  F001         	movff	forward@delay_time,delay_ms_function@milliseconds
   9202   003E8E  6A02               	clrf	(delay_ms_function@milliseconds+1)^0,c
   9203   003E90  EC3F  F025         	call	_delay_ms_function	;wreg free
   9204   003E94                     l4077:
   9205                           
-  9206                           ;dc_motor_v1.c: 153:     while(mL->power || mR->power > 0){
+  9206                           ;dc_motor_v1.c: 152:     while(mL->power || mR->power > 0){
   9207   003E94  5013               	movf	forward@mL^0,w,c
   9208   003E96  6ED9               	movwf	fsr2l,c
   9209   003E98  6ADA               	clrf	fsr2h,c
@@ -9418,7 +9418,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9230                           
   9231 ;; *************** function _backward *****************
   9232 ;; Defined at:
-  9233 ;;		line 167 in file "dc_motor_v1.c"
+  9233 ;;		line 166 in file "dc_motor_v1.c"
   9234 ;; Parameters:    Size  Location     Type
   9235 ;;  Distance_Cal    1    wreg     unsigned char 
   9236 ;;  mL              1   18[COMRAM] PTR struct DC_motor
@@ -9474,7 +9474,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9281                           ;backward@Distance_Calibration stored from wreg
   9282   003978  6E18               	movwf	backward@Distance_Calibration^0,c
   9283   00397A                     
-  9284                           ;dc_motor_v1.c: 173:     mL->direction = 0;
+  9284                           ;dc_motor_v1.c: 172:     mL->direction = 0;
   9285   00397A  5013               	movf	backward@mL^0,w,c
   9286   00397C  6ED9               	movwf	fsr2l,c
   9287   00397E  6ADA               	clrf	fsr2h,c
@@ -9482,7 +9482,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9289   003982  26D9               	addwf	fsr2l,f,c
   9290   003984  6ADF               	clrf	indf2,c
   9291                           
-  9292                           ;dc_motor_v1.c: 174:     mR->direction = 0;
+  9292                           ;dc_motor_v1.c: 173:     mR->direction = 0;
   9293   003986  5014               	movf	backward@mR^0,w,c
   9294   003988  6ED9               	movwf	fsr2l,c
   9295   00398A  6ADA               	clrf	fsr2h,c
@@ -9490,18 +9490,18 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9297   00398E  26D9               	addwf	fsr2l,f,c
   9298   003990  6ADF               	clrf	indf2,c
   9299   003992                     
-  9300                           ;dc_motor_v1.c: 177:     char max_power = 40;
+  9300                           ;dc_motor_v1.c: 176:     char max_power = 40;
   9301   003992  0E28               	movlw	40
   9302   003994  6E1D               	movwf	backward@max_power^0,c
   9303   003996                     
-  9304                           ;dc_motor_v1.c: 179:     char delay_time = acceleration_time/max_power;
+  9304                           ;dc_motor_v1.c: 178:     char delay_time = acceleration_time/max_power;
   9305   003996  0E28               	movlw	40
   9306   003998  6E01               	movwf	___lbdiv@divisor^0,c
   9307   00399A  0E64               	movlw	100
   9308   00399C  ECF2  F023         	call	___lbdiv
   9309   0039A0  6E1E               	movwf	backward@delay_time^0,c
   9310   0039A2                     
-  9311                           ;dc_motor_v1.c: 182:     for(int i=0; i< max_power; i++){
+  9311                           ;dc_motor_v1.c: 181:     for(int i=0; i< max_power; i++){
   9312   0039A2  0E00               	movlw	0
   9313   0039A4  6E1A               	movwf	(backward@i+1)^0,c
   9314   0039A6  0E00               	movlw	0
@@ -9509,7 +9509,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9316   0039AA  EFFA  F01C         	goto	l4101
   9317   0039AE                     l4091:
   9318                           
-  9319                           ;dc_motor_v1.c: 183:         mL->power = mL->power + 1;
+  9319                           ;dc_motor_v1.c: 182:         mL->power = mL->power + 1;
   9320   0039AE  5013               	movf	backward@mL^0,w,c
   9321   0039B0  6ED9               	movwf	fsr2l,c
   9322   0039B2  6ADA               	clrf	fsr2h,c
@@ -9521,7 +9521,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9328   0039BE  2815               	incf	??_backward^0,w,c
   9329   0039C0  6EDF               	movwf	indf2,c
   9330                           
-  9331                           ;dc_motor_v1.c: 184:         mR->power = mR->power + 1 ;
+  9331                           ;dc_motor_v1.c: 183:         mR->power = mR->power + 1 ;
   9332   0039C2  5014               	movf	backward@mR^0,w,c
   9333   0039C4  6ED9               	movwf	fsr2l,c
   9334   0039C6  6ADA               	clrf	fsr2h,c
@@ -9533,20 +9533,20 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9340   0039D2  2815               	incf	??_backward^0,w,c
   9341   0039D4  6EDF               	movwf	indf2,c
   9342   0039D6                     
-  9343                           ;dc_motor_v1.c: 185:         setMotorPWM(mR);
+  9343                           ;dc_motor_v1.c: 184:         setMotorPWM(mR);
   9344   0039D6  C014  F00E         	movff	backward@mR,setMotorPWM@m
   9345   0039DA  EC71  F01D         	call	_setMotorPWM	;wreg free
   9346   0039DE                     
-  9347                           ;dc_motor_v1.c: 186:         setMotorPWM(mL);
+  9347                           ;dc_motor_v1.c: 185:         setMotorPWM(mL);
   9348   0039DE  C013  F00E         	movff	backward@mL,setMotorPWM@m
   9349   0039E2  EC71  F01D         	call	_setMotorPWM	;wreg free
   9350   0039E6                     
-  9351                           ;dc_motor_v1.c: 187:         delay_ms_function(delay_time);
+  9351                           ;dc_motor_v1.c: 186:         delay_ms_function(delay_time);
   9352   0039E6  C01E  F001         	movff	backward@delay_time,delay_ms_function@milliseconds
   9353   0039EA  6A02               	clrf	(delay_ms_function@milliseconds+1)^0,c
   9354   0039EC  EC3F  F025         	call	_delay_ms_function	;wreg free
   9355   0039F0                     
-  9356                           ;dc_motor_v1.c: 188:     }
+  9356                           ;dc_motor_v1.c: 187:     }
   9357   0039F0  4A19               	infsnz	backward@i^0,f,c
   9358   0039F2  2A1A               	incf	(backward@i+1)^0,f,c
   9359   0039F4                     l4101:
@@ -9568,7 +9568,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9375   003A14  EFD7  F01C         	goto	l4091
   9376   003A18                     u4590:
   9377   003A18                     
-  9378                           ;dc_motor_v1.c: 193:     for(int j=0; j<Distance_Calibration; j++){
+  9378                           ;dc_motor_v1.c: 192:     for(int j=0; j<Distance_Calibration; j++){
   9379   003A18  0E00               	movlw	0
   9380   003A1A  6E1C               	movwf	(backward@j+1)^0,c
   9381   003A1C  0E00               	movlw	0
@@ -9576,7 +9576,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9383   003A20  EF1B  F01D         	goto	l318
   9384   003A24                     l4105:
   9385                           
-  9386                           ;dc_motor_v1.c: 194:         _delay((unsigned long)((10)*(64000000/4000.0)));
+  9386                           ;dc_motor_v1.c: 193:         _delay((unsigned long)((10)*(64000000/4000.0)));
   9387   003A24  0ED0               	movlw	208
   9388   003A26  6E15               	movwf	??_backward^0,c
   9389   003A28  0ECA               	movlw	202
@@ -9586,7 +9586,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9393   003A2E  2E15               	decfsz	??_backward^0,f,c
   9394   003A30  D7FC               	bra	u5207
   9395   003A32                     
-  9396                           ;dc_motor_v1.c: 195:     }
+  9396                           ;dc_motor_v1.c: 194:     }
   9397   003A32  4A1B               	infsnz	backward@j^0,f,c
   9398   003A34  2A1C               	incf	(backward@j+1)^0,f,c
   9399   003A36                     l318:
@@ -9610,7 +9610,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9417   003A5A  EF5A  F01D         	goto	l4123
   9418   003A5E                     l4109:
   9419                           
-  9420                           ;dc_motor_v1.c: 199:         if(mR->power > 0 ){
+  9420                           ;dc_motor_v1.c: 198:         if(mR->power > 0 ){
   9421   003A5E  5014               	movf	backward@mR^0,w,c
   9422   003A60  6ED9               	movwf	fsr2l,c
   9423   003A62  6ADA               	clrf	fsr2h,c
@@ -9622,14 +9622,14 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9429   003A70  EF3E  F01D         	goto	l4113
   9430   003A74                     u4610:
   9431   003A74                     
-  9432                           ;dc_motor_v1.c: 200:             mR->power--;
+  9432                           ;dc_motor_v1.c: 199:             mR->power--;
   9433   003A74  5014               	movf	backward@mR^0,w,c
   9434   003A76  6ED9               	movwf	fsr2l,c
   9435   003A78  6ADA               	clrf	fsr2h,c
   9436   003A7A  06DF               	decf	indf2,f,c
   9437   003A7C                     l4113:
   9438                           
-  9439                           ;dc_motor_v1.c: 202:         if(mL->power > 0 ){
+  9439                           ;dc_motor_v1.c: 201:         if(mL->power > 0 ){
   9440   003A7C  5013               	movf	backward@mL^0,w,c
   9441   003A7E  6ED9               	movwf	fsr2l,c
   9442   003A80  6ADA               	clrf	fsr2h,c
@@ -9641,28 +9641,28 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9448   003A8E  EF4D  F01D         	goto	l4117
   9449   003A92                     u4620:
   9450   003A92                     
-  9451                           ;dc_motor_v1.c: 203:             mL->power--;
+  9451                           ;dc_motor_v1.c: 202:             mL->power--;
   9452   003A92  5013               	movf	backward@mL^0,w,c
   9453   003A94  6ED9               	movwf	fsr2l,c
   9454   003A96  6ADA               	clrf	fsr2h,c
   9455   003A98  06DF               	decf	indf2,f,c
   9456   003A9A                     l4117:
   9457                           
-  9458                           ;dc_motor_v1.c: 205:         setMotorPWM(mR);
+  9458                           ;dc_motor_v1.c: 204:         setMotorPWM(mR);
   9459   003A9A  C014  F00E         	movff	backward@mR,setMotorPWM@m
   9460   003A9E  EC71  F01D         	call	_setMotorPWM	;wreg free
   9461   003AA2                     
-  9462                           ;dc_motor_v1.c: 206:         setMotorPWM(mL);
+  9462                           ;dc_motor_v1.c: 205:         setMotorPWM(mL);
   9463   003AA2  C013  F00E         	movff	backward@mL,setMotorPWM@m
   9464   003AA6  EC71  F01D         	call	_setMotorPWM	;wreg free
   9465   003AAA                     
-  9466                           ;dc_motor_v1.c: 207:         delay_ms_function(delay_time);
+  9466                           ;dc_motor_v1.c: 206:         delay_ms_function(delay_time);
   9467   003AAA  C01E  F001         	movff	backward@delay_time,delay_ms_function@milliseconds
   9468   003AAE  6A02               	clrf	(delay_ms_function@milliseconds+1)^0,c
   9469   003AB0  EC3F  F025         	call	_delay_ms_function	;wreg free
   9470   003AB4                     l4123:
   9471                           
-  9472                           ;dc_motor_v1.c: 198:     while(mL->power || mR->power > 0){
+  9472                           ;dc_motor_v1.c: 197:     while(mL->power || mR->power > 0){
   9473   003AB4  5013               	movf	backward@mL^0,w,c
   9474   003AB6  6ED9               	movwf	fsr2l,c
   9475   003AB8  6ADA               	clrf	fsr2h,c
@@ -9689,7 +9689,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9496                           
   9497 ;; *************** function _setMotorPWM *****************
   9498 ;; Defined at:
-  9499 ;;		line 76 in file "dc_motor_v1.c"
+  9499 ;;		line 75 in file "dc_motor_v1.c"
   9500 ;; Parameters:    Size  Location     Type
   9501 ;;  m               1   13[COMRAM] PTR struct DC_motor
   9502 ;;		 -> motorR(9), motorL(9), 
@@ -9735,8 +9735,8 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9537   003AE2                     _setMotorPWM:
   9538                           	callstack 27
   9539   003AE2                     
-  9540                           ;dc_motor_v1.c: 76: void setMotorPWM(DC_motor *m);dc_motor_v1.c: 77: {;dc_motor_v1.c: 78
-      +                          :     unsigned char posDuty, negDuty;;dc_motor_v1.c: 80:     if(m->brakemode) {
+  9540                           ;dc_motor_v1.c: 75: void setMotorPWM(DC_motor *m);dc_motor_v1.c: 76: {;dc_motor_v1.c: 77
+      +                          :     unsigned char posDuty, negDuty;;dc_motor_v1.c: 79:     if(m->brakemode) {
   9541   003AE2  500E               	movf	setMotorPWM@m^0,w,c
   9542   003AE4  6ED9               	movwf	fsr2l,c
   9543   003AE6  6ADA               	clrf	fsr2h,c
@@ -9750,7 +9750,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9551   003AF8  EFAE  F01D         	goto	l3713
   9552   003AFC                     u3830:
   9553   003AFC                     
-  9554                           ;dc_motor_v1.c: 81:         posDuty=m->PWMperiod - ((unsigned int)(m->power)*(m->PWMperi
+  9554                           ;dc_motor_v1.c: 80:         posDuty=m->PWMperiod - ((unsigned int)(m->power)*(m->PWMperi
       +                          od))/100;
   9555   003AFC  500E               	movf	setMotorPWM@m^0,w,c
   9556   003AFE  6ED9               	movwf	fsr2l,c
@@ -9786,7 +9786,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9586   003B46  5C10               	subwf	(??_setMotorPWM+1)^0,w,c
   9587   003B48  6E11               	movwf	setMotorPWM@posDuty^0,c
   9588   003B4A                     
-  9589                           ;dc_motor_v1.c: 82:         negDuty=m->PWMperiod;
+  9589                           ;dc_motor_v1.c: 81:         negDuty=m->PWMperiod;
   9590   003B4A  500E               	movf	setMotorPWM@m^0,w,c
   9591   003B4C  6ED9               	movwf	fsr2l,c
   9592   003B4E  6ADA               	clrf	fsr2h,c
@@ -9795,15 +9795,15 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9595   003B54  50DF               	movf	indf2,w,c
   9596   003B56  6E12               	movwf	setMotorPWM@negDuty^0,c
   9597                           
-  9598                           ;dc_motor_v1.c: 83:     }
+  9598                           ;dc_motor_v1.c: 82:     }
   9599   003B58  EFCF  F01D         	goto	l3717
   9600   003B5C                     l3713:
   9601                           
-  9602                           ;dc_motor_v1.c: 85:         posDuty=0;
+  9602                           ;dc_motor_v1.c: 84:         posDuty=0;
   9603   003B5C  0E00               	movlw	0
   9604   003B5E  6E11               	movwf	setMotorPWM@posDuty^0,c
   9605   003B60                     
-  9606                           ;dc_motor_v1.c: 86:   negDuty=((unsigned int)(m->power)*(m->PWMperiod))/100;
+  9606                           ;dc_motor_v1.c: 85:   negDuty=((unsigned int)(m->power)*(m->PWMperiod))/100;
   9607   003B60  500E               	movf	setMotorPWM@m^0,w,c
   9608   003B62  6ED9               	movwf	fsr2l,c
   9609   003B64  6ADA               	clrf	fsr2h,c
@@ -9831,7 +9831,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9631   003B9C  6E12               	movwf	setMotorPWM@negDuty^0,c
   9632   003B9E                     l3717:
   9633                           
-  9634                           ;dc_motor_v1.c: 89:     if (m->direction) {
+  9634                           ;dc_motor_v1.c: 88:     if (m->direction) {
   9635   003B9E  500E               	movf	setMotorPWM@m^0,w,c
   9636   003BA0  6ED9               	movwf	fsr2l,c
   9637   003BA2  6ADA               	clrf	fsr2h,c
@@ -9845,7 +9845,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9645   003BB4  EFFC  F01D         	goto	l3721
   9646   003BB8                     u3840:
   9647   003BB8                     
-  9648                           ;dc_motor_v1.c: 90:         *(m->posDutyHighByte)=posDuty;
+  9648                           ;dc_motor_v1.c: 89:         *(m->posDutyHighByte)=posDuty;
   9649   003BB8  500E               	movf	setMotorPWM@m^0,w,c
   9650   003BBA  6ED9               	movwf	fsr2l,c
   9651   003BBC  6ADA               	clrf	fsr2h,c
@@ -9857,7 +9857,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9657   003BCE  C010  FFDA         	movff	??_setMotorPWM+1,fsr2h
   9658   003BD2  C011  FFDF         	movff	setMotorPWM@posDuty,indf2
   9659                           
-  9660                           ;dc_motor_v1.c: 91:         *(m->negDutyHighByte)=negDuty;
+  9660                           ;dc_motor_v1.c: 90:         *(m->negDutyHighByte)=negDuty;
   9661   003BD6  500E               	movf	setMotorPWM@m^0,w,c
   9662   003BD8  6ED9               	movwf	fsr2l,c
   9663   003BDA  6ADA               	clrf	fsr2h,c
@@ -9869,11 +9869,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9669   003BEC  C010  FFDA         	movff	??_setMotorPWM+1,fsr2h
   9670   003BF0  C012  FFDF         	movff	setMotorPWM@negDuty,indf2
   9671                           
-  9672                           ;dc_motor_v1.c: 92:     } else {
+  9672                           ;dc_motor_v1.c: 91:     } else {
   9673   003BF4  EF1A  F01E         	goto	l290
   9674   003BF8                     l3721:
   9675                           
-  9676                           ;dc_motor_v1.c: 93:         *(m->posDutyHighByte)=negDuty;
+  9676                           ;dc_motor_v1.c: 92:         *(m->posDutyHighByte)=negDuty;
   9677   003BF8  500E               	movf	setMotorPWM@m^0,w,c
   9678   003BFA  6ED9               	movwf	fsr2l,c
   9679   003BFC  6ADA               	clrf	fsr2h,c
@@ -9885,7 +9885,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9685   003C0E  C010  FFDA         	movff	??_setMotorPWM+1,fsr2h
   9686   003C12  C012  FFDF         	movff	setMotorPWM@negDuty,indf2
   9687                           
-  9688                           ;dc_motor_v1.c: 94:         *(m->negDutyHighByte)=posDuty;
+  9688                           ;dc_motor_v1.c: 93:         *(m->negDutyHighByte)=posDuty;
   9689   003C16  500E               	movf	setMotorPWM@m^0,w,c
   9690   003C18  6ED9               	movwf	fsr2l,c
   9691   003C1A  6ADA               	clrf	fsr2h,c
@@ -10061,7 +10061,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9851                           
   9852 ;; *************** function _delay_ms_function *****************
   9853 ;; Defined at:
-  9854 ;;		line 68 in file "dc_motor_v1.c"
+  9854 ;;		line 67 in file "dc_motor_v1.c"
   9855 ;; Parameters:    Size  Location     Type
   9856 ;;  milliseconds    2    0[COMRAM] unsigned int 
   9857 ;; Auto vars:     Size  Location     Type
@@ -10102,11 +10102,11 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9887   004A7E                     _delay_ms_function:
   9888                           	callstack 28
   9889   004A7E                     
-  9890                           ;dc_motor_v1.c: 69:     while (milliseconds > 0) {
+  9890                           ;dc_motor_v1.c: 68:     while (milliseconds > 0) {
   9891   004A7E  EF4C  F025         	goto	l280
   9892   004A82                     l3703:
   9893                           
-  9894                           ;dc_motor_v1.c: 70:         _delay((unsigned long)((1)*(64000000/4000.0)));
+  9894                           ;dc_motor_v1.c: 69:         _delay((unsigned long)((1)*(64000000/4000.0)));
   9895   004A82  0E15               	movlw	21
   9896   004A84  6E03               	movwf	??_delay_ms_function^0,c
   9897   004A86  0EC6               	movlw	198
@@ -10117,13 +10117,13 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   9902   004A8E  D7FC               	bra	u5217
   9903   004A90  D000               	nop2	
   9904   004A92                     
-  9905                           ;dc_motor_v1.c: 71:         milliseconds--;
+  9905                           ;dc_motor_v1.c: 70:         milliseconds--;
   9906   004A92  0601               	decf	delay_ms_function@milliseconds^0,f,c
   9907   004A94  A0D8               	btfss	status,0,c
   9908   004A96  0602               	decf	(delay_ms_function@milliseconds+1)^0,f,c
   9909   004A98                     l280:
   9910                           
-  9911                           ;dc_motor_v1.c: 69:     while (milliseconds > 0) {
+  9911                           ;dc_motor_v1.c: 68:     while (milliseconds > 0) {
   9912   004A98  5001               	movf	delay_ms_function@milliseconds^0,w,c
   9913   004A9A  1002               	iorwf	(delay_ms_function@milliseconds+1)^0,w,c
   9914   004A9C  A4D8               	btfss	status,2,c
@@ -11247,7 +11247,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Mon Mar 18 02:23:52 2024
+Symbol Table                                                                                   Mon Mar 18 04:52:06 2024
 
                      _color_read_Red 4840                         ___fldiv@aexp 003A  
                        ___fldiv@bexp 0039                         ___fldiv@sign 0032  
