@@ -147,7 +147,7 @@ The motor configuration of the car was built upon the lab 6 work done on the cou
 - **setMotorPWM** - this configures the motors by changing the PWM, allowing us to coast or break, and determine the direction of the motor.
 - **stop** - This command slows the car down gradiually. It was not used in the final code as the stop command was integrated into the forward command however it could prove useful for future development
 - **forward** - This command takes the DC motor strucutres (left and right) and a calibration value and makes the car go forward for a distance propotional to the calibration value. It first acceleartes to a set power in a set time using the delay_ms function, travels for a configerable distance, then de-accelerates. 
-- **baxckward** - This command is identical to the forward command however the motors move in the opposite direction making the car reverse.
+- **backward** - This command is identical to the forward command however the motors move in the opposite direction making the car reverse.
 - **leftTURN** - This command makes the right side of the car go forward, and the left side of the car go backwards creating a left rotation on the spot. Similary the acceleration is by reaching a maximum power over a configerable time, roating for a configerable amount of time, and then deaccelreating.
 - **rightTURN** - This command is identical to the left turn except in the other direction
 
