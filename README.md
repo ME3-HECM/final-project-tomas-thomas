@@ -62,27 +62,38 @@ https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/72a4541f
 https://imperiallondon-my.sharepoint.com/:v:/g/personal/tl2121_ic_ac_uk/EXhYaJbaIzdMlHfeNb4KDAUB8b3JEIibTt1xOKkrldDfHw?e=usuL9M
 
 
-[Link to demonstration video showcasing the final maze]
-The following links show all unknown mazes completed as part of the Final Testing Lab Session:
-1.
-2.
-3.
-4.
 
 ## General Functionality
 <a name="general-functionality"></a>
-[Explanation of general functionality of the project]
 
-### Overview/Instructions for Operation
+For the user who is only interested in the functionality of the buggy the procedure for operating it is as follows.
+
+1. Turn the buggy and the clicker board on using their respective swithces
+1. Press the buttun RF2 on the clicker board to proceed
+1. You are now calibrating the 8 different movements of the buggy
+    1. Press the right button to increase the turn/distance
+    1. Press the left button to decrease the turn/distance
+    1. Press both left and right to view the calibration value
+    1. Press the left button to recalibrate the same movement function
+    1. Or press the right button to move to the next movement function
+    1. Repeat steps 1 through 5 for the 7 remaining movements. 
+    1. After the 8th movement has been displayed for the user pressing the right button will begin the maze finding sequence
+1. Place the buggy in the center of the square.
+1. Press RF2 and the colour sense will turn on and begin solving the maze.
+1. The robot will solve the maze or if lost will return back to the start. It will always return home.
+
+These steps can be repeated to run the maze again saving the calibration values inputed from the first calibration.
+
+### A More Detailed Overview/Instructions for Operation
 <a name="overviewinstructions-for-operation"></a>
 
 The following description is a step-by-step guide to the operation of our buggy, outlining how it meets its required specifications:
 
-1. The buggy is programmed and turned on, initialising the buggy's push buttons, LEDs, motors and calibration variables for its movement (turns and movement forwards and backwards).
+1. When the buggy is turned on using the switch in the back it initialising the clicker board's push buttons, LEDs, motors and calibration variables for its movement (turns and movement forwards and backwards).
 
 2. The buggy then begins its executable code, first executing "pause_until_RF2_pressed" function, which awaits a starting press of the RF2 button before beginning the movement calibration process. At this point, the right LED of the clicker2 board flashes continuously until the button is pressed and the next command is executed.
 
-3. Once the RF2 button is pressed, the buggy enters its movement calibration routine, signified by the function "calibration_routine(&calibration, &motorL, &motorR)" in the code below. This function cycles through the movements for Right/Left Turn 90 degrees, 135 degrees, Forward and Back 1 unit, and Forward and Back 1/2 unit, utilising both buttons on the clicker2 board to increase or decrease the magnitude of the movement. A double click (both buttons pressed at the same time) would execute the movement to observe whether it was accurate or not on the surface which the buggy was operating; a left click following this would remain on the same movement and allow right clicks to increase the magnitude and left clicks to decrease the magnitude of the movement; a right click following the motion would signal the calibration routine to save that movement and continue to the next one. This process then continues until all movements are calibrated.
+3. Once the RF2 button is pressed, the buggy enters its movement calibration routine, signified by the function **"calibration_routine(&calibration, &motorL, &motorR)"**. This function cycles through the movements for **Right/Left Turn 90 degrees, 135 degrees, Forward and Back 1 unit, and Forward and Back 1/2 unit,** utilising both buttons on the clicker2 board to increase or decrease the magnitude of the movement. A double click (both buttons pressed at the same time) would execute the movement to observe whether it was accurate or not on the surface which the buggy was operating; a left click following this would remain on the same movement and allow right clicks to increase the magnitude and left clicks to decrease the magnitude of the movement; a right click following the motion would signal the calibration routine to save that movement and continue to the next one. This process then continues until all movements are calibrated.
 
 4. On the final movement, a right click will save the final movement calibration and immediately begin execution of the buggy's main maze solving operation, indicated by "maze_search(&calibration, &motorL, &motorR)" in the code below. This function solves the maze by moving the buggy, reading the movement instructions from colored walls using the color sensor, and remembering the operations completed.
 
@@ -107,7 +118,23 @@ The following description is a step-by-step guide to the operation of our buggy,
 
 ### In Depth View of Code Path
 <a name="in-depth-view-of-code-path"></a>
-[Detailed explanation of the code path]
+ 
+1. Main.c 
+    - houses the executable code for the bugg
+    - Has the calibration values
+1. Calibration.c
+    - Responsable for the calibration routine
+1. Color.c
+    - responsable for the color detection
+1. Dc_motor_v1.c
+    - Resposnable for communication to the DC motors, along with the called functions for the robot movement.
+1. pathfinder.c
+    - combined the color functions and movement functions together creating two new functions maze_search and maze_return
+    - the pathfinder.h file contains the length variable which determines the operational_history array length (adjustable if a really long maze needs to be solved)
+    - the pathfinder.h file also contains the forward_reset_threshold determining how long the robot will be lost for before exectuing the maze_return command
+1. serial.c
+    - used for colour calibration and testing throughout the project
+
 
 
 
@@ -221,7 +248,7 @@ calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR)
 ### calibration_routine Function
 This function combines the 2 previous functions together to calibrate the 8 movements in a single callable callable function. It takes the inputs of left motor, right motor, calibration values.
 #### adjustment 
-```ruby
+```
     if(c->index == 1){ //calibrate right 90 turn
         adjust_calibration(&(c->right_90));         //use the left and right buttons to increase or decrease the calibration angle (turn value)
         rightTURN(c->right_90, mL, mR);             //calls the right turn at 90 degrees for the user to determine if the calibration was correct
@@ -231,7 +258,7 @@ This function combines the 2 previous functions together to calibrate the 8 move
 This step is then repeated 7 more times to cycle through the 8 total movements that we use whilst solving the maze 
 
 #### Ending the Calibration cycle
-```ruby
+```
     if(c->index >= 9){                             //when index has completed all 8 functions reset back to 1 so user can make adjustments on the next run
         c->index = 1;                              //set index to beginning (1)
         break;                                     //quits us out of the calibration routine
@@ -270,9 +297,11 @@ Buttons to stay on the currrent calibration, and move to the next calibration
 ### Colour Calibration
 [Explanation of colour calibration process]
 
-## Exemptions?
+## Potential Areas to improve upon?
 <a name="exemptions"></a>
 [Explanation of any exemptions or exceptions]
+
+currently there is no adjsment made for affect the buggy's battery level has on the motors. We saw that in testing over extended periods of time the buggy's turn radius was affected by the battery level without changing the calibration value. In the future this feature would ensure the buggy would be more consistent over extended operation - however this would be beyond what is required to solve our mazes.
 
 ## Testing Videos (Mechatronics Lab)
 <a name="testing-videos-(mechatronics-lab)"></a>
