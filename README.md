@@ -402,7 +402,7 @@ There are 2 functions that control the robot movement, **maze_search** and **maz
 ### **maze_search**
 First the we intialise the color clicker, Operation_History array, and forward_reset_threshold.
 
-The operation history array is used to log of all the movements done by the buggy with an integer value assigned to each action. Values 1 through 8 are colour actions and 10 through "n" are forward actions.
+The operation history array is used to log of all the movements done by the buggy with an integer value assigned to each action. Each time a movement is made the Operation_count variable increses. Values 1 through 8 are colour actions and 10 through "n" are forward actions.
 
 No | Colour | Instruction
 ---------|---------|--------
@@ -427,10 +427,10 @@ The buggy operates through an easily to follow process:
 1. The buggy moves forward 1 unit, incrementing the movement counter, each time checking if it reads a colour. 
     - If no colour is read then it repeats step 1.
     - If a colour is detected it saves the amount of times it has gone forward to the operation history moving to step 2.
-1. Using the "color_cardCheck()" function Color_value is assigned a the integer asssociated with that colour.
-1. The colour detected is then stored in the operation_history array, and the associated movement is made. An example a 90 degree turn for a green card:
+1. Using the "color_cardCheck()" function the variable Color_value is assigned the integer asssociated with that colour.
+1. The colour detected is then stored in the operation_history array, and the associated movement is made. An example a 90 degree turn for a green card is below:
     ```
-    else if(Color_Value == 2){ //detects that it is green - turn left 90
+    if(Color_Value == 2){ //detects that it is green - turn left 90
         Operation_History[Operation_Count] = Color_Value;    //1 = red value 
         Operation_Count++;
         backward(c->backward_half, mL, mR);
@@ -451,12 +451,12 @@ The buggy operates through an easily to follow process:
         forward(c->forward_half, mL, mR);     
     }
     ```
-    - After its done the 180 degree turn (or 2 90 degree turns), the buggy reverses to the wall alligning itself, and then moves forward half a unit before moving forward again.
+    - After its done the 180 degree turn (or two 90 degree turns), the buggy reverses to the wall alligning itself, and then moves forward half a unit before moving forward again.
     These calibration steps are essential to keep the buggy going straight due to the nature of the floor.
-1. Steps 1 through 3 are then repeated untul the return home or lost conditions are met!
+1. The steps 1 through 3 are then repeated until the buggy reads white for a return home or the lost condition is met!
 
 #### Return Home
-The return home function causes the car to do a 180 and exit the maze_search function using a break when it detects a white card;
+The return home function causes the car to do a 180 and exit the maze_search function using a break when it detects a white card. From here it is ready to execute the maze_return command.
 ```
 else if(Color_Value == 8){ //detects that it is white - return home            
     backward(c->backward_half, mL, mR); // half back off from wall
@@ -486,10 +486,10 @@ if(Forward_Count > forward_reset_threshold){
 ```
 The buggy first reverses half a unit back, does a 180 and then reverses back into the wall to ensure a perpendicular allignment. This works if the robot has hit a wall or if its just gone too far on a straight. The buggy then goes forward the total distance it has travelled before. 
 
-The buggy then reverses half a unit to return to the center of the square from which it exits the maze_search while(1) loop. We have tested this extensively and a video is provided at the end of the read.me
+The buggy reverses half a unit to return to the center of the square from which it exits the maze_search while(1) loop. We have tested this extensively and a video is provided at the end of the read.me
 
 
-### maze_return
+### **maze_return**
 Maze return is very similar to maze_search function however instead of reading colour values it reads the Operation_history array in reverse. Numerous if statements then determine what movements the buggy does to return to its starting position.
 
 ```
@@ -502,7 +502,7 @@ while(1){
             }
         }
 ```
-An example return code for a yellow card
+An example return code for a yellow card:
 ```
 else if(Color_Value == 4){ //detects that it is yellow - reverse 1 square turn right 90                   
     Operation_History[Operation_Count] = Color_Value;    
@@ -516,7 +516,7 @@ The same allignmnet philsophy is applied here expect it has to be applied in a d
 
 Because of the way the Operation_history array was defined the unused values are set to zero which in the function doesn't do anything and is skipped. These additional zeros are necessary because if the array is not long enough it will not "remember" all the moves to go home. 
 
-Once the for loop is completed and the buggy is back to its starting location we reset our operation_history values for the next run.
+Once the "for loop" is completed and the buggy is back to its starting location we reset our operation_history values for the next run.
 ```
 Operation_Count = 0;
         for (char i = 0; i < length; ++i) {
