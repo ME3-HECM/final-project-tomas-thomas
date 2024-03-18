@@ -89,14 +89,14 @@ The following description is a step-by-step guide to the operation of our buggy,
 ![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/238bdf45-08f7-42ca-aadb-4db6b7b23573)
 
 First use these buttons to adjust the calibration value 
-When both buttons are pressed together it will save the calibration value and show you the movemnet
+When both buttons are pressed together it will save the calibration value and show you the movement.
 
 ![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/e259588b-ef60-41f9-a08e-5fa1c0100360)
 
 Use these button to either stay on the currrent calibration, and move to the next calibration. 
 
 
- #### 4 key stages in the buggy code found within main.c:   
+ ### The 4 key stages in the buggy code found within main.c:   
     while(1){ 
         //note that the calibration values are not reset if the buggy is not turned off after it has solved the first maze
         //you will still have to go through the calibration routine but no adjustments will have to be made
@@ -110,7 +110,8 @@ Use these button to either stay on the currrent calibration, and move to the nex
         maze_return(&calibration, &motorL, &motorR);            // return to start function
 
     }
-Here you have what each function does summarised in the table below:
+
+The table below provides a brief summary of each function - helpful to the user when using it:
 
 
 ![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/01a83b85-2115-409e-bd3d-6fd1e7023971)
@@ -132,26 +133,43 @@ Here you have what each function does summarised in the table below:
 1. **pathfinder.c**
     - Combined color functions and movement functions together creating two new functions maze_search and maze_return
     - The pathfinder.h file contains the "length" variable which determines the operational_history array length (adjustable if a really long maze needs to be solved)
-    - the pathfinder.h file also contains the "forward_reset_threshold" determining how long the robot will be lost for before exectuing the maze_return command
+    - The pathfinder.h file also contains the "forward_reset_threshold" determining how long the robot will move before considering itself lost and exectuing the maze_return command
 1. **serial.c**
-    - used for colour calibration and testing throughout the project
+    - Used for colour calibration and testing throughout the project
 ## DC Motors 
 The motor configuration of the car was built upon the lab 6 work done on the course. The DC_motor_v1 file contains the following functions:
-- **initDCmotorsPWM** - intialised the 4 dc motors on the buggy and set up the modules on the clicker board to ouput a PWM signal such that the motor RPM could be controlled by later functions. Additionally the PWM period is configured using a 1:16 prescaler with a 64 Mhz internal clock
-- **delay_ms_function** - was used to delay an amount of time equal to a variable as using __delay_ms(variable) does not work
-- **setMotorPWM** - this configures the motors power by changing the PWM, allowing us to coast or break, and determine the direction of the motor
+- **initDCmotorsPWM** - intialised the 4 dc motors on the buggy and set up the modules on the clicker board to ouput a PWM signal such that the motor RPM could be controlled by later functions. The PWM period is configured using a 1:16 prescaler with a 64 Mhz internal clock.
+- **delay_ms_function** - was used to delay an amount of time equal to a variable as using __delay_ms(variable) does not work.
+- **setMotorPWM** - this configures the motors by changing the PWM, allowing us to coast or break, and determine the direction of the motor.
 - **stop** - This command slows the car down gradiually. It was not used in the final code as the stop command was integrated into the forward command however it could prove useful for future development
 - **forward** - This command takes the DC motor strucutres (left and right) and a calibration value and makes the car go forward for a distance propotional to the calibration value. It first acceleartes to a set power in a set time using the delay_ms function, travels for a configerable distance, then de-accelerates. 
-- **baxckward"" - This command is identical to the forward command however the motors move in the opposite direction making the car reverse
-- **leftTURN** - This command makes the right side the car go forward, and the left side of the car go backwards creating a left rotation on the spot. Similary the acceleration is by reaching a maximum power over a configerable time, roating for a configerable amount of time, and then deaccelreating.
+- **baxckward** - This command is identical to the forward command however the motors move in the opposite direction making the car reverse.
+- **leftTURN** - This command makes the right side of the car go forward, and the left side of the car go backwards creating a left rotation on the spot. Similary the acceleration is by reaching a maximum power over a configerable time, roating for a configerable amount of time, and then deaccelreating.
 - **rightTURN** - This command is identical to the left turn except in the other direction
 
-## Calibration Structure - now added to TOC (remove this now in proof read)
+Using these functions and the calibration structure below for the different values the movement distances/angles could be calibrated.
+```
+typedef struct calibration_structure { //definition of DC_motor structure
+    char index;
+    char right_90;
+    char left_90;
+    char right_135;
+    char left_135;
+    char forward_one;
+    char backward_one;
+    char forward_half;
+    char backward_half;
+
+} calibration_structure;
+```
+This reduced the amount of functions, because for example turnLEFT works for both 90 and 135 degree rotations because of the different calibration values left_90 and left_135.
+
+## Calibration Structure 
 <a name="calibration-structure"></a>
 
 The calibration code has 4 functions 
 - **pause_until_RF2_pressed()** - This function does not directly control the calibration values but is used to prevent a while(1) loop from running until button RF2 is pressed. This helps the user control the buggy.
-- **adjust_calibration(int *->calibration_label)*** - Responsable for increase or decreasing the calibration values with a right or left button press respectively, and then running the movement for the calibration value when both buttons are pressed.
+- **adjust_calibration(int *->calibration_label)*** - Responsable for increasing or decreasing the calibration values with a right or left button press respectively, and then running the movement for the calibration value when both buttons are pressed.
     ```
         if(!PORTFbits.RF3 || !PORTFbits.RF2){   //check to see if user has pressed a button left or right
             __delay_ms(100);                    //wait 100ms to account for user input delay between pressing both buttons - without this step the double press was unreliable
@@ -167,10 +185,10 @@ The calibration code has 4 functions
             }
         }
     ```
-    - An exert from the function here highlights the use of the or command to solve the timing issue of trying to press two buttons at the same time. This allows a 100ms delay for a better user expereince.
+    - An exert from the function here highlights the use of the or command to solve the timing issue of trying to press two buttons at the same time. This allows a 100ms delay between presses for a better user expereince.
 - **switch_calibration(int *->calibration_index)*** - This is a very simple function to increase the calibration index by 1 if the right button is pressed and stay on the current index if left is pressed.
 - **calibration_routine(calibration_structure *->c, DC_motor *->mL, DC_motor *->mR)***** - This function combines the 2 previous functions together to calibrate the 8 movements in a single callable callable function. It takes the inputs of left motor, right motor, calibration values.
-    - Sample calibration code
+    - Sample calibration code for a right 90 degree turn
     ```
         if(c->index == 1){ //calibrate right 90 turn
             adjust_calibration(&(c->right_90));         //use the left and right buttons to increase or decrease the calibration angle (turn value)
@@ -185,7 +203,7 @@ The calibration code has 4 functions
             break;                                     //quits us out of the calibration routine
         }
     ```
-    - Here once again the if statement combinded the while loop (not shown in the snippet - see the full code) is a helpful tool to ensure the code is only doing what we want it to.
+    - Here once again the if statement combined with the while loop (not shown in the snippet - see the full code) is a helpful tool to ensure the code is only doing what we want it to.
 
 
 ## Colour Sensing Structure
@@ -197,7 +215,7 @@ Colour sensing was required in order to feed instructions to the buggy to solve 
 To do this, firstly a colour initialisation function was called in order to set up the I2C interface required to communicate with the colour sensor and to turn on the tri-colour LED (R,G,B). This tri-colour LED was set to have white light shining looking for card surfaces within the maze. 
 
 #### All the following code found within color.c:
-
+```
 void color_click_init(void)
 {   
     //setup colour sensor via i2c interface
@@ -225,9 +243,9 @@ void color_click_init(void)
     LATAbits.LATA4 = 1; //Set green LED on
     LATFbits.LATF7 = 1; //Set blue LED on
 }
-
+```
 This light, when reflected off the card onto the sensor, provided R, G, B values on its read-out, which was used to identify the card colour. The colour sensor contained 4 channels - red, green, blue and clear (representing brightness); these were read to obtain these values using the following function, edited for each channel according to their specific address (e.g. here 0x16 for red LSB):
-
+```
 unsigned int color_read_Red(void) //this function reads the red light value from the color sensor (as a 16bit integer)
 {
 	unsigned int tmp;
@@ -241,18 +259,18 @@ unsigned int color_read_Red(void) //this function reads the red light value from
 	I2C_2_Master_Stop();          //Stop condition
 	return tmp;
 }
-
+```
 These values were converted to HSV (Hue, Saturation, and Value) and then compared against thresholds for each colour card present in the mazes. These thresholds were predetermined by testing; the tests involved taking our sample set of cards, holding them right up against the edge of the buggy (mimicing the distance that the sensor would read colours in practice), and then reading the output using serial communication and a laptop, to obtain the HSV ranges for each card colour.
-
+```
 //---------------------USE FOR TESTING WITH SERIAL AND LAPTOP - DETERMINE CARD HSV VALUES------------------------------------------
     char colortest[30]; //Empty char array to contain HSV values and Color determined for color testing
     sprintf(colortest,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color); //Constructing the string with HSV values and determined color
     sendStringSerial4(colortest); // Sending the string through serial communication
     __delay_ms(50); //Delay needed for buffering, etc.
 //---------------------------------------------------------------------------------------------------------------------------------    
-
+```
 These ranges were then used within if statements to compare the real-time measured value against the thresholds. If the measured values for HSV fell within the ranges of one of the card colours, it was identified and then the colour card checking function (see below) would return an integer value (0-8), corresponding to that colour. This integer would then be used to trigger the operation required to continue to move through the maze, e.g. at a red card, the function would output 1, and this value would trigger the Turn Right 90 operation elsewhere within the code. 
-
+```
 unsigned int color_cardCheck(void) { //function to check the color of the card on the maze wall. Output is an integer corresponding to color
     
     //read 16bit RGB values from each channel on color-clicker
@@ -301,14 +319,14 @@ unsigned int color_cardCheck(void) { //function to check the color of the card o
     
     return card_color; //output the determined color from the function
 }
-
+```
 ### Colour Calibration
 It was necessary to read the card colours in varying levels of ambient lighting and with slight differences and imperfections (e.g. dust, dirt, marks) on the actual colour cards used in the mazes. Therefore, colour calibration was important to provide consistent, accurate, and reliable readings. 
 
 The effects of ambient lighting were limited in two ways. Firstly, physically by using a black cardboard shield around the color clicker light sensor, effectively blocking ambient light when reading the colour, with edges flush with the card. The second method was by normalising according to the Clear channel (measure of brightness) on the color clicker. 
 
 The color_cardCheck() shown above reads the clear channel and then uses the value within the RGB-to-HSV conversion function to normalise the RBG readings. This is shown in the code below:
-
+```
 void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V) { //function to convert 16bit RGB values to HSV
     
     //Normalise RGB values to be within the range of 0-1, using the Clear Channel value (i.e. brightness (always greater R,G,B values)
@@ -349,7 +367,7 @@ void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V
     //calculating Value
     *V = maxRGB * 100; //Assigning Value. Multiplying by 100 converts the value to a percentage, and normalised by brightness normalisation factor.
 }   
-
+```
 The function above converts from 16 bit RGB values to HSV, by first normalising according to the clear channel reading, then finding the maximum and minimum of the normalised RBG values and their difference, using these values in standard conversion equations sourced from online (https://www.rapidtables.com/convert/color/rgb-to-hsv.html), and finally assigning them to their respective variables to be returned. 
 
 This provided much more consistent and reliable results and ranges compared with testing without normalisation, in all lighting conditions. HSV was used for comparison as in testing the ranges overlapped less compared with RGB, and the hue values were more consistent as they were independent of the brightness of the colour card (influenced by ambient lighting and blemishes on the cards). 
@@ -357,7 +375,7 @@ This provided much more consistent and reliable results and ranges compared with
 These calibration techniques made the colour detection very effective and robust in all lighting conditions and with new or well-worn cards.
 
 Finally, in the code above a custom float modulo function was used in order to find the remainder from the division of two floats (needed in calculating Hue). This was done used to avoid having to import math.h, thus saving memory and making the code more efficient. The function was hard coded into the file as seen below:
-
+```
 //custom modulo function for floats to avoid importing math.h and saving memory. % function brings errors with floats, only good with integers, therefore need to use this function
 float custom_floatmodulo(float x, float y) { 
     // Ensure y is not zero to avoid division by zero
@@ -376,47 +394,69 @@ float custom_floatmodulo(float x, float y) {
     
     return remainder;
 }
-
+```
 ## Path Finding Structure
 <a name="path-finding-structure"></a>
-There are 2 functions that control the robot movement, **maze_search** and **maze_return**. THese functions combine aspects from the motor functions, and colour functions.
+There are 2 functions that control the robot movement, **maze_search** and **maze_return**. These functions combine aspects from the motor functions, and colour functions together to solve the maze and return home.
 
-### maze_search
-The maze search function works by keeping a history of its movements in Operation_history. 
-1. First we intialise the color clicker, Operation_History array, and forward_reset_threshold.
-1. The robot moves forward 1 unit, incrementing the movement counter, and checks if it reads a colour. If no colour is read then it continues forward another unit.
-1. When a colour is detected the robot will be in contact with the wall. This serves to alligment the robot to the maze. Then the total times the robot has moved forward is stored into the Operation_history array.
+### **maze_search**
+First the we intialise the color clicker, Operation_History array, and forward_reset_threshold.
 
-We then check to see which colour was read executing the required movement. For example a 90 degree turn is shown
-#### Colour Commands
-```
-else if(Color_Value == 2){ //detects that it is green - turn left 90
-    Operation_History[Operation_Count] = Color_Value;    //1 = red value 
-    Operation_Count++;
-    backward(c->backward_half, mL, mR);
-    leftTURN(c->left_90, mL, mR);  
-}
-```
-Everytime the light sensor detects a colour it reverse half a step to the center of the square, executes its movement command.
+The operation history array is used to log of all the movements done by the buggy with an integer value assigned to each action. Values 1 through 8 are colour actions and 10 through "n" are forward actions.
 
-However for a blue card (a 180) additional calibration can be done to ensure alligment
-```
-else if(Color_Value == 3){ //detects that it is blue - turn 180                    
-    Operation_History[Operation_Count] = Color_Value;    //1 = red value 
-    Operation_Count++;
-    backward(c->backward_half, mL, mR);
-    rightTURN(c->right_90, mL, mR);
-    rightTURN(c->right_90, mL, mR);
-    backward(c->backward_one, mL, mR); //reverse for 1 square
-    forward(c->forward_half, mL, mR);     
-}
-```
-after its done the 180 or 2 90 degree turns, the buggy reverse to the wall allignming itself, and then moves forward half a unit to begin moving forward again.
+No | Colour | Instruction
+---------|---------|--------
+1 | Red | Turn Right 90
+2 | Green | Turn Left 90
+3 | Blue | Turn 180
+4 | Yellow | Reverse 1 square and turn right 90
+5 | Pink | Reverse 1 square and turn left 90
+6 | Orange | Turn Right 135
+7 | Light blue | Turn Left 135 
+8 | White | Finish (return home) 
+(0) | Black | Maze wall colour
+10 |  | Forward 0 units 
+11 |  | Forward 1 unit
+12 |  | Forward 2 units 
+...||
+"n" |  | Forward "n" units 
 
-These calibration steps are essential to keep the buggy going straight due to the nature of the floor.
+The buggy is limited by how many times it can go forward by the "forward_reset_threshold" value in the patherfinder.h file as this limit is used to determine if the buggy is lost.
+
+The buggy operates through an easily to follow process:
+1. The buggy moves forward 1 unit, incrementing the movement counter, each time checking if it reads a colour. 
+    - If no colour is read then it repeats step 1.
+    - If a colour is detected it saves the amount of times it has gone forward to the operation history moving to step 2.
+1. Using the "color_cardCheck()" function Color_value is assigned a the integer asssociated with that colour.
+1. The colour detected is then stored in the operation_history array, and the associated movement is made. An example a 90 degree turn for a green card:
+    ```
+    else if(Color_Value == 2){ //detects that it is green - turn left 90
+        Operation_History[Operation_Count] = Color_Value;    //1 = red value 
+        Operation_Count++;
+        backward(c->backward_half, mL, mR);
+        leftTURN(c->left_90, mL, mR);  
+    }
+    ```
+    - Note that we are using the wall as a reference point hence the half a unit reverse is to allign the buggy to the center of the unit square.
+
+    - Additional adjustements are also made for other moves, such as a blue card (180 degrees).
+    ```
+    else if(Color_Value == 3){ //detects that it is blue - turn 180                    
+        Operation_History[Operation_Count] = Color_Value;    //1 = red value 
+        Operation_Count++;
+        backward(c->backward_half, mL, mR);
+        rightTURN(c->right_90, mL, mR);
+        rightTURN(c->right_90, mL, mR);
+        backward(c->backward_one, mL, mR); //reverse for 1 square
+        forward(c->forward_half, mL, mR);     
+    }
+    ```
+    - After its done the 180 degree turn (or 2 90 degree turns), the buggy reverses to the wall alligning itself, and then moves forward half a unit before moving forward again.
+    These calibration steps are essential to keep the buggy going straight due to the nature of the floor.
+1. Steps 1 through 3 are then repeated untul the return home or lost conditions are met!
 
 #### Return Home
-The return home function simply causes the car to do a 180 and exit the maze_search function using a break;
+The return home function causes the car to do a 180 and exit the maze_search function using a break when it detects a white card;
 ```
 else if(Color_Value == 8){ //detects that it is white - return home            
     backward(c->backward_half, mL, mR); // half back off from wall
@@ -429,7 +469,7 @@ else if(Color_Value == 8){ //detects that it is white - return home
 ```
 
 #### Lost command
-The lost function works by assuming the robot is hitting a wall or has continued in a straight line uninterupted for forward_reset_threshold units of distance. Once this threshold is reached the robot executes the code below.
+The lost function assumes the robot is hitting a wall or has continued in a straight line uninterupted for "forward_reset_threshold" units of distance. Once this threshold is reached the robot executes the code below.
 ```
 if(Forward_Count > forward_reset_threshold){
             backward(c->backward_half, mL, mR); // back off from wall you've just hit
@@ -444,10 +484,9 @@ if(Forward_Count > forward_reset_threshold){
             break;                                  //exit maze finder algorythm
         }
 ```
+The buggy first reverses half a unit back, does a 180 and then reverses back into the wall to ensure a perpendicular allignment. This works if the robot has hit a wall or if its just gone too far on a straight. The buggy then goes forward the total distance it has travelled before. 
 
-The buggy first reverses half a unit back, does a 180 and then reverses back into the wall to ensure a perpendicular allgiment. This works if the robot has hit a wall or if its just gone too far on a straight. The buggy then goes forward the total distance it has travelled before. 
-
-The buggy then reverses half a unit to return to the center of the square from which it exits the maze_search while(1) loop
+The buggy then reverses half a unit to return to the center of the square from which it exits the maze_search while(1) loop. We have tested this extensively and a video is provided at the end of the read.me
 
 
 ### maze_return
@@ -463,12 +502,21 @@ while(1){
             }
         }
 ```
+An example return code for a yellow card
+```
+else if(Color_Value == 4){ //detects that it is yellow - reverse 1 square turn right 90                   
+    Operation_History[Operation_Count] = Color_Value;    
+    Operation_Count++;
+    backward(c->backward_half, mL, mR); // half back off from wall
+    backward(c->backward_one, mL, mR); //reverse for 1 square
+    rightTURN(c->right_90, mL, mR); //turn 90 left
+}
+```
+The same allignmnet philsophy is applied here expect it has to be applied in a different order since the buggy is retracing its steps. 
 
-The same calibration philsophy is applied here expect it has to be applied in a different order since the buggy is retracing its steps
+Because of the way the Operation_history array was defined the unused values are set to zero which in the function doesn't do anything and is skipped. These additional zeros are necessary because if the array is not long enough it will not "remember" all the moves to go home. 
 
-Because of the way we set up the Operation_history array has unused values but these were set to zero which in the function doesn't do anything.
-
-Once the for loop reading the reverse of the list is complete the following code executes the while loop, resting our operation_history values for the next run.
+Once the for loop is completed and the buggy is back to its starting location we reset our operation_history values for the next run.
 ```
 Operation_Count = 0;
         for (char i = 0; i < length; ++i) {
@@ -479,9 +527,8 @@ Operation_Count = 0;
 
 ## Potential Future Improvements?
 <a name="exemptions"></a>
-[Explanation of any exemptions or exceptions]
 
-currently there is no adjsment made for affect the buggy's battery level has on the motors. We saw that in testing over extended periods of time the buggy's turn radius was affected by the battery level without changing the calibration value. In the future this feature would ensure the buggy would be more consistent over extended operation - however this would be beyond what is required to solve our mazes.
+Currently there is no adjustment made for affect the buggy's battery level has on the motors. We saw that in testing over extended periods of time the buggy's turn radius was affected by the battery level without changing the calibration value. In the future this feature would ensure the buggy would be more consistent over extended operation - however this would be beyond what is required to solve our mazes.
 
 ## Testing Videos (Mechatronics Lab)
 <a name="testing-videos-(mechatronics-lab)"></a>
