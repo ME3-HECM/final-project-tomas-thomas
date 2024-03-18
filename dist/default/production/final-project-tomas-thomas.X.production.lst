@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
-                                                                                               Mon Mar 18 04:52:06 2024
+                                                                                               Mon Mar 18 06:11:33 2024
 
 Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
      1                           	processor	18F67K40
@@ -2085,7 +2085,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2051                           
   2052 ;; *************** function _color_writetoaddr *****************
   2053 ;; Defined at:
-  2054 ;;		line 37 in file "color.c"
+  2054 ;;		line 35 in file "color.c"
   2055 ;; Parameters:    Size  Location     Type
   2056 ;;  address         1    wreg     unsigned char 
   2057 ;;  value           1    2[COMRAM] unsigned char 
@@ -2131,23 +2131,23 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2092                           ;color_writetoaddr@address stored from wreg
   2093   004B24  6E04               	movwf	color_writetoaddr@address^0,c
   2094   004B26                     
-  2095                           ;color.c: 38:     I2C_2_Master_Start();
+  2095                           ;color.c: 36:     I2C_2_Master_Start();
   2096   004B26  ECAD  F025         	call	_I2C_2_Master_Start	;wreg free
   2097                           
-  2098                           ;color.c: 39:     I2C_2_Master_Write(0x52 | 0x00);
+  2098                           ;color.c: 37:     I2C_2_Master_Write(0x52 | 0x00);
   2099   004B2A  0E52               	movlw	82
   2100   004B2C  ECA2  F025         	call	_I2C_2_Master_Write
   2101                           
-  2102                           ;color.c: 40:     I2C_2_Master_Write(0x80 | address);
+  2102                           ;color.c: 38:     I2C_2_Master_Write(0x80 | address);
   2103   004B30  5004               	movf	color_writetoaddr@address^0,w,c
   2104   004B32  0980               	iorlw	128
   2105   004B34  ECA2  F025         	call	_I2C_2_Master_Write
   2106                           
-  2107                           ;color.c: 41:     I2C_2_Master_Write(value);
+  2107                           ;color.c: 39:     I2C_2_Master_Write(value);
   2108   004B38  5003               	movf	color_writetoaddr@value^0,w,c
   2109   004B3A  ECA2  F025         	call	_I2C_2_Master_Write
   2110                           
-  2111                           ;color.c: 42:     I2C_2_Master_Stop();
+  2111                           ;color.c: 40:     I2C_2_Master_Stop();
   2112   004B3E  ECA8  F025         	call	_I2C_2_Master_Stop	;wreg free
   2113   004B42  0012               	return		;funcret
   2114   004B44                     __end_of_color_writetoaddr:
@@ -2247,7 +2247,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2203                           
   2204 ;; *************** function _color_cardCheck *****************
   2205 ;; Defined at:
-  2206 ;;		line 166 in file "color.c"
+  2206 ;;		line 164 in file "color.c"
   2207 ;; Parameters:    Size  Location     Type
   2208 ;;		None
   2209 ;; Auto vars:     Size  Location     Type
@@ -2299,7 +2299,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2250   000E02                     _color_cardCheck:
   2251                           	callstack 25
   2252   000E02                     
-  2253                           ;color.c: 169:     float r = color_read_Red();
+  2253                           ;color.c: 167:     float r = color_read_Red();
   2254   000E02  EC20  F024         	call	_color_read_Red	;wreg free
   2255   000E06  C005  F00C         	movff	?_color_read_Red,___xxtofl@val
   2256   000E0A  C006  F00D         	movff	?_color_read_Red+1,___xxtofl@val+1
@@ -2312,7 +2312,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2263   000E20  C00E  F0B7         	movff	?___xxtofl+2,color_cardCheck@r+2
   2264   000E24  C00F  F0B8         	movff	?___xxtofl+3,color_cardCheck@r+3
   2265                           
-  2266                           ;color.c: 170:     float g = color_read_Green();
+  2266                           ;color.c: 168:     float g = color_read_Green();
   2267   000E28  EC48  F024         	call	_color_read_Green	;wreg free
   2268   000E2C  C005  F00C         	movff	?_color_read_Green,___xxtofl@val
   2269   000E30  C006  F00D         	movff	?_color_read_Green+1,___xxtofl@val+1
@@ -2325,7 +2325,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2276   000E46  C00E  F0BB         	movff	?___xxtofl+2,color_cardCheck@g+2
   2277   000E4A  C00F  F0BC         	movff	?___xxtofl+3,color_cardCheck@g+3
   2278                           
-  2279                           ;color.c: 171:     float b = color_read_Blue();
+  2279                           ;color.c: 169:     float b = color_read_Blue();
   2280   000E4E  EC98  F024         	call	_color_read_Blue	;wreg free
   2281   000E52  C005  F00C         	movff	?_color_read_Blue,___xxtofl@val
   2282   000E56  C006  F00D         	movff	?_color_read_Blue+1,___xxtofl@val+1
@@ -2338,7 +2338,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2289   000E6C  C00E  F0BF         	movff	?___xxtofl+2,color_cardCheck@b+2
   2290   000E70  C00F  F0C0         	movff	?___xxtofl+3,color_cardCheck@b+3
   2291                           
-  2292                           ;color.c: 174:     float c = color_read_Clear();
+  2292                           ;color.c: 172:     float c = color_read_Clear();
   2293   000E74  EC70  F024         	call	_color_read_Clear	;wreg free
   2294   000E78  C005  F00C         	movff	?_color_read_Clear,___xxtofl@val
   2295   000E7C  C006  F00D         	movff	?_color_read_Clear+1,___xxtofl@val+1
@@ -2351,8 +2351,8 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2302   000E92  C00E  F0C3         	movff	?___xxtofl+2,color_cardCheck@c+2
   2303   000E96  C00F  F0C4         	movff	?___xxtofl+3,color_cardCheck@c+3
   2304   000E9A                     
-  2305                           ;color.c: 177:     float H;;color.c: 178:     float S;;color.c: 179:     float V;;color.
-      +                          c: 181:     RGB_to_HSV(r,g,b,c,&H,&S,&V);
+  2305                           ;color.c: 175:     float H;;color.c: 176:     float S;;color.c: 177:     float V;;color.
+      +                          c: 179:     RGB_to_HSV(r,g,b,c,&H,&S,&V);
   2306   000E9A  C0B5  F06A         	movff	color_cardCheck@r,RGB_to_HSV@R
   2307   000E9E  C0B6  F06B         	movff	color_cardCheck@r+1,RGB_to_HSV@R+1
   2308   000EA2  C0B7  F06C         	movff	color_cardCheck@r+2,RGB_to_HSV@R+2
@@ -2378,7 +2378,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2328   000EE6  6F7C               	movwf	RGB_to_HSV@V& (0+255),b
   2329   000EE8  EC1D  F00C         	call	_RGB_to_HSV	;wreg free
   2330   000EEC                     
-  2331                           ;color.c: 186:     unsigned int card_color = 0;
+  2331                           ;color.c: 184:     unsigned int card_color = 0;
   2332   000EEC  0E00               	movlw	0
   2333   000EEE  0100               	movlb	0	; () banked
   2334   000EF0  6FC6               	movwf	(color_cardCheck@card_color+1)& (0+255),b
@@ -2386,7 +2386,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   2336   000EF4  6FC5               	movwf	color_cardCheck@card_color& (0+255),b
   2337   000EF6                     
   2338                           ; BSR set to: 0
-  2339                           ;color.c: 189:     if (H>355 && H<360 && S>85 && S<90 && V>80 && V<85) {card_color = 1;}
+  2339                           ;color.c: 187:     if (H>355 && H<360 && S>85 && S<90 && V>80 && V<85) {card_color = 1;}
   2340   000EF6  0E00               	movlw	0
   2341   000EF8  6E01               	movwf	___flge@ff1^0,c
   2342   000EFA  0E80               	movlw	128
@@ -3300,7 +3300,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3250   001830                     l99:
   3251   001830                     l3883:
   3252                           
-  3253                           ;color.c: 212:     return card_color;
+  3253                           ;color.c: 210:     return card_color;
   3254   001830  C0C5  F05C         	movff	color_cardCheck@card_color,?_color_cardCheck
   3255   001834  C0C6  F05D         	movff	color_cardCheck@card_color+1,?_color_cardCheck+1
   3256   001838  0012               	return		;funcret
@@ -3309,7 +3309,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3259                           
   3260 ;; *************** function _color_read_Red *****************
   3261 ;; Defined at:
-  3262 ;;		line 46 in file "color.c"
+  3262 ;;		line 44 in file "color.c"
   3263 ;; Parameters:    Size  Location     Type
   3264 ;;		None
   3265 ;; Auto vars:     Size  Location     Type
@@ -3352,25 +3352,25 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3297   004840                     _color_read_Red:
   3298                           	callstack 26
   3299   004840                     
-  3300                           ;color.c: 48:  unsigned int tmp;;color.c: 49:  I2C_2_Master_Start();
+  3300                           ;color.c: 46:  unsigned int tmp;;color.c: 47:  I2C_2_Master_Start();
   3301   004840  ECAD  F025         	call	_I2C_2_Master_Start	;wreg free
   3302                           
-  3303                           ;color.c: 50:  I2C_2_Master_Write(0x52 | 0x00);
+  3303                           ;color.c: 48:  I2C_2_Master_Write(0x52 | 0x00);
   3304   004844  0E52               	movlw	82
   3305   004846  ECA2  F025         	call	_I2C_2_Master_Write
   3306                           
-  3307                           ;color.c: 51:  I2C_2_Master_Write(0xA0 | 0x16);
+  3307                           ;color.c: 49:  I2C_2_Master_Write(0xA0 | 0x16);
   3308   00484A  0EB6               	movlw	182
   3309   00484C  ECA2  F025         	call	_I2C_2_Master_Write
   3310                           
-  3311                           ;color.c: 52:  I2C_2_Master_RepStart();
+  3311                           ;color.c: 50:  I2C_2_Master_RepStart();
   3312   004850  ECB2  F025         	call	_I2C_2_Master_RepStart	;wreg free
   3313                           
-  3314                           ;color.c: 53:  I2C_2_Master_Write(0x52 | 0x01);
+  3314                           ;color.c: 51:  I2C_2_Master_Write(0x52 | 0x01);
   3315   004854  0E53               	movlw	83
   3316   004856  ECA2  F025         	call	_I2C_2_Master_Write
   3317                           
-  3318                           ;color.c: 54:  tmp=I2C_2_Master_Read(1);
+  3318                           ;color.c: 52:  tmp=I2C_2_Master_Read(1);
   3319   00485A  0E01               	movlw	1
   3320   00485C  ECE3  F024         	call	_I2C_2_Master_Read
   3321   004860  6E07               	movwf	??_color_read_Red^0,c
@@ -3378,7 +3378,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3323   004864  6E0A               	movwf	color_read_Red@tmp^0,c
   3324   004866  6A0B               	clrf	(color_read_Red@tmp+1)^0,c
   3325                           
-  3326                           ;color.c: 55:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
+  3326                           ;color.c: 53:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
   3327   004868  0E00               	movlw	0
   3328   00486A  ECE3  F024         	call	_I2C_2_Master_Read
   3329   00486E  6E07               	movwf	??_color_read_Red^0,c
@@ -3392,10 +3392,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3337   00487E  1009               	iorwf	(??_color_read_Red+2)^0,w,c
   3338   004880  6E0B               	movwf	(color_read_Red@tmp+1)^0,c
   3339                           
-  3340                           ;color.c: 56:  I2C_2_Master_Stop();
+  3340                           ;color.c: 54:  I2C_2_Master_Stop();
   3341   004882  ECA8  F025         	call	_I2C_2_Master_Stop	;wreg free
   3342   004886                     
-  3343                           ;color.c: 57:  return tmp;
+  3343                           ;color.c: 55:  return tmp;
   3344   004886  C00A  F005         	movff	color_read_Red@tmp,?_color_read_Red
   3345   00488A  C00B  F006         	movff	color_read_Red@tmp+1,?_color_read_Red+1
   3346   00488E  0012               	return		;funcret
@@ -3404,7 +3404,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3349                           
   3350 ;; *************** function _color_read_Green *****************
   3351 ;; Defined at:
-  3352 ;;		line 60 in file "color.c"
+  3352 ;;		line 58 in file "color.c"
   3353 ;; Parameters:    Size  Location     Type
   3354 ;;		None
   3355 ;; Auto vars:     Size  Location     Type
@@ -3447,25 +3447,25 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3387   004890                     _color_read_Green:
   3388                           	callstack 26
   3389   004890                     
-  3390                           ;color.c: 62:  unsigned int tmp;;color.c: 63:  I2C_2_Master_Start();
+  3390                           ;color.c: 60:  unsigned int tmp;;color.c: 61:  I2C_2_Master_Start();
   3391   004890  ECAD  F025         	call	_I2C_2_Master_Start	;wreg free
   3392                           
-  3393                           ;color.c: 64:  I2C_2_Master_Write(0x52 | 0x00);
+  3393                           ;color.c: 62:  I2C_2_Master_Write(0x52 | 0x00);
   3394   004894  0E52               	movlw	82
   3395   004896  ECA2  F025         	call	_I2C_2_Master_Write
   3396                           
-  3397                           ;color.c: 65:  I2C_2_Master_Write(0xA0 | 0x18);
+  3397                           ;color.c: 63:  I2C_2_Master_Write(0xA0 | 0x18);
   3398   00489A  0EB8               	movlw	184
   3399   00489C  ECA2  F025         	call	_I2C_2_Master_Write
   3400                           
-  3401                           ;color.c: 66:  I2C_2_Master_RepStart();
+  3401                           ;color.c: 64:  I2C_2_Master_RepStart();
   3402   0048A0  ECB2  F025         	call	_I2C_2_Master_RepStart	;wreg free
   3403                           
-  3404                           ;color.c: 67:  I2C_2_Master_Write(0x52 | 0x01);
+  3404                           ;color.c: 65:  I2C_2_Master_Write(0x52 | 0x01);
   3405   0048A4  0E53               	movlw	83
   3406   0048A6  ECA2  F025         	call	_I2C_2_Master_Write
   3407                           
-  3408                           ;color.c: 68:  tmp=I2C_2_Master_Read(1);
+  3408                           ;color.c: 66:  tmp=I2C_2_Master_Read(1);
   3409   0048AA  0E01               	movlw	1
   3410   0048AC  ECE3  F024         	call	_I2C_2_Master_Read
   3411   0048B0  6E07               	movwf	??_color_read_Green^0,c
@@ -3473,7 +3473,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3413   0048B4  6E0A               	movwf	color_read_Green@tmp^0,c
   3414   0048B6  6A0B               	clrf	(color_read_Green@tmp+1)^0,c
   3415                           
-  3416                           ;color.c: 69:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
+  3416                           ;color.c: 67:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
   3417   0048B8  0E00               	movlw	0
   3418   0048BA  ECE3  F024         	call	_I2C_2_Master_Read
   3419   0048BE  6E07               	movwf	??_color_read_Green^0,c
@@ -3487,10 +3487,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3427   0048CE  1009               	iorwf	(??_color_read_Green+2)^0,w,c
   3428   0048D0  6E0B               	movwf	(color_read_Green@tmp+1)^0,c
   3429                           
-  3430                           ;color.c: 70:  I2C_2_Master_Stop();
+  3430                           ;color.c: 68:  I2C_2_Master_Stop();
   3431   0048D2  ECA8  F025         	call	_I2C_2_Master_Stop	;wreg free
   3432   0048D6                     
-  3433                           ;color.c: 71:  return tmp;
+  3433                           ;color.c: 69:  return tmp;
   3434   0048D6  C00A  F005         	movff	color_read_Green@tmp,?_color_read_Green
   3435   0048DA  C00B  F006         	movff	color_read_Green@tmp+1,?_color_read_Green+1
   3436   0048DE  0012               	return		;funcret
@@ -3499,7 +3499,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3439                           
   3440 ;; *************** function _color_read_Clear *****************
   3441 ;; Defined at:
-  3442 ;;		line 88 in file "color.c"
+  3442 ;;		line 86 in file "color.c"
   3443 ;; Parameters:    Size  Location     Type
   3444 ;;		None
   3445 ;; Auto vars:     Size  Location     Type
@@ -3542,25 +3542,25 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3477   0048E0                     _color_read_Clear:
   3478                           	callstack 26
   3479   0048E0                     
-  3480                           ;color.c: 92:  unsigned int tmp;;color.c: 93:  I2C_2_Master_Start();
+  3480                           ;color.c: 90:  unsigned int tmp;;color.c: 91:  I2C_2_Master_Start();
   3481   0048E0  ECAD  F025         	call	_I2C_2_Master_Start	;wreg free
   3482                           
-  3483                           ;color.c: 94:  I2C_2_Master_Write(0x52 | 0x00);
+  3483                           ;color.c: 92:  I2C_2_Master_Write(0x52 | 0x00);
   3484   0048E4  0E52               	movlw	82
   3485   0048E6  ECA2  F025         	call	_I2C_2_Master_Write
   3486                           
-  3487                           ;color.c: 95:  I2C_2_Master_Write(0xA0 | 0x14);
+  3487                           ;color.c: 93:  I2C_2_Master_Write(0xA0 | 0x14);
   3488   0048EA  0EB4               	movlw	180
   3489   0048EC  ECA2  F025         	call	_I2C_2_Master_Write
   3490                           
-  3491                           ;color.c: 96:  I2C_2_Master_RepStart();
+  3491                           ;color.c: 94:  I2C_2_Master_RepStart();
   3492   0048F0  ECB2  F025         	call	_I2C_2_Master_RepStart	;wreg free
   3493                           
-  3494                           ;color.c: 97:  I2C_2_Master_Write(0x52 | 0x01);
+  3494                           ;color.c: 95:  I2C_2_Master_Write(0x52 | 0x01);
   3495   0048F4  0E53               	movlw	83
   3496   0048F6  ECA2  F025         	call	_I2C_2_Master_Write
   3497                           
-  3498                           ;color.c: 98:  tmp=I2C_2_Master_Read(1);
+  3498                           ;color.c: 96:  tmp=I2C_2_Master_Read(1);
   3499   0048FA  0E01               	movlw	1
   3500   0048FC  ECE3  F024         	call	_I2C_2_Master_Read
   3501   004900  6E07               	movwf	??_color_read_Clear^0,c
@@ -3568,7 +3568,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3503   004904  6E0A               	movwf	color_read_Clear@tmp^0,c
   3504   004906  6A0B               	clrf	(color_read_Clear@tmp+1)^0,c
   3505                           
-  3506                           ;color.c: 99:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
+  3506                           ;color.c: 97:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
   3507   004908  0E00               	movlw	0
   3508   00490A  ECE3  F024         	call	_I2C_2_Master_Read
   3509   00490E  6E07               	movwf	??_color_read_Clear^0,c
@@ -3582,10 +3582,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3517   00491E  1009               	iorwf	(??_color_read_Clear+2)^0,w,c
   3518   004920  6E0B               	movwf	(color_read_Clear@tmp+1)^0,c
   3519                           
-  3520                           ;color.c: 100:  I2C_2_Master_Stop();
+  3520                           ;color.c: 98:  I2C_2_Master_Stop();
   3521   004922  ECA8  F025         	call	_I2C_2_Master_Stop	;wreg free
   3522   004926                     
-  3523                           ;color.c: 101:  return tmp;
+  3523                           ;color.c: 99:  return tmp;
   3524   004926  C00A  F005         	movff	color_read_Clear@tmp,?_color_read_Clear
   3525   00492A  C00B  F006         	movff	color_read_Clear@tmp+1,?_color_read_Clear+1
   3526   00492E  0012               	return		;funcret
@@ -3594,7 +3594,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3529                           
   3530 ;; *************** function _color_read_Blue *****************
   3531 ;; Defined at:
-  3532 ;;		line 74 in file "color.c"
+  3532 ;;		line 72 in file "color.c"
   3533 ;; Parameters:    Size  Location     Type
   3534 ;;		None
   3535 ;; Auto vars:     Size  Location     Type
@@ -3637,25 +3637,25 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3567   004930                     _color_read_Blue:
   3568                           	callstack 26
   3569   004930                     
-  3570                           ;color.c: 76:  unsigned int tmp;;color.c: 77:  I2C_2_Master_Start();
+  3570                           ;color.c: 74:  unsigned int tmp;;color.c: 75:  I2C_2_Master_Start();
   3571   004930  ECAD  F025         	call	_I2C_2_Master_Start	;wreg free
   3572                           
-  3573                           ;color.c: 78:  I2C_2_Master_Write(0x52 | 0x00);
+  3573                           ;color.c: 76:  I2C_2_Master_Write(0x52 | 0x00);
   3574   004934  0E52               	movlw	82
   3575   004936  ECA2  F025         	call	_I2C_2_Master_Write
   3576                           
-  3577                           ;color.c: 79:  I2C_2_Master_Write(0xA0 | 0x1A);
+  3577                           ;color.c: 77:  I2C_2_Master_Write(0xA0 | 0x1A);
   3578   00493A  0EBA               	movlw	186
   3579   00493C  ECA2  F025         	call	_I2C_2_Master_Write
   3580                           
-  3581                           ;color.c: 80:  I2C_2_Master_RepStart();
+  3581                           ;color.c: 78:  I2C_2_Master_RepStart();
   3582   004940  ECB2  F025         	call	_I2C_2_Master_RepStart	;wreg free
   3583                           
-  3584                           ;color.c: 81:  I2C_2_Master_Write(0x52 | 0x01);
+  3584                           ;color.c: 79:  I2C_2_Master_Write(0x52 | 0x01);
   3585   004944  0E53               	movlw	83
   3586   004946  ECA2  F025         	call	_I2C_2_Master_Write
   3587                           
-  3588                           ;color.c: 82:  tmp=I2C_2_Master_Read(1);
+  3588                           ;color.c: 80:  tmp=I2C_2_Master_Read(1);
   3589   00494A  0E01               	movlw	1
   3590   00494C  ECE3  F024         	call	_I2C_2_Master_Read
   3591   004950  6E07               	movwf	??_color_read_Blue^0,c
@@ -3663,7 +3663,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3593   004954  6E0A               	movwf	color_read_Blue@tmp^0,c
   3594   004956  6A0B               	clrf	(color_read_Blue@tmp+1)^0,c
   3595                           
-  3596                           ;color.c: 83:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
+  3596                           ;color.c: 81:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
   3597   004958  0E00               	movlw	0
   3598   00495A  ECE3  F024         	call	_I2C_2_Master_Read
   3599   00495E  6E07               	movwf	??_color_read_Blue^0,c
@@ -3677,10 +3677,10 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3607   00496E  1009               	iorwf	(??_color_read_Blue+2)^0,w,c
   3608   004970  6E0B               	movwf	(color_read_Blue@tmp+1)^0,c
   3609                           
-  3610                           ;color.c: 84:  I2C_2_Master_Stop();
+  3610                           ;color.c: 82:  I2C_2_Master_Stop();
   3611   004972  ECA8  F025         	call	_I2C_2_Master_Stop	;wreg free
   3612   004976                     
-  3613                           ;color.c: 85:  return tmp;
+  3613                           ;color.c: 83:  return tmp;
   3614   004976  C00A  F005         	movff	color_read_Blue@tmp,?_color_read_Blue
   3615   00497A  C00B  F006         	movff	color_read_Blue@tmp+1,?_color_read_Blue+1
   3616   00497E  0012               	return		;funcret
@@ -4087,7 +4087,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   3985                           
   3986 ;; *************** function _RGB_to_HSV *****************
   3987 ;; Defined at:
-  3988 ;;		line 125 in file "color.c"
+  3988 ;;		line 123 in file "color.c"
   3989 ;; Parameters:    Size  Location     Type
   3990 ;;  R               4   10[BANK0 ] float 
   3991 ;;  G               4   14[BANK0 ] float 
@@ -4147,7 +4147,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4040   00183A                     _RGB_to_HSV:
   4041                           	callstack 25
   4042   00183A                     
-  4043                           ;color.c: 128:     float r = R/C;
+  4043                           ;color.c: 126:     float r = R/C;
   4044   00183A  C06A  F022         	movff	RGB_to_HSV@R,___fldiv@b
   4045   00183E  C06B  F023         	movff	RGB_to_HSV@R+1,___fldiv@b+1
   4046   001842  C06C  F024         	movff	RGB_to_HSV@R+2,___fldiv@b+2
@@ -4162,7 +4162,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4055   001866  C024  F0AB         	movff	?___fldiv+2,RGB_to_HSV@r+2
   4056   00186A  C025  F0AC         	movff	?___fldiv+3,RGB_to_HSV@r+3
   4057                           
-  4058                           ;color.c: 129:     float g = G/C;
+  4058                           ;color.c: 127:     float g = G/C;
   4059   00186E  C06E  F022         	movff	RGB_to_HSV@G,___fldiv@b
   4060   001872  C06F  F023         	movff	RGB_to_HSV@G+1,___fldiv@b+1
   4061   001876  C070  F024         	movff	RGB_to_HSV@G+2,___fldiv@b+2
@@ -4177,7 +4177,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4070   00189A  C024  F0AF         	movff	?___fldiv+2,RGB_to_HSV@g+2
   4071   00189E  C025  F0B0         	movff	?___fldiv+3,RGB_to_HSV@g+3
   4072                           
-  4073                           ;color.c: 130:     float b = B/C;
+  4073                           ;color.c: 128:     float b = B/C;
   4074   0018A2  C072  F022         	movff	RGB_to_HSV@B,___fldiv@b
   4075   0018A6  C073  F023         	movff	RGB_to_HSV@B+1,___fldiv@b+1
   4076   0018AA  C074  F024         	movff	RGB_to_HSV@B+2,___fldiv@b+2
@@ -4192,7 +4192,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4085   0018CE  C024  F0B3         	movff	?___fldiv+2,RGB_to_HSV@b+2
   4086   0018D2  C025  F0B4         	movff	?___fldiv+3,RGB_to_HSV@b+3
   4087                           
-  4088                           ;color.c: 133:     float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
+  4088                           ;color.c: 131:     float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b);
   4089   0018D6  C0AD  F001         	movff	RGB_to_HSV@g,___flge@ff1
   4090   0018DA  C0AE  F002         	movff	RGB_to_HSV@g+1,___flge@ff1+1
   4091   0018DE  C0AF  F003         	movff	RGB_to_HSV@g+2,___flge@ff1+2
@@ -4272,7 +4272,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4165   0019D4  C08C  F0A8         	movff	_RGB_to_HSV$318+3,RGB_to_HSV@maxRGB+3
   4166   0019D8                     l3655:
   4167                           
-  4168                           ;color.c: 134:     float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b);
+  4168                           ;color.c: 132:     float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b);
   4169   0019D8  C0A9  F001         	movff	RGB_to_HSV@r,___flge@ff1
   4170   0019DC  C0AA  F002         	movff	RGB_to_HSV@r+1,___flge@ff1+1
   4171   0019E0  C0AB  F003         	movff	RGB_to_HSV@r+2,___flge@ff1+2
@@ -4352,7 +4352,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4245   001AD6  C098  F090         	movff	_RGB_to_HSV$321+3,RGB_to_HSV@minRGB+3
   4246   001ADA                     l3665:
   4247                           
-  4248                           ;color.c: 135:     float deltaRGB = maxRGB - minRGB;
+  4248                           ;color.c: 133:     float deltaRGB = maxRGB - minRGB;
   4249   001ADA  C0A5  F01A         	movff	RGB_to_HSV@maxRGB,___flsub@b
   4250   001ADE  C0A6  F01B         	movff	RGB_to_HSV@maxRGB+1,___flsub@b+1
   4251   001AE2  C0A7  F01C         	movff	RGB_to_HSV@maxRGB+2,___flsub@b+2
@@ -4367,7 +4367,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4260   001B06  C01C  F0A3         	movff	?___flsub+2,RGB_to_HSV@deltaRGB+2
   4261   001B0A  C01D  F0A4         	movff	?___flsub+3,RGB_to_HSV@deltaRGB+3
   4262                           
-  4263                           ;color.c: 140:     float H_temp;;color.c: 142:     if (deltaRGB == 0) {H_temp = 0;}
+  4263                           ;color.c: 138:     float H_temp;;color.c: 140:     if (deltaRGB == 0) {H_temp = 0;}
   4264   001B0E  C0A1  F001         	movff	RGB_to_HSV@deltaRGB,___fleq@ff1
   4265   001B12  C0A2  F002         	movff	RGB_to_HSV@deltaRGB+1,___fleq@ff1+1
   4266   001B16  C0A3  F003         	movff	RGB_to_HSV@deltaRGB+2,___fleq@ff1+2
@@ -4611,7 +4611,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4504   001E18                     l80:
   4505   001E18                     l3689:
   4506                           
-  4507                           ;color.c: 150:     if (H_temp < 0) {H_temp = H_temp + 360;}
+  4507                           ;color.c: 148:     if (H_temp < 0) {H_temp = H_temp + 360;}
   4508   001E18  0100               	movlb	0	; () banked
   4509   001E1A  BFA0               	btfsc	(RGB_to_HSV@H_temp+3)& (0+255),7,b
   4510   001E1C  EF14  F00F         	goto	u3800
@@ -4640,7 +4640,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4533   001E58  C004  F0A0         	movff	?___fladd+3,RGB_to_HSV@H_temp+3
   4534   001E5C                     l3693:
   4535                           
-  4536                           ;color.c: 153:     *H = H_temp;
+  4536                           ;color.c: 151:     *H = H_temp;
   4537   001E5C  0100               	movlb	0	; () banked
   4538   001E5E  517A               	movf	RGB_to_HSV@H& (0+255),w,b
   4539   001E60  6ED9               	movwf	fsr2l,c
@@ -4651,7 +4651,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4544   001E70  C0A0  FFDE         	movff	RGB_to_HSV@H_temp+3,postinc2
   4545   001E74                     
   4546                           ; BSR set to: 0
-  4547                           ;color.c: 156:     if (maxRGB == 0) {*S = 0;}
+  4547                           ;color.c: 154:     if (maxRGB == 0) {*S = 0;}
   4548   001E74  C0A5  F001         	movff	RGB_to_HSV@maxRGB,___fleq@ff1
   4549   001E78  C0A6  F002         	movff	RGB_to_HSV@maxRGB+1,___fleq@ff1+1
   4550   001E7C  C0A7  F003         	movff	RGB_to_HSV@maxRGB+2,___fleq@ff1+2
@@ -4686,7 +4686,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4579   001EBE  EF91  F00F         	goto	l86
   4580   001EC2                     l3699:
   4581                           
-  4582                           ;color.c: 159:         *S = (deltaRGB/maxRGB) * 100;
+  4582                           ;color.c: 157:         *S = (deltaRGB/maxRGB) * 100;
   4583   001EC2  C0A5  F026         	movff	RGB_to_HSV@maxRGB,___fldiv@a
   4584   001EC6  C0A6  F027         	movff	RGB_to_HSV@maxRGB+1,___fldiv@a+1
   4585   001ECA  C0A7  F028         	movff	RGB_to_HSV@maxRGB+2,___fldiv@a+2
@@ -4720,7 +4720,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4613   001F22                     l86:
   4614                           
   4615                           ; BSR set to: 0
-  4616                           ;color.c: 163:     *V = maxRGB * 100;
+  4616                           ;color.c: 161:     *V = maxRGB * 100;
   4617   001F22  C0A5  F03B         	movff	RGB_to_HSV@maxRGB,___flmul@b
   4618   001F26  C0A6  F03C         	movff	RGB_to_HSV@maxRGB+1,___flmul@b+1
   4619   001F2A  C0A7  F03D         	movff	RGB_to_HSV@maxRGB+2,___flmul@b+2
@@ -4750,7 +4750,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4643                           
   4644 ;; *************** function _custom_floatmodulo *****************
   4645 ;; Defined at:
-  4646 ;;		line 106 in file "color.c"
+  4646 ;;		line 104 in file "color.c"
   4647 ;; Parameters:    Size  Location     Type
   4648 ;;  x               4   83[COMRAM] float 
   4649 ;;  y               4   87[COMRAM] float 
@@ -4797,7 +4797,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4685   00413A                     _custom_floatmodulo:
   4686                           	callstack 25
   4687   00413A                     
-  4688                           ;color.c: 108:     if (y == 0.0) {
+  4688                           ;color.c: 106:     if (y == 0.0) {
   4689   00413A  C058  F001         	movff	custom_floatmodulo@y,___fleq@ff1
   4690   00413E  C059  F002         	movff	custom_floatmodulo@y+1,___fleq@ff1+1
   4691   004142  C05A  F003         	movff	custom_floatmodulo@y+2,___fleq@ff1+2
@@ -4818,7 +4818,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4706   004168  EFC0  F020         	goto	l3549
   4707   00416C                     u3610:
   4708   00416C                     
-  4709                           ;color.c: 109:         return 0.0;
+  4709                           ;color.c: 107:         return 0.0;
   4710   00416C  0E00               	movlw	0
   4711   00416E  6E54               	movwf	?_custom_floatmodulo^0,c
   4712   004170  0E00               	movlw	0
@@ -4830,7 +4830,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4718   00417C  EF28  F021         	goto	l50
   4719   004180                     l3549:
   4720                           
-  4721                           ;color.c: 113:     float quotient = x / y;
+  4721                           ;color.c: 111:     float quotient = x / y;
   4722   004180  C054  F022         	movff	custom_floatmodulo@x,___fldiv@b
   4723   004184  C055  F023         	movff	custom_floatmodulo@x+1,___fldiv@b+1
   4724   004188  C056  F024         	movff	custom_floatmodulo@x+2,___fldiv@b+2
@@ -4845,7 +4845,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4733   0041AC  C024  F062         	movff	?___fldiv+2,custom_floatmodulo@quotient+2
   4734   0041B0  C025  F063         	movff	?___fldiv+3,custom_floatmodulo@quotient+3
   4735                           
-  4736                           ;color.c: 116:     int intPart = (int)quotient;
+  4736                           ;color.c: 114:     int intPart = (int)quotient;
   4737   0041B4  C060  F001         	movff	custom_floatmodulo@quotient,___fltol@f1
   4738   0041B8  C061  F002         	movff	custom_floatmodulo@quotient+1,___fltol@f1+1
   4739   0041BC  C062  F003         	movff	custom_floatmodulo@quotient+2,___fltol@f1+2
@@ -4854,7 +4854,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4742   0041C8  C001  F068         	movff	?___fltol,custom_floatmodulo@intPart
   4743   0041CC  C002  F069         	movff	?___fltol+1,custom_floatmodulo@intPart+1
   4744   0041D0                     
-  4745                           ;color.c: 119:     float remainder = x - intPart * y;
+  4745                           ;color.c: 117:     float remainder = x - intPart * y;
   4746   0041D0  C054  F01A         	movff	custom_floatmodulo@x,___flsub@b
   4747   0041D4  C055  F01B         	movff	custom_floatmodulo@x+1,___flsub@b+1
   4748   0041D8  C056  F01C         	movff	custom_floatmodulo@x+2,___flsub@b+2
@@ -4887,7 +4887,7 @@ Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1
   4775   004238  C01C  F066         	movff	?___flsub+2,custom_floatmodulo@remainder+2
   4776   00423C  C01D  F067         	movff	?___flsub+3,custom_floatmodulo@remainder+3
   4777   004240                     
-  4778                           ;color.c: 121:     return remainder;
+  4778                           ;color.c: 119:     return remainder;
   4779   004240  C064  F054         	movff	custom_floatmodulo@remainder,?_custom_floatmodulo
   4780   004244  C065  F055         	movff	custom_floatmodulo@remainder+1,?_custom_floatmodulo+1
   4781   004248  C066  F056         	movff	custom_floatmodulo@remainder+2,?_custom_floatmodulo+2
@@ -11247,7 +11247,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.45 build 20230818022343 
-Symbol Table                                                                                   Mon Mar 18 04:52:06 2024
+Symbol Table                                                                                   Mon Mar 18 06:11:33 2024
 
                      _color_read_Red 4840                         ___fldiv@aexp 003A  
                        ___fldiv@bexp 0039                         ___fldiv@sign 0032  

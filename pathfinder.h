@@ -15,7 +15,7 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
 char Operation_Count = 0;
 char Forward_Count = 0;
 
-char length = 50;       //should be changed
+char length = 50;       //Can be changed depending on the length of the maze. Value = number of moves before returning home.
 char Operation_History[50] = {0};  //value in Operation history must equal to length variable
 
 char forward_reset_threshold = 10;  //20 forward moves without function to reset

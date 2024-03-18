@@ -49,21 +49,21 @@
 [v _calibration_routine calibration_routine `(v  1 e 1 0 ]
 "7 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\color.c
 [v _color_click_init color_click_init `(v  1 e 1 0 ]
-"37
+"35
 [v _color_writetoaddr color_writetoaddr `(v  1 e 1 0 ]
-"46
+"44
 [v _color_read_Red color_read_Red `(ui  1 e 2 0 ]
-"60
+"58
 [v _color_read_Green color_read_Green `(ui  1 e 2 0 ]
-"74
+"72
 [v _color_read_Blue color_read_Blue `(ui  1 e 2 0 ]
-"88
+"86
 [v _color_read_Clear color_read_Clear `(ui  1 e 2 0 ]
-"106
+"104
 [v _custom_floatmodulo custom_floatmodulo `(f  1 e 4 0 ]
-"125
+"123
 [v _RGB_to_HSV RGB_to_HSV `(v  1 e 1 0 ]
-"166
+"164
 [v _color_cardCheck color_cardCheck `(ui  1 e 2 0 ]
 "5 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\dc_motor_v1.c
 [v _initDCmotorsPWM initDCmotorsPWM `(v  1 e 1 0 ]
@@ -779,70 +779,70 @@
 "7 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\color.c
 [v _color_click_init color_click_init `(v  1 e 1 0 ]
 {
-"35
+"33
 } 0
-"37
+"35
 [v _color_writetoaddr color_writetoaddr `(v  1 e 1 0 ]
 {
 [v color_writetoaddr@address address `uc  1 a 1 wreg ]
 [v color_writetoaddr@address address `uc  1 a 1 wreg ]
 [v color_writetoaddr@value value `uc  1 p 1 2 ]
 [v color_writetoaddr@address address `uc  1 a 1 3 ]
-"43
+"41
 } 0
 "4 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\i2c.c
 [v _I2C_2_Master_Init I2C_2_Master_Init `(v  1 e 1 0 ]
 {
 "20
 } 0
-"166 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\color.c
+"164 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\color.c
 [v _color_cardCheck color_cardCheck `(ui  1 e 2 0 ]
 {
-"179
-[v color_cardCheck@V V `f  1 a 4 111 ]
-"178
-[v color_cardCheck@S S `f  1 a 4 107 ]
 "177
+[v color_cardCheck@V V `f  1 a 4 111 ]
+"176
+[v color_cardCheck@S S `f  1 a 4 107 ]
+"175
 [v color_cardCheck@H H `f  1 a 4 103 ]
-"174
+"172
 [v color_cardCheck@c c `f  1 a 4 97 ]
-"171
-[v color_cardCheck@b b `f  1 a 4 93 ]
-"170
-[v color_cardCheck@g g `f  1 a 4 89 ]
 "169
+[v color_cardCheck@b b `f  1 a 4 93 ]
+"168
+[v color_cardCheck@g g `f  1 a 4 89 ]
+"167
 [v color_cardCheck@r r `f  1 a 4 85 ]
-"186
+"184
 [v color_cardCheck@card_color card_color `ui  1 a 2 101 ]
-"213
+"211
 } 0
-"46
+"44
 [v _color_read_Red color_read_Red `(ui  1 e 2 0 ]
 {
-"48
+"46
 [v color_read_Red@tmp tmp `ui  1 a 2 9 ]
-"58
+"56
 } 0
-"60
+"58
 [v _color_read_Green color_read_Green `(ui  1 e 2 0 ]
 {
-"62
+"60
 [v color_read_Green@tmp tmp `ui  1 a 2 9 ]
-"72
+"70
 } 0
-"88
+"86
 [v _color_read_Clear color_read_Clear `(ui  1 e 2 0 ]
 {
-"92
+"90
 [v color_read_Clear@tmp tmp `ui  1 a 2 9 ]
-"102
+"100
 } 0
-"74
+"72
 [v _color_read_Blue color_read_Blue `(ui  1 e 2 0 ]
 {
-"76
+"74
 [v color_read_Blue@tmp tmp `ui  1 a 2 9 ]
-"86
+"84
 } 0
 "45 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\i2c.c
 [v _I2C_2_Master_Write I2C_2_Master_Write `(v  1 e 1 0 ]
@@ -885,24 +885,24 @@
 {
 "25
 } 0
-"125 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\color.c
+"123 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\color.c
 [v _RGB_to_HSV RGB_to_HSV `(v  1 e 1 0 ]
 {
-"130
-[v RGB_to_HSV@b b `f  1 a 4 81 ]
-"129
-[v RGB_to_HSV@g g `f  1 a 4 77 ]
 "128
+[v RGB_to_HSV@b b `f  1 a 4 81 ]
+"127
+[v RGB_to_HSV@g g `f  1 a 4 77 ]
+"126
 [v RGB_to_HSV@r r `f  1 a 4 73 ]
-"133
+"131
 [v RGB_to_HSV@maxRGB maxRGB `f  1 a 4 69 ]
-"135
+"133
 [v RGB_to_HSV@deltaRGB deltaRGB `f  1 a 4 65 ]
-"140
+"138
 [v RGB_to_HSV@H_temp H_temp `f  1 a 4 61 ]
-"134
+"132
 [v RGB_to_HSV@minRGB minRGB `f  1 a 4 45 ]
-"125
+"123
 [v RGB_to_HSV@R R `f  1 p 4 10 ]
 [v RGB_to_HSV@G G `f  1 p 4 14 ]
 [v RGB_to_HSV@B B `f  1 p 4 18 ]
@@ -910,21 +910,21 @@
 [v RGB_to_HSV@H H `*.30f  1 p 1 26 ]
 [v RGB_to_HSV@S S `*.30f  1 p 1 27 ]
 [v RGB_to_HSV@V V `*.30f  1 p 1 28 ]
-"164
+"162
 } 0
-"106
+"104
 [v _custom_floatmodulo custom_floatmodulo `(f  1 e 4 0 ]
 {
-"119
+"117
 [v custom_floatmodulo@remainder remainder `f  1 a 4 4 ]
-"113
+"111
 [v custom_floatmodulo@quotient quotient `f  1 a 4 0 ]
-"116
+"114
 [v custom_floatmodulo@intPart intPart `i  1 a 2 8 ]
-"106
+"104
 [v custom_floatmodulo@x x `f  1 p 4 83 ]
 [v custom_floatmodulo@y y `f  1 p 4 87 ]
-"122
+"120
 } 0
 "10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
