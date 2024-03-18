@@ -7,6 +7,7 @@
 - [General Functionality](#general-functionality)
   - [Overview/Instructions for Operation](#overviewinstructions-for-operation)
   - [Overview of Code Path](#Overview-of-Code-Path)
+- [DC Motors](#DC-motors)
 - [Calibration Structure](#calibration-structure)
 - [Colour Sensing Structure](#colour-sensing-structure)
 - [Path Finding Structure](#path-finding-structure)
@@ -136,7 +137,10 @@ The table below provides a brief summary of each function - helpful to the user 
     - The pathfinder.h file also contains the "forward_reset_threshold" determining how long the robot will move before considering itself lost and exectuing the maze_return command
 1. **serial.c**
     - Used for colour calibration and testing throughout the project
-## DC Motors 
+
+## DC Motors
+<a name="DC-motors"></a>
+
 The motor configuration of the car was built upon the lab 6 work done on the course. The DC_motor_v1 file contains the following functions:
 - **initDCmotorsPWM** - intialised the 4 dc motors on the buggy and set up the modules on the clicker board to ouput a PWM signal such that the motor RPM could be controlled by later functions. The PWM period is configured using a 1:16 prescaler with a 64 Mhz internal clock.
 - **delay_ms_function** - was used to delay an amount of time equal to a variable as using __delay_ms(variable) does not work.
