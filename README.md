@@ -84,6 +84,19 @@ For the user who is only interested in the functionality of the buggy the proced
 
 These steps can be repeated to run the maze again saving the calibration values inputed from the first calibration.
 
+
+
+### Movement Calibration
+
+![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/238bdf45-08f7-42ca-aadb-4db6b7b23573)
+
+Buttons to adjust the calibration value 
+When both buttons are pressed together it will save the calibration value and show you the movemnet
+
+![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/e259588b-ef60-41f9-a08e-5fa1c0100360)
+
+Buttons to stay on the currrent calibration, and move to the next calibration
+
 ### A More Detailed Overview/Instructions for Operation
 <a name="overviewinstructions-for-operation"></a>
 
@@ -247,6 +260,10 @@ calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR)
 // calibration section
 ### calibration_routine Function
 This function combines the 2 previous functions together to calibrate the 8 movements in a single callable callable function. It takes the inputs of left motor, right motor, calibration values.
+
+![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/01a83b85-2115-409e-bd3d-6fd1e7023971)
+
+Summary of the 4 key stages in the buggy code
 #### adjustment 
 ```
     if(c->index == 1){ //calibrate right 90 turn
@@ -273,20 +290,7 @@ This step is then repeated 7 more times to cycle through the 8 total movements t
 ### Movement Process
 [Explanation of movement process]
 
-![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/01a83b85-2115-409e-bd3d-6fd1e7023971)
 
-Summary of the 4 key stages in the buggy code
-
-### Movement Calibration
-
-![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/238bdf45-08f7-42ca-aadb-4db6b7b23573)
-
-Buttons to adjust the calibration value 
-When both buttons are pressed together it will save the calibration value and show you the movemnet
-
-![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/e259588b-ef60-41f9-a08e-5fa1c0100360)
-
-Buttons to stay on the currrent calibration, and move to the next calibration
 
 ## Colour Sensing Structure
 <a name="colour-calibration"></a>
