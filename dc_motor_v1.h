@@ -16,12 +16,10 @@ typedef struct DC_motor { //definition of DC_motor structure
 
 struct DC_motor motorL, motorR;
 
-
 void initDCmotorsPWM(unsigned int PWMperiod); // function to setup PWM
 void setMotorPWM(DC_motor *m);
 
 void stop(DC_motor *mL, DC_motor *mR);
-
 void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);

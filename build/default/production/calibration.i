@@ -7,7 +7,6 @@
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "calibration.c" 2
-
 # 1 "./calibration.h" 1
 
 
@@ -24112,12 +24111,10 @@ typedef struct DC_motor {
 
 struct DC_motor motorL, motorR;
 
-
 void initDCmotorsPWM(unsigned int PWMperiod);
 void setMotorPWM(DC_motor *m);
 
 void stop(DC_motor *mL, DC_motor *mR);
-
 void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
@@ -24148,7 +24145,7 @@ void pause_until_RF2_pressed();
 void adjust_calibration(int *calibration_label);
 void switch_calibration(int *calibration_index);
 void calibration_routine(calibration_structure *c, DC_motor *mL, DC_motor *mR );
-# 2 "calibration.c" 2
+# 1 "calibration.c" 2
 
 
 

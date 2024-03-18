@@ -128,12 +128,13 @@ void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
     mR->direction = 1; 
     
     //Speed control variables
-    int max_power = 40;                             //tunable value for higher speed increase
-    int acceleration_time = 100;                    //[mirco-s]    
-    int delay_time = acceleration_time/max_power;   //calculates the delay needed to increase the power in the given acceleration_time
+    char max_power = 40;                             //tunable value for higher speed increase
+    char acceleration_time = 100;                    //[mirco-s]    
+    char delay_time = acceleration_time/max_power;   //calculates the delay needed to increase the power in the given acceleration_time
+                                                     // note that this delay_time value will only be accurate to the nearest ms since it isn't a float
     
     //acceleration period
-    for(int i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
+    for(char i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
         mL->power = mL->power + 1;                  //increment right motor power
         mR->power = mR->power + 1 ;                 //increment left motor power
         setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
@@ -144,7 +145,7 @@ void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
         //however testing showed that the car drove straight - if an issue increase the power of the weak side to correct for drift
     
     //constant velocity period   
-    for(int j=0; j<Distance_Calibration; j++){  //hold the motors at a constant velocity for 10ms * distance calibration time
+    for(char j=0; j<Distance_Calibration; j++){  //hold the motors at a constant velocity for 10ms * distance calibration time
         __delay_ms(10);                         //can be reduced to refine the accuracy of distance travelled however 10ms worked for us
     }
     
@@ -173,9 +174,9 @@ void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
     mR->direction = 0; 
     
     //Speed control variables
-    int max_power = 40;                             //tunable value for higher speed increase
-    int acceleration_time = 100;                    //[mirco-s]    
-    int delay_time = acceleration_time/max_power;   //calculates the delay needed to increase the power in the given acceleration_time
+    char max_power = 40;                             //tunable value for higher speed increase
+    char acceleration_time = 100;                    //[mirco-s]    
+    char delay_time = acceleration_time/max_power;   //calculates the delay needed to increase the power in the given acceleration_time
     
     //acceleration period
     for(int i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
@@ -215,12 +216,12 @@ void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 0;  //spin left motors backwards
     mR->direction = 1;  //spin right motors forwards
     
-    int max_power = 40;                                     //tunable values
-    int acceleration_time = 100;                         //[mirco-s]    //check that value is accepted by the delay function
-    int delay_time = acceleration_time/max_power;
+    char max_power = 40;                                     //tunable values
+    char acceleration_time = 100;                         //[mirco-s]    //check that value is accepted by the delay function
+    char delay_time = acceleration_time/max_power;
     
     //acceleration period
-    for(int i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
+    for(char i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
         mL->power = mL->power + 1;                  //increment right motor power
         mR->power = mR->power + 1 ;                 //increment left motor power
         setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
@@ -231,7 +232,7 @@ void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
         //however testing showed that the car drove straight - if an issue increase the power of the weak side to correct for drift
     
     //constant velocity period   
-    for(int j=0; j<rotation_calibration; j++){  //hold the motors at a constant velocity for 10ms * distance calibration time
+    for(char j=0; j<rotation_calibration; j++){  //hold the motors at a constant velocity for 10ms * distance calibration time
         __delay_ms(10);                         //can be reduced to refine the accuracy of distance travelled however 10ms worked for us
     }
     
@@ -255,12 +256,12 @@ void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 1;
     mR->direction = 0; 
     
-    int max_power = 40;         //tunable values
-    int acceleration_time = 100;    //[mirco-s]    //check that value is accepted by the delay function
-    int delay_time = acceleration_time/max_power;
+    char max_power = 40;         //tunable values
+    char acceleration_time = 100;    //[mirco-s]    //check that value is accepted by the delay function
+    char delay_time = acceleration_time/max_power;
     
     //acceleration period
-    for(int i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
+    for(char i=0; i< max_power; i++){                //until we reach max_power increment left and right motors
         mL->power = mL->power + 1;                  //increment right motor power
         mR->power = mR->power + 1 ;                 //increment left motor power
         setMotorPWM(mR);                            //send new power reading to the setMotorPWM function
@@ -271,7 +272,7 @@ void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
         //however testing showed that the car drove straight - if an issue increase the power of the weak side to correct for drift
     
     //constant velocity period   
-    for(int j=0; j<rotation_calibration; j++){  //hold the motors at a constant velocity for 10ms * distance calibration time
+    for(char j=0; j<rotation_calibration; j++){  //hold the motors at a constant velocity for 10ms * distance calibration time
         __delay_ms(10);                         //can be reduced to refine the accuracy of distance travelled however 10ms worked for us
     }
     

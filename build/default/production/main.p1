@@ -8,8 +8,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [s S2018 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S2018 calibration_structure index right_90 left_90 right_135 left_135 forward_one backward_one forward_half backward_half ]
 [p mainexit ]
-"20 ./dc_motor_v1.h
-[; ;./dc_motor_v1.h: 20: void initDCmotorsPWM(unsigned int PWMperiod);
+"19 ./dc_motor_v1.h
+[; ;./dc_motor_v1.h: 19: void initDCmotorsPWM(unsigned int PWMperiod);
 [v _initDCmotorsPWM `(v ~T0 @X0 0 ef1`ui ]
 "29383 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18F-K_DFP/1.11.281/xc8\pic\include\proc\pic18f67k40.h: 29383:     struct {
@@ -2156,28 +2156,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _Forward_Count
 -> -> 0 `i `uc
 ]
-"17
-[; ;./pathfinder.h: 17: char length = 50;
+"18
+[; ;./pathfinder.h: 18: char length = 50;
 [v _length `uc ~T0 @X0 1 e ]
 [i _length
 -> -> 50 `i `uc
 ]
-"18
-[; ;./pathfinder.h: 18: char Operation_History[50] = {0};
+"19
+[; ;./pathfinder.h: 19: char Operation_History[50] = {0};
 [v _Operation_History `uc ~T0 @X0 -> 50 `i e ]
 [i _Operation_History
 :U ..
 -> -> 0 `i `uc
 ..
 ]
-"19
-[; ;./pathfinder.h: 19: char forward_reset_threshold = 10;
+"21
+[; ;./pathfinder.h: 21: char forward_reset_threshold = 10;
 [v _forward_reset_threshold `uc ~T0 @X0 1 e ]
 [i _forward_reset_threshold
 -> -> 10 `i `uc
 ]
-"21
-[; ;./pathfinder.h: 21: int Color_Value;
+"23
+[; ;./pathfinder.h: 23: int Color_Value;
 [v _Color_Value `i ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
 "20 main.c

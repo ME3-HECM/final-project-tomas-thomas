@@ -24107,12 +24107,10 @@ typedef struct DC_motor {
 
 struct DC_motor motorL, motorR;
 
-
 void initDCmotorsPWM(unsigned int PWMperiod);
 void setMotorPWM(DC_motor *m);
 
 void stop(DC_motor *mL, DC_motor *mR);
-
 void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
@@ -24249,12 +24247,13 @@ void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
     mR->direction = 1;
 
 
-    int max_power = 40;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
+    char max_power = 40;
+    char acceleration_time = 100;
+    char delay_time = acceleration_time/max_power;
 
 
-    for(int i=0; i< max_power; i++){
+
+    for(char i=0; i< max_power; i++){
         mL->power = mL->power + 1;
         mR->power = mR->power + 1 ;
         setMotorPWM(mR);
@@ -24265,7 +24264,7 @@ void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
 
 
 
-    for(int j=0; j<Distance_Calibration; j++){
+    for(char j=0; j<Distance_Calibration; j++){
         _delay((unsigned long)((10)*(64000000/4000.0)));
     }
 
@@ -24294,9 +24293,9 @@ void backward(char Distance_Calibration, DC_motor *mL, DC_motor *mR){
     mR->direction = 0;
 
 
-    int max_power = 40;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
+    char max_power = 40;
+    char acceleration_time = 100;
+    char delay_time = acceleration_time/max_power;
 
 
     for(int i=0; i< max_power; i++){
@@ -24336,12 +24335,12 @@ void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 0;
     mR->direction = 1;
 
-    int max_power = 40;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
+    char max_power = 40;
+    char acceleration_time = 100;
+    char delay_time = acceleration_time/max_power;
 
 
-    for(int i=0; i< max_power; i++){
+    for(char i=0; i< max_power; i++){
         mL->power = mL->power + 1;
         mR->power = mR->power + 1 ;
         setMotorPWM(mR);
@@ -24352,7 +24351,7 @@ void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
 
 
 
-    for(int j=0; j<rotation_calibration; j++){
+    for(char j=0; j<rotation_calibration; j++){
         _delay((unsigned long)((10)*(64000000/4000.0)));
     }
 
@@ -24376,12 +24375,12 @@ void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
     mL->direction = 1;
     mR->direction = 0;
 
-    int max_power = 40;
-    int acceleration_time = 100;
-    int delay_time = acceleration_time/max_power;
+    char max_power = 40;
+    char acceleration_time = 100;
+    char delay_time = acceleration_time/max_power;
 
 
-    for(int i=0; i< max_power; i++){
+    for(char i=0; i< max_power; i++){
         mL->power = mL->power + 1;
         mR->power = mR->power + 1 ;
         setMotorPWM(mR);
@@ -24392,7 +24391,7 @@ void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR){
 
 
 
-    for(int j=0; j<rotation_calibration; j++){
+    for(char j=0; j<rotation_calibration; j++){
         _delay((unsigned long)((10)*(64000000/4000.0)));
     }
 

@@ -65,8 +65,7 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 rightTURN(c->right_90, mL, mR);
                 rightTURN(c->right_90, mL, mR);
                 backward(c->backward_one, mL, mR); //reverse for 1 square
-                forward(c->forward_half, mL, mR);
-                
+                forward(c->forward_half, mL, mR);     
             }
             
             else if(Color_Value == 4){ //detects that it is yellow - reverse 1 square turn right 90                   
@@ -114,15 +113,6 @@ void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
 
 
 
-
-
-
-
-
-
-
-
-
 void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
     //alogrythm to recall buggy movement history and reverse moves to get home
     
@@ -132,13 +122,11 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
 
             if(Operation_History[i] > 10){  //all values 10 or greater relate to forward movement 
                 unsigned char distance_back = Operation_History[i] - 10;    //remove the offset from the forward movement tracker such that 1 = 1 unit of the square moved
-                for (int j = 0; j < distance_back-1; j++) {                 //move the buggy forward distance_back number of times minus 1 to adjust for calibrating agaisnt the wall
-                    forward(c->forward_one, mL, mR);
+                for (int j = 0; j < distance_back-1; j++) {                 //move the buggy forward "distance_back" number of times minus 1 to adjust for calibrating agaisnt the wall
+                    forward(c->forward_one, mL, mR);                        //call the forward command to move the buggy forward
                 }
-//                forward(c->forward_half, mL, mR);
-                // need to have a go back by a half  - not sure why @@@@@@@@@@@@@@@@@@@@@@@@@
             }
-//
+            
             else if(Operation_History[i] == 1){  //opposite of right = left
                 leftTURN(c->left_90, mL, mR);
                 backward(c->backward_one, mL, mR); 
@@ -158,12 +146,12 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 forward(c->forward_half, mL, mR);
             }
                      
-            else if(Operation_History[i] == 4){ 
+            else if(Operation_History[i] == 4){ //opposite action of yellow
                 //opposite of yellow
                 rightTURN(c->right_90, mL, mR);
                 forward(c->forward_one, mL, mR);
                 
-                //reallignement to wall
+                //reallignement to wall section
                 forward(c->forward_one, mL, mR);    //contact with the wall to allign
                 backward(c->backward_half, mL, mR); // halfbackwards to move back to center of square
                 rightTURN(c->right_90, mL, mR);
@@ -172,7 +160,7 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 forward(c->forward_half, mL, mR); //half foward
             }
 
-            else if(Operation_History[i] == 5){
+            else if(Operation_History[i] == 5){ // opposite action of pink
                 leftTURN(c->left_90, mL, mR);
                 forward(c->forward_one, mL, mR);
                 
@@ -186,22 +174,22 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
                 
             }
 
-            else if(Operation_History[i] == 6){
+            else if(Operation_History[i] == 6){ 
                 leftTURN(c->left_135, mL, mR);  //counter to right 135
                 backward(c->backward_one, mL, mR);  //full backwards
                 forward(c->forward_half, mL, mR);  //half forward
             }
 
             else if(Operation_History[i] == 7){
-                rightTURN(c->right_135, mL, mR);
+                rightTURN(c->right_135, mL, mR);    //counter to left 135
                 backward(c->backward_one, mL, mR);  //full backwards
                 forward(c->forward_half, mL, mR);  //half forward
             }
         }
         
-        //reseting the device history so that it can complete another run
+        //reseting the device history so that it can complete another run without turning the device off
         Operation_Count = 0;
-        for (int i = 0; i < 50; ++i) {
+        for (char i = 0; i < length; ++i) {
             Operation_History[i] = 0;
         }
         break; //quits the return home function when the history is complete

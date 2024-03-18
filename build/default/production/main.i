@@ -24271,12 +24271,10 @@ typedef struct DC_motor {
 
 struct DC_motor motorL, motorR;
 
-
 void initDCmotorsPWM(unsigned int PWMperiod);
 void setMotorPWM(DC_motor *m);
 
 void stop(DC_motor *mL, DC_motor *mR);
-
 void rightTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void leftTURN(char rotation_calibration, DC_motor *mL, DC_motor *mR);
 void forward(char Distance_Calibration, DC_motor *mL, DC_motor *mR);
@@ -24383,8 +24381,10 @@ void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR);
 
 char Operation_Count = 0;
 char Forward_Count = 0;
+
 char length = 50;
 char Operation_History[50] = {0};
+
 char forward_reset_threshold = 10;
 
 int Color_Value;

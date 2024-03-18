@@ -58,25 +58,25 @@ void main(void){
     calibration.index = 1;  // used to cycle through the calibration routine selecting various motor movements
        //see "calibration.c" file for index values
     
-    calibration.right_90 = 25;
-    calibration.left_90 = 25;
+    calibration.right_90 = 25;      // index = 1 
+    calibration.left_90 = 25;       // index = 2
     
-    calibration.right_135 = 40;
-    calibration.left_135 = 40;
-    
-    calibration.forward_one = 100;  //one unit of the maze geometry
-    calibration.backward_one = 100;
-    
-    calibration.forward_half = 33;  //half a unit of the maze geometry
-    calibration.backward_half = 33;
+    calibration.right_135 = 40;     // index = 3 
+    calibration.left_135 = 40;      // index = 4
+     
+    calibration.forward_one = 100;  // index = 4  - travels forward one unit of the maze geometry
+    calibration.backward_one = 100; // index = 5  - travels backward one unit of the maze geometry
+        
+    calibration.forward_half = 33;  // index = 6  - travels to the centre of a unit square when the back of the buggy is in contact with the wall
+    calibration.backward_half = 33; // index = 7  - travels to the centre of a unit square when the front of the buggy is in contact with the wall
 
   
 //~~~~~~~~~~~~~~~ Executable code for the buggy ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     while(1){ 
-        //note that the calibration values are not reset if the buggy is not turned off after it has solved the first maze
+        // while loop to keep the calibration values of the buggy for repeated maze runs
         // you will still have to go through the calibration routine but no adjustments will have to be made
-        pause_until_RF2_pressed();
+        pause_until_RF2_pressed();                              // click to start function
 
         calibration_routine(&calibration, &motorL, &motorR);    // calibration routine
 

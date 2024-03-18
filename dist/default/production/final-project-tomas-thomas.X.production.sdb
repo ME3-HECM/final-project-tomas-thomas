@@ -3,8 +3,6 @@
 [d edition pro ]
 [d chip 18F67K40 ]
 [d frameptr 4065 ]
-"7 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\flge.c
@@ -21,6 +19,8 @@
 [v ___ftmul __ftmul `(f  1 e 4 0 ]
 "19 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
 "7 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\sprcadd.c
@@ -39,13 +39,13 @@
 [v ___omul __omul `(uo  1 e 8 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-"6 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\calibration.c
+"5 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\calibration.c
 [v _pause_until_RF2_pressed pause_until_RF2_pressed `(v  1 e 1 0 ]
-"26
+"25
 [v _adjust_calibration adjust_calibration `(v  1 e 1 0 ]
-"65
+"64
 [v _switch_calibration switch_calibration `(v  1 e 1 0 ]
-"90
+"89
 [v _calibration_routine calibration_routine `(v  1 e 1 0 ]
 "7 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\color.c
 [v _color_click_init color_click_init `(v  1 e 1 0 ]
@@ -73,11 +73,11 @@
 [v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
 "122
 [v _forward forward `(v  1 e 1 0 ]
-"166
+"167
 [v _backward backward `(v  1 e 1 0 ]
-"213
+"214
 [v _leftTURN leftTURN `(v  1 e 1 0 ]
-"254
+"255
 [v _rightTURN rightTURN `(v  1 e 1 0 ]
 "4 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\i2c.c
 [v _I2C_2_Master_Init I2C_2_Master_Init `(v  1 e 1 0 ]
@@ -97,7 +97,7 @@
 [v _main main `(v  1 e 1 0 ]
 "6 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\pathfinder.c
 [v _maze_search maze_search `(v  1 e 1 0 ]
-"126
+"116
 [v _maze_return maze_return `(v  1 e 1 0 ]
 "34 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\serial.c
 [v _sendCharSerial4 sendCharSerial4 `(v  1 e 1 0 ]
@@ -114,9 +114,9 @@
 [v _Operation_Count Operation_Count `uc  1 e 1 0 ]
 "16
 [v _Forward_Count Forward_Count `uc  1 e 1 0 ]
-"18
+"19
 [v _Operation_History Operation_History `[50]uc  1 e 50 0 ]
-"21
+"23
 [v _Color_Value Color_Value `i  1 e 2 0 ]
 "13 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X/serial.h
 [v _EUSART4RXbuf EUSART4RXbuf `VE[20]uc  1 e 20 0 ]
@@ -758,10 +758,10 @@
 {
 "88
 } 0
-"6 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\calibration.c
+"5 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\calibration.c
 [v _pause_until_RF2_pressed pause_until_RF2_pressed `(v  1 e 1 0 ]
 {
-"24
+"23
 } 0
 "6 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\pathfinder.c
 [v _maze_search maze_search `(v  1 e 1 0 ]
@@ -774,7 +774,7 @@
 [s S551 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 [v maze_search@mL mL `*.30S551  1 p 1 116 ]
 [v maze_search@mR mR `*.30S551  1 p 1 117 ]
-"113
+"112
 } 0
 "7 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\color.c
 [v _color_click_init color_click_init `(v  1 e 1 0 ]
@@ -1033,24 +1033,24 @@
 [v ___flge@ff2 ff2 `d  1 p 4 4 ]
 "19
 } 0
-"126 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\pathfinder.c
+"116 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\pathfinder.c
 [v _maze_return maze_return `(v  1 e 1 0 ]
 {
-"135
-[v maze_return@j j `i  1 a 2 38 ]
-"134
-[v maze_return@distance_back distance_back `uc  1 a 1 40 ]
-"204
-[v maze_return@i_2039 i `i  1 a 2 41 ]
-"131
-[v maze_return@i i `i  1 a 2 43 ]
+"125
+[v maze_return@j j `i  1 a 2 36 ]
+"124
+[v maze_return@distance_back distance_back `uc  1 a 1 38 ]
+"192
+[v maze_return@i_2039 i `uc  1 a 1 39 ]
+"121
+[v maze_return@i i `i  1 a 2 40 ]
 [s S558 calibration_structure 9 `uc 1 index 1 0 `uc 1 right_90 1 1 `uc 1 left_90 1 2 `uc 1 right_135 1 3 `uc 1 left_135 1 4 `uc 1 forward_one 1 5 `uc 1 backward_one 1 6 `uc 1 forward_half 1 7 `uc 1 backward_half 1 8 ]
-"126
-[v maze_return@c c `*.30S558  1 p 1 32 ]
+"116
+[v maze_return@c c `*.30S558  1 p 1 30 ]
 [s S551 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-[v maze_return@mL mL `*.30S551  1 p 1 33 ]
-[v maze_return@mR mR `*.30S551  1 p 1 34 ]
-"209
+[v maze_return@mL mL `*.30S551  1 p 1 31 ]
+[v maze_return@mR mR `*.30S551  1 p 1 32 ]
+"197
 } 0
 "5 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\dc_motor_v1.c
 [v _initDCmotorsPWM initDCmotorsPWM `(v  1 e 1 0 ]
@@ -1058,104 +1058,104 @@
 [v initDCmotorsPWM@PWMperiod PWMperiod `ui  1 p 2 0 ]
 "66
 } 0
-"90 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\calibration.c
+"89 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\calibration.c
 [v _calibration_routine calibration_routine `(v  1 e 1 0 ]
 {
 [s S558 calibration_structure 9 `uc 1 index 1 0 `uc 1 right_90 1 1 `uc 1 left_90 1 2 `uc 1 right_135 1 3 `uc 1 left_135 1 4 `uc 1 forward_one 1 5 `uc 1 backward_one 1 6 `uc 1 forward_half 1 7 `uc 1 backward_half 1 8 ]
-[v calibration_routine@c c `*.30S558  1 p 1 32 ]
+[v calibration_routine@c c `*.30S558  1 p 1 30 ]
 [s S551 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
-[v calibration_routine@mL mL `*.30S551  1 p 1 33 ]
-[v calibration_routine@mR mR `*.30S551  1 p 1 34 ]
-"148
+[v calibration_routine@mL mL `*.30S551  1 p 1 31 ]
+[v calibration_routine@mR mR `*.30S551  1 p 1 32 ]
+"147
 } 0
-"65
+"64
 [v _switch_calibration switch_calibration `(v  1 e 1 0 ]
 {
 [v switch_calibration@calibration_index calibration_index `*.30i  1 p 1 0 ]
-"88
+"87
 } 0
-"254 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\dc_motor_v1.c
+"255 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\dc_motor_v1.c
 [v _rightTURN rightTURN `(v  1 e 1 0 ]
 {
 [v rightTURN@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
-"274
-[v rightTURN@j j `i  1 a 2 26 ]
-"263
-[v rightTURN@i i `i  1 a 2 24 ]
-"260
-[v rightTURN@delay_time delay_time `i  1 a 2 30 ]
-"258
-[v rightTURN@max_power max_power `i  1 a 2 28 ]
-"254
+"275
+[v rightTURN@j j `uc  1 a 1 23 ]
+"264
+[v rightTURN@i i `uc  1 a 1 22 ]
+"261
+[v rightTURN@delay_time delay_time `uc  1 a 1 25 ]
+"259
+[v rightTURN@max_power max_power `uc  1 a 1 24 ]
+"255
 [v rightTURN@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
 [s S551 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 [v rightTURN@mL mL `*.30S551  1 p 1 18 ]
 [v rightTURN@mR mR `*.30S551  1 p 1 19 ]
-[v rightTURN@rotation_calibration rotation_calibration `uc  1 a 1 23 ]
-"290
+[v rightTURN@rotation_calibration rotation_calibration `uc  1 a 1 21 ]
+"291
 } 0
-"213
+"214
 [v _leftTURN leftTURN `(v  1 e 1 0 ]
 {
 [v leftTURN@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
-"234
-[v leftTURN@j j `i  1 a 2 26 ]
-"223
-[v leftTURN@i i `i  1 a 2 24 ]
-"220
-[v leftTURN@delay_time delay_time `i  1 a 2 30 ]
-"218
-[v leftTURN@max_power max_power `i  1 a 2 28 ]
-"213
+"235
+[v leftTURN@j j `uc  1 a 1 23 ]
+"224
+[v leftTURN@i i `uc  1 a 1 22 ]
+"221
+[v leftTURN@delay_time delay_time `uc  1 a 1 25 ]
+"219
+[v leftTURN@max_power max_power `uc  1 a 1 24 ]
+"214
 [v leftTURN@rotation_calibration rotation_calibration `uc  1 a 1 wreg ]
 [s S551 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 [v leftTURN@mL mL `*.30S551  1 p 1 18 ]
 [v leftTURN@mR mR `*.30S551  1 p 1 19 ]
-"215
-[v leftTURN@rotation_calibration rotation_calibration `uc  1 a 1 23 ]
-"250
+"216
+[v leftTURN@rotation_calibration rotation_calibration `uc  1 a 1 21 ]
+"251
 } 0
 "122
 [v _forward forward `(v  1 e 1 0 ]
 {
 [v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 wreg ]
-"147
-[v forward@j j `i  1 a 2 26 ]
-"136
-[v forward@i i `i  1 a 2 24 ]
+"148
+[v forward@j j `uc  1 a 1 23 ]
+"137
+[v forward@i i `uc  1 a 1 22 ]
 "133
-[v forward@delay_time delay_time `i  1 a 2 30 ]
+[v forward@delay_time delay_time `uc  1 a 1 25 ]
 "131
-[v forward@max_power max_power `i  1 a 2 28 ]
+[v forward@max_power max_power `uc  1 a 1 24 ]
 "122
 [v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 wreg ]
 [s S551 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 [v forward@mL mL `*.30S551  1 p 1 18 ]
 [v forward@mR mR `*.30S551  1 p 1 19 ]
 "127
-[v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 23 ]
-"163
+[v forward@Distance_Calibration Distance_Calibration `uc  1 a 1 21 ]
+"164
 } 0
-"166
+"167
 [v _backward backward `(v  1 e 1 0 ]
 {
 [v backward@Distance_Calibration Distance_Calibration `uc  1 a 1 wreg ]
-"192
+"193
 [v backward@j j `i  1 a 2 26 ]
-"181
+"182
 [v backward@i i `i  1 a 2 24 ]
-"178
-[v backward@delay_time delay_time `i  1 a 2 30 ]
-"176
-[v backward@max_power max_power `i  1 a 2 28 ]
-"166
+"179
+[v backward@delay_time delay_time `uc  1 a 1 29 ]
+"177
+[v backward@max_power max_power `uc  1 a 1 28 ]
+"167
 [v backward@Distance_Calibration Distance_Calibration `uc  1 a 1 wreg ]
 [s S551 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `uc 1 brakemode 1 2 `ui 1 PWMperiod 2 3 `*.39uc 1 posDutyHighByte 2 5 `*.39uc 1 negDutyHighByte 2 7 ]
 [v backward@mL mL `*.30S551  1 p 1 18 ]
 [v backward@mR mR `*.30S551  1 p 1 19 ]
-"172
+"173
 [v backward@Distance_Calibration Distance_Calibration `uc  1 a 1 23 ]
-"208
+"209
 } 0
 "76
 [v _setMotorPWM setMotorPWM `(v  1 e 1 0 ]
@@ -1196,22 +1196,24 @@
 [v delay_ms_function@milliseconds milliseconds `ui  1 p 2 0 ]
 "73
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
 {
-"10
-[v ___awdiv@quotient quotient `i  1 a 2 6 ]
-"11
-[v ___awdiv@sign sign `uc  1 a 1 5 ]
-[v ___awdiv@counter counter `uc  1 a 1 4 ]
+[v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
+"6
+[v ___lbdiv@quotient quotient `uc  1 a 1 3 ]
 "7
-[v ___awdiv@dividend dividend `i  1 p 2 0 ]
-[v ___awdiv@divisor divisor `i  1 p 2 2 ]
-"41
+[v ___lbdiv@counter counter `uc  1 a 1 2 ]
+"4
+[v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
+[v ___lbdiv@divisor divisor `uc  1 p 1 0 ]
+"9
+[v ___lbdiv@dividend dividend `uc  1 a 1 1 ]
+"26
 } 0
-"26 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\calibration.c
+"25 C:\Users\tjhla\OneDrive - Imperial College London\ME3\ECM\final-project-tomas-thomas.X\calibration.c
 [v _adjust_calibration adjust_calibration `(v  1 e 1 0 ]
 {
 [v adjust_calibration@calibration_label calibration_label `*.30i  1 p 1 0 ]
-"63
+"62
 } 0
