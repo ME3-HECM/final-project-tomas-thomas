@@ -6,10 +6,11 @@
 - [Demonstration Video Final Maze](#demonstration-video-final-maze)
 - [General Functionality](#general-functionality)
   - [Overview/Instructions for Operation](#overviewinstructions-for-operation)
-  - [In Depth View of Code Path](#in-depth-view-of-code-path)
-- [Movement Calibration](#movement-calibration)
-- [Colour Calibration](#colour-calibration)
-- [Exemptions?](#exemptions)
+  - [Overview of Code Path](#Overview-of-Code-Path)
+- [Calibration Structure](#calibration-structure)
+- [Colour Sensing Structure](#colour-sensing-structure)
+- [Path Finding Structure] (#path-finding-structure)
+- [Potential Future Improvements?](#exemptions)
 - [Testing Videos (Mechatronics Lab)](#testing-videos-(mechatronics-lab))
 
 ## Project Challenge and Instructions
@@ -95,12 +96,6 @@ When both buttons are pressed together it will save the calibration value and sh
 Use these button to either stay on the currrent calibration, and move to the next calibration. 
 
 
-
-
-
-![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/01a83b85-2115-409e-bd3d-6fd1e7023971)
-
-
  #### 4 key stages in the buggy code found within main.c:   
     while(1){ 
         //note that the calibration values are not reset if the buggy is not turned off after it has solved the first maze
@@ -115,9 +110,14 @@ Use these button to either stay on the currrent calibration, and move to the nex
         maze_return(&calibration, &motorL, &motorR);            // return to start function
 
     }
+Here you have what each function does summarised in the table below:
 
-### In Depth View of Code Path
-<a name="in-depth-view-of-code-path"></a>
+
+![image](https://github.com/ME3-HECM/final-project-tomas-thomas/assets/156346074/01a83b85-2115-409e-bd3d-6fd1e7023971)
+
+
+### Overview of Code Path
+<a name="Overview-of-Code-Path"></a>
 
 1. **Main.c** 
     - Houses the executable code for the buggy
@@ -146,7 +146,9 @@ The motor configuration of the car was built upon the lab 6 work done on the cou
 - **leftTURN** - This command makes the right side the car go forward, and the left side of the car go backwards creating a left rotation on the spot. Similary the acceleration is by reaching a maximum power over a configerable time, roating for a configerable amount of time, and then deaccelreating.
 - **rightTURN** - This command is identical to the left turn except in the other direction
 
-## Calibration Structure - needs adding to TOC
+## Calibration Structure - now added to TOC (remove this now in proof read)
+<a name="calibration-structure"></a>
+
 The calibration code has 4 functions 
 - **pause_until_RF2_pressed()** - This function does not directly control the calibration values but is used to prevent a while(1) loop from running until button RF2 is pressed. This helps the user control the buggy.
 - **adjust_calibration(int *->calibration_label)*** - Responsable for increase or decreasing the calibration values with a right or left button press respectively, and then running the movement for the calibration value when both buttons are pressed.
@@ -164,6 +166,7 @@ The calibration code has 4 functions
                 break;
             }
         }
+    ```
     - An exert from the function here highlights the use of the or command to solve the timing issue of trying to press two buttons at the same time. This allows a 100ms delay for a better user expereince.
 - **switch_calibration(int *->calibration_index)*** - This is a very simple function to increase the calibration index by 1 if the right button is pressed and stay on the current index if left is pressed.
 - **calibration_routine(calibration_structure *->c, DC_motor *->mL, DC_motor *->mR)***** - This function combines the 2 previous functions together to calibrate the 8 movements in a single callable callable function. It takes the inputs of left motor, right motor, calibration values.
@@ -186,108 +189,197 @@ The calibration code has 4 functions
 
 
 ## Colour Sensing Structure
-<a name="colour-calibration"></a>
+<a name="colour-sensing-structure"></a>
 
 ### Colour Sensing Process
-[Explanation of movement process]
+Colour sensing was required in order to feed instructions to the buggy to solve the maze. Our buggy needed to recognise 9 different colours (see Project Challenge Brief), each with their own specific operation command. 
+
+To do this, firstly a colour initialisation function was called in order to set up the I2C interface required to communicate with the colour sensor and to turn on the tri-colour LED (R,G,B). This tri-colour LED was set to have white light shining looking for card surfaces within the maze. 
+
+#### All the following code found within color.c:
+
+void color_click_init(void)
+{   
+    //setup colour sensor via i2c interface
+    I2C_2_Master_Init();      //Initialise i2c Master
+
+     //set device PON
+	 color_writetoaddr(0x00, 0x01);
+    __delay_ms(3); //need to wait 3ms for everthing to start up
+    
+    //turn on device ADC
+	color_writetoaddr(0x00, 0x03);
+
+    //set integration time
+	color_writetoaddr(0x01, 0xD5);
+    
+    //Turn on the tri-color LED (red, green, and blue) on color-clicker, to have white LED shining looking for card surfaces in maze
+    
+    //set all LEDs to be outputs
+    TRISGbits.TRISG1 = 0; //Set TRIS value for red LED to zero (output)
+    TRISAbits.TRISA4 = 0; //Set TRIS value for green LED to zero (output)
+    TRISFbits.TRISF7 = 0; //Set TRIS value for blue LED to zero (output)
+    
+    //Turn on red, green and blue LEDs in tri-color LED to (form white light)
+    LATGbits.LATG1 = 1; //Set red LED on
+    LATAbits.LATA4 = 1; //Set green LED on
+    LATFbits.LATF7 = 1; //Set blue LED on
+}
+
+This light, when reflected off the card onto the sensor, provided R, G, B values on its read-out, which was used to identify the card colour. The colour sensor contained 4 channels - red, green, blue and clear (representing brightness); these were read to obtain these values using the following function, edited for each channel according to their specific address (e.g. here 0x16 for red LSB):
+
+unsigned int color_read_Red(void) //this function reads the red light value from the color sensor (as a 16bit integer)
+{
+	unsigned int tmp;
+	I2C_2_Master_Start();         //Start condition
+	I2C_2_Master_Write(0x52 | 0x00);     //7 bit address + Write mode
+	I2C_2_Master_Write(0xA0 | 0x16);    //command (auto-increment protocol transaction) + start at RED low register
+	I2C_2_Master_RepStart();	    // start a repeated transmission
+	I2C_2_Master_Write(0x52 | 0x01);    //7 bit address + Read (1) mode
+	tmp=I2C_2_Master_Read(1);	    //read the Red LSB ((1) means acknowledge that it has been read here)
+	tmp=tmp | (I2C_2_Master_Read(0)<<8); //read the Red MSB (don't acknowledge as this is the last read, i.e. (0) in function to set ack=0)
+	I2C_2_Master_Stop();          //Stop condition
+	return tmp;
+}
+
+These values were converted to HSV (Hue, Saturation, and Value) and then compared against thresholds for each colour card present in the mazes. These thresholds were predetermined by testing; the tests involved taking our sample set of cards, holding them right up against the edge of the buggy (mimicing the distance that the sensor would read colours in practice), and then reading the output using serial communication and a laptop, to obtain the HSV ranges for each card colour.
+
+//---------------------USE FOR TESTING WITH SERIAL AND LAPTOP - DETERMINE CARD HSV VALUES------------------------------------------
+    char colortest[30]; //Empty char array to contain HSV values and Color determined for color testing
+    sprintf(colortest,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color); //Constructing the string with HSV values and determined color
+    sendStringSerial4(colortest); // Sending the string through serial communication
+    __delay_ms(50); //Delay needed for buffering, etc.
+//---------------------------------------------------------------------------------------------------------------------------------    
+
+These ranges were then used within if statements to compare the real-time measured value against the thresholds. If the measured values for HSV fell within the ranges of one of the card colours, it was identified and then the colour card checking function (see below) would return an integer value (0-8), corresponding to that colour. This integer would then be used to trigger the operation required to continue to move through the maze, e.g. at a red card, the function would output 1, and this value would trigger the Turn Right 90 operation elsewhere within the code. 
+
+unsigned int color_cardCheck(void) { //function to check the color of the card on the maze wall. Output is an integer corresponding to color
+    
+    //read 16bit RGB values from each channel on color-clicker
+    float r = color_read_Red();
+    float g = color_read_Green();
+    float b = color_read_Blue();
+    
+    //read 16bit Clear Channel (brightness) value for normalisation
+    float c = color_read_Clear();
+    
+    //define HSV variables
+    float H;
+    float S;
+    float V;
+    
+    RGB_to_HSV(r,g,b,c,&H,&S,&V); //convert 16bit RGB values to H (0-360), S (0-100), and V(0-100)
+    
+    //comparing with predetermined thresholds from testing, to determine which color the card is
+    //Labels - 1.Red 2.Green 3.Blue 4.Yellow 5.Pink 6.Orange 7.Light Blue 8. White (0. Black)
+    
+    unsigned int card_color = 0;
+    
+    //Check HSV values against known colors for cards - all measured using color clicker and recorded with serial output and laptop
+    if (H>355 && H<360 && S>85 && S<90 && V>80 && V<85) {card_color = 1;} //1. Red check
+    
+    else if (H>67 && H<79 && S>50 && S<57 && V>40 && V<46) {card_color = 2;} //2. Green Check
+    
+    else if (S<10 && V>30 && V<40) {card_color = 3;} //3. Blue Check - needed expanded bands to work in practice. H value varied too much in tests to be used but S and V were consistent.
+    
+    else if (H>20 && H<25 && S>65 && S<70 && V>54 && V<57) {card_color = 4;} //4. Yellow Check
+    
+    else if (H>13 && H<18 && S>55 && S<60 && V>50 && V<54) {card_color = 5;} //5. Pink Check
+    
+    else if (H>5 && H<10 && S>70 && S<75 && V>62 && V<67) {card_color = 6;} //6. Orange Check
+    
+    else if (H>74 && H<85 && S>28 && S<33 && V>37 && V<42) {card_color = 7;} //7. Light Blue Check - needed expanded bands to work in practice
+    
+    else if (H>22 && H<27 && S>48 && S<53 && V>45 && V<50) {card_color = 8;} //8. White Check
+    
+    //---------------------USE FOR TESTING WITH SERIAL AND LAPTOP - DETERMINE CARD HSV VALUES------------------------------------------
+//    char colortest[30]; //Empty char array to contain HSV values and Color determined for color testing
+//    sprintf(colortest,"H:%.2f S: %.2f V: %.2f C:%u",H,S,V,card_color); //Constructing the string with HSV values and determined color
+//    sendStringSerial4(colortest); // Sending the string through serial communication
+//    __delay_ms(50); //Delay needed for buffering, etc.
+//---------------------------------------------------------------------------------------------------------------------------------
+    
+    return card_color; //output the determined color from the function
+}
 
 ### Colour Calibration
-[Explanation of colour calibration process]
+It was necessary to read the card colours in varying levels of ambient lighting and with slight differences and imperfections (e.g. dust, dirt, marks) on the actual colour cards used in the mazes. Therefore, colour calibration was important to provide consistent, accurate, and reliable readings. 
 
+The effects of ambient lighting were limited in two ways. Firstly, physically by using a black cardboard shield around the color clicker light sensor, effectively blocking ambient light when reading the colour, with edges flush with the card. The second method was by normalising according to the Clear channel (measure of brightness) on the color clicker. 
 
-//
+The color_cardCheck() shown above reads the clear channel and then uses the value within the RGB-to-HSV conversion function to normalise the RBG readings. This is shown in the code below:
 
-#### Found in pathfinder_file.c:
-void maze_search(calibration_structure *c, DC_motor *mL, DC_motor *mR){
-    //Maze searching algorythm
-    //has two exit conditions - white paper, or forward_reset_threshold moves forward conseqeutively (defined in .h file)
-    color_click_init();
+void RGB_to_HSV(float R, float G, float B, float C, float *H, float *S, float *V) { //function to convert 16bit RGB values to HSV
     
-    while(1){
-        //turn LEDs on when the car is moving
-        __delay_ms(500);
-        LATHbits.LATH3 = 1;
-        LATDbits.LATD7 = 1; 
-
-        //moves the car forward, reads the colour value
-        forward(c->forward_one, mL, mR);//move forward for the value set in the calibration.foward_one value set in main
-        Forward_Count++;                //add 1 to the forward counter
-        Color_Value = color_cardCheck(); //reutrns 1 to 8 integer value
+    //Normalise RGB values to be within the range of 0-1, using the Clear Channel value (i.e. brightness (always greater R,G,B values)
+    float r = R/C; //normalised according to clear channel C
+    float g = G/C; 
+    float b = B/C;
         
-        LATHbits.LATH3 = 0;
-        LATDbits.LATD7 = 0;
-        
-        //Failsafe to ensure the buggy always gets home if lost - assumes hitting a solid wall
-        //if the forward count exceeds a defined threshold then the buggy will exit the maze finding alogrythm from then the maze return command can be called
-        // CAREFUL if the threshold is set too low the buggy will reset in a straight line
-        if(Forward_Count > forward_reset_threshold){
-            backward(c->backward_half, mL, mR); // back off from wall you've just hit
-            rightTURN(c->right_90, mL, mR);     //do a 180* rotation
-            rightTURN(c->right_90, mL, mR);
-            backward(c->backward_one, mL, mR);  //reverse into the wall to allign rotation  
-            for (int i = 0; i < forward_reset_threshold; i++) {
-                 forward(c->forward_one, mL, mR);  //moves forward by forward_reset_threshold units 
-                                                   //this means that if we were going in a straight line without hitting an obstacle we still would reverse the correct steps to get back home
-            }
-            backward(c->backward_half, mL, mR);     //since our car has moved 1 unit * a constant away from the edge of the wall we need to move half a step back to return to centre of the unit square space
-            break;                                  //exit maze finder algorythm
-        }
-        
-        if(Color_Value != 0){   //detects a colour  
-            //save the number of times forward the car went forward in the Operation_History Array
-            Operation_History[Operation_Count] = Forward_Count + 10;    //10 offset for reasons
-            Forward_Count = 0;  //reset the forward counter
-            Operation_Count++;  //increase operation counter 
-                    
-            if(Color_Value == 1){ //detects that it is red - turn right 90
-                Operation_History[Operation_Count] = Color_Value;    //1 = red value 
-                Operation_Count++;
-                backward(c->backward_half, mL, mR);                     //reverse from wall to create alignment 
-                rightTURN(c->right_90, mL, mR);                         //turn right 90 degrees
-            }
-
-This code below shows how if white (end of maze) is read by the color sensor, the buggy will perform a 180 degree turn and end the maze searching function, beginning the maze return home function.
-
-else if(Color_Value == 8){ //detects that it is white - return home            
-                
-                backward(c->backward_half, mL, mR); // half step back off from wall
-                rightTURN(c->right_90, mL, mR);     //180* turn
-                rightTURN(c->right_90, mL, mR);
-                backward(c->backward_one, mL, mR);  //aligns off back wall
-                forward(c->forward_half, mL, mR);   //moves forward half to align to center of unit square
-                break;  //exit the maze finder algorithm
-            }
-
-Code below is maze_return [needs more here]
-
-void maze_return(calibration_structure *c, DC_motor *mL, DC_motor *mR){
-    //algorithm to recall buggy movement history and reverse moves to get home
+    //finding Maximum/Minimum of the RGB values and Difference between them
+    float maxRGB = (r > g) ? ((r > b) ? r : b) : ((g > b) ? g : b); //shorthand conditional statements for finding max/min
+    float minRGB = (r < g) ? ((r < b) ? r : b) : ((g < b) ? g : b); //? symbol effectively asks condition that precedes it, then continues to either side of colon - if true : if false.
+    float deltaRGB = maxRGB - minRGB;
     
-    while(1){
-        
-        for (int i = length; i >= 0; i--) {//read the operation_history array from reverse
+    //using standard conversion equations to convert RGB to HSV
+    
+    //calculating Hue (different equations depending on which color intensity is highest)
+    float H_temp;
+    
+    if (deltaRGB == 0) {H_temp = 0;}
+    
+    else if (maxRGB == r) {H_temp = custom_floatmodulo((g-b)/deltaRGB, 6.0) * 60;} //using custom float modulo function (modulo by 6)
+    
+    else if (maxRGB == g) {H_temp = (((b-r)/deltaRGB) + 2) * 60;}
+    
+    else if (maxRGB == b) {H_temp = (((r-g)/deltaRGB) + 4) * 60;}
+    
+    if (H_temp < 0) {H_temp = H_temp + 360;}
+    //if value is negative, add 360 degrees to make positive angle on color wheel for HUE
+    
+    *H = H_temp; //assign Hue value (in degrees)
+    
+    //calculating Saturation
+    if (maxRGB == 0) {*S = 0;}
+    
+    else {
+        *S = (deltaRGB/maxRGB) * 100; //Assigning Saturation value. Multiplying by 100 converts the value to a percentage. 
+    }
+    
+    //calculating Value
+    *V = maxRGB * 100; //Assigning Value. Multiplying by 100 converts the value to a percentage, and normalised by brightness normalisation factor.
+}   
 
-            if(Operation_History[i] > 10){  //all values 10 or greater relate to forward movement 
-                unsigned char distance_back = Operation_History[i] - 10;    //remove the offset from the forward movement tracker such that 1 = 1 unit of the square moved
-                for (int j = 0; j < distance_back-1; j++) {                 //move the buggy forward distance_back number of times
-                    forward(c->forward_one, mL, mR);
-                }
-                forward(c->forward_half, mL, mR);
-                // need to have a go back by a half  - not sure why 
-            }
-//
-            else if(Operation_History[i] == 1){  //opposite of right = left
-                leftTURN(c->left_90, mL, mR);
-                backward(c->backward_one, mL, mR);   
-            }
+The function above converts from 16 bit RGB values to HSV, by first normalising according to the clear channel reading, then finding the maximum and minimum of the normalised RBG values and their difference, using these values in standard conversion equations sourced from online (https://www.rapidtables.com/convert/color/rgb-to-hsv.html), and finally assigning them to their respective variables to be returned. 
 
-Code below is maze_return [needs more here]
+This provided much more consistent and reliable results and ranges compared with testing without normalisation, in all lighting conditions. HSV was used for comparison as in testing the ranges overlapped less compared with RGB, and the hue values were more consistent as they were independent of the brightness of the colour card (influenced by ambient lighting and blemishes on the cards). 
 
+These calibration techniques made the colour detection very effective and robust in all lighting conditions and with new or well-worn cards.
 
+Finally, in the code above a custom float modulo function was used in order to find the remainder from the division of two floats (needed in calculating Hue). This was done used to avoid having to import math.h, thus saving memory and making the code more efficient. The function was hard coded into the file as seen below:
+
+//custom modulo function for floats to avoid importing math.h and saving memory. % function brings errors with floats, only good with integers, therefore need to use this function
+float custom_floatmodulo(float x, float y) { 
+    // Ensure y is not zero to avoid division by zero
+    if (y == 0.0) {
+        return 0.0; // Return 0 if y is zero
+    }
+    
+    // Calculate the quotient
+    float quotient = x / y;
+    
+    // Calculate the integer part of the quotient
+    int intPart = (int)quotient;
+    
+    // Calculate the remainder
+    float remainder = x - intPart * y;
+    
+    return remainder;
+}
 
 ## Path Finding Structure
-<a name="movement-calibration"></a>
-There are 2 functions that control the robot movement
+<a name="path-finding-structure"></a>
+There are 2 functions that control the robot movement, **maze_search** and **maze_return**. THese functions combine aspects from the motor functions, and colour functions.
 
 ### maze_search
 The maze search function works by keeping a history of its movements in Operation_history. 
@@ -385,7 +477,7 @@ Operation_Count = 0;
         break; //quits the return home function when the history is complete
 ```
 
-## Potential Areas to improve upon?
+## Potential Future Improvements?
 <a name="exemptions"></a>
 [Explanation of any exemptions or exceptions]
 
